@@ -1,0 +1,8 @@
+# 기획 문서는 로컬에만 — 공개 저장소에 올리지 않는다
+CLAUDE.md
+PLAN.md
+LOG.md
+인조이풀prd.md
+plan-v0.1-구기획-archive.md
+.claude/
+.DS_Store
