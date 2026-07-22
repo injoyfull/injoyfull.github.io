@@ -28,8 +28,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -42,8 +42,9 @@
     </a>
     <nav class="mast__nav" aria-label="주 메뉴">
       <a href="#about">소개</a>
-      <a href="#letters">엄마들의 말</a>
-      <a href="#doors">어른의 문</a>
+      <a href="#door-namansi">나만시</a>
+      <a href="#door-teum">틈</a>
+      <a href="#door-popfolio">Popfolio</a>
       <a class="mast__cta" href="#visit">놀러 오기</a>
     </nav>
   </header>
@@ -201,28 +202,67 @@
     <section class="sec sec--doors" id="doors">
       <p class="sec__mark"><span class="glyph" aria-hidden="true"><i></i><i></i></span> 06 — 어른의 문</p>
       <h2 class="serif">어른에게도 아웃풋이 필요해서,<br>세 개의 문을 더 열어뒀어요.</h2>
-      <ul class="doors">
-        <li class="door door--b">
-          <p class="door__type">웹서비스</p>
-          <h3 class="serif">나만시</h3>
-          <p class="door__desc">하루 10초, 낯선 감각으로 나를 만나는 시간.</p>
-          <p class="door__go door__go--soon">곧 문을 엽니다</p>
-          <!-- TODO: /namansi/ 배포되면 위 줄을 <a class="door__go" href="/namansi/">들어가기 →</a> 로 -->
-        </li>
-        <li class="door door--y">
-          <p class="door__type">뉴스레터</p>
-          <h3 class="serif">틈</h3>
-          <p class="door__desc">숨과 쉼 사이, 그 틈을 누리는 편지. 2주에 한 번.</p>
-          <a class="door__go" href="/teum/">들어가기 <span aria-hidden="true">→</span></a>
-        </li>
-        <li class="door door--b">
-          <p class="door__type">온라인 전시</p>
-          <h3 class="serif">Popfolio</h3>
-          <p class="door__desc">아이의 그림도 어른의 작업도, 나만의 팝업 전시로.</p>
-          <p class="door__go door__go--soon">곧 문을 엽니다</p>
-          <!-- TODO: /popfolio/ 배포되면 위 줄을 <a class="door__go" href="/popfolio/">들어가기 →</a> 로 -->
-        </li>
-      </ul>
+      <div class="doors">
+        <details class="door door--b" id="door-namansi">
+          <summary>
+            <span class="door__no serif">01</span>
+            <span class="door__head">
+              <span class="door__name serif">나만시</span>
+              <span class="door__type">웹서비스 — 어른의 10초</span>
+            </span>
+            <span class="door__toggle" aria-hidden="true">↓</span>
+          </summary>
+          <div class="door__room">
+            <p class="door__line serif">하루 10초,<br>낯선 감각으로 나를 만나는 시간.</p>
+            <p class="door__desc">
+              출근길에, 설거지 끝에, 아이를 재우고 난 밤에.
+              짧게 멈춰서 오늘의 감각 하나를 만나요.
+              길게 쓸 필요 없어요 — 10초면 충분해요.
+            </p>
+            <p class="door__go--soon">곧 문을 엽니다 · 열리면 인스타로 알려드려요</p>
+            <!-- TODO: /namansi/ 배포되면 위 줄을 <a class="door__go" href="/namansi/">들어가기 →</a> 로 -->
+          </div>
+        </details>
+        <details class="door door--y" id="door-teum">
+          <summary>
+            <span class="door__no serif">02</span>
+            <span class="door__head">
+              <span class="door__name serif">틈</span>
+              <span class="door__type">뉴스레터 — 어른의 쉼</span>
+            </span>
+            <span class="door__toggle" aria-hidden="true">↓</span>
+          </summary>
+          <div class="door__room">
+            <p class="door__line serif">숨과 쉼 사이,<br>그 틈을 누리는 편지.</p>
+            <p class="door__desc">
+              2주에 한 번, 메일함으로 가는 짧은 편지예요.
+              바쁜 일상에 틈을 하나 내어드려요 —
+              읽는 데 3분, 남는 건 하루치의 숨.
+            </p>
+            <a class="door__go" href="/teum/">틈 열어보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </details>
+        <details class="door door--b" id="door-popfolio">
+          <summary>
+            <span class="door__no serif">03</span>
+            <span class="door__head">
+              <span class="door__name serif">Popfolio</span>
+              <span class="door__type">온라인 전시 — 여덟 살부터 일흔까지</span>
+            </span>
+            <span class="door__toggle" aria-hidden="true">↓</span>
+          </summary>
+          <div class="door__room">
+            <p class="door__line serif">내 작품이<br>나만의 팝업 전시가 되는 곳.</p>
+            <p class="door__desc">
+              아이의 그림도, 어른의 작업도, 할머니의 자수도.
+              만든 것에는 걸릴 자리가 필요하니까요.
+              여기 대표의 작품도 걸릴 예정이에요.
+            </p>
+            <p class="door__go--soon">곧 문을 엽니다 · 열리면 인스타로 알려드려요</p>
+            <!-- TODO: /popfolio/ 배포되면 위 줄을 <a class="door__go" href="/popfolio/">들어가기 →</a> 로 -->
+          </div>
+        </details>
+      </div>
       <p class="doors__tail prose prose--soft">
         아이를 기다리는 동안, 잠깐 쉬었다 가셔도 좋아요.<br>
         여기는 어른에게도 아지트니까요.
@@ -247,7 +287,21 @@
   </footer>
 
   <script>
-    // 후기 메모지 스크롤 등장 — 사이트 유일 JS. JS가 없으면 전부 그냥 보인다.
+    // 내브에서 문(門) 링크를 누르면 해당 details가 펼쳐진다. JS 없으면 앵커 이동만 된다.
+    function openDoor() {
+      const el = document.querySelector(location.hash || 'x:not(*)');
+      if (el && el.tagName === 'DETAILS') el.open = true;
+    }
+    addEventListener('hashchange', openDoor);
+    openDoor();
+    // 같은 메뉴를 다시 눌러도(해시 변화 없음) 문이 열리게
+    document.querySelectorAll('a[href^="#door-"]').forEach(a =>
+      a.addEventListener('click', () => {
+        const el = document.querySelector(a.getAttribute('href'));
+        if (el && el.tagName === 'DETAILS') el.open = true;
+      }));
+
+    // 후기 메모지 스크롤 등장 — JS가 없으면 전부 그냥 보인다.
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
       document.documentElement.classList.add('js');
       const io = new IntersectionObserver(es => es.forEach(e => {
