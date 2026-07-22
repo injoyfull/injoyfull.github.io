@@ -568,3 +568,243 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   .scrawl path { animation: none; stroke-dashoffset: 0; }
   a.door__go span { transition: none; }
 }
+
+/* ============================================================
+   v6 — 교육사업 허브 확장 (관문 · 표현의 언어 · PSC · 프로그램 ·
+   FAQ · 만드는 사람). 리서치 반영: 3분기 관문, 1인칭 목소리,
+   가격 한 점 공개, 자작 낙서 SVG.
+   ============================================================ */
+
+/* 자작 낙서 SVG (손층) */
+.doodle {
+  width: 2.6rem; height: 2.6rem;
+  margin-bottom: 0.4rem;
+}
+.doodle path {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- 관문: 3분기 ---------- */
+.gate { display: grid; gap: 1.1rem; }
+@media (min-width: 820px) { .gate { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; } }
+.gate__card {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 1.8rem 1.6rem 1.5rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.gate__card:nth-child(1) .doodle { transform: rotate(-3deg); }
+.gate__card:nth-child(2) .doodle { transform: rotate(2deg); }
+.gate__card:nth-child(3) .doodle { transform: rotate(-2deg); }
+.gate__card:hover { background: rgba(255, 217, 113, 0.22); }
+.gate__card h2 { font-size: 1.35rem; margin: 0 0 0.4rem; font-weight: 700; }
+.gate__card p { margin: 0 0 1.4rem; color: var(--ink-soft); line-height: 1.65; }
+.gate__go {
+  margin-top: auto;
+  font-weight: 800;
+  color: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+}
+.gate__go i { font-style: normal; transition: transform 0.25s ease; }
+.gate__card:hover .gate__go i { transform: translateX(4px); }
+
+/* ---------- 칠판: 아이의 말 ---------- */
+.board__quote {
+  margin: 0 0 1rem;
+  font-size: clamp(1.9rem, 5.5vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.45;
+}
+.board__quote strong { color: var(--yellow); font-weight: 700; }
+.board__cite {
+  margin: 0 0 3rem;
+  font-family: var(--hand);
+  font-size: 1.15rem;
+  color: rgba(255, 253, 246, 0.94);
+}
+.board .board__poem { font-size: clamp(1.15rem, 2.6vw, 1.5rem); }
+
+/* ---------- 세 가지 표현의 언어 ---------- */
+.langs {
+  list-style: none;
+  margin: 2.2rem 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+  border-top: 1.5px solid var(--ink);
+}
+@media (min-width: 820px) { .langs { grid-template-columns: repeat(3, 1fr); gap: 0; } }
+.langs li { padding: 1.5rem 0.2rem 1.7rem; border-bottom: 1px solid var(--hairline); }
+@media (min-width: 820px) {
+  .langs li { padding: 1.8rem 1.4rem; border-bottom: 1.5px solid var(--ink); }
+  .langs li + li { border-left: 1px solid var(--hairline); }
+}
+.langs__name {
+  margin: 0 0 0.2rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.langs__what { margin: 0 0 0.7rem; font-weight: 800; font-size: 1.05rem; }
+.langs__how { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.7; }
+
+/* ---------- PSC ---------- */
+.psc {
+  list-style: none;
+  margin: 2.2rem 0 2.4rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 44rem;
+}
+@media (min-width: 700px) { .psc { grid-template-columns: repeat(4, 1fr); } }
+.psc li {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 1.2rem 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  text-align: center;
+}
+.psc li:nth-child(even) { transform: rotate(0.7deg); }
+.psc li:nth-child(odd)  { transform: rotate(-0.7deg); }
+.psc b {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.2;
+}
+.psc__ko { font-weight: 800; }
+.psc__en { font-size: 0.8rem; letter-spacing: 0.18em; color: var(--ink-soft); }
+
+/* ---------- 프로그램 목차 ---------- */
+.prog {
+  list-style: none;
+  margin: 2.2rem 0 0;
+  padding: 0;
+  border-top: 1.5px solid var(--ink);
+}
+.prog__row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1rem, 4vw, 2.4rem);
+  align-items: start;
+  padding: 1.9rem 0.3rem;
+  border-bottom: 1px solid var(--hairline);
+}
+@media (min-width: 860px) {
+  .prog__row { grid-template-columns: auto 1fr auto; align-items: center; }
+}
+.prog__no {
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  color: var(--blue);
+  min-width: 2.1em;
+}
+.prog__label {
+  margin: 0 0 0.15rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+}
+.prog__body h3 {
+  margin: 0 0 0.4rem;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3.4vw, 1.8rem);
+}
+.prog__desc { margin: 0; color: var(--ink-soft); max-width: 36rem; }
+.prog__price { margin: 0.7rem 0 0; font-weight: 800; font-size: 1.15rem; }
+.prog__cta {
+  grid-column: 2;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  font-weight: 800;
+  color: var(--blue);
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (min-width: 860px) { .prog__cta { grid-column: auto; } }
+.prog__cta:hover { text-decoration: underline; text-underline-offset: 6px; }
+.prog__cta span { transition: transform 0.25s ease; }
+.prog__cta:hover span { transform: translateX(4px); }
+.prog__soon {
+  grid-column: 2;
+  justify-self: start;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: 1.5px solid var(--hairline);
+  border-radius: 999px;
+  padding: 0.45em 1.1em;
+}
+@media (min-width: 860px) { .prog__soon { grid-column: auto; } }
+.prog__row--soon .prog__no,
+.prog__row--soon h3 { opacity: 0.6; }
+
+/* ---------- FAQ ---------- */
+.faq { max-width: 46rem; border-top: 1.5px solid var(--ink); }
+.faq__item { border-bottom: 1px solid var(--hairline); }
+.faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 0.3rem;
+  font-weight: 800;
+  font-size: 1.08rem;
+  min-height: 44px;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary:hover { background: rgba(255, 217, 113, 0.18); }
+.faq__item summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.faq__item summary span { color: var(--blue); transition: transform 0.25s ease; }
+.faq__item[open] summary span { transform: rotate(180deg); }
+.faq__item p {
+  margin: 0;
+  padding: 0 0.3rem 1.4rem;
+  color: var(--ink-soft);
+  max-width: 40rem;
+}
+
+/* ---------- 만드는 사람 ---------- */
+.sec--why { text-align: left; }
+.why__quote {
+  margin: 0 0 1.6rem;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  line-height: 1.6;
+  max-width: 46rem;
+}
+.why__quote strong {
+  font-weight: 700;
+  background: linear-gradient(transparent 40%, rgba(255, 217, 113, 0.75) 40%, rgba(255, 217, 113, 0.75) 92%, transparent 92%);
+}
+.why__sign { margin: 0 0 1.8rem; font-size: 1.05rem; }
+.why__sign strong { font-size: 1.2rem; }
+.why__sign span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+}
+.why__lab { font-size: 0.98rem; }
