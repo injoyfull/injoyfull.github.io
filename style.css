@@ -25,7 +25,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }  /* 앵커는 즉시 점프 — 긴 스크롤 여행 금지 */
 
 body {
   margin: 0;
@@ -120,20 +120,40 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 }
 .mast__cta:hover { text-decoration: none !important; background: #005596; }
 
-/* ---------- 커버 ---------- */
+/* ---------- 커버 — 사진 위 타이포 ---------- */
 .cover {
+  position: relative;
   min-height: calc(100svh - 5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: clamp(2rem, 5vh, 3.5rem) var(--gutter) clamp(1.5rem, 4vh, 2.5rem);
+  color: #FFFDF6;
+  overflow: hidden;
 }
+.cover__bg { position: absolute; inset: 0; }
+.cover__bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+.cover__bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(24, 20, 16, 0.78) 0%,
+    rgba(24, 20, 16, 0.42) 34%,
+    rgba(24, 20, 16, 0.58) 62%,
+    rgba(24, 20, 16, 0.82) 100%);
+}
+.cover > *:not(.cover__bg) { position: relative; }
 .cover__kicker {
   margin: 0 0 2rem;
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.16em;
-  color: var(--ink-soft);
+  color: rgba(255, 253, 246, 0.95);
+  text-shadow: 0 1px 12px rgba(24, 20, 16, 0.55);
 }
 .cover__title {
   margin: 0;
@@ -152,9 +172,8 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   .cover__title .l3 { margin-left: 2.5ch; }
   .cover__title .l4 { margin-left: 1ch; }
 }
-.cover__title em { font-style: normal; position: relative; display: inline-block;
-  background: linear-gradient(transparent 42%, rgba(255, 217, 113, 0.7) 42%, rgba(255, 217, 113, 0.7) 90%, transparent 90%);
-}
+.cover__title { text-shadow: 0 2px 22px rgba(24, 20, 16, 0.45); }
+.cover__title em { font-style: normal; position: relative; display: inline-block; color: var(--yellow); }
 /* 손그림 밑줄 — 로드 시 그려지는 첫인상 */
 .scrawl {
   position: absolute;
@@ -164,7 +183,7 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 }
 .scrawl path {
   fill: none;
-  stroke: var(--blue);
+  stroke: var(--yellow);
   stroke-width: 5;
   stroke-linecap: round;
   stroke-dasharray: 1;
@@ -183,15 +202,17 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 .cover__note {
   margin: 0;
   font-size: 1.35rem;
-  color: var(--blue);
-  transform: rotate(-2deg);
+  color: var(--yellow);
+  transform: rotate(-1deg);
+  text-shadow: 0 1px 10px rgba(24, 20, 16, 0.6);
 }
 .cover__scroll {
   margin: 0;
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.3em;
-  color: var(--ink-soft);
+  color: rgba(255, 253, 246, 0.9);
+  text-shadow: 0 1px 10px rgba(24, 20, 16, 0.6);
 }
 
 /* ---------- 마스킹테이프 띠 (손층) ---------- */
@@ -199,8 +220,8 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 .tape {
   width: 110%;
   margin-left: -5%;
-  transform: rotate(-1.5deg);
-  background: rgba(255, 217, 113, 0.6);
+  transform: rotate(-0.5deg);
+  background: rgba(255, 217, 113, 0.5);
   border-top: 1px solid rgba(38, 33, 28, 0.15);
   border-bottom: 1px solid rgba(38, 33, 28, 0.15);
   padding: 0.65rem 0;
@@ -222,7 +243,7 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 .sec {
   max-width: 72rem;
   margin: 0 auto;
-  padding: clamp(4rem, 10vh, 6.5rem) var(--gutter);
+  padding: clamp(2.8rem, 6.5vh, 4.2rem) var(--gutter);
 }
 .sec__mark {
   margin: 0 0 2.2rem;
@@ -242,9 +263,9 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 }
 .duo__side {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--blue);
-  transform: rotate(-2deg);
+  transform: rotate(-1deg);
   align-self: center;
 }
 
@@ -254,7 +275,7 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   background: var(--blue);
   color: #FFFFFF;
   text-align: center;
-  padding: clamp(5rem, 12vh, 8rem) var(--gutter);
+  padding: clamp(3.8rem, 9vh, 5.5rem) var(--gutter);
   overflow: hidden;
 }
 .board__poem {
@@ -302,8 +323,8 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   border: 1.5px solid var(--ink);
   padding: 2rem 1.6rem 1.6rem;
 }
-.memo:nth-child(odd)  { transform: rotate(-1deg); }
-.memo:nth-child(even) { transform: rotate(0.8deg); }
+.memo:nth-child(odd)  { transform: rotate(-0.4deg); }
+.memo:nth-child(even) { transform: rotate(0.35deg); }
 /* 테이프 조각 */
 .memo::before {
   content: "";
@@ -563,7 +584,6 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 
 /* ---------- 모션 최소화 ---------- */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   .tape__track { animation: none; }
   .scrawl path { animation: none; stroke-dashoffset: 0; }
   a.door__go span { transition: none; }
@@ -594,9 +614,10 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 .gate__card {
   display: flex;
   flex-direction: column;
-  border: 1.5px solid var(--ink);
-  background: var(--paper);
-  padding: 1.8rem 1.6rem 1.5rem;
+  border: 0;
+  border-top: 1.5px solid var(--ink);
+  background: transparent;
+  padding: 1.1rem 0.2rem 0.9rem;
   color: var(--ink);
   text-decoration: none;
   transition: background 0.2s ease;
@@ -604,9 +625,9 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 .gate__card:nth-child(1) .doodle { transform: rotate(-3deg); }
 .gate__card:nth-child(2) .doodle { transform: rotate(2deg); }
 .gate__card:nth-child(3) .doodle { transform: rotate(-2deg); }
-.gate__card:hover { background: rgba(255, 217, 113, 0.22); }
-.gate__card h2 { font-size: 1.35rem; margin: 0 0 0.4rem; font-weight: 700; }
-.gate__card p { margin: 0 0 1.4rem; color: var(--ink-soft); line-height: 1.65; }
+.gate__card:hover { background: rgba(255, 217, 113, 0.16); }
+.gate__card h2 { font-size: 1.25rem; margin: 0 0 0.25rem; font-weight: 700; }
+.gate__card p { margin: 0 0 0.6rem; color: var(--ink-soft); line-height: 1.6; font-size: 1rem; }
 .gate__go {
   margin-top: auto;
   font-weight: 800;
@@ -889,8 +910,8 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   border: 1.5px solid var(--ink);
   padding: 0.8rem 0.8rem 0.5rem;
 }
-.film__shot:nth-child(odd)  figure { transform: rotate(-1.2deg); }
-.film__shot:nth-child(even) figure { transform: rotate(0.9deg); margin-top: 1.4rem; }
+.film__shot:nth-child(odd)  figure { transform: rotate(-0.5deg); }
+.film__shot:nth-child(even) figure { transform: rotate(0.4deg); margin-top: 1.4rem; }
 /* 테이프 조각 */
 .film__shot figure::before {
   content: "";
@@ -1050,3 +1071,208 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
 .ganada__go span { transition: transform 0.25s ease; }
 .ganada__go:hover span { transform: translateX(4px); }
 @media (prefers-reduced-motion: reduce) { .ganada__go span { transition: none; } }
+
+
+/* ---------- PSC 한 줄 (구 PSC 섹션 통합) ---------- */
+.psc-line {
+  margin: 2rem 0 0.8rem;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  letter-spacing: 0.02em;
+}
+.psc-line b { color: var(--blue); font-weight: 700; margin-right: 0.1em; }
+.psc-line span { color: var(--hairline); }
+
+/* ============================================================
+   THEME B — 갤러리 화이트 · 미니멀 (2026-07-24 한나님 선택)
+   아래 오버라이드가 위 규칙을 덮는다. 성실하고 담백하게.
+   ============================================================ */
+:root {
+  --bg: #FFFFFF;
+  --paper: #FFFFFF;
+  --ink: #141414;
+  --ink-soft: #6E6E6E;
+  --hairline: #E6E4DF;
+}
+body { font-weight: 400; line-height: 1.9; background: #FFFFFF; }
+h2 { font-weight: 400; letter-spacing: 0.01em; }
+.serif { font-weight: 400; }
+h2 strong, .serif strong { font-weight: 700; }
+
+/* 형광펜 → 파란 강조 (담백) */
+.sweep { background: none; padding: 0; font-weight: 700; color: var(--blue); }
+
+/* 손글씨 → 담백한 캡션 */
+.hand {
+  font-family: var(--sans) !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft) !important;
+  transform: none !important;
+}
+
+/* 매스트헤드 */
+.mast { border-bottom: 1px solid var(--hairline); }
+.mast__logo { font-weight: 700; font-size: 1.15rem; }
+
+/* 커버 — 텍스트 우선, 흰 배경 */
+.cover {
+  min-height: 0;
+  color: var(--ink);
+  overflow: visible;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 9vh, 6rem) var(--gutter) clamp(2.5rem, 5vh, 3.5rem);
+  display: block;
+}
+.cover__bg { display: none; }
+.cover__kicker {
+  color: var(--ink-soft);
+  text-shadow: none;
+  letter-spacing: 0.28em;
+  font-size: 0.8rem;
+  margin-bottom: 2.4rem;
+}
+.cover__title {
+  color: var(--ink);
+  text-shadow: none;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 8vw, 3.6rem);
+  line-height: 1.5;
+}
+.cover__title .l2, .cover__title .l3, .cover__title .l4 { margin-left: 0; }
+.cover__title em { color: inherit; border-bottom: 2.5px solid var(--blue); padding-bottom: 0.04em; }
+.scrawl { display: none; }
+.cover__sub {
+  margin: 2rem 0 0;
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-size: 1.02rem;
+}
+
+/* 대표 사진 — 액자 없이, 여백으로 */
+.lead-photo {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(2.5rem, 5vh, 3.5rem);
+}
+.lead-photo img { width: 100%; height: auto; display: block; }
+.lead-photo figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+/* 관문 — 옅은 헤어라인 */
+.gate__card { border-top: 1px solid var(--ink); }
+.gate__card:hover { background: #F8F7F4; }
+.gate__card h2 { font-size: 1.2rem; }
+
+/* 칠판 → 화이트 인용 (담백한 블루 강조) */
+.board {
+  background: #FFFFFF;
+  color: var(--ink);
+  text-align: left;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vh, 4.5rem) var(--gutter);
+}
+.board__doodle { display: none; }
+.board__colon { justify-content: flex-start; margin-bottom: 1.6rem; }
+.board__colon i { width: 0.55rem; height: 0.55rem; }
+.board__colon i:first-child { background: var(--blue); }
+.board__colon i:last-child { background: var(--yellow); border: 1px solid rgba(20,20,20,.2); }
+.board__quote { font-weight: 400; font-size: clamp(1.6rem, 5.5vw, 2.3rem); line-height: 1.65; }
+.board__quote strong { color: var(--blue); font-weight: 700; }
+.board__cite { color: var(--ink-soft); margin-bottom: 2.2rem; }
+.board__poem { font-weight: 400; font-size: clamp(1.05rem, 2.6vw, 1.25rem); color: var(--ink-soft); }
+.board__poem strong { color: var(--ink); font-weight: 700; }
+
+/* 사진 밴드 — 액자·테이프·기울기 제거 */
+.film__shot figure,
+.film__shot:nth-child(odd) figure,
+.film__shot:nth-child(even) figure {
+  transform: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  margin-top: 0;
+}
+.film__shot figure::before { display: none; }
+.film__shot figcaption {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  text-align: left;
+  margin-top: 0.6rem;
+}
+
+/* 메모지 벽 → 갤러리 인용 리스트 */
+.memos { grid-template-columns: 1fr !important; gap: 0 !important; max-width: 40rem; }
+.memo, .memo:nth-child(odd), .memo:nth-child(even) {
+  transform: none;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  padding: 1.5rem 0.1rem 1.6rem;
+  margin-top: 0 !important;
+}
+.memos { border-bottom: 1px solid var(--hairline); }
+.memo::before { display: none; }
+.memo--wide { max-width: none !important; }
+.memo__when { margin-bottom: 0.3rem; }
+.memo blockquote { font-weight: 400; font-size: 1.3rem; line-height: 1.65; }
+.memo blockquote em { font-style: normal; color: var(--blue); font-weight: 700; }
+.js .memo { opacity: 1; translate: none; transition: none; }
+
+/* 찢은 종이 → 담백한 인용 */
+.torn-stack::before, .torn-stack::after { display: none; }
+.torn {
+  clip-path: none;
+  filter: none;
+  background: none;
+  transform: none;
+  padding: 0 0 0 1.4rem;
+  border-left: 2px solid var(--blue);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 3.4vw, 1.6rem);
+  line-height: 1.85;
+}
+.torn strong { background: none; font-weight: 700; }
+.torn__cite { margin-left: 1.4rem; }
+
+/* 프로그램 — 옅은 룰 */
+.prog { border-top: 1px solid var(--ink); }
+.prog__row { border-bottom: 1px solid var(--hairline); }
+.prog__body h3 { font-weight: 700; }
+.spec dt { letter-spacing: 0.1em; }
+.prog__contact { border: 1px solid var(--hairline); background: #FAFAF8; font-weight: 500; }
+
+/* FAQ · 문 */
+.faq { border-top: 1px solid var(--ink); }
+.faq__item summary:hover { background: #F8F7F4; }
+.doors { border-top: 1px solid var(--ink); }
+.door { border-bottom: 1px solid var(--hairline); }
+.door summary:hover { background: #F8F7F4; }
+.door--y[open], .door--b[open] { background: #FAFAF8; }
+
+/* 인사 사진 — 액자 제거 */
+.why__photo { border: 0; padding: 0; transform: none; background: none; }
+.why__photo::before { display: none; }
+.why__photo figcaption { text-align: left; margin-top: 0.6rem; }
+.why__quote, .why__wish { font-weight: 400; }
+.why__wish strong, .why__quote strong { font-weight: 700; background: none; color: var(--blue); }
+
+/* 콜로폰 → 라이트 */
+.colophon {
+  background: #FFFFFF;
+  border-top: 1px solid var(--hairline);
+  color: var(--ink-soft);
+  padding: 2.8rem var(--gutter) 3rem;
+}
+.colophon__name { color: var(--ink); font-weight: 700; font-size: 1.3rem; }
+.colophon__name span { color: var(--ink-soft); }
+.colophon__line { color: var(--ink-soft); }
+.colophon__sns a { color: var(--blue); font-weight: 700; }
+.colophon__copy { color: var(--ink-soft); }
