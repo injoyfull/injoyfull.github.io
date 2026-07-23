@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>스타일 A — 웜 크림 · 사진과 명조</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#0066B3; --yellow:#FFD971; --bg:#FFFDF6; --ink:#26211C; --soft:#5C5348; }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:1.1rem;line-height:1.8;word-break:keep-all}
+  .serif{font-family:"Gowun Batang",serif} .hand{font-family:"Gaegu",sans-serif}
+  .tag{position:fixed;top:0;left:0;background:var(--ink);color:#fff;padding:.3em 1em;font-weight:800;z-index:9;font-size:.85rem}
+  header{display:flex;align-items:center;gap:.6rem;padding:1.1rem 1.4rem;border-bottom:1px solid rgba(38,33,28,.2)}
+  header img{width:30px;height:30px} header b{font-family:"Gowun Batang",serif;font-size:1.25rem}
+  .cover{position:relative;min-height:88svh;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.4rem 2.4rem;color:#FFFDF6;overflow:hidden}
+  .cover img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%}
+  .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,20,16,.7),rgba(24,20,16,.35) 40%,rgba(24,20,16,.8))}
+  .cover>*{position:relative;z-index:1}
+  .kick{font-size:.85rem;letter-spacing:.16em;font-weight:700;margin:0 0 1rem}
+  h1{font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(2.4rem,9.5vw,4.5rem);line-height:1.25;margin:0 0 .8rem;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+  h1 em{font-style:normal;color:var(--yellow)}
+  .note{margin:0;font-family:"Gaegu";font-size:1.25rem;color:var(--yellow)}
+  .quote{padding:4.5rem 1.4rem;background:var(--blue);color:#fff;text-align:center}
+  .quote blockquote{margin:0;font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(1.6rem,5.5vw,2.4rem);line-height:1.5}
+  .quote strong{color:var(--yellow);font-weight:700}
+  .quote p{margin:.9rem 0 0;font-family:"Gaegu";opacity:.95}
+  .prog{max-width:44rem;margin:0 auto;padding:3.2rem 1.4rem}
+  .prog h2{font-family:"Gowun Batang",serif;font-size:1.6rem;margin:0 0 1.4rem}
+  .row{border-top:1.5px solid var(--ink);padding:1.3rem .2rem;display:grid;grid-template-columns:auto 1fr;gap:.2rem 1.2rem}
+  .row:last-child{border-bottom:1.5px solid var(--ink)}
+  .no{color:var(--blue);font-family:"Gowun Batang",serif;font-weight:700;font-size:1.2rem}
+  .row h3{margin:0;font-family:"Gowun Batang",serif;font-size:1.35rem}
+  .row .lb{grid-column:2;font-size:.8rem;font-weight:800;letter-spacing:.15em;color:var(--soft)}
+  .row p{grid-column:2;margin:.2rem 0 0;color:var(--soft);font-size:1rem}
+  .row .price{color:var(--ink);font-weight:700}
+  .price em{font-style:normal;background:linear-gradient(transparent 40%,rgba(255,217,113,.75) 40%,rgba(255,217,113,.75) 92%,transparent 92%)}
+  footer{background:var(--ink);color:#C9BCA8;text-align:center;padding:2rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<p class="tag">STYLE A — 웜 크림 · 사진과 명조 (지금 방향)</p>
+<header><img src="../logo.png" alt=""><b>인조이풀</b></header>
+<section class="cover">
+  <img class="bg" src="../photos/drawing.jpg" alt="">
+  <p class="kick">in:JOYFULL — 아이가 ‘자기 이야기’를 만드는 동네 창작 공간 · 하남</p>
+  <h1>인풋은 가득한데,<br><em>아웃풋</em>을 펼칠<br>곳이 없다.</h1>
+  <p class="note">여덟 살도, 일흔 살도!</p>
+</section>
+<section class="quote">
+  <blockquote>“선생님, 저는 여기<br><strong>숨 쉬러 와요.</strong>”</blockquote>
+  <p>— 어느 초등학생이 문을 열며 해 준 말</p>
+</section>
+<section class="prog">
+  <h2>프로그램 안내</h2>
+  <div class="row"><span class="no">01</span><h3>키즈팝 <small style="font-weight:400;font-size:.75em">5~7세</small></h3>
+    <span class="lb">감각깨우기 워크숍 멤버십</span>
+    <p>화·수·목 16:30–18:00 (90분) · 랩 3종</p>
+    <p class="price">멤버십 월 4회 <em>140,000원</em> · 첫 워크숍 체험 가능</p>
+  </div>
+  <div class="row"><span class="no">02</span><h3>크리디팝 <small style="font-weight:400;font-size:.75em">8세 이상</small></h3>
+    <span class="lb">시간예약제 창작공간</span>
+    <p>월·화·수·금 · 아트·스토리코딩</p>
+    <p class="price">1회 <em>15,000원</em> · 크리디패스 12회 18만</p>
+  </div>
+</section>
+<footer>© 인조이풀 — 스타일 샘플 A</footer>
+</body>
+</html>

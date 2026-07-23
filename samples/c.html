@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>스타일 C — 딥 블루 · 밤의 아지트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0B2B4A; --navy2:#0E3A63; --blue:#0066B3; --yellow:#FFD971; --cream:#FFF9EC; }
+  *{box-sizing:border-box} body{margin:0;background:var(--navy);color:var(--cream);font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:1.08rem;line-height:1.85;word-break:keep-all}
+  .tag{position:fixed;top:0;left:0;background:var(--yellow);color:#26211C;padding:.3em 1em;font-weight:800;z-index:9;font-size:.85rem}
+  header{display:flex;align-items:center;gap:.6rem;padding:1.2rem 1.5rem;border-bottom:1px solid rgba(255,249,236,.14)}
+  header img{width:28px;height:28px;background:#fff;border-radius:6px;padding:2px} header b{font-family:"Gowun Batang",serif;font-size:1.2rem;color:#fff}
+  .cover{padding:4.5rem 1.5rem 3.5rem;max-width:44rem;margin:0 auto}
+  .kick{font-size:.82rem;letter-spacing:.24em;color:var(--yellow);margin:0 0 2rem;font-weight:700}
+  h1{font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(2.3rem,9vw,4.2rem);line-height:1.32;margin:0 0 1.6rem;color:#fff}
+  h1 em{font-style:normal;color:var(--yellow)}
+  .sub{color:rgba(255,249,236,.8);margin:0}
+  .photo{max-width:44rem;margin:0 auto;padding:1.5rem 1.5rem 3rem}
+  .photo .frame{position:relative;overflow:hidden;border-radius:4px}
+  .photo img{width:100%;display:block;filter:saturate(.85) contrast(1.02)}
+  .photo .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,43,74,.16),rgba(11,43,74,.4))}
+  .photo figcaption{font-family:"Gaegu";font-size:1.1rem;color:var(--yellow);margin-top:.7rem}
+  .quote{background:var(--navy2);padding:4rem 1.5rem;text-align:center}
+  .quote blockquote{margin:0;font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(1.6rem,5.5vw,2.4rem);line-height:1.55;color:#fff}
+  .quote strong{color:var(--yellow);font-weight:700}
+  .quote p{margin:1rem 0 0;font-family:"Gaegu";color:rgba(255,249,236,.85)}
+  .prog{max-width:44rem;margin:0 auto;padding:3.2rem 1.5rem 3.5rem}
+  .prog h2{font-family:"Gowun Batang",serif;font-size:1.5rem;margin:0 0 1.4rem;color:#fff}
+  .row{border-top:1px solid rgba(255,249,236,.2);padding:1.4rem .1rem}
+  .row:last-child{border-bottom:1px solid rgba(255,249,236,.2)}
+  .row h3{margin:0 0 .15rem;font-family:"Gowun Batang",serif;font-size:1.3rem;color:var(--yellow)}
+  .row h3 small{color:rgba(255,249,236,.65);font-weight:400;font-size:.72em;margin-left:.4em}
+  .row p{margin:.15rem 0 0;color:rgba(255,249,236,.78);font-size:.98rem}
+  .row .price{color:#fff;font-weight:700}
+  footer{border-top:1px solid rgba(255,249,236,.14);color:rgba(255,249,236,.6);text-align:center;padding:2.2rem;font-size:.85rem}
+</style>
+</head>
+<body>
+<p class="tag">STYLE C — 딥 블루 · 밤의 아지트</p>
+<header><img src="../logo.png" alt=""><b>인조이풀</b></header>
+<section class="cover">
+  <p class="kick">IN:JOYFULL — 하남 · 동네 창작 공간</p>
+  <h1>인풋은 가득한데,<br><em>아웃풋</em>을<br>펼칠 곳이 없다.</h1>
+  <p class="sub">아이가 ‘자기 이야기’를 만드는 곳.<br>가르치지 않습니다 — 곁을 지킵니다.</p>
+</section>
+<figure class="photo">
+  <span class="frame"><img src="../photos/drawing.jpg" alt="바닥에 엎드려 그림 그리는 아이들"></span>
+  <figcaption>바닥이 제일 큰 도화지예요 —</figcaption>
+</figure>
+<section class="quote">
+  <blockquote>“선생님, 저는 여기<br><strong>숨 쉬러 와요.</strong>”</blockquote>
+  <p>— 어느 초등학생이 문을 열며 해 준 말</p>
+</section>
+<section class="prog">
+  <h2>프로그램 안내</h2>
+  <div class="row"><h3>키즈팝 <small>5–7세</small></h3>
+    <p>감각깨우기 워크숍 멤버십 · 화·수·목 16:30–18:00</p>
+    <p class="price">월 4회 140,000원 · 첫 워크숍 체험 가능</p>
+  </div>
+  <div class="row"><h3>크리디팝 <small>8세 이상</small></h3>
+    <p>시간예약제 창작공간 · 월·화·수·금 · 아트·스토리코딩</p>
+    <p class="price">1회 15,000원 · 크리디패스 12회 180,000원</p>
+  </div>
+</section>
+<footer>© in:JOYFULL — 스타일 샘플 C</footer>
+</body>
+</html>

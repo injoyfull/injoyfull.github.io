@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>스타일 B — 갤러리 화이트 · 미니멀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#0066B3; --ink:#141414; --soft:#6E6E6E; --line:#E3E3E0; }
+  *{box-sizing:border-box} body{margin:0;background:#FFFFFF;color:var(--ink);font-family:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;font-size:1.05rem;line-height:1.9;word-break:keep-all;font-weight:400}
+  .tag{position:fixed;top:0;left:0;background:var(--ink);color:#fff;padding:.3em 1em;font-weight:700;z-index:9;font-size:.85rem}
+  header{display:flex;align-items:center;gap:.6rem;padding:1.4rem 1.6rem}
+  header img{width:26px;height:26px;filter:grayscale(1) contrast(1.2)} header b{font-weight:500;letter-spacing:.06em;font-size:1.05rem}
+  .cover{padding:5.5rem 1.6rem 4rem;max-width:40rem;margin:0 auto}
+  .kick{font-size:.78rem;letter-spacing:.3em;color:var(--soft);margin:0 0 2.6rem;font-weight:500}
+  h1{font-family:"Gowun Batang",serif;font-weight:400;font-size:clamp(2rem,7.5vw,3.4rem);line-height:1.55;margin:0 0 2.4rem;letter-spacing:.01em}
+  h1 em{font-style:normal;border-bottom:2px solid var(--blue);padding-bottom:.06em}
+  .sub{color:var(--soft);font-weight:300;margin:0;font-size:1.02rem}
+  .photo{max-width:40rem;margin:0 auto;padding:0 1.6rem 4.5rem}
+  .photo img{width:100%;display:block}
+  .photo figcaption{font-size:.82rem;color:var(--soft);margin-top:.7rem;letter-spacing:.06em}
+  .quote{max-width:40rem;margin:0 auto;padding:0 1.6rem 4.5rem}
+  .quote blockquote{margin:0;font-family:"Gowun Batang",serif;font-weight:400;font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.7}
+  .quote strong{font-weight:700;color:var(--blue)}
+  .quote p{margin:1.2rem 0 0;font-size:.85rem;color:var(--soft);letter-spacing:.08em}
+  .prog{max-width:40rem;margin:0 auto;padding:0 1.6rem 4rem}
+  .prog h2{font-weight:500;font-size:.82rem;letter-spacing:.3em;color:var(--soft);margin:0 0 1.6rem}
+  .row{border-top:1px solid var(--line);padding:1.5rem .1rem}
+  .row:last-child{border-bottom:1px solid var(--line)}
+  .row h3{margin:0 0 .2rem;font-family:"Gowun Batang",serif;font-weight:700;font-size:1.25rem}
+  .row h3 small{font-weight:400;color:var(--soft);font-size:.72em;margin-left:.4em}
+  .row p{margin:.15rem 0 0;color:var(--soft);font-size:.98rem;font-weight:300}
+  .row .price{color:var(--ink);font-weight:500}
+  footer{border-top:1px solid var(--line);color:var(--soft);text-align:center;padding:2.2rem;font-size:.85rem;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<p class="tag">STYLE B — 갤러리 화이트 · 미니멀</p>
+<header><img src="../logo.png" alt=""><b>인조이풀</b></header>
+<section class="cover">
+  <p class="kick">IN:JOYFULL — 하남 · 동네 창작 공간</p>
+  <h1>인풋은 가득한데,<br><em>아웃풋</em>을 펼칠 곳이<br>없다.</h1>
+  <p class="sub">아이가 ‘자기 이야기’를 만드는 곳.<br>가르치지 않습니다 — 곁을 지킵니다.</p>
+</section>
+<figure class="photo">
+  <img src="../photos/drawing.jpg" alt="바닥에 엎드려 그림 그리는 아이들">
+  <figcaption>인조이풀의 어느 오후 — 바닥이 제일 큰 도화지</figcaption>
+</figure>
+<section class="quote">
+  <blockquote>“선생님, 저는 여기<br><strong>숨 쉬러 와요.</strong>”</blockquote>
+  <p>— 어느 초등학생이 문을 열며 해 준 말</p>
+</section>
+<section class="prog">
+  <h2>PROGRAMS</h2>
+  <div class="row"><h3>키즈팝 <small>5–7세</small></h3>
+    <p>감각깨우기 워크숍 멤버십 · 화·수·목 16:30–18:00</p>
+    <p class="price">월 4회 140,000원 · 첫 워크숍 체험 가능</p>
+  </div>
+  <div class="row"><h3>크리디팝 <small>8세 이상</small></h3>
+    <p>시간예약제 창작공간 · 월·화·수·금 · 아트·스토리코딩</p>
+    <p class="price">1회 15,000원 · 크리디패스 12회 180,000원</p>
+  </div>
+</section>
+<footer>© in:JOYFULL — 스타일 샘플 B</footer>
+</body>
+</html>

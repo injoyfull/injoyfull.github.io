@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>스타일 D — 아트북 콜라주</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#0066B3; --yellow:#FFD971; --bg:#F7F1E3; --paper:#FFFDF6; --ink:#26211C; --soft:#5C5348; }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:1.08rem;line-height:1.85;word-break:keep-all}
+  .serif{font-family:"Gowun Batang",serif}
+  .tag{position:fixed;top:0;left:0;background:var(--ink);color:#fff;padding:.3em 1em;font-weight:800;z-index:9;font-size:.85rem}
+  header{display:flex;align-items:center;gap:.6rem;padding:1.2rem 1.5rem}
+  header img{width:30px;height:30px} header b{font-family:"Gowun Batang",serif;font-size:1.25rem}
+  .cover{max-width:44rem;margin:0 auto;padding:2.5rem 1.5rem 3rem}
+  .kick{font-size:.82rem;letter-spacing:.2em;color:var(--soft);margin:0 0 1.8rem;font-weight:700}
+  .scrap{position:relative;margin:0 0 2rem}
+  .scrap img{width:88%;display:block;border:10px solid #fff;border-bottom-width:2.6rem;box-shadow:0 1px 0 rgba(38,33,28,.25);transform:rotate(-1.6deg)}
+  .scrap::before{content:"";position:absolute;top:-.8rem;left:24%;width:4.5rem;height:1.4rem;background:rgba(255,217,113,.9);transform:rotate(-4deg);clip-path:polygon(4% 0,96% 6%,100% 100%,0 94%);border:1px solid rgba(38,33,28,.12);z-index:2}
+  .scrap figcaption{position:absolute;right:0;bottom:-.6rem;font-family:"Gaegu";font-size:1.2rem;color:var(--blue);transform:rotate(1.5deg)}
+  h1{font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(2.2rem,8.5vw,3.9rem);line-height:1.3;margin:0 0 1.2rem}
+  h1 em{font-style:normal;background:linear-gradient(transparent 40%,rgba(255,217,113,.8) 40%,rgba(255,217,113,.8) 92%,transparent 92%)}
+  .sub{color:var(--soft);margin:0}
+  .quote{max-width:44rem;margin:0 auto;padding:1rem 1.5rem 3.5rem}
+  .torn{position:relative;background:#fff;padding:2.2rem 2rem;transform:rotate(-.7deg);font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(1.4rem,4.5vw,1.9rem);line-height:1.7;margin:0;clip-path:polygon(2% 4%,9% 1%,22% 3%,34% 0%,47% 3%,61% 1%,74% 4%,88% 1%,98% 5%,99% 18%,97% 33%,100% 47%,98% 62%,100% 76%,97% 90%,99% 97%,88% 99%,74% 96%,60% 100%,45% 97%,30% 100%,16% 97%,5% 99%,1% 90%,3% 74%,0% 58%,2% 40%,0% 24%);filter:drop-shadow(0 1px 0 rgba(38,33,28,.3))}
+  .torn strong{background:linear-gradient(transparent 40%,rgba(255,217,113,.8) 40%,rgba(255,217,113,.8) 92%,transparent 92%);font-weight:700}
+  .cite{font-family:"Gaegu";color:var(--blue);margin:.9rem 0 0 .4rem;transform:rotate(-1deg);font-size:1.15rem}
+  .prog{max-width:44rem;margin:0 auto;padding:0 1.5rem 3.5rem}
+  .prog h2{font-family:"Gowun Batang",serif;font-size:1.5rem;margin:0 0 1.3rem}
+  .card{background:var(--paper);border:1.5px solid var(--ink);padding:1.4rem 1.5rem;margin:0 0 1.1rem;position:relative}
+  .card:nth-child(odd){transform:rotate(.35deg)} .card:nth-child(even){transform:rotate(-.4deg)}
+  .card::before{content:"";position:absolute;top:-.7rem;left:50%;width:4rem;height:1.25rem;transform:translateX(-50%) rotate(-3deg);background:rgba(0,102,179,.35);clip-path:polygon(4% 0,96% 6%,100% 100%,0 94%);border:1px solid rgba(38,33,28,.12)}
+  .card h3{margin:0 0 .1rem;font-family:"Gowun Batang",serif;font-size:1.3rem}
+  .card h3 small{font-weight:400;color:var(--soft);font-size:.72em;margin-left:.4em}
+  .card p{margin:.15rem 0 0;color:var(--soft);font-size:.98rem}
+  .card .price{color:var(--ink);font-weight:700}
+  .price em{font-style:normal;background:linear-gradient(transparent 40%,rgba(255,217,113,.8) 40%,rgba(255,217,113,.8) 92%,transparent 92%)}
+  footer{background:var(--ink);color:#C9BCA8;text-align:center;padding:2rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<p class="tag">STYLE D — 아트북 콜라주</p>
+<header><img src="../logo.png" alt=""><b>인조이풀</b></header>
+<section class="cover">
+  <p class="kick">IN:JOYFULL — 하남 · 동네 창작 공간</p>
+  <figure class="scrap">
+    <img src="../photos/drawing.jpg" alt="바닥에 엎드려 그림 그리는 아이들">
+    <figcaption>바닥이 제일 큰 도화지예요 —</figcaption>
+  </figure>
+  <h1>인풋은 가득한데,<br><em>아웃풋</em>을 펼칠<br>곳이 없다.</h1>
+  <p class="sub">아이가 ‘자기 이야기’를 만드는 곳.<br>가르치지 않습니다 — 곁을 지킵니다.</p>
+</section>
+<section class="quote">
+  <blockquote class="torn">“선생님, 저는 여기<br><strong>숨 쉬러 와요.</strong>”</blockquote>
+  <p class="cite">— 어느 초등학생이 문을 열며 해 준 말</p>
+</section>
+<section class="prog">
+  <h2>프로그램 안내</h2>
+  <div class="card"><h3>키즈팝 <small>5–7세</small></h3>
+    <p>감각깨우기 워크숍 멤버십 · 화·수·목 16:30–18:00</p>
+    <p class="price">월 4회 <em>140,000원</em> · 첫 워크숍 체험 가능</p>
+  </div>
+  <div class="card"><h3>크리디팝 <small>8세 이상</small></h3>
+    <p>시간예약제 창작공간 · 월·화·수·금 · 아트·스토리코딩</p>
+    <p class="price">1회 <em>15,000원</em> · 크리디패스 12회 180,000원</p>
+  </div>
+</section>
+<footer>© in:JOYFULL — 스타일 샘플 D</footer>
+</body>
+</html>
