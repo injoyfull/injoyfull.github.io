@@ -1276,3 +1276,18 @@ h2 strong, .serif strong { font-weight: 700; }
 .colophon__line { color: var(--ink-soft); }
 .colophon__sns a { color: var(--blue); font-weight: 700; }
 .colophon__copy { color: var(--ink-soft); }
+
+/* 섹션 오버라인 — 영문(진하게)+한글(연하게), 갤러리 목차 톤 */
+.sec__mark {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+.sec--film + .sec .sec__mark { margin-top: 0; }
+
+/* 오버라인 내부: 영문(진하게) / 한글(연하게) 분리 */
+.sec__mark { text-transform: none; letter-spacing: 0; }
+.mk-en { font-weight: 700; letter-spacing: 0.22em; color: var(--ink); }
+.mk-ko { font-weight: 400; letter-spacing: 0.02em; color: var(--ink-soft); margin-left: 0.15em; }
