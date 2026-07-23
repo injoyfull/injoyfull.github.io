@@ -870,3 +870,83 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   letter-spacing: 0.14em;
   color: var(--ink-soft);
 }
+
+/* ---------- 작업 사진 밴드 (테이프로 붙인 컷) ---------- */
+.sec--film { padding-top: clamp(3rem, 7vh, 4.5rem); padding-bottom: clamp(3rem, 7vh, 4.5rem); }
+.film {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2.2rem 1.4rem;
+}
+@media (min-width: 780px) { .film { grid-template-columns: repeat(3, 1fr); } }
+.film__shot { margin: 0; }
+.film__shot figure {
+  position: relative;
+  margin: 0;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 0.8rem 0.8rem 0.5rem;
+}
+.film__shot:nth-child(odd)  figure { transform: rotate(-1.2deg); }
+.film__shot:nth-child(even) figure { transform: rotate(0.9deg); margin-top: 1.4rem; }
+/* 테이프 조각 */
+.film__shot figure::before {
+  content: "";
+  position: absolute;
+  top: -0.7rem; left: 50%;
+  width: 4.2rem; height: 1.3rem;
+  transform: translateX(-50%) rotate(-3deg);
+  clip-path: polygon(4% 0, 96% 6%, 100% 100%, 0 94%);
+  border: 1px solid rgba(38, 33, 28, 0.12);
+}
+.film__shot--y figure::before { background: rgba(255, 217, 113, 0.85); }
+.film__shot--b figure::before { background: rgba(0, 102, 179, 0.4); }
+.film__shot:nth-child(even) figure::before { transform: translateX(-50%) rotate(2.5deg); }
+.film__shot img {
+  display: block;
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  background: var(--bg-soft, #F6EEE1);
+}
+@media (min-width: 780px) { .film__shot img { height: 17rem; } }
+.film__shot figcaption {
+  margin-top: 0.5rem;
+  font-size: 1.15rem;
+  color: var(--blue);
+  text-align: center;
+}
+
+/* ---------- 만드는 사람: 인사 사진 ---------- */
+.why { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 860px) { .why { grid-template-columns: 20rem 1fr; gap: 3rem; } }
+.why__photo {
+  position: relative;
+  margin: 0;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 0.8rem 0.8rem 0.5rem;
+  transform: rotate(-1.5deg);
+  max-width: 20rem;
+}
+.why__photo::before {
+  content: "";
+  position: absolute;
+  top: -0.7rem; left: 50%;
+  width: 4.2rem; height: 1.3rem;
+  transform: translateX(-50%) rotate(2deg);
+  background: rgba(255, 217, 113, 0.85);
+  clip-path: polygon(4% 0, 96% 6%, 100% 100%, 0 94%);
+  border: 1px solid rgba(38, 33, 28, 0.12);
+}
+.why__photo img { display: block; width: 100%; height: auto; }
+.why__photo figcaption {
+  margin-top: 0.5rem;
+  font-size: 1.15rem;
+  color: var(--blue);
+  text-align: center;
+}
+/* 사진 파일이 없으면 슬롯 자체를 감춘다 */
+.why__photo.is-empty { display: none; }
