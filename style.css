@@ -987,3 +987,66 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   min-height: 44px;
 }
 .prog__contact a:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+/* ---------- 가나다.시간 — 찢은 종이 콜라주 (손층) ---------- */
+.torn-stack {
+  position: relative;
+  max-width: 34rem;
+  margin: 2.4rem 0 2.2rem;
+}
+/* 뒤에 깔린 노란 종이 조각 */
+.torn-stack::before {
+  content: "";
+  position: absolute;
+  top: 0.9rem; left: -0.8rem; right: 0.9rem; bottom: -0.9rem;
+  background: rgba(255, 217, 113, 0.55);
+  transform: rotate(1.4deg);
+  clip-path: polygon(3% 2%, 15% 0%, 28% 3%, 43% 1%, 58% 4%, 72% 0%, 86% 3%, 98% 1%, 100% 14%, 97% 29%, 100% 45%, 98% 61%, 100% 77%, 97% 92%, 99% 100%, 84% 97%, 69% 100%, 53% 98%, 38% 100%, 23% 97%, 9% 100%, 0% 95%, 2% 79%, 0% 62%, 3% 45%, 0% 28%, 2% 12%);
+}
+/* 찢은 흰 종이 위의 시 */
+.torn {
+  position: relative;
+  margin: 0;
+  background: #FFFFFF;
+  padding: 2.4rem 2.2rem;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  line-height: 1.9;
+  transform: rotate(-0.8deg);
+  clip-path: polygon(2% 4%, 9% 1%, 22% 3%, 34% 0%, 47% 3%, 61% 1%, 74% 4%, 88% 1%, 98% 5%, 99% 18%, 97% 33%, 100% 47%, 98% 62%, 100% 76%, 97% 90%, 99% 97%, 88% 99%, 74% 96%, 60% 100%, 45% 97%, 30% 100%, 16% 97%, 5% 99%, 1% 90%, 3% 74%, 0% 58%, 2% 40%, 0% 24%);
+  filter: drop-shadow(0 1px 0 rgba(38, 33, 28, 0.28)) drop-shadow(0 -0.5px 0 rgba(38, 33, 28, 0.15));
+}
+.torn strong {
+  font-weight: 700;
+  background: linear-gradient(transparent 40%, rgba(255, 217, 113, 0.75) 40%, rgba(255, 217, 113, 0.75) 92%, transparent 92%);
+}
+/* 테이프 조각 */
+.torn-stack::after {
+  content: "";
+  position: absolute;
+  top: -0.75rem; left: 14%;
+  width: 4.2rem; height: 1.3rem;
+  transform: rotate(-4deg);
+  background: rgba(0, 102, 179, 0.35);
+  border: 1px solid rgba(38, 33, 28, 0.12);
+  clip-path: polygon(4% 0, 96% 6%, 100% 100%, 0 94%);
+}
+.torn__cite {
+  margin: 1rem 0 0 0.4rem;
+  font-size: 1.15rem;
+  color: var(--blue);
+  transform: rotate(-1deg);
+}
+.ganada__go {
+  color: var(--blue);
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+}
+.ganada__go:hover { text-decoration: underline; text-underline-offset: 6px; }
+.ganada__go span { transition: transform 0.25s ease; }
+.ganada__go:hover span { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) { .ganada__go span { transition: none; } }
