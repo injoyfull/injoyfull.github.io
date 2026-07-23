@@ -1141,7 +1141,7 @@ h2 strong, .serif strong { font-weight: 700; }
   line-height: 1.5;
 }
 .cover__title .l2, .cover__title .l3, .cover__title .l4 { margin-left: 0; }
-.cover__title em { color: inherit; border-bottom: 2.5px solid var(--blue); padding-bottom: 0.04em; }
+.cover__title em { color: inherit; border-bottom: 0; }
 .scrawl { display: none; }
 .cover__sub {
   margin: 2rem 0 0;
