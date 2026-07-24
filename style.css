@@ -1454,11 +1454,14 @@ h2 strong, h2 b { font-weight: 700; }
 }
 
 /* ── 대표 사진: 비대칭 ── */
+/* 사진은 잘라내지 않는다 — 아이의 머리도, 빛이 든 종이도 다 보여야 함(2026-07-25) */
 .lead-photo { max-width: none; padding: 0; margin: clamp(1.5rem, 4vh, 2.5rem) 0 0; }
-.lead-photo img { height: clamp(15rem, 46vh, 26rem); object-fit: cover; }
+.lead-photo img { height: auto; }
+@media (min-width: 700px) {
+  .lead-photo { max-width: 40rem; margin-left: var(--gutter); }
+}
 @media (min-width: 900px) {
   .lead-photo { margin-left: calc(var(--gutter) + 8rem); }
-  .lead-photo img { height: 30rem; }
 }
 .lead-photo figcaption { padding: 0.85rem var(--gutter) 0; }
 @media (min-width: 900px) { .lead-photo figcaption { padding-left: 0; } }
