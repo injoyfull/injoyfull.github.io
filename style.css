@@ -1508,3 +1508,12 @@ h2 strong, h2 b { font-weight: 700; }
 .colophon__col li a:hover { color: var(--blue); }
 .colophon__col li a em { font-style: normal; font-size: 0.76rem; color: #A5A29B; margin-left: 0.5em; }
 .colophon__copy { max-width: 72rem; margin: 0 auto; border-top: 1px solid var(--hairline); padding-top: 1.3rem; font-size: 0.82rem; letter-spacing: 0.04em; }
+
+/* 푸터 링크 탭 영역 44px 보장 (전연령) */
+.colophon__col ul a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+}
+.mast__nav a { min-width: 44px; justify-content: center; }
