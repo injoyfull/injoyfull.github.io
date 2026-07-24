@@ -58,11 +58,11 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.32em;
-  vertical-align: -0.12em;
+  gap: 0.24em;
+  vertical-align: 0.34em;
   padding: 0 0.18em;
 }
-.glyph i { width: 0.34em; height: 0.34em; border-radius: 50%; display: block; }
+.glyph i { width: 0.3em; height: 0.3em; border-radius: 1px; display: block; }
 .glyph i:first-child { background: var(--blue); }
 .glyph i:last-child  { background: var(--yellow); border: 1px solid rgba(38,33,28,0.35); }
 .glyph--big { font-size: clamp(2rem, 5vw, 3.2rem); padding: 0.2em 0.18em; }
@@ -665,7 +665,7 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); font-weight: 700; letter-spacing: 
   gap: 1.1rem;
   border-top: 1.5px solid var(--ink);
 }
-@media (min-width: 820px) { .langs { grid-template-columns: repeat(3, 1fr); gap: 0; } }
+@media (min-width: 820px) { .langs { grid-template-columns: repeat(2, 1fr); gap: 0; } }
 .langs li { padding: 1.5rem 0.2rem 1.7rem; border-bottom: 1px solid var(--hairline); }
 @media (min-width: 820px) {
   .langs li { padding: 1.8rem 1.4rem; border-bottom: 1.5px solid var(--ink); }
