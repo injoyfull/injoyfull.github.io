@@ -1325,3 +1325,186 @@ h2 strong, .serif strong { font-weight: 700; }
 .steps p { margin: 0; color: var(--ink-soft); font-size: 1rem; }
 .steps__result { font-size: 1.05rem; }
 .steps__result strong { font-weight: 500; }
+
+/* ============================================================
+   V2 MAIN — v2 시안 승격 (2026-07-24 한나님 확정)
+   로고 합체 인트로 · 좌측 라벨 그리드 · 비대칭 사진 · v2 타이포
+   ============================================================ */
+:root {
+  --ink-soft: #6B6B6B;
+  --hairline: #E8E6E1;
+  --lw: min(86vw, 34rem);   /* 로고 표시 폭 */
+}
+body { font-size: 1.0625rem; line-height: 1.95; letter-spacing: 0.005em; }
+h2 { font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.7; letter-spacing: -0.005em; }
+h2 strong, h2 b { font-weight: 700; }
+
+/* ── 내브 (v2) ── */
+.mast { padding: 1.3rem var(--gutter); }
+.mast__logo { font-family: var(--sans); font-weight: 500; font-size: 1.02rem; letter-spacing: 0.05em; }
+.mast__logo img { width: 26px; height: 26px; }
+.mast__nav a { color: var(--ink-soft); font-weight: 400; font-size: 0.92rem; letter-spacing: 0.02em; }
+.mast__nav a:hover { color: var(--ink); text-decoration: none; }
+.mast__cta { background: none; color: var(--blue) !important; font-weight: 500 !important; padding: 0; border-radius: 0; }
+.mast__cta:hover { background: none; text-decoration: underline !important; text-underline-offset: 6px; }
+
+/* ── 커버: 로고 합체 인트로 ── */
+.cover { max-width: 78rem; padding: clamp(2.8rem, 7vh, 5rem) var(--gutter) clamp(2.5rem, 6vh, 4rem); }
+.assemble {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(1rem, 4.5vw, 2.6rem);
+  animation: merge 0.8s cubic-bezier(.3,.7,.2,1) 2.1s forwards;
+}
+@keyframes merge { to { gap: 0; } }
+.piece {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: rise2 0.8s cubic-bezier(.2,.7,.3,1) forwards;
+}
+.p1 { animation-delay: 0.15s; }
+.p2 { animation-delay: 0.5s; }
+.p3 { animation-delay: 0.85s; }
+@keyframes rise2 { to { opacity: 1; transform: none; } }
+.piece i {
+  display: block;
+  height: calc(var(--lw) * 553 / 1600);
+  background-image: url("photos/logo-wide.png");
+  background-size: var(--lw) auto;
+  background-repeat: no-repeat;
+}
+.p1 i { width: calc(var(--lw) * 0.200); background-position: 0 0; }
+.p2 i { width: calc(var(--lw) * 0.484); background-position: calc(var(--lw) * -0.200) 0; }
+.p3 i { width: calc(var(--lw) * 0.316); background-position: calc(var(--lw) * -0.684) 0; }
+.piece b {
+  font-weight: 500;
+  font-size: clamp(0.85rem, 2.4vw, 1rem);
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  animation: capfade 0.5s ease 2.0s forwards;
+}
+@keyframes capfade { to { opacity: 0; visibility: hidden; } }
+.assemble__line {
+  margin: 0.4rem 0 0;
+  font-size: clamp(0.98rem, 2.6vw, 1.1rem);
+  color: var(--ink-soft);
+  opacity: 0;
+  animation: rise2 0.9s cubic-bezier(.2,.7,.3,1) 2.9s forwards;
+}
+.assemble__line strong { color: var(--blue); font-weight: 500; }
+
+/* v2 헤드라인 + 순환 메시지 */
+.head {
+  margin: clamp(2.2rem, 6vh, 3.6rem) 0 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.05rem, 7.2vw, 3.75rem);
+  line-height: 1.62;
+  letter-spacing: -0.005em;
+}
+.head span { display: block; opacity: 0; transform: translateY(14px); animation: rise2 0.95s cubic-bezier(.2,.7,.3,1) forwards; }
+.head span:nth-child(1) { animation-delay: 3.4s; }
+.head span:nth-child(2) { animation-delay: 3.65s; }
+.head span:nth-child(3) { animation-delay: 3.9s; }
+.head em { font-style: normal; color: var(--blue); }
+.cover .cover__sub {
+  margin: 2rem 0 0;
+  max-width: 26rem;
+  opacity: 0;
+  animation: rise2 0.95s cubic-bezier(.2,.7,.3,1) 4.3s forwards;
+}
+.ticker {
+  margin: 2.2rem 0 0;
+  height: 1.8em;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: rise2 0.9s ease 4.7s forwards;
+}
+.ticker span {
+  position: absolute; inset: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  opacity: 0;
+  animation: cycle2 13.5s infinite;
+  animation-delay: calc(4.7s + var(--d, 0s));
+}
+.ticker span:nth-child(1) { --d: 0s; }
+.ticker span:nth-child(2) { --d: 4.5s; }
+.ticker span:nth-child(3) { --d: 9s; }
+.ticker b { color: var(--blue); font-weight: 500; }
+@keyframes cycle2 {
+  0% { opacity: 0; transform: translateY(8px); }
+  4%, 29% { opacity: 1; transform: none; }
+  33%, 100% { opacity: 0; transform: translateY(-8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .assemble, .piece, .piece b, .assemble__line, .head span, .cover .cover__sub, .ticker { animation: none; }
+  .assemble { gap: 0; }
+  .piece { opacity: 1; transform: none; }
+  .piece b { opacity: 0; visibility: hidden; }
+  .assemble__line, .head span, .cover .cover__sub, .ticker { opacity: 1; transform: none; }
+  .ticker { height: auto; }
+  .ticker span { position: static; opacity: 1; display: block; animation: none; }
+  .ticker span + span { display: none; }
+}
+
+/* ── 대표 사진: 비대칭 ── */
+.lead-photo { max-width: none; padding: 0; margin: clamp(1.5rem, 4vh, 2.5rem) 0 0; }
+.lead-photo img { height: clamp(15rem, 46vh, 26rem); object-fit: cover; }
+@media (min-width: 900px) {
+  .lead-photo { margin-left: calc(var(--gutter) + 8rem); }
+  .lead-photo img { height: 30rem; }
+}
+.lead-photo figcaption { padding: 0.85rem var(--gutter) 0; }
+@media (min-width: 900px) { .lead-photo figcaption { padding-left: 0; } }
+
+/* ── 섹션: 좌측 라벨 그리드 ── */
+@media (min-width: 900px) {
+  .sec {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    column-gap: 3.5rem;
+    align-items: start;
+  }
+  .sec > .sec__mark { grid-column: 1; margin: 0.45rem 0 0; }
+  .sec > *:not(.sec__mark) { grid-column: 2; }
+  .sec__mark .mk-en { display: block; line-height: 1.7; }
+  .sec__mark .mk-ko { display: block; margin-left: 0; line-height: 1.7; color: #A5A29B; }
+  .sec__mark .mk-ko::first-letter { color: transparent; }  /* '— ' 대시 숨김 대용 */
+  .sec__mark .glyph { display: none; }
+}
+.sec__mark .mk-en { letter-spacing: 0.26em; font-size: 0.74rem; }
+.sec__mark .mk-ko { font-size: 0.82rem; }
+
+/* 칠판(VOICE) — v2 인용 스타일 */
+.board { border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding-top: clamp(3rem, 7vh, 4.5rem); padding-bottom: clamp(3rem, 7vh, 4.5rem); max-width: 72rem; }
+.board__in { min-width: 0; }
+.board__quote { margin-bottom: 1rem; }
+.board__cite { margin-bottom: 2rem; }
+
+/* ── 푸터 (v2) ── */
+.colophon { text-align: left; padding: 3rem var(--gutter) 2.6rem; }
+.colophon__grid { display: grid; gap: 2.2rem; max-width: 72rem; margin: 0 auto 2.2rem; }
+@media (min-width: 860px) { .colophon__grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; } }
+.colophon__name {
+  margin: 0 0 0.7rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--serif); font-weight: 700; font-size: 1.15rem; color: var(--ink);
+}
+.colophon__name img { display: block; }
+.colophon__name span { font-family: var(--sans); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.18em; color: var(--ink-soft); }
+.colophon__line { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
+.ft-label { margin: 0 0 0.7rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.26em; color: var(--ink-soft); }
+.colophon__col ul { list-style: none; margin: 0; padding: 0; }
+.colophon__col li a {
+  display: inline-flex; align-items: center; min-height: 40px;
+  color: var(--ink); text-decoration: none; font-size: 0.95rem;
+}
+.colophon__col li a:hover { color: var(--blue); }
+.colophon__col li a em { font-style: normal; font-size: 0.76rem; color: #A5A29B; margin-left: 0.5em; }
+.colophon__copy { max-width: 72rem; margin: 0 auto; border-top: 1px solid var(--hairline); padding-top: 1.3rem; font-size: 0.82rem; letter-spacing: 0.04em; }
