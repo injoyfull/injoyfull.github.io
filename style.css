@@ -1257,10 +1257,11 @@ h2 strong, .serif strong { font-weight: 700; }
 .door summary:hover { background: #F8F7F4; }
 .door--y[open], .door--b[open] { background: #FAFAF8; }
 
-/* 인사 사진 — 액자 제거 */
+/* 인사 사진 — 액자·기울기 제거 (2026-07-25: 사진은 반듯하게) */
 .why__photo { border: 0; padding: 0; transform: none; background: none; }
 .why__photo::before { display: none; }
-.why__photo figcaption { text-align: left; margin-top: 0.6rem; }
+.why__photo img { border: 0; transform: none; background: none; }
+.why__photo figcaption { text-align: left; margin-top: 0.6rem; transform: none; }
 .why__quote, .why__wish { font-weight: 400; }
 .why__wish strong, .why__quote strong { font-weight: 700; background: none; color: var(--blue); }
 
@@ -1466,8 +1467,9 @@ h2 strong, h2 b { font-weight: 700; }
 @media (min-width: 900px) {
   .lead-photo { margin-left: calc(var(--gutter) + 8rem); }
 }
+/* 캡션은 항상 사진 왼쪽 선에 맞춘다 — 700px↑에선 사진이 이미 gutter만큼 들어와 있으므로 0 */
 .lead-photo figcaption { padding: 0.85rem var(--gutter) 0; }
-@media (min-width: 900px) { .lead-photo figcaption { padding-left: 0; } }
+@media (min-width: 700px) { .lead-photo figcaption { padding-left: 0; } }
 
 /* ── 섹션: 좌측 라벨 그리드 ── */
 @media (min-width: 900px) {
@@ -1495,8 +1497,12 @@ h2 strong, h2 b { font-weight: 700; }
 
 /* ── 푸터 (v2) ── */
 .colophon { text-align: left; padding: 3rem var(--gutter) 2.6rem; }
-.colophon__grid { display: grid; gap: 2.2rem; max-width: 72rem; margin: 0 auto 2.2rem; }
-@media (min-width: 860px) { .colophon__grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; } }
+.colophon__grid { display: grid; gap: 1.4rem; max-width: 72rem; margin: 0 auto 1.8rem; }
+/* 가로형 — 링크가 세로로 쌓이지 않고 한 줄로 흐른다 (2026-07-25) */
+@media (min-width: 700px) {
+  .colophon__grid { grid-template-columns: auto 1fr; gap: 1rem 3rem; align-items: baseline; }
+  .colophon__brand { grid-row: span 2; align-self: start; }
+}
 .colophon__name {
   margin: 0 0 0.7rem;
   display: flex; align-items: center; gap: 0.6rem;
@@ -1505,8 +1511,13 @@ h2 strong, h2 b { font-weight: 700; }
 .colophon__name img { display: block; }
 .colophon__name span { font-family: var(--sans); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.18em; color: var(--ink-soft); }
 .colophon__line { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
-.ft-label { margin: 0 0 0.7rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.26em; color: var(--ink-soft); }
-.colophon__col ul { list-style: none; margin: 0; padding: 0; }
+.ft-label { margin: 0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.26em; color: var(--ink-soft); }
+/* 라벨 + 링크가 한 줄로 — 세로 길이를 줄인다 */
+.colophon__col { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 1.4rem; }
+.colophon__col ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0 1.5rem;
+}
 .colophon__col li a {
   display: inline-flex; align-items: center; min-height: 40px;
   color: var(--ink); text-decoration: none; font-size: 0.95rem;
@@ -1523,3 +1534,18 @@ h2 strong, h2 b { font-weight: 700; }
   min-width: 44px;
 }
 .mast__nav a { min-width: 44px; justify-content: center; }
+
+/* ── Popfolio 밴드 — 어른의 문에서 분리, '누구나'의 자리 (2026-07-25) ── */
+.pop { max-width: var(--measure); }
+.pop h2 { margin-bottom: 1.4rem; }
+.pop__soon {
+  display: inline-block;
+  margin: 0.6rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: 1.5px solid var(--hairline);
+  border-radius: 999px;
+  padding: 0.5em 1.1em;
+}

@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=37">
+  <link rel="stylesheet" href="style.css?v=38">
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -44,7 +44,7 @@
       <a href="#programs">프로그램</a>
       <a href="#door-namansi">나만시</a>
       <a href="#door-teum">틈</a>
-      <a href="#door-popfolio">Popfolio</a>
+      <a href="#popfolio">Popfolio</a>
       <a class="mast__cta" href="#ticket">놀러 오기</a>
     </nav>
   </header>
@@ -66,7 +66,7 @@
       </h1>
       <p class="cover__sub">
         ‘나만의 스토리’를 만들어가는 곳.<br>
-        가르치지 않습니다 — 마음껏, 자유롭게.
+        마음껏, 자유롭게.
       </p>
       <!-- 아이들이 실제로 한 말들 (2026-07-25 한나님 제공) -->
       <p class="ticker" aria-live="off">
@@ -263,7 +263,7 @@
           <div class="prog__body">
             <p class="prog__label">8세 이상 · 시간예약제 창작공간</p>
             <h3 class="serif">크리디팝</h3>
-            <p class="prog__desc">아트·스토리코딩, 나만의 아웃풋 창작공간. 가르치지 않으니까 수업료가 아니라 <strong>자리값</strong>이에요.</p>
+            <p class="prog__desc">아트·스토리코딩, 나만의 아웃풋 창작공간. 무엇을 만들지 아이가 정하니까, 수업료가 아니라 <strong>자리값</strong>이에요.</p>
             <dl class="spec">
               <dt>운영</dt><dd>월·화·수·금 · 시간 예약제</dd>
               <dt>비용</dt><dd>1회 15,000원 · 크리디패스 12회 180,000원 · 20회 300,000원 <span>(+1회 더)</span></dd>
@@ -406,9 +406,28 @@
       <p class="sec__mark"><span class="glyph" aria-hidden="true"><i></i><i></i></span> <b class="mk-en">FOR GROWN-UPS</b> <span class="mk-ko">— 어른의 문</span></p>
       <h2 class="serif">어른에게도 아웃풋이 필요해서,<br>세 개의 문을 더 열어뒀어요.</h2>
       <div class="doors">
-        <details class="door door--b" id="door-namansi">
+        <details class="door door--y" id="door-oldpop">
           <summary>
             <span class="door__no serif">01</span>
+            <span class="door__head">
+              <span class="door__name serif">올드팝 · 시니어팝</span>
+              <span class="door__type">공간에서 — 어른의 손</span>
+            </span>
+            <span class="door__toggle" aria-hidden="true">↓</span>
+          </summary>
+          <div class="door__room">
+            <p class="door__line serif">조금 색다른 나를<br>마주하는 시간.</p>
+            <p class="door__desc">
+              아이만의 자리가 아니에요. 올드팝은 어른의 창작 시간,
+              시니어팝은 손을 움직여 감각과 기억을 깨우는 시간이에요.
+              혼자 오시는 분이 더 많아요.
+            </p>
+            <a class="door__go" href="#programs">시간과 비용 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </details>
+        <details class="door door--b" id="door-namansi">
+          <summary>
+            <span class="door__no serif">02</span>
             <span class="door__head">
               <span class="door__name serif">나만시</span>
               <span class="door__type">웹서비스 — 어른의 10초</span>
@@ -428,7 +447,7 @@
         </details>
         <details class="door door--y" id="door-teum">
           <summary>
-            <span class="door__no serif">02</span>
+            <span class="door__no serif">03</span>
             <span class="door__head">
               <span class="door__name serif">틈</span>
               <span class="door__type">뉴스레터 — 어른의 쉼</span>
@@ -445,26 +464,24 @@
             <a class="door__go" href="/teum/">틈 열어보기 <span aria-hidden="true">→</span></a>
           </div>
         </details>
-        <details class="door door--b" id="door-popfolio">
-          <summary>
-            <span class="door__no serif">03</span>
-            <span class="door__head">
-              <span class="door__name serif">Popfolio</span>
-              <span class="door__type">온라인 전시 — 여덟 살부터 일흔까지</span>
-            </span>
-            <span class="door__toggle" aria-hidden="true">↓</span>
-          </summary>
-          <div class="door__room">
-            <p class="door__line serif">내 작품이<br>나만의 팝업 전시가 되는 곳.</p>
-            <p class="door__desc">
-              아이의 그림도, 어른의 작업도, 할머니의 자수도.
-              만든 것에는 걸릴 자리가 필요하니까요.
-              여기 대표의 작품도 걸릴 예정이에요.
-            </p>
-            <p class="door__go--soon">곧 문을 엽니다 · 열리면 인스타로 알려드려요</p>
-            <!-- TODO: /popfolio/ 배포되면 위 줄을 <a class="door__go" href="/popfolio/">들어가기 →</a> 로 -->
-          </div>
-        </details>
+      </div>
+    </section>
+
+    <!-- Popfolio — 어른의 문이 아니라 '누구나'의 자리 (2026-07-25 분리) -->
+    <section class="sec sec--pop" id="popfolio">
+      <p class="sec__mark"><span class="glyph" aria-hidden="true"><i></i><i></i></span> <b class="mk-en">POPFOLIO</b> <span class="mk-ko">— 누구나의 전시</span></p>
+      <div class="pop">
+        <h2 class="serif">내 작품이<br><strong>나만의 전시가 되는 곳.</strong></h2>
+        <p class="prose">
+          아이의 그림도, 어른의 작업도, 할머니의 자수도.<br>
+          만든 것에는 걸릴 자리가 필요하니까요.
+        </p>
+        <p class="prose prose--soft">
+          여기서 만든 것이 아니어도 좋아요. <strong>누구나</strong> 자기 전시를 열고,<br>
+          링크 하나로 보고 싶은 사람에게 보낼 수 있어요.
+        </p>
+        <p class="pop__soon">곧 문을 엽니다 · 열리면 인스타로 알려드려요</p>
+        <!-- TODO: /popfolio/ 배포되면 위 줄을 <a class="door__go" href="/popfolio/">내 전시 만들기 →</a> 로 -->
       </div>
     </section>
 
@@ -481,9 +498,10 @@
         <div class="why__text">
           <h2 class="serif why__hi">안녕하세요, <strong>올리</strong>예요.</h2>
           <p class="prose">
-            저는 여기서 아이들을 가르치지 않아요.<br>
-            <strong class="sweep">아이들은 원래 감각이 살아있으니까요.</strong><br>
-            제가 하는 일은, 그 감각이 마음껏 펼쳐질 자리를 지키는 거예요.
+            <strong class="sweep">아이들은 원래 감각이 살아있어요.</strong><br>
+            제가 하는 일은, 그 감각이 마음껏 펼쳐질 자리를 만드는 거예요.<br>
+            재료를 꺼내 두고, 시간을 넉넉히 두고 —<br>
+            오늘 무엇을 할지는 아이가 정해요.
           </p>
           <p class="prose">
             이 공간의 시작은 저였어요.<br>
@@ -536,7 +554,7 @@
         <ul>
           <li><a href="#door-namansi">나만시 <em>곧 열려요</em></a></li>
           <li><a href="/teum/">틈 — 뉴스레터</a></li>
-          <li><a href="#door-popfolio">Popfolio <em>곧 열려요</em></a></li>
+          <li><a href="#popfolio">Popfolio <em>곧 열려요</em></a></li>
         </ul>
       </div>
     </div>
