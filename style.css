@@ -1430,17 +1430,19 @@ h2 strong, h2 b { font-weight: 700; }
   font-size: 0.95rem;
   color: var(--ink-soft);
   opacity: 0;
-  animation: cycle2 13.5s infinite;
+  animation: cycle2 22.5s infinite;  /* 문장 5개 × 4.5s */
   animation-delay: calc(4.7s + var(--d, 0s));
 }
 .ticker span:nth-child(1) { --d: 0s; }
 .ticker span:nth-child(2) { --d: 4.5s; }
 .ticker span:nth-child(3) { --d: 9s; }
+.ticker span:nth-child(4) { --d: 13.5s; }
+.ticker span:nth-child(5) { --d: 18s; }
 .ticker b { color: var(--blue); font-weight: 500; }
 @keyframes cycle2 {
   0% { opacity: 0; transform: translateY(8px); }
-  4%, 29% { opacity: 1; transform: none; }
-  33%, 100% { opacity: 0; transform: translateY(-8px); }
+  2.4%, 17.4% { opacity: 1; transform: none; }
+  19.8%, 100% { opacity: 0; transform: translateY(-8px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .assemble, .piece, .piece b, .assemble__line, .head span, .cover .cover__sub, .ticker { animation: none; }
