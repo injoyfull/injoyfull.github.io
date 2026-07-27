@@ -1483,7 +1483,7 @@ h2 strong, h2 b { font-weight: 700; }
   .sec > *:not(.sec__mark) { grid-column: 2; }
   .sec__mark .mk-en { display: block; line-height: 1.7; }
   .sec__mark .mk-ko { display: block; margin-left: 0; line-height: 1.7; color: #A5A29B; }
-  .sec__mark .mk-ko::first-letter { color: transparent; }  /* '— ' 대시 숨김 대용 */
+  .sec__mark .mk-dash { display: none; }   /* 좌측 라벨일 땐 대시를 빼서 왼쪽 선을 맞춘다 */
   .sec__mark .glyph { display: none; }
 }
 .sec__mark .mk-en { letter-spacing: 0.26em; font-size: 0.74rem; }
@@ -1817,3 +1817,83 @@ body { letter-spacing: 0; }
   color: #5A554A;               /* 크림 위 6.5:1 */
 }
 .sec--film .film__shot--b figcaption { color: rgba(255, 255, 255, 0.92); }  /* 블루 판 위 */
+
+/* ============================================================
+   판(FIELD) 시스템 — 2026-07-28 "재미가 없어"
+   문제: 섹션 12개가 전부 같은 구조(라벨→제목→본문)에 같은 흰 바탕.
+   스크롤에 리듬이 없었다.
+   해법: ① 바탕을 크림으로 내리고 흰 면을 '종이'로 올린다(관계 역전)
+        ② 섹션마다 판을 교차 — 크림 / 흰 종이 / 색면
+        ③ 섹션에 인덱스 숫자를 얹어 잡지 목차처럼
+        ④ 아이의 말 = 버터옐로우 대형 스프레드(감정의 정점)
+   ============================================================ */
+:root { --field: #F7F2E4; --paper-w: #FFFFFF; }
+
+body { background: var(--field); }
+
+/* ── ② 판 교차 ── */
+/* 흰 종이 판 — 방법론·증거·사람 */
+#pscr, #letters, #why, .sec--doors {
+  background: var(--paper-w);
+  border-top: 1px solid rgba(38,33,28,0.07);
+  border-bottom: 1px solid rgba(38,33,28,0.07);
+  max-width: none;
+  padding-left: max(var(--gutter), calc((100% - 72rem) / 2));
+  padding-right: max(var(--gutter), calc((100% - 72rem) / 2));
+}
+
+/* ── ③ 섹션 인덱스 — 잡지 목차 ── */
+.sec { position: relative; }
+.sec__mark { position: relative; }
+.sec__mark .mk-en::before {
+  content: attr(data-no);
+  display: block;
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  color: rgba(0, 102, 179, 0.22);
+  margin-bottom: 0.35rem;
+}
+
+/* ── ④ 아이의 말 = 버터옐로우 스프레드 ── */
+.board {
+  background: #FFD971;
+  max-width: none;
+  padding: clamp(3.2rem, 9vh, 5.5rem) var(--gutter);
+  margin: clamp(2rem, 5vh, 3rem) 0;
+}
+.board .board__in { max-width: 72rem; margin: 0 auto; }
+.board .sec__mark { color: rgba(20,20,20,0.62); }
+.board .mk-en { color: #141414; }
+.board .mk-en::before { color: rgba(20,20,20,0.28); }
+.board .board__quote {
+  font-size: clamp(2rem, 6.4vw, 3.6rem);
+  line-height: 1.35;
+  margin: 0 0 1.2rem;
+  color: #141414;
+}
+.board .board__quote strong { font-weight: 700; }
+.board .board__cite { color: rgba(20,20,20,0.66); margin-bottom: 2rem; }
+.board .board__poem { color: #141414; font-size: 1.1rem; }
+.board .board__poem strong { color: #0B4C86; }   /* 옐로우 위 블루 6.1:1 */
+
+/* ── 크림 바탕 위에서 흰 카드가 '떠 보이게' ── */
+.pcard--open, .sec--film .film__shot--y figure { background: var(--paper-w); }
+.pcard { border-color: rgba(38,33,28,0.12); }
+.pcard--kid   { background: #FFFFFF; border-color: rgba(0,102,179,0.22); }
+.pcard--grown { background: #FFFFFF; border-color: rgba(214,168,60,0.42); }
+.gate__card:hover { background: var(--paper-w); }
+/* 인덱스 숫자가 마커 역할을 하므로 쌍점 글리프는 내린다 */
+.sec__mark .glyph { display: none; }
+.sec__mark .mk-en::before { font-size: clamp(1.9rem, 5.4vw, 2.6rem); }
+
+/* 라벨·본문 행간 조이기 (2026-07-28 한나님: "문장 간격들도 조금 더 줄여줘") */
+.sec__mark .mk-en, .sec__mark .mk-ko { line-height: 1.32; }
+.mk-dash { font-style: normal; }
+body { line-height: 1.75; }
+.prose { margin-bottom: 1.35rem; }
+.board .board__poem { line-height: 1.7; }
+/* 크림 판 위에서 라벨이 너무 옅어 대비 미달(2.28:1) → 조임 */
+.sec__mark .mk-ko { color: #6B6459; }
