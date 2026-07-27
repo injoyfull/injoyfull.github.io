@@ -1674,3 +1674,105 @@ body { letter-spacing: 0; }
 
 /* 캡션·주석 크기 통일 (13.1~14.4px가 흩어져 있던 것) */
 .pcard__note, .lead-photo figcaption, .film figcaption, .spec dd span { font-size: var(--t-cap); }
+
+/* ============================================================
+   이번 시즌 밴드 — 2026 여름 '감각 다이빙'
+   계절마다 이 색과 낱말만 갈아끼운다. 낱말은 조약돌(모양이 다 다름).
+   ============================================================ */
+.season {
+  background: #0066B3;
+  color: #FFFFFF;              /* 5.9:1 */
+  padding: clamp(2.8rem, 7vh, 4.4rem) var(--gutter);
+  margin: clamp(2rem, 5vh, 3rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+/* 물결 — 포스터의 가는 파도선, 오른쪽 위에 세 줄 */
+.season::after {
+  content: "";
+  position: absolute; top: 1.6rem; right: -2rem;
+  width: 15rem; height: 6rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='26' viewBox='0 0 120 26'%3E%3Cpath d='M2 13 Q 17 3 32 13 T 62 13 T 92 13 T 122 13' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") 0 0/7.5rem 1.7rem repeat-y;
+  opacity: 0.9;
+  pointer-events: none;
+}
+@media (max-width: 620px) { .season::after { display: none; } }
+.season__in { max-width: 72rem; margin: 0 auto; position: relative; z-index: 1; }
+
+.season__tag {
+  display: inline-block;
+  margin: 0 0 1.1rem;
+  padding: 0.42em 1.1em;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: #0066B3;
+  font-size: var(--t-label);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+.season__en {
+  margin: 0 0 0.2rem;
+  font-size: var(--t-label);
+  font-weight: 800;
+  letter-spacing: 0.34em;
+  color: rgba(255,255,255,0.82);
+}
+.season__title {
+  margin: 0 0 0.7rem;
+  font-family: var(--sans);
+  font-size: clamp(2.1rem, 7.5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;   /* 고딕답게 — 굵고 좁게 */
+  line-height: 1.12;
+}
+.season__lead { margin: 0 0 1.8rem; font-size: 1.05rem; color: rgba(255,255,255,0.92); }
+.season__lead strong { font-weight: 800; }
+
+/* 여덟 낱말 = 조약돌 여덟 개, 하나도 같은 모양이 없다 */
+.season__words { list-style: none; margin: 0 0 0.9rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.season__words li {
+  padding: 0.5em 1.05em;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 58% 42% 63% 37% / 47% 58% 42% 53%;
+}
+.season__words li:nth-child(1) { border-radius: 62% 38% 54% 46% / 45% 60% 40% 55%; }
+.season__words li:nth-child(2) { border-radius: 39% 61% 65% 35% / 58% 42% 58% 42%; }
+.season__words li:nth-child(3) { border-radius: 54% 46% 37% 63% / 63% 37% 63% 37%; }
+.season__words li:nth-child(4) { border-radius: 45% 55% 59% 41% / 38% 56% 44% 62%; }
+.season__words li:nth-child(5) { border-radius: 66% 34% 46% 54% / 56% 45% 55% 44%; }
+.season__words li:nth-child(6) { border-radius: 48% 52% 40% 60% / 65% 35% 62% 38%; }
+.season__words li:nth-child(7) { border-radius: 60% 40% 58% 42% / 37% 63% 38% 62%; }
+.season__words li:nth-child(8) { border-radius: 35% 65% 50% 50% / 52% 48% 60% 40%; }
+.season__note { margin: 0 0 2rem; font-size: var(--t-cap); color: rgba(255,255,255,0.8); }
+
+.season__spec {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 0.5rem 1.2rem; margin: 0 0 0.7rem;
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.3);
+  max-width: 34rem;
+}
+.season__spec dt { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; }
+.season__spec dt span {
+  font-size: var(--t-micro); font-weight: 700; letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.72); margin-left: 0.4em;
+}
+.season__spec dd { margin: 0; font-size: 1rem; color: rgba(255,255,255,0.92); font-variant-numeric: tabular-nums; }
+.season__fine { margin: 0 0 2rem; font-size: var(--t-cap); color: rgba(255,255,255,0.78); }
+
+.season__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.4rem; margin: 0; }
+.season__go {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: 0 1.5em; border-radius: 999px;
+  background: #FFD971; color: #141414;      /* 잉크 11.6:1 */
+  font-weight: 800; letter-spacing: -0.01em; text-decoration: none;
+}
+.season__go:hover { background: #FFE49A; }
+.season__ask {
+  display: inline-flex; align-items: center; min-height: 44px;
+  color: #FFFFFF; font-weight: 700; letter-spacing: -0.01em;
+  text-decoration: underline; text-underline-offset: 5px;
+}
+.season a:focus-visible { outline: 3px solid #FFD971; outline-offset: 3px; }
