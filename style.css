@@ -1616,3 +1616,10 @@ h2 strong, h2 b { font-weight: 700; }
   .pcard--wide { grid-column: span 2; }
   .pcard--wide .spec { column-count: 2; column-gap: 2rem; }
 }
+/* 보조 설명은 표 아래로 — 값 옆에 붙어 줄을 깨뜨리지 않게 (2026-07-25) */
+.pcard__note {
+  margin: -0.6rem 0 1.4rem;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
