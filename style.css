@@ -1637,3 +1637,40 @@ h2 strong, h2 b { font-weight: 700; }
 .pcard--open  { background: #FFFFFF; }
 .pgrid { gap: 1.5rem; }
 .pgrid--open { margin-top: 2.6rem; padding-top: 2.6rem; }
+
+/* ============================================================
+   타이포 시스템 (2026-07-25 한나님: "고딕은 더 고딕답게,
+   정보들은 자간을 활용해서")
+   · 본문 자간 = 0. 전역 0.005em은 한글 본문을 흐리게만 함 → 제거.
+   · 고딕(산세리프)은 무게 + 좁은 자간으로 또렷하게.
+   · 정보 라벨은 넓은 자간으로 '표'처럼, 숫자는 자릿수 정렬.
+   ============================================================ */
+:root {
+  --t-cap:   0.875rem;   /* 14 — 캡션·주석 */
+  --t-label: 0.78rem;    /* 12.5 — 정보 라벨 */
+  --t-micro: 0.72rem;    /* 11.5 — 섹션 마커 */
+  --ls-label: 0.16em;
+  --ls-micro: 0.26em;
+}
+body { letter-spacing: 0; }
+
+/* 고딕답게 — 굵고 좁게 */
+.langs__what, .gate__go, .prog__cta, .door__go, .door__go--soon,
+.mast__cta, .faq__item summary, .pop__soon {
+  letter-spacing: -0.01em;
+}
+
+/* 정보 라벨 = 넓은 자간 (비용·시간·구성·참고 / 대상 / 종류) */
+.spec dt, .pcard__who, .door__type, .ft-label {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+}
+.sec__mark .mk-en, .colophon__name span { letter-spacing: var(--ls-micro); }
+
+/* 숫자는 표처럼 — 자릿수 정렬 + 살짝 좁게 */
+.spec dd, .prog__contact, .pcard__note { font-variant-numeric: tabular-nums; }
+.spec dd { letter-spacing: -0.005em; }
+
+/* 캡션·주석 크기 통일 (13.1~14.4px가 흩어져 있던 것) */
+.pcard__note, .lead-photo figcaption, .film figcaption, .spec dd span { font-size: var(--t-cap); }
