@@ -1897,3 +1897,42 @@ body { line-height: 1.75; }
 .board .board__poem { line-height: 1.7; }
 /* 크림 판 위에서 라벨이 너무 옅어 대비 미달(2.28:1) → 조임 */
 .sec__mark .mk-ko { color: #6B6459; }
+
+/* ── PSCR = 철학 (2026-07-28) ──
+   "순서대로 밟는 과정"으로 읽히던 01–04 번호를 걷어내고
+   네 낱말을 조약돌에 앉힌다. 넷 다 다른 모양 — 아이마다 다르게 일어나니까. */
+.steps__lede { margin-bottom: 2.2rem; }
+.steps--stones { list-style: none; margin: 0 0 2.4rem; padding: 0; display: grid; gap: 1.6rem 2.2rem; }
+@media (min-width: 820px) { .steps--stones { grid-template-columns: repeat(2, 1fr); gap: 2.2rem 3rem; } }
+.steps--stones > li { display: block; padding: 0; border: 0; }
+.steps__name {
+  position: relative; z-index: 0;
+  margin: 0 0 0.7rem;
+  font-family: var(--serif);
+  font-size: 1.25rem; font-weight: 700; line-height: 1.3;
+}
+.steps__name b {
+  position: relative;
+  display: inline-block;
+  padding: 0.38em 0.85em 0.44em;
+  font-weight: 700;
+}
+.steps__name b::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  border: 1.5px solid rgba(0, 102, 179, 0.5);
+  border-radius: 58% 42% 63% 37% / 47% 58% 42% 53%;
+}
+/* 넷 다 다른 돌 */
+.steps--stones > li:nth-child(1) .steps__name b::before { border-radius: 63% 37% 51% 49% / 43% 62% 38% 57%; }
+.steps--stones > li:nth-child(2) .steps__name b::before { border-radius: 37% 63% 67% 33% / 58% 40% 60% 42%; transform: rotate(-1.4deg); }
+.steps--stones > li:nth-child(3) .steps__name b::before { border-radius: 56% 44% 35% 65% / 64% 36% 63% 37%; transform: rotate(1.2deg); }
+.steps--stones > li:nth-child(4) .steps__name b::before { border-radius: 43% 57% 60% 40% / 37% 57% 43% 63%; transform: rotate(-0.8deg); }
+.steps__name span {
+  font-family: var(--sans);
+  font-size: var(--t-label); font-weight: 700;
+  letter-spacing: var(--ls-label);
+  color: var(--ink-soft);
+  margin-left: 0.5em;
+}
+.steps--stones > li p { margin: 0; font-size: 1rem; line-height: 1.75; color: var(--ink); }
