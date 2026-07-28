@@ -1936,3 +1936,62 @@ body { line-height: 1.75; }
   margin-left: 0.5em;
 }
 .steps--stones > li p { margin: 0; font-size: 1rem; line-height: 1.75; color: var(--ink); }
+
+/* ── PSCR 네 낱말 = 색면 카드 (2026-07-28 레퍼런스 반영) ──
+   색면 위에 굵은 글씨 · 얇은 선 · 작은 영문 캡션.
+   조약돌 원칙은 '모서리'로 이어간다 — 넷 다 다른 곡률. */
+.steps--stones { grid-template-columns: 1fr; gap: 1.1rem; }
+@media (min-width: 620px)  { .steps--stones { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; } }
+@media (min-width: 1040px) { .steps--stones { gap: 1.4rem; } }
+
+.steps--stones > li {
+  padding: clamp(1.8rem, 4vw, 2.6rem) clamp(1.2rem, 3vw, 1.8rem) clamp(1.6rem, 3.4vw, 2.2rem);
+  text-align: center;
+  display: flex; flex-direction: column;
+}
+/* 넷 다 다른 모서리 — 찍어내지 않는다 */
+.steps--stones > li:nth-child(1) { background: #0066B3; border-radius: 34px 10px 30px 12px; }
+.steps--stones > li:nth-child(2) { background: #FFD971; border-radius: 12px 32px 10px 36px; }
+.steps--stones > li:nth-child(3) { background: #FFD971; border-radius: 30px 14px 34px 10px; }
+.steps--stones > li:nth-child(4) { background: #0066B3; border-radius: 10px 36px 12px 30px; }
+
+/* 조약돌 외곽선은 이제 카드가 대신하므로 해제 */
+.steps__name b::before { display: none; }
+.steps__name { margin: 0; }
+.steps__name b {
+  display: block;
+  padding: 0;
+  font-family: var(--sans);
+  font-size: clamp(1.9rem, 5.6vw, 2.7rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+.steps__name span {
+  display: block;
+  margin: 0.9rem auto 0;
+  padding-top: 0.85rem;
+  max-width: 8rem;
+  font-family: var(--sans);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;   /* 자간 때문에 오른쪽으로 쏠리는 것 보정 */
+}
+.steps--stones > li p { margin: 1.3rem 0 0; font-size: 0.98rem; line-height: 1.7; }
+
+/* 블루 판 */
+.steps--stones > li:nth-child(1) .steps__name b,
+.steps--stones > li:nth-child(4) .steps__name b { color: #FFD971; }
+.steps--stones > li:nth-child(1) .steps__name span,
+.steps--stones > li:nth-child(4) .steps__name span { color: rgba(255,255,255,0.82); border-top: 1px solid rgba(255,255,255,0.4); }
+.steps--stones > li:nth-child(1) p,
+.steps--stones > li:nth-child(4) p { color: #FFFFFF; }
+
+/* 옐로우 판 */
+.steps--stones > li:nth-child(2) .steps__name b,
+.steps--stones > li:nth-child(3) .steps__name b { color: #0B4C86; }
+.steps--stones > li:nth-child(2) .steps__name span,
+.steps--stones > li:nth-child(3) .steps__name span { color: rgba(20,20,20,0.66); border-top: 1px solid rgba(20,20,20,0.28); }
+.steps--stones > li:nth-child(2) p,
+.steps--stones > li:nth-child(3) p { color: #141414; }
