@@ -2126,3 +2126,20 @@ body { line-height: 1.75; }
 .pcard--grown { --pebble-dot: #FFD971; }
 /* 돌이 없는 어른·기관 카드는 이름이 왼쪽 선에 딱 맞게 */
 .pgrid--open .pcard__name span { margin-left: 0; }
+
+/* ── PSCR 위 가로선 제거 (2026-07-29 한나님 "라인 빼줘") ── */
+.steps--stones { border-top: 0; }
+
+/* ── PROOF: 성장·어른의 말 블록 ── */
+.proof__lead {
+  margin: 2.6rem 0 1rem;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  color: var(--ink-soft);
+}
+.memos--plain .memo__when { display: none; }
+.memos--plain blockquote { margin: 0; }
+
+/* 올드팝 카드: CTA 두 개 나란히 */
+.pcard__cta2 { display: flex; flex-wrap: wrap; gap: 0 1.6rem; margin: auto 0 0; }
