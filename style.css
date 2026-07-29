@@ -2088,3 +2088,35 @@ body { line-height: 1.75; }
 .pgrid--open .pcard__name span::before { display: none; }
 /* 두 줄 이름(올드팝/시니어팝)은 돌이 세로로 감싸게 */
 .pcard__name span { line-height: 1.24; }
+
+/* ============================================================
+   조약돌 = 포인트 (2026-07-29 한나님)
+   "글자를 다 덮는 것보다, 작은 조약돌이 첫 글자와 약간 겹치게 포인트 주듯"
+   → 이름은 잉크색 그대로 두고, 작은 돌이 첫 글자 왼쪽 위에 살짝 걸친다.
+   ============================================================ */
+.pcard__name span {
+  padding: 0;
+  color: var(--ink);
+  margin-left: 0.34em;      /* 돌이 왼쪽으로 삐져나갈 자리 */
+}
+.pcard--kid .pcard__name span { color: var(--ink); }   /* 흰 글자 해제 */
+
+.pcard__name span::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.42em;
+  top: -0.1em;
+  width: 0.64em;
+  height: 0.64em;
+  border: 0;
+  background: var(--pebble-dot, #0066B3);
+}
+.pcard--kid   { --pebble-dot: #0066B3; }
+.pcard--grown { --pebble-dot: #FFD971; }
+
+/* 돌 네 개, 하나도 같은 모양이 아니게 */
+.pgrid .pcard:nth-child(1) .pcard__name span::before { border-radius: 62% 38% 54% 46% / 45% 60% 40% 55%; }
+.pgrid .pcard:nth-child(2) .pcard__name span::before { border-radius: 39% 61% 65% 35% / 58% 42% 58% 42%; }
+.pgrid .pcard:nth-child(3) .pcard__name span::before { border-radius: 54% 46% 37% 63% / 63% 37% 63% 37%; }
+.pgrid .pcard:nth-child(4) .pcard__name span::before { border-radius: 45% 55% 59% 41% / 38% 56% 44% 62%; }
