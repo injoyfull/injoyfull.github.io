@@ -2003,23 +2003,6 @@ body { line-height: 1.75; }
 .steps--stones > li:nth-child(n) .steps__name span { display: inline-block; padding-right: 1.4rem; }
 .steps--stones > li p { margin-top: 0.9rem; font-size: 0.95rem; }
 
-/* ── 리본 띠 (레퍼런스: 헤어라인 배너) ── */
-.ribbon {
-  overflow: hidden;
-  background: #0066B3;
-  padding: 0.55rem 0;
-}
-.ribbon__track {
-  display: flex;
-  width: max-content;
-  white-space: nowrap;
-  animation: flow 36s linear infinite;
-  font-size: var(--t-label);
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  color: #F7F2E4;          /* 크림 on 블루 5.4:1 */
-}
-@media (prefers-reduced-motion: reduce) { .ribbon__track { animation: none; } }
 
 /* ── 줄무늬(어닝 스트라이프) — 푸터 어깨에 한 줄 ── */
 .colophon { position: relative; border-top: 0; }
