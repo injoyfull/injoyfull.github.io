@@ -2153,3 +2153,18 @@ body { line-height: 1.75; }
   .pcard--wide { grid-column: auto; }
   .pcard--wide .spec { column-count: 1; }
 }
+
+/* ── 언어 전환 (2026-07-29) ── */
+.mast__lang {
+  display: inline-flex; align-items: center;
+  min-height: 44px; min-width: 44px; justify-content: center;
+  padding: 0 0.7em;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink) !important;
+  text-decoration: none;
+}
+.mast__lang:hover { border-color: var(--blue); color: var(--blue) !important; }
