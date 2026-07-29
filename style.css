@@ -2143,3 +2143,13 @@ body { line-height: 1.75; }
 
 /* 올드팝 카드: CTA 두 개 나란히 */
 .pcard__cta2 { display: flex; flex-wrap: wrap; gap: 0 1.6rem; margin: auto 0 0; }
+
+/* ── 프로그램 카드 배치 (2026-07-29 한나님) ──
+   윗줄 = 키즈팝 · 올드팝(대표 과정) / 아랫줄 = 토들러팝 · 크리디팝
+   → 3열 + span2 조합을 2열 균등으로 단순화. */
+@media (min-width: 700px)  { .pgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1040px) {
+  .pgrid { grid-template-columns: repeat(2, 1fr); }
+  .pcard--wide { grid-column: auto; }
+  .pcard--wide .spec { column-count: 1; }
+}
