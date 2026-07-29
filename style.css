@@ -2088,3 +2088,13 @@ body { line-height: 1.75; }
   padding-top: 1.2rem;
   color: rgba(255,255,255,0.9);
 }
+
+/* ── PSCR: 구분선 제거, 한글+영문 한 줄 왼쪽 정렬 (2026-07-29) ── */
+.steps__name { margin-bottom: 0.55rem; }
+.steps__name b { display: inline; }
+.steps--stones > li:nth-child(n) .steps__name span {
+  display: inline;
+  border-top: 0;
+  padding: 0;
+  margin: 0 0 0 0.6em;
+}
