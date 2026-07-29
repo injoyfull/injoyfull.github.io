@@ -2081,3 +2081,10 @@ body { line-height: 1.75; }
   padding: 0;
   margin: 0 0 0 0.6em;
 }
+
+/* ── 조약돌 정리 (2026-07-29 한나님: "너무 아이 느낌이 아니어야") ── */
+/* 어른·기관 카드(공간 대여 · 출강·협업)는 조약돌 없이 이름만 */
+.pgrid--open .pcard__name span { padding: 0; }
+.pgrid--open .pcard__name span::before { display: none; }
+/* 두 줄 이름(올드팝/시니어팝)은 돌이 세로로 감싸게 */
+.pcard__name span { line-height: 1.24; }
