@@ -2032,3 +2032,59 @@ body { line-height: 1.75; }
     #0066B3 0 14px, transparent 14px 28px);
   opacity: 0.85;
 }
+
+/* ============================================================
+   푸터 재설계 (2026-07-28 한나님: "라인으로 나누기보다 전체적으로
+   라인 패턴 색깔은 다운시켜서" + "레이아웃 구조는 식상해" + "심플하게!")
+   → 잘라내는 띠 대신 블루 판 전체에 아주 옅은 세로 패턴.
+   → 브랜드/CONTACT/FAMILY 3단 그리드 폐기 — 문장 하나 + 링크 한 줄.
+   ============================================================ */
+.colophon {
+  background: #0066B3;
+  color: #F7F2E4;
+  padding: clamp(3rem, 7vh, 4.5rem) var(--gutter) 2.4rem;
+  position: relative;
+  overflow: hidden;
+}
+/* 패턴 = 판 전체에, 색은 다운 */
+.colophon::before {
+  content: "";
+  position: absolute; inset: 0;
+  height: auto; margin: 0; opacity: 1;
+  background: repeating-linear-gradient(90deg,
+    rgba(255, 255, 255, 0.055) 0 14px, transparent 14px 28px);
+  pointer-events: none;
+}
+.colophon > * { position: relative; }
+
+.colophon__grid { display: block; max-width: 72rem; margin: 0 auto; }
+.colophon__brand { margin-bottom: 2.2rem; }
+.colophon__name { color: #FFFFFF; font-size: 1.05rem; margin-bottom: 1.1rem; }
+.colophon__name img { display: none; }   /* 블루 로고는 블루 판에서 사라짐 */
+.colophon__name span { color: rgba(255,255,255,0.75); }
+.colophon__line {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 3.4vw, 1.7rem);
+  line-height: 1.55;
+  color: #F7F2E4;
+}
+
+/* 라벨은 내리고, 링크는 한 줄로 흐르게 */
+.ft-label { display: none; }
+.colophon__col { display: contents; }
+.colophon__grid { }
+.colophon__brand + .colophon__col ul,
+.colophon__col ul {
+  display: flex; flex-wrap: wrap; gap: 0 1.8rem;
+  margin: 0; padding: 0; list-style: none;
+}
+.colophon__col li a { color: #FFFFFF; }
+.colophon__col li a:hover { color: #FFD971; }
+.colophon__col li a em { color: rgba(255,255,255,0.85); }
+
+.colophon__copy {
+  max-width: 72rem; margin: 1.8rem auto 0;
+  border-top: 1px solid rgba(255,255,255,0.28);
+  padding-top: 1.2rem;
+  color: rgba(255,255,255,0.9);
+}
