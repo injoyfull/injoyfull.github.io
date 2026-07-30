@@ -1420,8 +1420,19 @@ h2 strong, h2 b { font-weight: 700; }
   opacity: 0;
   animation: rise2 0.95s cubic-bezier(.2,.7,.3,1) 4.3s forwards;
 }
+/* 바뀌는 문장 위 따옴표 — 아이들이 '말한 문장'으로 읽히게 */
+.ticker__q {
+  margin: 2rem 0 -0.55rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 0.62;
+  color: rgba(38, 33, 28, 0.26);
+  opacity: 0;
+  animation: rise2 0.9s ease 4.6s forwards;
+}
 .ticker {
-  margin: 2.2rem 0 0;
+  margin: 0;
   height: 1.8em;
   position: relative;
   overflow: hidden;
@@ -1449,11 +1460,11 @@ h2 strong, h2 b { font-weight: 700; }
   16.5%, 100% { opacity: 0; transform: translateY(-8px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .assemble, .piece, .piece b, .assemble__line, .head span, .cover .cover__sub, .ticker { animation: none; }
+  .assemble, .piece, .piece b, .assemble__line, .head span, .cover .cover__sub, .ticker, .ticker__q { animation: none; }
   .assemble { gap: 0; }
   .piece { opacity: 1; transform: none; }
   .piece b { opacity: 0; visibility: hidden; }
-  .assemble__line, .head span, .cover .cover__sub, .ticker { opacity: 1; transform: none; }
+  .assemble__line, .head span, .cover .cover__sub, .ticker, .ticker__q { opacity: 1; transform: none; }
   .ticker { height: auto; }
   .ticker span { position: static; opacity: 1; display: block; animation: none; }
   .ticker span + span { display: none; }
