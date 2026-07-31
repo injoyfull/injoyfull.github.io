@@ -1397,8 +1397,6 @@ h2 strong, h2 b { font-weight: 700; }
   animation: rise2 0.9s cubic-bezier(.2,.7,.3,1) 2.9s forwards;
 }
 .assemble__line strong { color: var(--blue); font-weight: 500; }
-/* 이름의 세 조각(in · JOY · FULL)을 문장 안에서도 같은 파랑으로 잇는다 */
-.assemble__line em { font-style: normal; color: var(--blue); font-weight: 500; }
 
 /* v2 헤드라인 + 순환 메시지 */
 .head {
