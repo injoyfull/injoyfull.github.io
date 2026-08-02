@@ -2304,3 +2304,133 @@ body { line-height: 1.75; }
   }
   .hero__cap { font-size: 0.72rem; letter-spacing: 0.12em; }
 }
+
+/* ============================================================
+   시안 B 히어로 (/v2/) — 2026-08-03
+   Zara식: 계절 사진 6장이 흐르고, 로고는 멈춰 있다.
+   로고의 스마일(:J)이 항상 또렷해야 한다.
+   ============================================================ */
+.hero2 {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: min(calc(100svh - 4.5rem), 52rem);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--bg);
+  isolation: isolate;
+}
+.hero2__frames { position: absolute; inset: 0; z-index: 0; }
+.hero2__frame {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: hero2Cycle 39s cubic-bezier(.4,0,.3,1) infinite;
+}
+.hero2__frame:nth-child(1) { animation-delay: -0.5s;  object-position: 50% 40%; }
+.hero2__frame:nth-child(2) { animation-delay: 6s;   object-position: 28% 45%; }
+.hero2__frame:nth-child(3) { animation-delay: 12.5s; object-position: 45% 45%; }
+.hero2__frame:nth-child(4) { animation-delay: 19s;  object-position: 40% 50%; }
+.hero2__frame:nth-child(5) { animation-delay: 25.5s; object-position: 50% 55%; }
+.hero2__frame:nth-child(6) { animation-delay: 32s;  object-position: 30% 50%; }
+@keyframes hero2Cycle {
+  0%          { opacity: 0; }
+  2.6%, 15%   { opacity: 1; }
+  17.6%, 100% { opacity: 0; }
+}
+/* 은은한 크림 베일 — 사진 색은 살린다 */
+.hero2__frames::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(247, 242, 228, 0.30) 0%,
+    rgba(247, 242, 228, 0.10) 40%,
+    rgba(247, 242, 228, 0.26) 78%,
+    rgba(247, 242, 228, 0.70) 100%);
+}
+/* 로고는 움직이지 않는다 — 애니메이션 없음, 즉시 그 자리에 */
+.hero2__brand {
+  position: relative; z-index: 1;
+  width: min(44rem, calc(100% - 2 * var(--gutter)));
+  padding: clamp(3.2rem, 9vh, 5rem) clamp(1.4rem, 5vw, 3rem);
+  text-align: center;
+  background: radial-gradient(closest-side,
+    rgba(247, 242, 228, 0.94) 0%,
+    rgba(247, 242, 228, 0.90) 64%,
+    rgba(247, 242, 228, 0) 100%);
+}
+.hero2__logo {
+  display: block;
+  width: clamp(16rem, 46vw, 30rem);
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 18px rgba(247, 242, 228, 0.9));
+}
+.hero2__line {
+  margin: 1.1rem auto 0;
+  text-shadow: 0 1px 12px rgba(247, 242, 228, 0.95), 0 0 4px rgba(247, 242, 228, 0.9);
+  max-width: 32rem;
+  font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+  color: var(--ink-soft);
+}
+.hero2__line strong { color: var(--blue); font-weight: 500; }
+/* 계절 라벨 — 사진과 같은 박자로 좌하단에서 교체 */
+.hero2__seasons {
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(0.9rem, 2.4vh, 1.4rem);
+  z-index: 1;
+  margin: 0;
+  height: 1.4em;
+  width: min(24rem, calc(100% - 2 * var(--gutter)));
+}
+.hero2__seasons span {
+  position: absolute; inset: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(38, 33, 28, 0.78);
+  text-shadow: 0 1px 10px rgba(247, 242, 228, 0.9);
+  opacity: 0;
+  animation: hero2Cycle 39s cubic-bezier(.4,0,.3,1) infinite;
+}
+.hero2__seasons span:nth-child(1) { animation-delay: -0.5s; }
+.hero2__seasons span:nth-child(2) { animation-delay: 6s; }
+.hero2__seasons span:nth-child(3) { animation-delay: 12.5s; }
+.hero2__seasons span:nth-child(4) { animation-delay: 19s; }
+.hero2__seasons span:nth-child(5) { animation-delay: 25.5s; }
+.hero2__seasons span:nth-child(6) { animation-delay: 32s; }
+@media (min-width: 900px) {
+  .hero2__seasons { left: max(var(--gutter), calc(50vw - 24rem)); }
+}
+@media (max-width: 699px) {
+  .hero2 { min-height: min(calc(100svh - 4rem), 40rem); }
+  .hero2__brand {
+    background: radial-gradient(closest-side,
+      rgba(247, 242, 228, 0.94) 0%,
+      rgba(247, 242, 228, 0.88) 56%,
+      rgba(247, 242, 228, 0) 100%);
+  }
+  .hero2__seasons span { font-size: 0.7rem; letter-spacing: 0.1em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero2__frame, .hero2__seasons span { animation: none; opacity: 0; }
+  .hero2__frame:nth-child(1), .hero2__seasons span:nth-child(1) { opacity: 1; }
+}
+/* 시안 비교 필 */
+.ab-pill {
+  position: fixed;
+  right: 1rem; bottom: 1rem;
+  z-index: 50;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(38, 33, 28, 0.25);
+}
+.ab-pill:hover { background: var(--blue); }
