@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=73">
+  <link rel="stylesheet" href="../style.css?v=78">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -53,14 +53,25 @@
 
   <main id="main">
 
-    <!-- Cover -->
-    <section class="cover" id="top">
-      <div class="assemble" role="img" aria-label="in JOYFULL — full of inner joy">
-        <span class="piece p1"><i></i><b>inner</b></span>
-        <span class="piece p2"><i></i><b>joy</b></span>
-        <span class="piece p3"><i></i><b>full</b></span>
+    <!-- Hero — the photo comes first (photos rotate, the logo stays) -->
+    <section class="hero" id="top">
+      <div class="hero__frames" aria-hidden="true">
+        <img class="hero__frame" src="../photos/hero-01.jpg" alt="" width="555" height="350" fetchpriority="high">
+        <img class="hero__frame" src="../photos/hero-02.jpg" alt="" width="1400" height="840" loading="lazy">
+        <img class="hero__frame" src="../photos/hero-03.jpg" alt="" width="660" height="550" loading="lazy">
       </div>
-      <p class="assemble__line"><strong>Full of inner JOY</strong> — that’s what <strong>in:JOYFULL</strong> means. We give you the time and the space for it.</p>
+      <div class="hero__over">
+        <div class="assemble" role="img" aria-label="in JOYFULL — full of inner joy">
+          <span class="piece p1"><i></i><b>inner</b></span>
+          <span class="piece p2"><i></i><b>joy</b></span>
+          <span class="piece p3"><i></i><b>full</b></span>
+        </div>
+        <p class="assemble__line"><strong>Full of inner JOY</strong> — that’s what <strong>in:JOYFULL</strong> means. We give you the time and the space for it.</p>
+      </div>
+      <p class="hero__cap">An afternoon in the light — a day at in:JOYFULL</p>
+    </section>
+
+    <section class="cover">
       <h1 class="head">
         <span>So much goes in.</span>
         <span>So little room</span>
@@ -81,12 +92,6 @@
         <span>I just let my hands <b>move</b>.</span>
       </p>
     </section>
-
-    <!-- Lead photo -->
-    <figure class="lead-photo">
-      <img src="../photos/drawing-crop.jpg" alt="Children lying on the floor in sunlight, drawing on a large sheet of paper" width="900" height="760">
-      <figcaption>When thinking starts to glow — an afternoon at in:JOYFULL</figcaption>
-    </figure>
 
     <!-- Gate -->
     <section class="sec" id="gate">
