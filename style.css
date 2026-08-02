@@ -2213,8 +2213,7 @@ body { line-height: 1.75; }
    ============================================================ */
 .hero {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   min-height: clamp(24rem, 68vh, 38rem);
   display: grid;
   place-items: center;
@@ -2236,9 +2235,9 @@ body { line-height: 1.75; }
 .hero__frame:nth-child(2) { animation-delay: 6.3s;  object-position: 82% 40%; }
 .hero__frame:nth-child(3) { animation-delay: 13.3s; object-position: 38% 42%; }
 @keyframes heroCycle {
-  0%        { opacity: 0; }
-  3%, 31%   { opacity: 1; }
-  35%, 100% { opacity: 0; }
+  0%          { opacity: 0; }
+  3%, 36.5%   { opacity: 1; }
+  39.5%, 100% { opacity: 0; }
 }
 /* 전체 크림 스크림 — 사진은 살리고 브랜드 톤으로 묶는다 */
 .hero__frames::after {
@@ -2312,13 +2311,12 @@ body { line-height: 1.75; }
    ============================================================ */
 .hero2 {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   min-height: min(calc(100svh - 4.5rem), 52rem);
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: var(--bg);
+  background: #F7F2E4;
   isolation: isolate;
 }
 .hero2__frames { position: absolute; inset: 0; z-index: 0; }
@@ -2332,13 +2330,13 @@ body { line-height: 1.75; }
 .hero2__frame:nth-child(1) { animation-delay: -0.5s;  object-position: 50% 40%; }
 .hero2__frame:nth-child(2) { animation-delay: 6s;   object-position: 28% 45%; }
 .hero2__frame:nth-child(3) { animation-delay: 12.5s; object-position: 45% 45%; }
-.hero2__frame:nth-child(4) { animation-delay: 19s;  object-position: 40% 50%; }
+.hero2__frame:nth-child(4) { animation-delay: 19s;  object-position: 28% 50%; }
 .hero2__frame:nth-child(5) { animation-delay: 25.5s; object-position: 50% 55%; }
 .hero2__frame:nth-child(6) { animation-delay: 32s;  object-position: 14% 50%; }
 @keyframes hero2Cycle {
   0%          { opacity: 0; }
-  2.6%, 15%   { opacity: 1; }
-  17.6%, 100% { opacity: 0; }
+  2.6%, 19.3% { opacity: 1; }
+  21.9%, 100% { opacity: 0; }
 }
 /* 은은한 크림 베일 — 사진 색은 살린다 */
 .hero2__frames::after {
@@ -2347,8 +2345,8 @@ body { line-height: 1.75; }
   background: linear-gradient(180deg,
     rgba(247, 242, 228, 0.30) 0%,
     rgba(247, 242, 228, 0.10) 40%,
-    rgba(247, 242, 228, 0.26) 78%,
-    rgba(247, 242, 228, 0.70) 100%);
+    rgba(247, 242, 228, 0.44) 78%,
+    rgba(247, 242, 228, 0.78) 100%);
 }
 /* 로고는 움직이지 않는다 — 애니메이션 없음, 즉시 그 자리에 */
 .hero2__brand {
@@ -2391,10 +2389,15 @@ body { line-height: 1.75; }
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: rgba(38, 33, 28, 0.78);
+  color: var(--ink);
   text-shadow: 0 1px 10px rgba(247, 242, 228, 0.9);
   opacity: 0;
-  animation: hero2Cycle 39s cubic-bezier(.4,0,.3,1) infinite;
+  animation: hero2Label 39s cubic-bezier(.4,0,.3,1) infinite;
+}
+@keyframes hero2Label {
+  0%          { opacity: 0; }
+  2.6%, 14%   { opacity: 1; }
+  16.4%, 100% { opacity: 0; }
 }
 .hero2__seasons span:nth-child(1) { animation-delay: -0.5s; }
 .hero2__seasons span:nth-child(2) { animation-delay: 6s; }
@@ -2416,7 +2419,7 @@ body { line-height: 1.75; }
       rgba(247, 242, 228, 0) 100%);
   }
   .hero2__logo { width: min(15.5rem, 82vw); }
-  .hero2__seasons span { font-size: 0.7rem; letter-spacing: 0.1em; }
+  .hero2__seasons span { font-size: 0.75rem; letter-spacing: 0.1em; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero2__frame, .hero2__seasons span { animation: none; opacity: 0; }
