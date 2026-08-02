@@ -2329,101 +2329,51 @@ body { line-height: 1.75; }
 }
 .hero2__frame:nth-child(1) { animation-delay: -0.5s;  object-position: 50% 40%; }
 .hero2__frame:nth-child(2) { animation-delay: 6s;   object-position: 28% 45%; }
-.hero2__frame:nth-child(3) { animation-delay: 12.5s; object-position: 45% 45%; }
+.hero2__frame:nth-child(3) { animation-delay: 12.5s; object-position: 30% 45%; }
 .hero2__frame:nth-child(4) { animation-delay: 19s;  object-position: 28% 50%; }
-.hero2__frame:nth-child(5) { animation-delay: 25.5s; object-position: 50% 55%; }
+.hero2__frame:nth-child(5) { animation-delay: 25.5s; object-position: 38% 55%; }
 .hero2__frame:nth-child(6) { animation-delay: 32s;  object-position: 14% 50%; }
 @keyframes hero2Cycle {
   0%          { opacity: 0; }
   2.6%, 19.3% { opacity: 1; }
   21.9%, 100% { opacity: 0; }
 }
-/* 은은한 크림 베일 — 사진 색은 살린다 */
-.hero2__frames::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg,
-    rgba(247, 242, 228, 0.30) 0%,
-    rgba(247, 242, 228, 0.10) 40%,
-    rgba(247, 242, 228, 0.44) 78%,
-    rgba(247, 242, 228, 0.78) 100%);
-}
-/* 로고는 움직이지 않는다 — 애니메이션 없음, 즉시 그 자리에 */
+/* 로고는 움직이지 않는다 — 오른쪽 사이드, 배경 없이 사진 위에 바로 */
 .hero2__brand {
-  position: relative; z-index: 1;
-  width: min(44rem, calc(100% - 2 * var(--gutter)));
-  padding: clamp(3.2rem, 9vh, 5rem) clamp(1.4rem, 5vw, 3rem);
-  text-align: center;
-  background: radial-gradient(closest-side,
-    rgba(247, 242, 228, 0.94) 0%,
-    rgba(247, 242, 228, 0.90) 64%,
-    rgba(247, 242, 228, 0) 100%);
+  position: absolute;
+  z-index: 1;
+  right: clamp(1.2rem, 6vw, 5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  max-width: min(40vw, 26rem);
 }
 .hero2__logo {
   display: block;
-  width: clamp(16rem, 46vw, 30rem);
+  width: clamp(14rem, 32vw, 27rem);
   height: auto;
-  margin: 0 auto;
-  filter: drop-shadow(0 2px 18px rgba(247, 242, 228, 0.9));
+  margin: 0 0 0 auto;
+  filter: drop-shadow(0 1px 3px rgba(247, 242, 228, 0.9))
+          drop-shadow(0 2px 22px rgba(247, 242, 228, 0.8));
 }
 .hero2__line {
-  margin: 1.1rem auto 0;
-  text-shadow: 0 1px 12px rgba(247, 242, 228, 0.95), 0 0 4px rgba(247, 242, 228, 0.9);
-  max-width: 32rem;
-  font-size: clamp(0.95rem, 2.4vw, 1.05rem);
-  color: var(--ink-soft);
+  margin: 1rem 0 0 auto;
+  max-width: 23rem;
+  text-wrap: balance;
+  font-size: clamp(0.9rem, 2.2vw, 1rem);
+  color: var(--ink);
+  text-shadow: 0 0 4px rgba(247, 242, 228, 0.95), 0 1px 14px rgba(247, 242, 228, 0.9);
 }
 .hero2__line strong { color: var(--blue); font-weight: 500; }
-/* 계절 라벨 — 사진과 같은 박자로 좌하단에서 교체 */
-.hero2__seasons {
-  position: absolute;
-  left: var(--gutter);
-  bottom: clamp(0.9rem, 2.4vh, 1.4rem);
-  z-index: 1;
-  margin: 0;
-  height: 1.4em;
-  width: min(24rem, calc(100% - 2 * var(--gutter)));
-}
-.hero2__seasons span {
-  position: absolute; inset: 0;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--ink);
-  text-shadow: 0 1px 10px rgba(247, 242, 228, 0.9);
-  opacity: 0;
-  animation: hero2Label 39s cubic-bezier(.4,0,.3,1) infinite;
-}
-@keyframes hero2Label {
-  0%          { opacity: 0; }
-  2.6%, 14%   { opacity: 1; }
-  16.4%, 100% { opacity: 0; }
-}
-.hero2__seasons span:nth-child(1) { animation-delay: -0.5s; }
-.hero2__seasons span:nth-child(2) { animation-delay: 6s; }
-.hero2__seasons span:nth-child(3) { animation-delay: 12.5s; }
-.hero2__seasons span:nth-child(4) { animation-delay: 19s; }
-.hero2__seasons span:nth-child(5) { animation-delay: 25.5s; }
-.hero2__seasons span:nth-child(6) { animation-delay: 32s; }
-@media (min-width: 900px) {
-  .hero2__seasons { left: max(var(--gutter), calc(50vw - 24rem)); }
-}
 @media (max-width: 699px) {
   .hero2 { min-height: min(calc(100svh - 4rem), 40rem); }
-  .hero2__brand {
-    width: min(24rem, calc(100% - 2 * var(--gutter)));
-    padding: clamp(1.8rem, 4.5vh, 2.6rem) 1.2rem;
-    background: radial-gradient(closest-side,
-      rgba(247, 242, 228, 0.94) 0%,
-      rgba(247, 242, 228, 0.88) 58%,
-      rgba(247, 242, 228, 0) 100%);
-  }
-  .hero2__logo { width: min(15.5rem, 82vw); }
-  .hero2__seasons span { font-size: 0.75rem; letter-spacing: 0.1em; }
+  .hero2__brand { right: var(--gutter); max-width: 78vw; }
+  .hero2__logo { width: min(13.5rem, 62vw); }
+  .hero2__line { font-size: 0.85rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero2__frame, .hero2__seasons span { animation: none; opacity: 0; }
-  .hero2__frame:nth-child(1), .hero2__seasons span:nth-child(1) { opacity: 1; }
+  .hero2__frame { animation: none; opacity: 0; }
+  .hero2__frame:nth-child(1) { opacity: 1; }
 }
 /* 시안 비교 필 */
 .ab-pill {
