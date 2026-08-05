@@ -2325,18 +2325,22 @@ body { line-height: 1.75; }
   width: 100%; height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: hero2Cycle 39s cubic-bezier(.4,0,.3,1) infinite;
+  animation: hero2Cycle 65s cubic-bezier(.4,0,.3,1) infinite;
 }
-.hero2__frame:nth-child(1) { animation-delay: -0.5s;  object-position: 50% 40%; }
-.hero2__frame:nth-child(2) { animation-delay: 6s;   object-position: 28% 45%; }
-.hero2__frame:nth-child(3) { animation-delay: 12.5s; object-position: 30% 45%; }
-.hero2__frame:nth-child(4) { animation-delay: 19s;  object-position: 28% 50%; }
-.hero2__frame:nth-child(5) { animation-delay: 25.5s; object-position: 38% 55%; }
-.hero2__frame:nth-child(6) { animation-delay: 32s;  object-position: 14% 50%; }
+.hero2__frame:nth-child(1) { animation-delay: -0.5s; object-position: 50% 40%; }
+.hero2__frame:nth-child(2) { animation-delay: 6s; object-position: 28% 45%; }
+.hero2__frame:nth-child(3) { animation-delay: 12.5s; object-position: 45% 50%; }
+.hero2__frame:nth-child(4) { animation-delay: 19s; object-position: 30% 45%; }
+.hero2__frame:nth-child(5) { animation-delay: 25.5s; object-position: 50% 45%; }
+.hero2__frame:nth-child(6) { animation-delay: 32s; object-position: 38% 55%; }
+.hero2__frame:nth-child(7) { animation-delay: 38.5s; object-position: 28% 50%; }
+.hero2__frame:nth-child(8) { animation-delay: 45s; object-position: 30% 45%; }
+.hero2__frame:nth-child(9) { animation-delay: 51.5s; object-position: 50% 50%; }
+.hero2__frame:nth-child(10) { animation-delay: 58s; object-position: 14% 50%; }
 @keyframes hero2Cycle {
   0%          { opacity: 0; }
-  2.6%, 19.3% { opacity: 1; }
-  21.9%, 100% { opacity: 0; }
+  1.6%, 11.6% { opacity: 1; }
+  13.2%, 100% { opacity: 0; }
 }
 /* 로고는 움직이지 않는다 — 오른쪽 사이드, 배경 없이 사진 위에 바로 */
 .hero2__brand {
