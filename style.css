@@ -2332,10 +2332,10 @@ body { line-height: 1.75; }
 .hero2__frame:nth-child(3) { animation-delay: 12.5s; object-position: 45% 50%; }
 .hero2__frame:nth-child(4) { animation-delay: 19s; object-position: 30% 45%; }
 .hero2__frame:nth-child(5) { animation-delay: 25.5s; object-position: 50% 45%; }
-.hero2__frame:nth-child(6) { animation-delay: 32s; object-position: 38% 55%; }
+.hero2__frame:nth-child(6) { animation-delay: 32s; object-position: 50% 50%; }
 .hero2__frame:nth-child(7) { animation-delay: 38.5s; object-position: 28% 50%; }
 .hero2__frame:nth-child(8) { animation-delay: 45s; object-position: 30% 45%; }
-.hero2__frame:nth-child(9) { animation-delay: 51.5s; object-position: 50% 50%; }
+.hero2__frame:nth-child(9) { animation-delay: 51.5s; object-position: 38% 55%; }
 .hero2__frame:nth-child(10) { animation-delay: 58s; object-position: 14% 50%; }
 @keyframes hero2Cycle {
   0%          { opacity: 0; }
@@ -2350,14 +2350,19 @@ body { line-height: 1.75; }
   bottom: clamp(1.6rem, 6vh, 3rem);
   text-align: right;
   max-width: min(40vw, 26rem);
+  padding: 1.6rem 1.8rem;
+  background: radial-gradient(closest-side,
+    rgba(247, 242, 228, 0.72) 0%,
+    rgba(247, 242, 228, 0.52) 55%,
+    rgba(247, 242, 228, 0) 100%);
 }
 .hero2__logo {
   display: block;
   width: clamp(12rem, 26vw, 21rem);
   height: auto;
   margin: 0 0 0 auto;
-  filter: drop-shadow(0 1px 2px rgba(38, 33, 28, 0.45))
-          drop-shadow(0 3px 18px rgba(38, 33, 28, 0.28));
+  filter: drop-shadow(0 1px 2px rgba(38, 33, 28, 0.25))
+          drop-shadow(0 0 16px rgba(247, 242, 228, 0.9));
 }
 .hero2__line {
   margin: 1rem 0 0 auto;
