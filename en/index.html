@@ -30,7 +30,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=86">
+  <link rel="preload" as="image" href="../photos/logo-wide.png" fetchpriority="high">
+  <link rel="stylesheet" href="../style.css?v=87">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -53,22 +54,24 @@
 
   <main id="main">
 
-    <!-- Hero — the photo comes first (photos rotate, the logo stays) -->
-    <section class="hero" id="top">
-      <div class="hero__frames" aria-hidden="true">
-        <img class="hero__frame" src="../photos/hero-01.jpg" alt="" width="555" height="350" fetchpriority="high">
-        <img class="hero__frame" src="../photos/hero-02.jpg" alt="" decoding="async" width="1400" height="840">
-        <img class="hero__frame" src="../photos/hero-03.jpg" alt="" decoding="async" width="660" height="550">
+    <!-- 히어로 — 사진은 흐르고, 로고는 멈춰 있다 (B안 확정 2026-08-03) -->
+    <section class="hero2" id="top">
+      <div class="hero2__frames" aria-hidden="true">
+        <img class="hero2__frame" src="../photos/v2-spring.jpg" alt="" fetchpriority="high" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-summer.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1253">
+        <img class="hero2__frame" src="../photos/v2-lego.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-autumn.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-crown.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-works.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-winter.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-canvas.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-pebbles.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
+        <img class="hero2__frame" src="../photos/v2-smile.jpg" alt="" decoding="async" fetchpriority="low" width="2000" height="1000">
       </div>
-      <div class="hero__over">
-        <div class="assemble" role="img" aria-label="in JOYFULL — full of inner joy">
-          <span class="piece p1"><i></i><b>inner</b></span>
-          <span class="piece p2"><i></i><b>joy</b></span>
-          <span class="piece p3"><i></i><b>full</b></span>
-        </div>
-        <p class="assemble__line"><strong>Full of inner JOY</strong> — that’s what <strong>in:JOYFULL</strong> means. We give you the time and the space for it.</p>
+      <div class="hero2__brand">
+        <img class="hero2__logo" src="../photos/logo-wide.png" alt="in:JOYFULL arts center" width="1600" height="553" fetchpriority="high">
+        <p class="hero2__line">Full of inner JOY — that’s what <strong>in:JOYFULL</strong> means. We give you the time and the space for it.</p>
       </div>
-      <p class="hero__cap">An afternoon in the light — a day at in:JOYFULL</p>
     </section>
 
     <section class="cover">
@@ -84,11 +87,13 @@
       <!-- Things the children actually said -->
       <p class="ticker__q" aria-hidden="true">“</p>
       <p class="ticker" aria-live="off">
-        <span>Today I let a thought run <b>long</b>.</span>
-        <span>I made the character from last night's <b>dream</b>.</span>
+        <span>I made this myself — <b>it’s so pretty</b>.</span>
         <span>I made summer out of <b>clay</b>.</span>
-        <span>Wow — <b>isn't this amazing?</b></span>
+        <span><b>I’m so moved</b>.</span>
+        <span>Wow — <b>isn’t this amazing?</b></span>
         <span>Today I want to experiment with <b>ice and pom-poms</b>.</span>
+        <span><b>I’m happy</b>.</span>
+        <span>Today I stretched a thought out, <b>nice and long</b>.</span>
         <span>I just let my hands <b>move</b>.</span>
       </p>
     </section>

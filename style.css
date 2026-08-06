@@ -1442,7 +1442,7 @@ h2 strong, h2 b { font-weight: 700; }
   font-size: 0.95rem;
   color: var(--ink-soft);
   opacity: 0;
-  animation: cycle2 27s infinite;  /* 문장 6개 × 4.5s */
+  animation: cycle2 36s infinite;  /* 문장 8개 × 4.5s */
   animation-delay: calc(4.7s + var(--d, 0s));
 }
 .ticker span:nth-child(1) { --d: 0s; }
@@ -1451,11 +1451,13 @@ h2 strong, h2 b { font-weight: 700; }
 .ticker span:nth-child(4) { --d: 13.5s; }
 .ticker span:nth-child(5) { --d: 18s; }
 .ticker span:nth-child(6) { --d: 22.5s; }
+.ticker span:nth-child(7) { --d: 27s; }
+.ticker span:nth-child(8) { --d: 31.5s; }
 .ticker b { color: var(--blue); font-weight: 500; }
 @keyframes cycle2 {
   0% { opacity: 0; transform: translateY(8px); }
-  2%, 14.5% { opacity: 1; transform: none; }
-  16.5%, 100% { opacity: 0; transform: translateY(-8px); }
+  1.5%, 10.9% { opacity: 1; transform: none; }
+  12.4%, 100% { opacity: 0; transform: translateY(-8px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .assemble, .piece, .piece b, .assemble__line, .head span, .cover .cover__sub, .ticker, .ticker__q { animation: none; }
