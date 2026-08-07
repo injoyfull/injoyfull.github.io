@@ -3193,18 +3193,6 @@ body { background: #FFFFFF; }
   overflow: hidden;
   isolation: isolate;
 }
-.maker::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: -10%;
-  bottom: -14%;
-  width: min(52rem, 88%);
-  aspect-ratio: 1600 / 553;
-  background: url("photos/logo-wide.png") no-repeat left bottom / contain;
-  opacity: 0.038;
-  pointer-events: none;
-}
 .maker__in {
   position: relative;
   display: grid;
@@ -3274,4 +3262,67 @@ body { background: #FFFFFF; }
 .sec--why .why__photo figcaption { margin-top: 0.7rem; flex: none; }
 @media (max-width: 899px) {
   .sec--why .why__photo img { height: auto; max-height: 22rem; }
+}
+
+/* ============================================================
+   v3.3 — 라인 내브 · 타입 비율 축소 (2026-08-08 한나님)
+   ============================================================ */
+/* 내브: 알약 → 라인. 밑줄이 자라나는 언더라인 인디케이터 */
+.mast--v3 .mast__nav { gap: clamp(0.9rem, 2.2vw, 1.7rem); }
+.mast--v3 .nv {
+  border: none;
+  border-radius: 0;
+  padding: 0.25rem 0.1rem;
+  background: none;
+  align-items: flex-start;
+  gap: 0.14rem;
+  position: relative;
+}
+.mast--v3 .nv::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15rem;
+  height: 2px;
+  width: 100%;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s cubic-bezier(.2,.7,.3,1);
+}
+.mast--v3 .nv:hover, .mast--v3 .nv:focus-visible { background: none; transform: none; }
+.mast--v3 .nv:hover::after, .mast--v3 .nv:focus-visible::after, .mast--v3 .nv--now::after { transform: scaleX(1); }
+.mast--v3 .nv--now { background: none; }
+/* 한글·영문 비율 — 영문을 한 단계 키우고 같은 왼끝 */
+.mast--v3 .nv b { font-size: 0.98rem; }
+.mast--v3 .nv span { font-size: 0.66rem; letter-spacing: 0.13em; color: rgba(38, 33, 28, 0.48); }
+/* 예약만 채운 알약 유지 (유일한 액션 강조) */
+.mast--v3 .nv--go {
+  background: var(--blue);
+  border-radius: 999px;
+  padding: 0.42rem 1.05rem;
+  align-items: center;
+}
+.mast--v3 .nv--go::after { content: none; }
+.mast--v3 .nv--go:hover { background: #005699; transform: translateY(-2px); }
+
+/* 타입 비율 축소 — "글자들이 많이 큰 것 같아" */
+.hero3__head .l b { font-size: clamp(1.9rem, 5.6vw, 3.3rem); }
+.hero3__sub { font-size: clamp(0.95rem, 2.3vw, 1.08rem); }
+.answer__what { font-size: clamp(1.3rem, 3.7vw, 2rem); }
+.beat h2.serif, .sec--letters h2.serif, .maker h2.serif { font-size: clamp(1.4rem, 3.4vw, 2rem); }
+.phead h1 { font-size: clamp(1.8rem, 4.6vw, 2.6rem); }
+.wv__num { font-size: clamp(2.2rem, 5.6vw, 3rem); }
+.tez__card b { font-size: 1.22rem; }
+
+/* 어바웃 사진 — 얼굴 없는 컷 2장 스택 (2026-08-08: 아이 얼굴 원칙 준수) */
+.sec--why .why { grid-auto-rows: 1fr; }
+.why__photo--duo { gap: 0.8rem; height: 100%; min-height: 0; }
+.sec--why .why__photo--duo img {
+  flex: 1 1 0;
+  min-height: 0;
+  height: auto;
+}
+@media (min-width: 900px) {
+  .sec--why .why__photo--duo { max-height: calc(100% - 0px); overflow: hidden; }
 }
