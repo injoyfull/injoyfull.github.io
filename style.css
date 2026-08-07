@@ -3242,3 +3242,36 @@ body { background: #FFFFFF; }
 .mast--v3 .mast__logo { gap: 0.55rem; font-size: 1.12rem; font-weight: 700; }
 .mast--v3 .mast__logo img { width: 42px; height: 42px; }
 @media (max-width: 699px) { .mast--v3 .mast__logo img { width: 36px; height: 36px; } }
+
+/* ============================================================
+   로고 사용 규칙 (2026-08-08)
+   마크(mark.png, 정사각) = 좁은 자리의 서명 — 내브·파비콘·앱 아이콘
+   가로형(logo-wide.png) = 브랜드를 온전히 — 푸터·워터마크·공유 카드
+   ============================================================ */
+.mast--v3 .mast__logo img { border-radius: 0.35rem; }
+.colophon__wordmark {
+  width: min(15rem, 62vw);
+  height: auto;
+  display: block;
+  margin: 0 0 0.9rem;
+}
+.colophon__name { margin-bottom: 0.6rem; display: block; }
+.colophon__wordmark { flex: none; }
+
+/* 어바웃 — 사진 높이를 본문 블록에 맞춘다 (2026-08-08) */
+.sec--why .why__hi { margin: 0 0 1.6rem; }
+.sec--why .why { align-items: stretch; }
+.sec--why .why__photo { display: flex; flex-direction: column; margin: 0; }
+.sec--why .why__photo img {
+  width: 100%;
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+  object-fit: cover;
+  object-position: 50% 35%;
+  border-radius: 0.9rem;
+}
+.sec--why .why__photo figcaption { margin-top: 0.7rem; flex: none; }
+@media (max-width: 899px) {
+  .sec--why .why__photo img { height: auto; max-height: 22rem; }
+}
