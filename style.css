@@ -2400,3 +2400,199 @@ body { line-height: 1.75; }
   box-shadow: 0 4px 18px rgba(38, 33, 28, 0.25);
 }
 .ab-pill:hover { background: var(--blue); }
+
+/* ============================================================
+   v3 — 흰 바탕 + 인조이풀 색이 주인공 (2026-08-08)
+   한나님: "아이보리를 빼야 할 것 같아. 인조이풀 컬러가 돋보이게.
+   클릭할 수 있다는 느낌. 키즈 분위기!"
+   ============================================================ */
+body { background: #FFFFFF; }
+.hero2 { background: #FFFFFF; }
+#pscr, #letters, #why, .sec--doors {
+  border-top-color: rgba(0, 102, 179, 0.10);
+  border-bottom-color: rgba(0, 102, 179, 0.10);
+}
+
+/* ── 내브바: 한글 크게 + 옅은 영문, 눌리는 알약 ── */
+.mast--v3 { background: #FFFFFF; }
+.mast--v3 .mast__nav { display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+.nv {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.42rem 0.95rem;
+  border: 1.5px solid rgba(0, 102, 179, 0.25);
+  border-radius: 999px;
+  text-decoration: none;
+  line-height: 1.15;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.nv b { font-weight: 700; font-size: 0.95rem; color: var(--ink); letter-spacing: 0.01em; }
+.nv span { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.18em; color: rgba(38, 33, 28, 0.42); }
+.nv:hover, .nv:focus-visible {
+  background: #FFD971;
+  border-color: #FFD971;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.nv--go { background: var(--blue); border-color: var(--blue); }
+.nv--go b { color: #FFFFFF; }
+.nv--go span { color: rgba(255, 255, 255, 0.72); }
+.nv--go:hover, .nv--go:focus-visible { background: #005699; border-color: #005699; transform: translateY(-2px); }
+.nv--go:hover b { color: #FFFFFF; }
+.nv--now { background: rgba(0, 102, 179, 0.08); }
+@media (max-width: 699px) {
+  .nv { padding: 0.36rem 0.8rem; }
+  .nv b { font-size: 0.88rem; }
+}
+
+/* ── 답 밴드: "여기 뭐 하는 곳이야?" — 버터옐로우, 키즈 에너지 ── */
+.answer {
+  background: #FFD971;
+  padding: clamp(2.6rem, 7vh, 4.2rem) var(--gutter);
+}
+.answer__in { max-width: 72rem; margin: 0 auto; }
+.answer__what {
+  margin: 0 0 0.9rem;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 4.6vw, 2.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #141414;
+}
+.answer__what strong { color: #0B4C86; }
+.answer__how { margin: 0 0 1.6rem; font-size: clamp(1rem, 2.6vw, 1.15rem); line-height: 1.75; color: rgba(20, 20, 20, 0.82); }
+.answer__how strong { font-weight: 700; color: #141414; }
+.answer__cta { margin: 0; display: flex; gap: 0.7rem; flex-wrap: wrap; }
+
+/* 공용 버튼 — 눌리는 느낌 */
+.abtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.78rem 1.4rem;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+  border: 1.5px solid rgba(38, 33, 28, 0.16);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.abtn:hover, .abtn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(38, 33, 28, 0.16);
+  text-decoration: none;
+}
+.abtn--blue { background: var(--blue); border-color: var(--blue); color: #FFFFFF; }
+.abtn--blue:hover { background: #005699; color: #FFFFFF; }
+
+/* ── 랜딩 프로그램 티저: 통카드 링크, 호버가 말해준다 ── */
+.tez {
+  list-style: none;
+  margin: 1.8rem 0 1.6rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+}
+@media (max-width: 699px) { .tez { grid-template-columns: 1fr; } }
+.tez__card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "name arrow" "who arrow" "line arrow";
+  align-items: center;
+  column-gap: 0.8rem;
+  padding: 1.25rem 1.4rem;
+  border: 1.5px solid rgba(0, 102, 179, 0.22);
+  border-radius: 1.1rem;
+  background: #FFFFFF;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+.tez__card b { grid-area: name; font-size: 1.35rem; font-weight: 700; line-height: 1.25; }
+.tez__card i { grid-area: who; font-style: normal; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; color: var(--blue); margin-top: 0.2rem; }
+.tez__card em { grid-area: line; font-style: normal; font-size: 0.92rem; color: var(--ink-soft); margin-top: 0.45rem; }
+.tez__card span { grid-area: arrow; font-size: 1.3rem; color: rgba(0, 102, 179, 0.5); transition: transform 0.16s ease, color 0.16s ease; }
+.tez__card--grown { border-color: rgba(214, 168, 60, 0.5); }
+.tez__card--grown i { color: #8a6b1f; }
+.tez__card:hover, .tez__card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0, 102, 179, 0.14);
+  background: #F2F8FE;
+  border-color: var(--blue);
+  text-decoration: none;
+}
+.tez__card--grown:hover, .tez__card--grown:focus-visible { background: #FFF6DC; border-color: #D6A83C; box-shadow: 0 10px 26px rgba(214, 168, 60, 0.2); }
+.tez__card:hover span { transform: translateX(4px); color: var(--blue); }
+.tez__more { margin: 0; }
+
+/* ── 프로그램 허브(/programs/) ── */
+.pv3 { background: #FFFFFF; }
+.phead {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(2.4rem, 6vh, 4rem) var(--gutter) 0.5rem;
+}
+.phead h1 {
+  margin: 0 0 1rem;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+.phead__en { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em; color: rgba(0, 102, 179, 0.55); }
+.phead__lede { margin: 0 0 1.6rem; font-size: clamp(1.02rem, 2.7vw, 1.2rem); line-height: 1.8; }
+.phead__lede strong { color: var(--blue); }
+.phead__note { margin: 1.2rem 0 0; font-size: 0.9rem; color: var(--ink-soft); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.chip {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(0, 102, 179, 0.25);
+  background: #FFFFFF;
+  text-decoration: none;
+  line-height: 1.2;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.chip b { font-size: 0.92rem; font-weight: 700; color: var(--ink); }
+.chip span { font-size: 0.68rem; color: var(--ink-soft); }
+.chip:hover, .chip:focus-visible { background: #FFD971; border-color: #FFD971; transform: translateY(-2px); text-decoration: none; }
+.sec--ptable { padding-top: 1.6rem; }
+/* 카드 호버 — 커서가 닿으면 떠오르고 물든다 */
+.pv3 .pcard { transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease; }
+.pv3 .pcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 102, 179, 0.13);
+}
+.pv3 .pcard--kid:hover { background: #F2F8FE; border-color: var(--blue); }
+.pv3 .pcard--grown:hover { background: #FFF6DC; border-color: #D6A83C; box-shadow: 0 12px 30px rgba(214, 168, 60, 0.18); }
+.pv3 .pcard--open:hover { background: #FAFAF7; border-color: rgba(38, 33, 28, 0.3); box-shadow: 0 12px 30px rgba(38, 33, 28, 0.1); }
+.pv3 .pcard { scroll-margin-top: 6rem; }
+.pfoot {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.2rem var(--gutter) 3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  border-top: 1px solid rgba(0, 102, 179, 0.12);
+}
+.pfoot a { font-weight: 700; color: var(--blue); }
+@media (prefers-reduced-motion: reduce) {
+  .nv, .abtn, .tez__card, .chip, .pv3 .pcard { transition: none; }
+  .nv:hover, .abtn:hover, .tez__card:hover, .chip:hover, .pv3 .pcard:hover { transform: none; }
+}
