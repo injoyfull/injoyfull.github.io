@@ -3326,3 +3326,12 @@ body { background: #FFFFFF; }
 @media (min-width: 900px) {
   .sec--why .why__photo--duo { max-height: calc(100% - 0px); overflow: hidden; }
 }
+
+/* 쪼이 서명 + 맛 팔레트 (2026-08-08, 블로그 '몰입의 맛 ①' 반영) */
+.ticker__by { margin: 0.7rem 0 0; font-size: 0.78rem; font-weight: 700; color: rgba(38, 33, 28, 0.55); }
+.ticker__by span { font-weight: 400; color: rgba(38, 33, 28, 0.42); }
+.colophon__line em { font-style: italic; font-family: "Cormorant Garamond", var(--serif); font-size: 1.1em; }
+.taste { font-weight: 700; padding-bottom: 0.1em; }
+.taste--y { background: linear-gradient(transparent 68%, rgba(255, 217, 113, 0.85) 68%); }
+.taste--g { background: linear-gradient(transparent 68%, rgba(140, 154, 78, 0.45) 68%); }
+.taste--b { background: linear-gradient(transparent 68%, rgba(0, 102, 179, 0.3) 68%); }
