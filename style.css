@@ -2895,3 +2895,82 @@ body { background: #FFFFFF; }
 .stat--open   { background: var(--blue); color: #FFFFFF; }
 .stat--always { background: rgba(0, 102, 179, 0.1); color: var(--blue); }
 .stat--soon   { background: rgba(255, 217, 113, 0.55); color: #6b5310; }
+
+/* ============================================================
+   리얼 후기 — 월드비전식 스탯 카드 + 스와이프 (2026-08-08, 설문 근거)
+   ============================================================ */
+.wv {
+  list-style: none;
+  margin: 1.8rem 0 0.5rem;
+  padding: 0.4rem 0.2rem 1rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.wv::-webkit-scrollbar { display: none; }
+.wv__card {
+  flex: 0 0 min(21rem, 82vw);
+  scroll-snap-align: start;
+  padding: 1.6rem 1.6rem 1.4rem;
+  border: 1.5px solid rgba(38, 33, 28, 0.12);
+  border-radius: 1.2rem;
+  background: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(38, 33, 28, 0.06);
+}
+.wv__chip {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border: 1.5px solid rgba(0, 102, 179, 0.35);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.wv__num {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 7vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--blue);
+  margin-bottom: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+.wv__num i { font-style: normal; font-size: 0.45em; font-weight: 800; margin-left: 0.1em; }
+.wv__card p { margin: 0; font-size: 0.95rem; line-height: 1.65; color: var(--ink-soft); }
+.wv__card p strong { color: var(--ink); }
+.wv__card:nth-child(2) .wv__num { color: #D6A83C; }
+.wv__card:nth-child(2) .wv__chip { border-color: rgba(214, 168, 60, 0.5); color: #8a6b1f; }
+.wv__hint { margin: 0 0 1.6rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(38, 33, 28, 0.4); }
+@media (min-width: 900px) { .wv__hint { display: none; } .wv { overflow-x: visible; } .wv__card { flex: 1 1 0; } }
+
+/* 어머니들의 문장 — 가로 스와이프 카드 */
+.qcar {
+  list-style: none;
+  margin: 0 0 2.4rem;
+  padding: 0.4rem 0.2rem 1rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.qcar::-webkit-scrollbar { display: none; }
+.qcar li {
+  flex: 0 0 min(26rem, 86vw);
+  scroll-snap-align: start;
+  padding: 1.5rem 1.6rem;
+  background: #FFFBEE;
+  border: 1px solid rgba(214, 168, 60, 0.28);
+  border-radius: 0.4rem 1.4rem 1.4rem 1.4rem;
+  box-shadow: 0 6px 18px rgba(38, 33, 28, 0.07);
+}
+.qcar li:nth-child(even) { background: #F4F9FE; border-color: rgba(0, 102, 179, 0.2); border-radius: 1.4rem 0.4rem 1.4rem 1.4rem; }
+.qcar blockquote { margin: 0; font-family: var(--serif); font-size: 1.02rem; line-height: 1.75; color: var(--ink); }
+.qcar blockquote strong { color: var(--blue); }
