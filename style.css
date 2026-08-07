@@ -3041,3 +3041,63 @@ body { background: #FFFFFF; }
   .pm { scale: 0.88; }
   .pm--held { scale: 1; }
 }
+
+/* ============================================================
+   프로그램 아코디언 — 한 화면 목록, 눌러서 펼치기 (2026-08-08)
+   ============================================================ */
+.sec--acc { padding-top: 0.6rem; }
+.acc__group {
+  margin: 2.4rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.acc__group span { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; color: rgba(0, 102, 179, 0.5); margin-left: 0.5rem; }
+.acc { border-bottom: 1px solid rgba(38, 33, 28, 0.12); }
+.acc:first-of-type, .acc__group + .acc { border-top: 1px solid rgba(38, 33, 28, 0.12); }
+.acc summary {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1fr) minmax(8rem, 1.2fr) auto auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 0.4rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.16s ease, padding-left 0.16s ease;
+}
+.acc summary::-webkit-details-marker { display: none; }
+.acc summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgba(0, 102, 179, 0.55);
+  transition: transform 0.2s ease;
+  justify-self: end;
+}
+.acc[open] summary::after { transform: rotate(45deg); }
+.acc summary b { font-size: clamp(1.1rem, 2.6vw, 1.35rem); font-weight: 700; letter-spacing: -0.01em; }
+.acc summary i { font-style: normal; font-size: 0.85rem; color: var(--ink-soft); }
+.acc summary em { font-style: normal; font-size: 0.85rem; font-weight: 700; color: var(--blue); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.acc summary .stat { white-space: nowrap; }
+.acc summary:hover, .acc summary:focus-visible {
+  background: linear-gradient(90deg, rgba(255, 217, 113, 0.35), rgba(255, 217, 113, 0));
+  padding-left: 0.9rem;
+}
+.acc summary:hover b { color: var(--blue); }
+.acc__body { padding: 0.3rem 0.4rem 1.6rem; max-width: 46rem; }
+.acc__body > p:first-child { margin-top: 0.2rem; }
+.acc__body .spec { margin: 1rem 0; }
+.acc__note { font-size: 0.88rem; color: var(--ink-soft); }
+.acc__cta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.1rem 0 0; }
+@media (max-width: 799px) {
+  .acc summary {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "name chip" "who chip" "price chip";
+    row-gap: 0.15rem;
+  }
+  .acc summary b { grid-area: name; }
+  .acc summary i { grid-area: who; }
+  .acc summary em { grid-area: price; }
+  .acc summary .stat { grid-area: chip; align-self: start; }
+  .acc summary::after { display: none; }
+}

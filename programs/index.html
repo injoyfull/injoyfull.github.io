@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=97">
+  <link rel="stylesheet" href="../style.css?v=98">
 </head>
 <body class="pv3">
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -53,113 +53,113 @@
 
   <main id="main">
 
-    <!-- 프로그램 허브 — 카드 테이블, 한눈에 (2026-08-08) -->
+    <!-- 프로그램 — 한 화면 목록 + 눌러서 펼치기 (2026-08-08, 네이버 예약 문법) -->
     <section class="phead">
       <h1>프로그램 <span class="phead__en">PROGRAMS</span></h1>
-      <p class="phead__lede">인조이풀은 <strong>오픈형 자율 창작 워크숍</strong>이에요.<br>
-      답이 정해지지 않은 재료를 만나, <strong>나만의 답</strong>을 만들어요.</p>
-      <nav class="chips rv" aria-label="연령별 바로가기">
-        <a class="chip" href="#toddler"><b>토들러팝</b><span>18~30개월</span></a>
-        <a class="chip" href="#kids"><b>키즈팝</b><span>5~7세</span></a>
-        <a class="chip" href="#cred"><b>크리디팝</b><span>8세 이상</span></a>
-        <a class="chip" href="#old"><b>올드팝 · 시니어팝</b><span>성인 · 시니어</span></a>
-        <a class="chip" href="#rent"><b>공간 대여</b><span>소그룹</span></a>
-        <a class="chip" href="#partner"><b>출강 · 협업</b><span>기관</span></a>
-      </nav>
-      <p class="phead__note">모든 프로그램은 <strong>예약제·멤버십</strong>으로 굴러가요 — 자리를 가진 사람이 계절을 함께 보내요.<br>첫 타임을 해보고 이어갈지 정하실 수 있어요(체험도 회차 비용이 있어요). 정원·일정은 시즌마다 달라져요.</p>
+      <p class="phead__lede">누르면 열려요. <strong>천천히 골라보세요.</strong></p>
     </section>
 
-    <section class="sec sec--ptable" aria-label="프로그램 카드">
-      <!-- 색이 대상을 말한다: 블루=아이, 옐로우=어른 (2026-07-25) -->
-      <ol class="pgrid">
-        <li class="pcard rv pcard--kid pcard--wide" id="kids">
-          <p class="pcard__stat"><span class="stat stat--open">모집 중 · 선착순</span></p>
-          <p class="pcard__who">5~7세 · 감각깨우기 워크숍 멤버십</p>
-          <h2 class="pcard__name serif"><span>키즈팝</span></h2>
-          <p class="pcard__desc">요일마다 다른 랩(LAB)에서, 감각을 깨워 하나의 창작을 완성해요.</p>
+    <section class="sec sec--acc" aria-label="프로그램 목록">
+
+      <p class="acc__group">키즈 <span>KIDS</span></p>
+
+      <details class="acc" id="toddler">
+        <summary>
+          <b>토들러팝</b><i>18~30개월 · 보호자와</i>
+          <em>회당 20,000원</em><span class="stat stat--always">상시 예약</span>
+        </summary>
+        <div class="acc__body">
+          <p>보호자와 함께하는 감각·창의 놀이. 아이의 첫 재료 경험이에요.</p>
+          <dl class="spec">
+            <dt>방식</dt><dd>사전 예약제 · 소그룹</dd>
+            <dt>비용</dt><dd>회당 20,000원 <span>(재료에 따라 재료비 추가될 수 있어요)</span></dd>
+          </dl>
+          <p class="acc__cta"><a class="abtn abtn--blue" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">네이버로 예약 <span aria-hidden="true">→</span></a></p>
+        </div>
+      </details>
+
+      <details class="acc" id="kids">
+        <summary>
+          <b>키즈팝</b><i>5~7세 · 워크숍 멤버십</i>
+          <em>월 4회 140,000원</em><span class="stat stat--open">모집 중 · 선착순</span>
+        </summary>
+        <div class="acc__body">
+          <p>요일마다 다른 랩(LAB)에서, 감각을 깨워 하나의 창작을 완성해요.<br>세 요일 모두 <strong>감각·창작</strong>으로 진행돼요.</p>
           <dl class="spec">
             <dt>시간</dt><dd>화 · 목 16:30–18:00 <span>(90분)</span><br>수 17:30–19:00 <span>(90분)</span></dd>
-            <dt>구성</dt><dd>세 요일 모두 <strong>감각·창작</strong>으로 진행해요. 요일마다 랩(LAB)이 달라져요.</dd>
-            <dt>비용</dt><dd>어느 요일이든 <strong>월 4회 140,000원</strong> <span>(교구비 1만원 포함)</span><br>1회 참여 <strong>40,000원</strong></dd>
-            <dt>정원</dt><dd><strong>소그룹 · 선착순 마감</strong> — 이번 시즌 남은 자리는 예약창에서 확인돼요</dd>
-            <dt>신청</dt><dd>네이버 예약 → 요일 선택 · 멤버십 전환은 현장 또는 카카오로</dd>
-            <dt>참고</dt><dd>멤버십이지만 <strong>1회 참여도 가능</strong>해요(예약제) · 맞춤형 소그룹 가능</dd>
+            <dt>비용</dt><dd>월 4회 140,000원 <span>(교구비 포함)</span> · 1회 참여 40,000원</dd>
+            <dt>정원</dt><dd><span>소그룹 · 선착순 — 남은 자리는 예약창에서</span></dd>
           </dl>
-          <p class="pcard__note">첫 타임을 먼저 해보고 정하셔도 돼요. 체험도 1회 참여(40,000원)로 진행돼요.</p>
-          <a class="prog__cta" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">체험 예약 — 네이버 <span aria-hidden="true">→</span></a>
-        </li>
-        <li class="pcard rv pcard--grown pcard--wide" id="old">
-          <p class="pcard__stat"><span class="stat stat--open">원데이 오픈</span> <span class="stat stat--soon">6주 과정 · 다음 기수 일정 조율 중</span></p>
-          <p class="pcard__who">성인 · 시니어 · 예술 경험이 없어도</p>
-          <h2 class="pcard__name serif"><span>올드팝<br>시니어팝</span></h2>
-          <p class="pcard__desc">많은 분이 <strong>“나는 창의적이지 않아”</strong>라고 하세요.<br>가려져 있을 뿐이에요. 기술을 배우는 수업이 아니라, 손끝으로 잊고 있던 내 이야기를 다시 발견하는 자리예요.</p>
-          <dl class="spec">
-            <dt>과정</dt><dd><strong>예술로 찾는 나다움</strong> · 6주 · 주 1회 · 회차당 120분</dd>
-            <dt>구성</dt><dd>about ME — 채워짐 · 스며짐 · 드러남<br>around ME — 어울림 · 모아짐 · 나다움</dd>
-            <dt>정원</dt><dd><strong>최대 4명</strong> · 소규모 — 4명이 모이면 기수가 열려요</dd>
-            <dt>신청</dt><dd>카카오로 이름·희망 요일을 남겨주시면, 기수가 열릴 때 먼저 연락드려요</dd>
-            <dt>비용</dt><dd><strong>6주 과정 240,000원</strong> <span>(재료비 포함)</span></dd>
-            <dt>원데이</dt><dd><strong>30,000원</strong> · 첫 걸음 ‘채워짐’<br><span>나는 오늘 어떤 색으로 채워져 있나?</span></dd>
-          </dl>
-          <p class="pcard__note">준비물은 무지 노트와 펜 하나면 돼요. 원데이로 먼저 와보고 6주를 정하셔도 좋아요. 시니어팝은 같은 여정을 감성과 기억 회복에 맞춰 진행해요.</p>
-          <p class="pcard__cta2"><a class="prog__cta" href="https://in-joy-full.notion.site/256c12af0a36806c8ebfe9baefae88ca" rel="noopener" target="_blank">6주 과정 자세히 <span aria-hidden="true">→</span></a>
-          <a class="prog__cta" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">일정 문의 <span aria-hidden="true">→</span></a></p>
-        </li>
-        <li class="pcard rv pcard--kid" id="toddler">
-          <p class="pcard__stat"><span class="stat stat--always">상시 예약</span></p>
-          <p class="pcard__who">18~30개월 · 보호자와 함께</p>
-          <h2 class="pcard__name serif"><span>토들러팝</span></h2>
-          <p class="pcard__desc">보호자와 함께하는 감각·창의 놀이. 아이의 첫 재료 경험.</p>
-          <dl class="spec">
-            <dt>정원</dt><dd>소그룹 — 아이와 보호자가 함께 앉을 수 있는 만큼만</dd>
-            <dt>비용</dt><dd>회당 20,000원</dd>
-            <dt>신청</dt><dd>사전 예약제 — 네이버에서 날짜 선택</dd>
-          </dl>
-          <p class="pcard__note">*재료에 따라 재료비가 추가될 수 있어요.</p>
-          <a class="prog__cta" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">네이버로 예약 <span aria-hidden="true">→</span></a>
-        </li>
-        <li class="pcard rv pcard--kid" id="cred">
-          <p class="pcard__stat"><span class="stat stat--always">상시 예약</span></p>
-          <p class="pcard__who">8세 이상 · 시간예약제 창작공간</p>
-          <h2 class="pcard__name serif"><span>크리디팝</span></h2>
-          <p class="pcard__desc">아트·스토리코딩, 나만의 아웃풋 창작공간. 무엇을 만들지 아이가 정해요 — 수업료가 아니라 <strong>공간사용비</strong>예요.</p>
-          <dl class="spec">
-            <dt>운영</dt><dd>월·화·수·금 · 시간 예약제</dd>
-            <dt>정원</dt><dd>시간당 소수 — 자리 겹치지 않게 예약으로 조율해요</dd>
-            <dt>비용</dt><dd>1회 15,000원<br>크리디패스 12회 180,000원<br>20회 300,000원 <span>(+1회 추가)</span></dd>
-            <dt>신청</dt><dd>카카오채널로 시간 예약</dd>
-          </dl>
-          <a class="prog__cta" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">이용 문의 <span aria-hidden="true">→</span></a>
-        </li>
-      </ol>
+          <p class="acc__note">첫 타임을 해보고 정하셔도 돼요 — 체험도 1회 비용(40,000원)이에요.</p>
+          <p class="acc__cta"><a class="abtn abtn--blue" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">체험 예약 — 네이버 <span aria-hidden="true">→</span></a></p>
+        </div>
+      </details>
 
-      <!-- 성격이 다른 둘 — 나이가 아니라 '판을 여는' 쪽 -->
-      <ul class="pgrid pgrid--open">
-        <li class="pcard rv pcard--open" id="rent">
-          <p class="pcard__stat"><span class="stat stat--always">상시 문의</span></p>
-          <p class="pcard__who">소그룹 모임 · 공간 대여</p>
-          <h2 class="pcard__name serif"><span>공간 대여</span></h2>
-          <p class="pcard__desc">소그룹 모임을 위한 창작 공간 대여(Creative Space Rental).</p>
+      <details class="acc" id="cred">
+        <summary>
+          <b>크리디팝</b><i>8세 이상 · 시간예약제</i>
+          <em>1회 15,000원</em><span class="stat stat--always">상시 예약</span>
+        </summary>
+        <div class="acc__body">
+          <p>아트·스토리코딩, 나만의 아웃풋 창작공간. 무엇을 만들지 아이가 정해요 — 수업료가 아니라 <strong>공간사용비</strong>예요.</p>
           <dl class="spec">
-            <dt>비용</dt><dd>1시간 10,000원</dd>
+            <dt>운영</dt><dd>월 · 화 · 수 · 금 · 시간 예약제</dd>
+            <dt>비용</dt><dd>1회 15,000원 · 크리디패스 12회 180,000원 / 20회 300,000원 <span>(+1회)</span></dd>
           </dl>
-          <a class="prog__cta" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">대여 문의 <span aria-hidden="true">→</span></a>
-        </li>
-        <li class="pcard rv pcard--open" id="partner">
-          <p class="pcard__stat"><span class="stat stat--always">제안 받는 중</span></p>
-          <p class="pcard__who">기업 · 기관 · 학교 · 브랜드</p>
-          <h2 class="pcard__name serif"><span>출강 · 협업</span></h2>
-          <p class="pcard__desc">팀에게 <strong>답이 정해지지 않은 창작 시간</strong>이 필요하다면 — 워크숍·행사·복지 프로그램으로 찾아갑니다. 꿈의스튜디오 ‘하남’ 거점 공모에 <strong>하남대표예술가</strong>로 참여했고, 까붐·아트로버와 판을 만들어 왔어요.</p>
-          <dl class="spec">
-            <dt>형태</dt><dd>1회 워크숍 · 정기 출강 · 공동 기획, 규모와 목적에 맞춰 설계</dd>
-            <dt>신청</dt><dd>메일로 인원·날짜·목적을 보내주시면 제안서로 답해요</dd>
-          </dl>
-          <a class="prog__cta" href="mailto:in.joyfull.kr@gmail.com?subject=%EC%B6%9C%EA%B0%95%C2%B7%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98&body=%EC%9D%B8%EC%9B%90%3A%0A%EB%82%A0%EC%A7%9C%3A%0A%EB%AA%A9%EC%A0%81%3A">제안 보내기 <span aria-hidden="true">→</span></a>
-        </li>
-      </ul>
+          <p class="acc__cta"><a class="abtn abtn--blue" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 시간 예약 <span aria-hidden="true">→</span></a></p>
+        </div>
+      </details>
 
+      <p class="acc__group">어른 <span>ADULTS</span></p>
+
+      <details class="acc" id="old">
+        <summary>
+          <b>올드팝 · 시니어팝</b><i>성인 · 시니어</i>
+          <em>원데이 30,000원</em><span class="stat stat--open">원데이 오픈</span>
+        </summary>
+        <div class="acc__body">
+          <p>많은 분이 <strong>"나는 창의적이지 않아"</strong>라고 하세요. 가려져 있을 뿐이에요.<br>기술 수업이 아니라, 손끝으로 잊고 있던 내 이야기를 다시 발견하는 자리예요.</p>
+          <dl class="spec">
+            <dt>과정</dt><dd>예술로 찾는 나다움 · 6주 · 주 1회 · 120분 <span>— 다음 기수 일정 조율 중</span></dd>
+            <dt>비용</dt><dd>6주 240,000원 <span>(재료비 포함)</span> · 원데이 '채워짐' 30,000원</dd>
+            <dt>정원</dt><dd><span>최대 4명 — 4명이 모이면 기수가 열려요</span></dd>
+          </dl>
+          <p class="acc__note">준비물은 무지 노트와 펜 하나. 시니어팝은 같은 여정을 감성과 기억 회복에 맞춰요.</p>
+          <p class="acc__cta"><a class="abtn abtn--blue" href="https://in-joy-full.notion.site/256c12af0a36806c8ebfe9baefae88ca" rel="noopener" target="_blank">6주 과정 자세히 <span aria-hidden="true">→</span></a>
+          <a class="abtn" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">일정 문의</a></p>
+        </div>
+      </details>
+
+      <p class="acc__group">기업 · 모임 <span>PARTNERS</span></p>
+
+      <details class="acc" id="rent">
+        <summary>
+          <b>공간 대여</b><i>소그룹 모임</i>
+          <em>1시간 10,000원</em><span class="stat stat--always">상시 문의</span>
+        </summary>
+        <div class="acc__body">
+          <p>소그룹 모임을 위한 창작 공간 대여예요.</p>
+          <p class="acc__cta"><a class="abtn abtn--blue" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">대여 문의 <span aria-hidden="true">→</span></a></p>
+        </div>
+      </details>
+
+      <details class="acc" id="partner">
+        <summary>
+          <b>출강 · 협업</b><i>기업 · 기관 · 학교</i>
+          <em>맞춤 설계</em><span class="stat stat--always">제안 받는 중</span>
+        </summary>
+        <div class="acc__body">
+          <p>팀에게 <strong>답이 정해지지 않은 창작 시간</strong>이 필요하다면 — 워크숍 · 행사 · 복지 프로그램으로 찾아갑니다.<br>꿈의스튜디오 '하남' 거점 공모에 <strong>하남대표예술가</strong>로 참여했고, 까붐 · 아트로버와 판을 만들어 왔어요.</p>
+          <dl class="spec">
+            <dt>형태</dt><dd>1회 워크숍 · 정기 출강 · 공동 기획</dd>
+          </dl>
+          <p class="acc__cta"><a class="abtn abtn--blue" href="mailto:in.joyfull.kr@gmail.com?subject=%EC%B6%9C%EA%B0%95%C2%B7%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98&body=%EC%9D%B8%EC%9B%90%3A%0A%EB%82%A0%EC%A7%9C%3A%0A%EB%AA%A9%EC%A0%81%3A">제안 보내기 <span aria-hidden="true">→</span></a></p>
+        </div>
+      </details>
+
+      <p class="phead__note">모든 프로그램은 예약제 · 첫 타임을 해보고 이어갈지 정하실 수 있어요 · 정원과 일정은 시즌마다 달라져요.</p>
       <p class="prog__contact">
-        체험 상담·예약·문의 —
+        상담 · 예약 · 문의 —
         <a href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오채널</a> ·
         <a href="https://www.instagram.com/in.joyfull" rel="me noopener" target="_blank">인스타 DM</a> ·
         <a href="tel:010-2944-8023">010-2944-8023</a>
@@ -172,6 +172,16 @@
     <a href="/">← 인조이풀 홈</a>
     <span>하남 · 오픈형 자율 창작 워크숍</span>
   </footer>
+  <script>
+  (function () {
+    function openHash() {
+      var el = location.hash && document.querySelector(location.hash);
+      if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView({ block: 'start' }); }
+    }
+    window.addEventListener('hashchange', openHash);
+    openHash();
+  })();
+  </script>
   <script>
   (function () {
     var els = document.querySelectorAll('.rv');
