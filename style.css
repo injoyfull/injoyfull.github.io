@@ -2881,3 +2881,17 @@ body { background: #FFFFFF; }
 
 /* 어바웃 페이지도 같은 박자 */
 .pv3 .sec { max-width: 72rem; margin-inline: auto; }
+
+/* 모집 상태 칩 — 프로그램 카드 (2026-08-08) */
+.pcard__stat { margin: 0 0 0.7rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.stat {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.stat--open   { background: var(--blue); color: #FFFFFF; }
+.stat--always { background: rgba(0, 102, 179, 0.1); color: var(--blue); }
+.stat--soon   { background: rgba(255, 217, 113, 0.55); color: #6b5310; }
