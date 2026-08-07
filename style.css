@@ -3432,3 +3432,46 @@ body { background: #FFFFFF; }
 }
 .meet-pill:hover { transform: translateY(-3px) scale(1.04); background: #005699; text-decoration: none; color: #FFFFFF; }
 @media (max-width: 699px) { .meet-pill { width: 4.6rem; height: 4.6rem; font-size: 0.74rem; } }
+
+/* ============================================================
+   개성 장치 (2026-08-08) — 깔끔한데, 인조이풀이게
+   시그니처 = :J 스마일 + 조약돌 (모양은 반복하지 않는다)
+   ============================================================ */
+/* ① 떠 있는 버튼 = 스마일을 품은 조약돌 (월드비전의 하트 자리) */
+.meet-pill {
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 5.8rem;
+  height: 5.8rem;
+  border-radius: 53% 47% 52% 48% / 48% 55% 45% 52%;
+}
+.meet-pill::before {
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("mark.png") center / contain no-repeat;
+  filter: brightness(0) invert(1);   /* 흰 스마일 */
+}
+@media (max-width: 699px) { .meet-pill { width: 5rem; height: 5rem; } .meet-pill::before { width: 1.2rem; height: 1.2rem; } }
+
+/* ② 섹션 라벨 앞 버터 조약돌 점 — 페이지의 맥박 (홀짝으로 모양이 다르다) */
+.sec__mark::before {
+  content: "";
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-right: 0.5em;
+  vertical-align: baseline;
+  background: #FFD971;
+  border-radius: 58% 42% 55% 45% / 52% 58% 42% 48%;
+}
+main section:nth-of-type(even) .sec__mark::before {
+  background: rgba(0, 102, 179, 0.75);
+  border-radius: 42% 58% 45% 55% / 58% 45% 55% 45%;
+}
+
+/* ③ 파란 버튼 = 살짝 삐뚠 조약돌 (기성품이 아니라 손으로 빚은 느낌) */
+.abtn--blue { border-radius: 1.6rem 1.3rem 1.5rem 1.2rem; }
+.meet__door { border-radius: 1.3rem 1rem 1.35rem 1.1rem; }
+.meet__door:nth-child(2) { border-radius: 1rem 1.4rem 1.1rem 1.3rem; }
+.meet__door:nth-child(3) { border-radius: 1.35rem 1.15rem 1rem 1.4rem; }
