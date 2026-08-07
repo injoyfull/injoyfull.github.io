@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="photos/logo-wide.png" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=96">
+  <link rel="stylesheet" href="style.css?v=97">
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -120,6 +120,28 @@
     <!-- 관문: 지금 어떤 마음으로 오셨어요? -->
 
     <!-- ★ 이번 시즌 — 계절마다 이 블록만 갈아끼운다 (지난 시즌은 Popfolio로) ★ -->
+    <!-- 놀이판 — 웹에서 먼저 만나는 오픈엔디드 (2026-08-08) -->
+    <section class="sec beat" id="play">
+      <p class="sec__mark rv"><b class="mk-en">PLAY</b> <span class="mk-ko"><i class="mk-dash">— </i>답이 없는 판</span></p>
+      <h2 class="serif rv">재료를 끌어서, 옮겨보세요.<br><strong>정답은 없어요.</strong></h2>
+      <p class="prose prose--soft rv">마음에 드는 자리를 찾았다면 — 그게 오늘의 작품이에요.<br>인조이풀의 테이블에서는 매일 이런 일이 일어나요.</p>
+      <div class="play__board rv" aria-label="재료 놀이판 — 조각을 드래그해서 자유롭게 놓아보세요">
+        <i class="pm pm--pompom  " style="left:8%;  top:18%; --r:-8deg"></i>
+        <i class="pm pm--pompom2 " style="left:22%; top:62%; --r:5deg"></i>
+        <i class="pm pm--pebble  " style="left:38%; top:24%; --r:12deg"></i>
+        <i class="pm pm--pebble2 " style="left:70%; top:58%; --r:-15deg"></i>
+        <i class="pm pm--stick   " style="left:55%; top:14%; --r:24deg"></i>
+        <i class="pm pm--stick2  " style="left:12%; top:74%; --r:-30deg"></i>
+        <i class="pm pm--button  " style="left:84%; top:22%; --r:0deg"></i>
+        <i class="pm pm--ring    " style="left:47%; top:66%; --r:0deg"></i>
+        <i class="pm pm--clay    " style="left:64%; top:36%; --r:-6deg"></i>
+        <i class="pm pm--clay2   " style="left:28%; top:40%; --r:18deg"></i>
+        <i class="pm pm--tri     " style="left:80%; top:76%; --r:9deg"></i>
+        <i class="pm pm--bead    " style="left:6%;  top:44%; --r:0deg"></i>
+      </div>
+      <p class="play__foot rv">진짜 재료들은 하남에 있어요. <a href="/programs/">프로그램 보기 <span aria-hidden="true">→</span></a></p>
+    </section>
+
     <section class="season" id="season" aria-labelledby="season-h">
       <div class="season__in">
         <p class="season__tag">7–8월 프로젝트</p>
@@ -314,6 +336,34 @@
         io.observe(m);
       });
     }
+  </script>
+  <script>
+  (function () {
+    var board = document.querySelector('.play__board');
+    if (!board) return;
+    var drag = null;
+    board.querySelectorAll('.pm').forEach(function (p) {
+      p.addEventListener('pointerdown', function (e) {
+        var r = p.getBoundingClientRect();
+        drag = { el: p, dx: e.clientX - r.left, dy: e.clientY - r.top };
+        p.setPointerCapture(e.pointerId);
+        p.classList.add('pm--held');
+        e.preventDefault();
+      });
+      p.addEventListener('pointermove', function (e) {
+        if (!drag || drag.el !== p) return;
+        var b = board.getBoundingClientRect();
+        var x = e.clientX - b.left - drag.dx, y = e.clientY - b.top - drag.dy;
+        x = Math.max(0, Math.min(x, b.width - p.offsetWidth));
+        y = Math.max(0, Math.min(y, b.height - p.offsetHeight));
+        p.style.left = (x / b.width * 100) + '%';
+        p.style.top = (y / b.height * 100) + '%';
+      });
+      ['pointerup', 'pointercancel'].forEach(function (ev) {
+        p.addEventListener(ev, function () { p.classList.remove('pm--held'); drag = null; });
+      });
+    });
+  })();
   </script>
   <script>
   (function () {
