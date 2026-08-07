@@ -2817,3 +2817,67 @@ body { background: #FFFFFF; }
 .memos .memo:nth-child(even) { rotate: 1.8deg; }
 .memos .memo:nth-child(4n)   { rotate: -1.2deg; }
 .memos .memo:nth-child(5n)   { rotate: 2.6deg; }
+
+/* ============================================================
+   v3.2 — 균일한 박자 · 행 링크 · 왼쪽 정렬 (2026-08-08)
+   "스크롤이 지치지 않도록" — 모든 박자의 호흡을 같게
+   ============================================================ */
+.sec, .beat {
+  padding-top: clamp(3rem, 8vh, 4.6rem);
+  padding-bottom: clamp(3rem, 8vh, 4.6rem);
+}
+.beat { border-top: 1px solid rgba(0, 102, 179, 0.1); max-width: 72rem; margin: 0 auto; }
+#programs, #letters { border-top: 1px solid rgba(0, 102, 179, 0.1); }
+
+/* 행 링크 — dasiflow 문법: 라벨 · 제목 · 설명 · 화살표 */
+.rows { margin-top: 0.6rem; }
+.rowlink {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr auto;
+  grid-template-areas: "label title arrow" "label sub arrow";
+  align-items: baseline;
+  column-gap: 1.6rem;
+  padding: 1.35rem 0.4rem;
+  border-bottom: 1px solid rgba(38, 33, 28, 0.12);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.18s ease, padding-left 0.18s ease;
+}
+.rows .rowlink:first-child { border-top: 1px solid rgba(38, 33, 28, 0.12); }
+.rowlink i {
+  grid-area: label;
+  align-self: start;
+  font-style: normal;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--blue);
+}
+.rowlink b { grid-area: title; font-size: clamp(1.15rem, 3vw, 1.45rem); font-weight: 700; letter-spacing: -0.01em; }
+.rowlink span { grid-area: sub; font-size: 0.92rem; color: var(--ink-soft); margin-top: 0.25rem; }
+.rowlink em {
+  grid-area: arrow;
+  align-self: center;
+  font-style: normal;
+  font-size: 1.25rem;
+  color: rgba(0, 102, 179, 0.45);
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+.rowlink:hover, .rowlink:focus-visible {
+  background: linear-gradient(90deg, rgba(255, 217, 113, 0.35), rgba(255, 217, 113, 0));
+  padding-left: 0.9rem;
+  text-decoration: none;
+}
+.rowlink:hover b { color: var(--blue); }
+.rowlink:hover em { transform: translate(3px, -3px); color: var(--blue); }
+@media (max-width: 699px) {
+  .rowlink { grid-template-columns: 1fr auto; grid-template-areas: "label arrow" "title arrow" "sub arrow"; }
+  .rowlink i { margin-bottom: 0.2rem; }
+}
+
+/* 왼쪽 정렬 통일 — 시즌 밴드 포함 */
+.season__in { text-align: left; }
+.season__in .season__cta { justify-content: flex-start; }
+
+/* 어바웃 페이지도 같은 박자 */
+.pv3 .sec { max-width: 72rem; margin-inline: auto; }
