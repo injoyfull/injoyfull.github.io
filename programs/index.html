@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=88">
+  <link rel="stylesheet" href="../style.css?v=91">
 </head>
 <body class="pv3">
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -27,7 +27,24 @@
       인조이풀
     </a>
     <nav class="mast__nav" aria-label="주 메뉴">
-      <a class="nv nv--now" href="/programs/" aria-current="page"><b>프로그램</b><span>PROGRAMS</span></a>
+      <div class="nvd">
+        <a class="nv" href="/programs/"><b>프로그램</b><span>PROGRAMS</span></a>
+        <div class="nvd__menu">
+          <a href="/programs/#toddler"><b>키즈</b><span>토들러팝 · 키즈팝</span></a>
+          <a href="/programs/#cred"><b>유초등</b><span>크리디팝</span></a>
+          <a href="/programs/#old"><b>성인+</b><span>올드팝 · 시니어팝</span></a>
+          <a href="/#doors"><b>온라인</b><span>나만시 · 틈</span></a>
+          <a href="/programs/#partner"><b>출강 · 협업</b><span>기관 문의</span></a>
+        </div>
+      </div>
+      <div class="nvd">
+        <a class="nv" href="/#pscr"><b>어바웃</b><span>ABOUT</span></a>
+        <div class="nvd__menu">
+          <a href="/#pscr"><b>철학</b><span>PSC-R</span></a>
+          <a href="/#why"><b>만드는 사람</b><span>올리 · OLi</span></a>
+          <a href="/#letters"><b>3년의 기록</b><span>후기</span></a>
+        </div>
+      </div>
       <a class="nv" href="/#season"><b>이번 시즌</b><span>THIS SEASON</span></a>
       <a class="nv nv--go" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank"><b>예약</b><span>BOOK NOW</span></a>
       <a class="mast__lang" href="/en/" hreflang="en">EN</a>
@@ -41,7 +58,7 @@
       <h1>프로그램 <span class="phead__en">PROGRAMS</span></h1>
       <p class="phead__lede">인조이풀은 <strong>오픈형 자율 창작 워크숍</strong>이에요.<br>
       답이 정해지지 않은 재료를 만나, <strong>나만의 답</strong>을 만들어요.</p>
-      <nav class="chips" aria-label="연령별 바로가기">
+      <nav class="chips rv" aria-label="연령별 바로가기">
         <a class="chip" href="#toddler"><b>토들러팝</b><span>18~30개월</span></a>
         <a class="chip" href="#kids"><b>키즈팝</b><span>5~7세</span></a>
         <a class="chip" href="#cred"><b>크리디팝</b><span>8세 이상</span></a>
@@ -55,7 +72,7 @@
     <section class="sec sec--ptable" aria-label="프로그램 카드">
       <!-- 색이 대상을 말한다: 블루=아이, 옐로우=어른 (2026-07-25) -->
       <ol class="pgrid">
-        <li class="pcard pcard--kid pcard--wide" id="kids">
+        <li class="pcard rv pcard--kid pcard--wide" id="kids">
           <p class="pcard__who">5~7세 · 감각깨우기 워크숍 멤버십</p>
           <h3 class="pcard__name serif"><span>키즈팝</span></h3>
           <p class="pcard__desc">요일마다 다른 랩(LAB)에서, 감각을 깨워 하나의 창작을 완성해요.</p>
@@ -68,7 +85,7 @@
           <p class="pcard__note">첫 타임을 먼저 해보고 정하셔도 돼요. 체험도 1회 참여(40,000원)로 진행돼요.</p>
           <a class="prog__cta" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">체험 예약 — 네이버 <span aria-hidden="true">→</span></a>
         </li>
-        <li class="pcard pcard--grown pcard--wide" id="old">
+        <li class="pcard rv pcard--grown pcard--wide" id="old">
           <p class="pcard__who">성인 · 시니어 · 예술 경험이 없어도</p>
           <h3 class="pcard__name serif"><span>올드팝<br>시니어팝</span></h3>
           <p class="pcard__desc">많은 분이 <strong>“나는 창의적이지 않아”</strong>라고 하세요.<br>가려져 있을 뿐이에요. 기술을 배우는 수업이 아니라, 손끝으로 잊고 있던 내 이야기를 다시 발견하는 자리예요.</p>
@@ -83,7 +100,7 @@
           <p class="pcard__cta2"><a class="prog__cta" href="https://in-joy-full.notion.site/256c12af0a36806c8ebfe9baefae88ca" rel="noopener" target="_blank">6주 과정 자세히 <span aria-hidden="true">→</span></a>
           <a class="prog__cta" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">일정 문의 <span aria-hidden="true">→</span></a></p>
         </li>
-        <li class="pcard pcard--kid" id="toddler">
+        <li class="pcard rv pcard--kid" id="toddler">
           <p class="pcard__who">18~30개월 · 보호자와 함께</p>
           <h3 class="pcard__name serif"><span>토들러팝</span></h3>
           <p class="pcard__desc">보호자와 함께하는 감각·창의 놀이. 아이의 첫 재료 경험.</p>
@@ -94,7 +111,7 @@
           <p class="pcard__note">*재료에 따라 재료비가 추가될 수 있어요.</p>
           <a class="prog__cta" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">네이버로 예약 <span aria-hidden="true">→</span></a>
         </li>
-        <li class="pcard pcard--kid" id="cred">
+        <li class="pcard rv pcard--kid" id="cred">
           <p class="pcard__who">8세 이상 · 시간예약제 창작공간</p>
           <h3 class="pcard__name serif"><span>크리디팝</span></h3>
           <p class="pcard__desc">아트·스토리코딩, 나만의 아웃풋 창작공간. 무엇을 만들지 아이가 정해요 — 수업료가 아니라 <strong>공간사용비</strong>예요.</p>
@@ -108,7 +125,7 @@
 
       <!-- 성격이 다른 둘 — 나이가 아니라 '판을 여는' 쪽 -->
       <ul class="pgrid pgrid--open">
-        <li class="pcard pcard--open" id="rent">
+        <li class="pcard rv pcard--open" id="rent">
           <p class="pcard__who">소그룹 모임 · 공간 대여</p>
           <h3 class="pcard__name serif"><span>공간 대여</span></h3>
           <p class="pcard__desc">소그룹 모임을 위한 창작 공간 대여(Creative Space Rental).</p>
@@ -117,7 +134,7 @@
           </dl>
           <a class="prog__cta" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">대여 문의 <span aria-hidden="true">→</span></a>
         </li>
-        <li class="pcard pcard--open" id="partner">
+        <li class="pcard rv pcard--open" id="partner">
           <p class="pcard__who">기관 · 학교 · 브랜드</p>
           <h3 class="pcard__name serif"><span>출강 · 협업</span></h3>
           <p class="pcard__desc">꿈의스튜디오 ‘하남’ 거점 공모에 <strong>하남대표예술가</strong>로 참여했고, 까붐·아트로버와 판을 만들어 왔어요. 함께 만들 제안을 기다려요.</p>
@@ -139,5 +156,19 @@
     <a href="/">← 인조이풀 홈</a>
     <span>하남 · 오픈형 자율 창작 워크숍</span>
   </footer>
+  <script>
+  (function () {
+    var els = document.querySelectorAll('.rv');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('rv-in'); }); return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (x) {
+        if (x.isIntersecting) { x.target.classList.add('rv-in'); io.unobserve(x.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+  </script>
 </body>
 </html>

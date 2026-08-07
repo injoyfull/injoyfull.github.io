@@ -2596,3 +2596,224 @@ body { background: #FFFFFF; }
   .nv, .abtn, .tez__card, .chip, .pv3 .pcard { transition: none; }
   .nv:hover, .abtn:hover, .tez__card:hover, .chip:hover, .pv3 .pcard:hover { transform: none; }
 }
+
+/* ============================================================
+   v3.1 — 타이포 히어로 · 드롭다운 · 스크롤 리빌 · 콜라주 후기
+   (2026-08-08, dasiflow 참고 — 텍스트가 움직이고, 사진은 영상이 올 때까지 쉼)
+   ============================================================ */
+
+/* ── 타이포 히어로 ── */
+.hero3 {
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+  padding: clamp(3.2rem, 9vh, 6rem) var(--gutter) clamp(2.6rem, 7vh, 4.5rem);
+}
+.hero3__media { position: absolute; inset: 0; z-index: 0; }   /* 영상 슬롯 */
+.hero3__media video { width: 100%; height: 100%; object-fit: cover; }
+.hero3__in { position: relative; z-index: 2; max-width: 72rem; margin: 0 auto; }
+.hero3__kicker {
+  margin: 0 0 1.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  color: var(--blue);
+  opacity: 0;
+  animation: h3fade 0.6s ease 0.1s forwards;
+}
+.hero3__head { margin: 0 0 1.4rem; font-family: var(--sans); }
+.hero3__head .l { display: block; overflow: hidden; }
+.hero3__head .l b {
+  display: inline-block;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 7vw, 4.2rem);
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  transform: translateY(115%);
+  animation: h3rise 0.85s cubic-bezier(.2,.75,.25,1) forwards;
+}
+.hero3__head .l:nth-child(1) b { animation-delay: 0.22s; }
+.hero3__head .l:nth-child(2) b { animation-delay: 0.42s; }
+.hero3__head em { font-style: normal; color: var(--blue); }
+.hero3__head .l:nth-child(2) em {
+  color: var(--ink);
+  background: linear-gradient(transparent 62%, #FFD971 62%, #FFD971 94%, transparent 94%);
+}
+.hero3__sub {
+  margin: 0 0 1.8rem;
+  font-size: clamp(1rem, 2.6vw, 1.18rem);
+  color: var(--ink-soft);
+  opacity: 0;
+  animation: h3fade 0.7s ease 0.85s forwards;
+}
+.hero3__sub strong { color: var(--blue); font-weight: 500; }
+.hero3__cta {
+  margin: 0;
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: h3fade 0.7s ease 1.05s forwards;
+}
+.hero3 .ticker__q { margin-top: 2.4rem; animation-delay: 1.3s; }
+.hero3 .ticker { animation-delay: 1.35s; }
+.hero3 .ticker span { animation-delay: calc(1.35s + var(--d, 0s)); }
+@keyframes h3rise { to { transform: none; } }
+@keyframes h3fade { to { opacity: 1; } }
+
+/* 떠다니는 조약돌 — 사진 대신 색으로 키즈 에너지 */
+.hero3__blobs { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero3__blobs i {
+  position: absolute;
+  display: block;
+  opacity: 0.5;
+  animation: blobFloat 11s ease-in-out infinite alternate;
+}
+.hero3__blobs i:nth-child(1) {
+  width: clamp(7rem, 16vw, 13rem); height: clamp(7rem, 16vw, 13rem);
+  right: -2rem; top: -2.5rem;
+  background: #FFD971;
+  border-radius: 58% 42% 55% 45% / 52% 58% 42% 48%;
+}
+.hero3__blobs i:nth-child(2) {
+  width: clamp(4.5rem, 9vw, 7.5rem); height: clamp(4.5rem, 9vw, 7.5rem);
+  right: clamp(6rem, 18vw, 16rem); bottom: 8%;
+  border: 3px solid rgba(0, 102, 179, 0.35);
+  border-radius: 47% 53% 44% 56% / 55% 45% 55% 45%;
+  animation-duration: 14s;
+}
+.hero3__blobs i:nth-child(3) {
+  width: clamp(2.6rem, 5vw, 4rem); height: clamp(2.6rem, 5vw, 4rem);
+  right: clamp(2rem, 7vw, 6rem); top: 42%;
+  background: rgba(0, 102, 179, 0.16);
+  border-radius: 52% 48% 60% 40% / 46% 54% 46% 54%;
+  animation-duration: 9s;
+}
+.hero3__blobs i:nth-child(4) {
+  width: 1.5rem; height: 1.5rem;
+  left: 55%; bottom: 12%;
+  background: #C0788A00;
+  border: 3px solid rgba(255, 217, 113, 0.8);
+  border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+  animation-duration: 12s;
+}
+@keyframes blobFloat {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to   { transform: translate(-0.9rem, 1.1rem) rotate(9deg); }
+}
+@media (max-width: 699px) {
+  .hero3__blobs i:nth-child(2) { right: 1rem; bottom: 4%; }
+}
+
+/* ── 내브 드롭다운 ── */
+.nvd { position: relative; display: inline-flex; }
+.nvd__menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  left: 50%;
+  transform: translate(-50%, 6px);
+  min-width: 13.5rem;
+  padding: 0.5rem;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(0, 102, 179, 0.18);
+  border-radius: 1rem;
+  box-shadow: 0 14px 34px rgba(38, 33, 28, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  z-index: 60;
+}
+.nvd:hover .nvd__menu, .nvd:focus-within .nvd__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.nvd__menu a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nvd__menu a b { font-size: 0.95rem; font-weight: 700; color: var(--ink); }
+.nvd__menu a span { font-size: 0.72rem; color: var(--ink-soft); }
+.nvd__menu a:hover, .nvd__menu a:focus-visible { background: #FFD971; text-decoration: none; }
+@media (max-width: 899px) { .nvd__menu { display: none; } }  /* 모바일: 탭하면 바로 이동 */
+
+/* ── 스크롤 리빌 ── */
+.rv { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.3,1); }
+.rv-in { opacity: 1; transform: none; }
+.memos .memo.rv:nth-child(2) { transition-delay: 0.08s; }
+.memos .memo.rv:nth-child(3) { transition-delay: 0.16s; }
+.memos .memo.rv:nth-child(4) { transition-delay: 0.24s; }
+.memos .memo.rv:nth-child(5) { transition-delay: 0.32s; }
+.tez .rv:nth-child(2) { transition-delay: 0.08s; }
+.tez li:nth-child(2) .rv { transition-delay: 0.08s; }
+.tez li:nth-child(3) .rv { transition-delay: 0.16s; }
+.tez li:nth-child(4) .rv { transition-delay: 0.24s; }
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1; transform: none; transition: none; }
+  .hero3__head .l b { transform: none; animation: none; }
+  .hero3__kicker, .hero3__sub, .hero3__cta { opacity: 1; animation: none; }
+  .hero3__blobs i { animation: none; }
+}
+
+/* ── 후기 = 콜라주 보드 (테이프 + 삐뚤빼뚤) ── */
+.memos { gap: 1.4rem 1.2rem; }
+.memo {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 0.35rem;
+  box-shadow: 0 8px 22px rgba(38, 33, 28, 0.1);
+}
+.memo::before {
+  content: "";
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  width: 4.4rem;
+  height: 1.5rem;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(255, 217, 113, 0.85);
+  opacity: 0.9;
+}
+.memo.memo--b::before { background: rgba(0, 102, 179, 0.28); transform: translateX(-50%) rotate(2.5deg); }
+.memos .memo:nth-child(odd)  { rotate: -1.6deg; }
+.memos .memo:nth-child(even) { rotate: 1.3deg; }
+.memos .memo:nth-child(3n)   { rotate: 2.1deg; }
+.memos .memo:nth-child(5n)   { rotate: -2.3deg; }
+.memo.memo--y { background: #FFFBEE; }
+.memo.memo--b { background: #F4F9FE; }
+.memo:hover { rotate: 0deg; transition: rotate 0.25s ease; }
+.rv.rv-in.memo { transform: none; }
+
+/* ── 흰 바탕 위 섹션 분리 보강 ── */
+.sec--letters { background: #FFFFFF; }
+
+/* 콜라주 보강 — 메모지는 조각조각, 테이프는 또렷하게 */
+.memos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr)) !important;
+  gap: 1.6rem 1.2rem !important;
+  align-items: start;
+  max-width: none;
+  border-bottom: none;
+}
+.memos .memo { max-width: none; padding: 1.5rem 1.3rem 1.2rem; }
+.memos .memo--wide { grid-column: 1 / -1; max-width: 34rem; justify-self: center; }
+.memos .memo:nth-child(even) { margin-top: 0.9rem; }
+.memos .memo:nth-child(3n)   { margin-top: 0.35rem; }
+.memo::before {
+  box-shadow: 0 2px 6px rgba(38, 33, 28, 0.14);
+  border-left: 1px dashed rgba(255, 255, 255, 0.55);
+  border-right: 1px dashed rgba(255, 255, 255, 0.55);
+}
+.memos .memo:nth-child(odd)  { rotate: -2.2deg; }
+.memos .memo:nth-child(even) { rotate: 1.8deg; }
+.memos .memo:nth-child(4n)   { rotate: -1.2deg; }
+.memos .memo:nth-child(5n)   { rotate: 2.6deg; }
