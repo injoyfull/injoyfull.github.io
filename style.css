@@ -2974,3 +2974,24 @@ body { background: #FFFFFF; }
 .qcar li:nth-child(even) { background: #F4F9FE; border-color: rgba(0, 102, 179, 0.2); border-radius: 1.4rem 0.4rem 1.4rem 1.4rem; }
 .qcar blockquote { margin: 0; font-family: var(--serif); font-size: 1.02rem; line-height: 1.75; color: var(--ink); }
 .qcar blockquote strong { color: var(--blue); }
+
+/* ============================================================
+   왼쪽 기준선 통일 (2026-08-08) — 화면 폭이 바뀌어도
+   모든 섹션의 글 시작점이 한 줄에 선다
+   기준: .sec = 가운데 72rem 상자 + 안쪽 거터
+   ============================================================ */
+/* 풀블리드 흰 판 — 거터 하나가 빠져 있던 계산식 보정 */
+#pscr, #letters, #why, .sec--doors {
+  padding-left: max(var(--gutter), calc((100% - 72rem) / 2 + var(--gutter)));
+  padding-right: max(var(--gutter), calc((100% - 72rem) / 2 + var(--gutter)));
+}
+/* 풀블리드 밴드의 안쪽 상자 — 내용 폭을 (72rem − 거터×2)로 맞춰 같은 선에 */
+.hero3__in,
+.answer__in,
+.season__in,
+.board .board__in {
+  max-width: calc(72rem - 2 * var(--gutter));
+}
+
+/* 섹션 번호 제거 (2026-08-08 한나님 — 페이지가 나뉜 뒤로 번호는 혼란만) */
+.sec__mark .mk-en::before { content: none; }
