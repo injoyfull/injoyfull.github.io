@@ -3367,3 +3367,68 @@ body { background: #FFFFFF; }
   transition: background 0.15s ease, transform 0.15s ease;
 }
 .cnav__btn:hover { background: #FFD971; border-color: #FFD971; color: var(--ink); transform: translateY(-2px); }
+
+/* ============================================================
+   만나요 — 사이트의 단일 행동 (2026-08-08)
+   월드비전의 '후원하기'처럼, 모든 길이 여기로 모인다
+   ============================================================ */
+.meet {
+  background: var(--blue);
+  padding: clamp(3rem, 8vh, 5rem) var(--gutter);
+}
+.meet__in { max-width: calc(72rem - 2 * var(--gutter)); margin: 0 auto; }
+.meet h2 {
+  margin: 0 0 0.7rem;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(1.7rem, 4.6vw, 2.6rem);
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+.meet__sub { margin: 0 0 2rem; font-size: clamp(0.98rem, 2.4vw, 1.1rem); color: rgba(255, 255, 255, 0.85); }
+.meet__doors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+@media (max-width: 799px) { .meet__doors { grid-template-columns: 1fr; } }
+.meet__door {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.3rem 1.4rem;
+  background: #FFFFFF;
+  border-radius: 1.1rem;
+  text-decoration: none;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+.meet__door i { font-style: normal; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; color: var(--blue); }
+.meet__door b { font-size: 1.25rem; font-weight: 700; color: var(--ink); }
+.meet__door span { font-size: 0.85rem; color: var(--ink-soft); }
+.meet__door:hover, .meet__door:focus-visible {
+  transform: translateY(-4px);
+  background: #FFD971;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+.meet__door:hover i { color: #141414; }
+/* 떠 있는 만나요 버튼 — 월드비전 후원하기 자리 */
+.meet-pill {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 70;
+  width: 5.4rem;
+  height: 5.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--blue);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 46, 81, 0.35);
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+.meet-pill:hover { transform: translateY(-3px) scale(1.04); background: #005699; text-decoration: none; color: #FFFFFF; }
+@media (max-width: 699px) { .meet-pill { width: 4.6rem; height: 4.6rem; font-size: 0.74rem; } }
