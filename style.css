@@ -2947,7 +2947,7 @@ body { background: #FFFFFF; }
 .wv__card:nth-child(2) .wv__num { color: #D6A83C; }
 .wv__card:nth-child(2) .wv__chip { border-color: rgba(214, 168, 60, 0.5); color: #8a6b1f; }
 .wv__hint { margin: 0 0 1.6rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(38, 33, 28, 0.4); }
-@media (min-width: 900px) { .wv__hint { display: none; } .wv { overflow-x: visible; } .wv__card { flex: 1 1 0; } }
+@media (min-width: 900px) { .wv__card { flex-basis: 26rem; } }
 
 /* 어머니들의 문장 — 가로 스와이프 카드 */
 .qcar {
@@ -3339,3 +3339,31 @@ body { background: #FFFFFF; }
 /* 설문 출처 각주 (2026-08-08) */
 .wv__src { margin: -0.9rem 0 1.4rem; font-size: 0.72rem; letter-spacing: 0.06em; color: rgba(38, 33, 28, 0.38); }
 @media (min-width: 900px) { .wv__src { margin-top: 0.2rem; } }
+
+/* 월드비전식 캐러셀 컨트롤 — 카운터 · 진행바 · 화살표 (2026-08-08) */
+.cnav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.2rem 0 1.6rem;
+}
+.cnav__count { font-size: 0.85rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--ink); min-width: 3.2em; }
+.cnav__bar {
+  flex: 1;
+  height: 3px;
+  background: rgba(38, 33, 28, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.cnav__bar b { display: block; height: 100%; width: 33%; background: var(--blue); border-radius: 999px; transition: width 0.25s ease; }
+.cnav__btn {
+  width: 2.6rem; height: 2.6rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 102, 179, 0.35);
+  background: #FFFFFF;
+  color: var(--blue);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.cnav__btn:hover { background: #FFD971; border-color: #FFD971; color: var(--ink); transform: translateY(-2px); }

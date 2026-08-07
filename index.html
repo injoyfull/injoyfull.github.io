@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="photos/logo-wide.png" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=112">
+  <link rel="stylesheet" href="style.css?v=113">
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -240,7 +240,12 @@
           <p>하남 · 쪼이 <strong>120명</strong>.</p>
         </li>
       </ul>
-      <p class="wv__hint rv" aria-hidden="true">옆으로 넘겨보세요 →</p>
+      <div class="cnav rv" data-for=".wv">
+        <span class="cnav__count">1 / 3</span>
+        <i class="cnav__bar"><b></b></i>
+        <button class="cnav__btn cnav__btn--prev" type="button" aria-label="이전 카드">←</button>
+        <button class="cnav__btn" type="button" aria-label="다음 카드">→</button>
+      </div>
       <p class="wv__src rv">2026 학부모 설문 · 9가정</p>
 
       <!-- 어머니들의 문장 — 스와이프 -->
@@ -252,6 +257,12 @@
         <li><blockquote>"아이가 <strong>성장하는 시간</strong>, 늘 감사합니다."</blockquote></li>
         <li><blockquote>"<strong>창의력과 상상력</strong>이 자라나는 공간이기를!"</blockquote></li>
       </ul>
+      <div class="cnav rv" data-for=".qcar">
+        <span class="cnav__count">1 / 6</span>
+        <i class="cnav__bar"><b></b></i>
+        <button class="cnav__btn cnav__btn--prev" type="button" aria-label="이전 문장">←</button>
+        <button class="cnav__btn" type="button" aria-label="다음 문장">→</button>
+      </div>
 
       <p class="proof__lead rv">한 쪼이의 하루 —</p>
       <ul class="memos">
@@ -355,6 +366,36 @@
         io.observe(m);
       });
     }
+  </script>
+  <script>
+  (function () {
+    document.querySelectorAll('.cnav').forEach(function (nav) {
+      var list = document.querySelector(nav.getAttribute('data-for'));
+      if (!list) return;
+      var items = list.children.length;
+      var count = nav.querySelector('.cnav__count');
+      var fill = nav.querySelector('.cnav__bar b');
+      function stepW() {
+        var c = list.children[0].getBoundingClientRect().width;
+        return c + (parseFloat(getComputedStyle(list).columnGap) || 16);
+      }
+      function update() {
+        var max = list.scrollWidth - list.clientWidth;
+        var i = max > 4 ? Math.round(list.scrollLeft / stepW()) : 0;
+        i = Math.max(0, Math.min(i, items - 1));
+        count.textContent = (i + 1) + ' / ' + items;
+        fill.style.width = ((i + 1) / items * 100) + '%';
+      }
+      nav.querySelectorAll('.cnav__btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          list.scrollBy({ left: btn.classList.contains('cnav__btn--prev') ? -stepW() : stepW(), behavior: 'smooth' });
+        });
+      });
+      list.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  })();
   </script>
   <script>
   (function () {
