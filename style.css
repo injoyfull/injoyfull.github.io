@@ -3335,3 +3335,7 @@ body { background: #FFFFFF; }
 .taste--y { background: linear-gradient(transparent 68%, rgba(255, 217, 113, 0.85) 68%); }
 .taste--g { background: linear-gradient(transparent 68%, rgba(140, 154, 78, 0.45) 68%); }
 .taste--b { background: linear-gradient(transparent 68%, rgba(0, 102, 179, 0.3) 68%); }
+
+/* 설문 출처 각주 (2026-08-08) */
+.wv__src { margin: -0.9rem 0 1.4rem; font-size: 0.72rem; letter-spacing: 0.06em; color: rgba(38, 33, 28, 0.38); }
+@media (min-width: 900px) { .wv__src { margin-top: 0.2rem; } }
