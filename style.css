@@ -3077,13 +3077,9 @@ body { background: #FFFFFF; }
 .acc[open] summary::after { transform: rotate(45deg); }
 .acc summary b { font-size: clamp(1.1rem, 2.6vw, 1.35rem); font-weight: 700; letter-spacing: -0.01em; }
 .acc summary i { font-style: normal; font-size: 0.85rem; color: var(--ink-soft); }
-.acc summary em { font-style: normal; font-size: 0.85rem; font-weight: 700; color: var(--blue); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.acc summary em { font-style: normal; font-size: 0.85rem; font-weight: 700; color: var(--blue); font-variant-numeric: tabular-nums; }
 .acc summary .stat { white-space: nowrap; }
-.acc summary:hover, .acc summary:focus-visible {
-  background: linear-gradient(90deg, rgba(255, 217, 113, 0.35), rgba(255, 217, 113, 0));
-  padding-left: 0.9rem;
-}
-.acc summary:hover b { color: var(--blue); }
+.acc summary:hover, .acc summary:focus-visible { outline: none; }
 .acc__body { padding: 0.3rem 0.4rem 1.6rem; max-width: 46rem; }
 .acc__body > p:first-child { margin-top: 0.2rem; }
 .acc__body .spec { margin: 1rem 0; }
@@ -3100,4 +3096,126 @@ body { background: #FFFFFF; }
   .acc summary em { grid-area: price; }
   .acc summary .stat { grid-area: chip; align-self: start; }
   .acc summary::after { display: none; }
+}
+
+/* ============================================================
+   프로그램 포스터 타일 — 6장이 한 화면에 (2026-08-08)
+   접힘 = 포스터 그리드 · 펼침 = 가로 배너
+   ============================================================ */
+.phead--slim { padding-bottom: 0; }
+.phead--slim h1 { margin-bottom: 0.4rem; }
+.phead__hint { font-size: 0.85rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0; }
+.pgrid2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+.pgrid2 .acc { border: none !important; }
+.pgrid2 .acc[open] { grid-column: 1 / -1; }
+.pgrid2 .acc summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.22rem;
+  min-height: clamp(9rem, 20vh, 11.5rem);
+  padding: 1.1rem 3rem 1.1rem 1.2rem;
+  border-radius: 1.1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+}
+.pgrid2 .acc summary:hover, .pgrid2 .acc summary:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(38, 33, 28, 0.18);
+  filter: saturate(1.06);
+}
+.pgrid2 .acc summary::after { position: absolute; right: 1rem; bottom: 0.85rem; justify-self: unset; }
+.pgrid2 .acc summary u {
+  position: absolute;
+  left: 1.2rem; top: 1rem;
+  text-decoration: none;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  opacity: 0.65;
+}
+.pgrid2 .acc summary b { font-size: clamp(1.25rem, 2.6vw, 1.6rem); line-height: 1.2; }
+.pgrid2 .acc summary i { font-size: 0.9rem; font-weight: 700; opacity: 1; }
+.pgrid2 .acc summary em { font-size: 0.8rem; font-weight: 400; opacity: 0.9; }
+.pgrid2 .acc summary .stat { position: absolute; right: 1rem; top: 0.85rem; }
+/* 포스터 색 — 파랑·버터가 주인공 */
+.t-kids    summary { background: var(--blue); }
+.t-kids    summary b, .t-kids summary i, .t-kids summary u { color: #FFFFFF; }
+.t-kids    summary em { color: #FFD971; }
+.t-kids    summary::after { color: rgba(255,255,255,0.8); }
+.t-toddler summary { background: #FFD971; }
+.t-toddler summary b, .t-toddler summary i, .t-toddler summary u { color: #141414; }
+.t-toddler summary em { color: #0B4C86; }
+.t-cred    summary { background: #DCEBFA; }
+.t-cred    summary b { color: #0B4C86; }
+.t-cred    summary em { color: var(--blue); }
+.t-old     summary { background: #F6E3B4; }
+.t-old     summary b { color: #6b5310; }
+.t-old     summary em { color: #8a6b1f; }
+.t-rent    summary { background: #FFFFFF; box-shadow: inset 0 0 0 1.5px rgba(38,33,28,0.16); }
+.t-partner summary { background: #26211C; }
+.t-partner summary b, .t-partner summary u { color: #FFFFFF; }
+.t-partner summary i { color: rgba(255,255,255,0.75); }
+.t-partner summary em { color: #FFD971; }
+.t-partner summary::after { color: rgba(255,255,255,0.7); }
+/* 타일 위 상태칩 가독 */
+.t-kids .stat--open { background: #FFD971; color: #141414; }
+.t-partner .stat--always { background: rgba(255,255,255,0.16); color: #FFD971; }
+/* 펼친 배너의 본문 */
+.pgrid2 .acc[open] summary { min-height: 0; flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.pgrid2 .acc[open] summary u { position: static; }
+.pgrid2 .acc[open] summary .stat { position: static; margin-left: auto; }
+.pgrid2 .acc__body {
+  padding: 1.2rem 1.2rem 1.5rem;
+  border: 1.5px solid rgba(38, 33, 28, 0.12);
+  border-top: none;
+  border-radius: 0 0 1.1rem 1.1rem;
+  max-width: none;
+}
+.pgrid2 .acc[open] summary { border-radius: 1.1rem 1.1rem 0 0; }
+@media (max-width: 799px) {
+  .pgrid2 { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+  .pgrid2 .acc summary { min-height: 8.6rem; padding: 0.9rem 1rem; grid-template-areas: none; display: flex; }
+  .pgrid2 .acc summary::after { display: block; }
+  .pgrid2 .acc summary .stat { position: absolute; right: 0.8rem; top: 0.8rem; scale: 0.9; }
+}
+
+/* ── 만드는 사람 — 랜딩 두 번째 박자 (2026-08-08) ── */
+.maker__in {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(1.6rem, 5vw, 3.5rem);
+  align-items: center;
+}
+.maker__role { font-size: 0.95rem; font-weight: 700; color: var(--blue); margin: 0.2rem 0 1rem; }
+.maker__creed {
+  font-family: "Cormorant Garamond", var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 1.4rem;
+}
+.maker__creed em { font-style: italic; color: var(--blue); }
+.maker__photo { margin: 0; }
+.maker__photo img {
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  border-radius: 58% 42% 55% 45% / 52% 58% 42% 48%;  /* 조약돌 */
+  border: 4px solid #FFD971;
+}
+@media (max-width: 799px) {
+  .maker__in { grid-template-columns: 1fr; }
+  .maker__photo img { max-width: 13rem; margin: 0; }
+  .maker__photo { order: -1; }
 }

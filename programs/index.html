@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=98">
+  <link rel="stylesheet" href="../style.css?v=101">
 </head>
 <body class="pv3">
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -54,17 +54,15 @@
   <main id="main">
 
     <!-- 프로그램 — 한 화면 목록 + 눌러서 펼치기 (2026-08-08, 네이버 예약 문법) -->
-    <section class="phead">
-      <h1>프로그램 <span class="phead__en">PROGRAMS</span></h1>
-      <p class="phead__lede">누르면 열려요. <strong>천천히 골라보세요.</strong></p>
+    <section class="phead phead--slim">
+      <h1>프로그램 <span class="phead__en">PROGRAMS</span> <span class="phead__hint">— 누르면 열려요</span></h1>
     </section>
 
     <section class="sec sec--acc" aria-label="프로그램 목록">
+      <div class="pgrid2">
 
-      <p class="acc__group">키즈 <span>KIDS</span></p>
-
-      <details class="acc" id="toddler">
-        <summary>
+      <details class="acc t-toddler" id="toddler">
+        <summary><u>KIDS</u>
           <b>토들러팝</b><i>18~30개월 · 보호자와</i>
           <em>회당 20,000원</em><span class="stat stat--always">상시 예약</span>
         </summary>
@@ -78,8 +76,8 @@
         </div>
       </details>
 
-      <details class="acc" id="kids">
-        <summary>
+      <details class="acc t-kids" id="kids">
+        <summary><u>KIDS</u>
           <b>키즈팝</b><i>5~7세 · 워크숍 멤버십</i>
           <em>월 4회 140,000원</em><span class="stat stat--open">모집 중 · 선착순</span>
         </summary>
@@ -95,8 +93,8 @@
         </div>
       </details>
 
-      <details class="acc" id="cred">
-        <summary>
+      <details class="acc t-cred" id="cred">
+        <summary><u>KIDS</u>
           <b>크리디팝</b><i>8세 이상 · 시간예약제</i>
           <em>1회 15,000원</em><span class="stat stat--always">상시 예약</span>
         </summary>
@@ -110,10 +108,8 @@
         </div>
       </details>
 
-      <p class="acc__group">어른 <span>ADULTS</span></p>
-
-      <details class="acc" id="old">
-        <summary>
+      <details class="acc t-old" id="old">
+        <summary><u>ADULTS</u>
           <b>올드팝 · 시니어팝</b><i>성인 · 시니어</i>
           <em>원데이 30,000원</em><span class="stat stat--open">원데이 오픈</span>
         </summary>
@@ -130,10 +126,8 @@
         </div>
       </details>
 
-      <p class="acc__group">기업 · 모임 <span>PARTNERS</span></p>
-
-      <details class="acc" id="rent">
-        <summary>
+      <details class="acc t-rent" id="rent">
+        <summary><u>SPACE</u>
           <b>공간 대여</b><i>소그룹 모임</i>
           <em>1시간 10,000원</em><span class="stat stat--always">상시 문의</span>
         </summary>
@@ -143,8 +137,8 @@
         </div>
       </details>
 
-      <details class="acc" id="partner">
-        <summary>
+      <details class="acc t-partner" id="partner">
+        <summary><u>BIZ</u>
           <b>출강 · 협업</b><i>기업 · 기관 · 학교</i>
           <em>맞춤 설계</em><span class="stat stat--always">제안 받는 중</span>
         </summary>
@@ -156,6 +150,7 @@
           <p class="acc__cta"><a class="abtn abtn--blue" href="mailto:in.joyfull.kr@gmail.com?subject=%EC%B6%9C%EA%B0%95%C2%B7%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98&body=%EC%9D%B8%EC%9B%90%3A%0A%EB%82%A0%EC%A7%9C%3A%0A%EB%AA%A9%EC%A0%81%3A">제안 보내기 <span aria-hidden="true">→</span></a></p>
         </div>
       </details>
+      </div>
 
       <p class="phead__note">모든 프로그램은 예약제 · 첫 타임을 해보고 이어갈지 정하실 수 있어요 · 정원과 일정은 시즌마다 달라져요.</p>
       <p class="prog__contact">
