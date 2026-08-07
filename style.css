@@ -3188,7 +3188,25 @@ body { background: #FFFFFF; }
 }
 
 /* ── 만드는 사람 — 랜딩 두 번째 박자 (2026-08-08) ── */
+.maker {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.maker::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -10%;
+  bottom: -14%;
+  width: min(52rem, 88%);
+  aspect-ratio: 1600 / 553;
+  background: url("photos/logo-wide.png") no-repeat left bottom / contain;
+  opacity: 0.038;
+  pointer-events: none;
+}
 .maker__in {
+  position: relative;
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: clamp(1.6rem, 5vw, 3.5rem);
@@ -3211,7 +3229,7 @@ body { background: #FFFFFF; }
   height: auto;
   display: block;
   margin-left: auto;
-  border-radius: 58% 42% 55% 45% / 52% 58% 42% 48%;  /* 조약돌 */
+  border-radius: 0.9rem;
   border: 4px solid #FFD971;
 }
 @media (max-width: 799px) {
@@ -3219,3 +3237,8 @@ body { background: #FFFFFF; }
   .maker__photo img { max-width: 13rem; margin: 0; }
   .maker__photo { order: -1; }
 }
+
+/* 내브 로고 — 마크를 크게, 꽉 차게 (2026-08-08) */
+.mast--v3 .mast__logo { gap: 0.55rem; font-size: 1.12rem; font-weight: 700; }
+.mast--v3 .mast__logo img { width: 42px; height: 42px; }
+@media (max-width: 699px) { .mast--v3 .mast__logo img { width: 36px; height: 36px; } }
