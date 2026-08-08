@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="photos/logo-wide.png" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=117">
+  <link rel="stylesheet" href="style.css?v=118">
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -312,19 +312,21 @@
     <!-- 만나요 — 사이트의 단일 행동 (2026-08-08: "워크숍으로 만나요") -->
     <section class="meet" id="meet">
       <div class="meet__in">
+        <img class="meet__mark rv" src="smile.png" alt="" width="56" height="56">
         <h2 class="rv">워크숍으로 만나요.</h2>
         <p class="meet__sub rv">읽는 것보다 한 번 만드는 게 빨라요 — 해보고, 정하세요.</p>
         <div class="meet__doors rv">
           <a class="meet__door" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">
-            <i>쪼이와 함께</i><b>첫 타임 예약</b><span>키즈팝 1회 · 네이버</span>
+            <i>쪼이와 함께</i><b>첫 타임 예약</b><span>키즈팝 1회 · 40,000원</span><u>네이버에서 날짜 고르기 →</u>
+          </a>
+          <a class="meet__door" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket&amp;searchType=place&amp;lng=127.2104432&amp;lat=37.5485134&amp;c=15.00,0,0,0,dh" rel="noopener" target="_blank">
+            <i>어른인 나</i><b>원데이 ‘채워짐’</b><span>올드팝 1회 · 30,000원</span><u>네이버에서 날짜 고르기 →</u>
           </a>
           <a class="meet__door" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">
-            <i>어른인 나</i><b>원데이 '채워짐'</b><span>올드팝 1회 · 카카오</span>
-          </a>
-          <a class="meet__door" href="mailto:in.joyfull.kr@gmail.com?subject=%EC%B6%9C%EA%B0%95%C2%B7%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98&amp;body=%EC%9D%B8%EC%9B%90%3A%0A%EB%82%A0%EC%A7%9C%3A%0A%EB%AA%A9%EC%A0%81%3A">
-            <i>우리 팀과</i><b>워크숍 제안</b><span>기업 · 기관 · 메일</span>
+            <i>우리 팀과</i><b>워크숍 제안</b><span>기업 · 기관 · 학교</span><u>카카오로 상담하기 →</u>
           </a>
         </div>
+        <p class="meet__note rv">일정이 안 맞거나 인원이 많으면 <a href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오채널</a>로 말씀해 주세요 — 맞춰서 열어드려요.</p>
       </div>
     </section>
 
@@ -458,6 +460,9 @@
     els.forEach(function (e) { io.observe(e); });
   })();
   </script>
-  <a class="meet-pill" href="#meet" aria-label="워크숍으로 만나요"><span>워크숍으로<br>만나요</span></a>
+  <div class="dock">
+    <a class="dock__btn dock__btn--top" href="#top" aria-label="맨 위로">↑</a>
+    <a class="dock__btn dock__btn--meet" href="#meet" aria-label="워크숍으로 만나요"><span>워크숍으로<br>만나요</span></a>
+  </div>
 </body>
 </html>

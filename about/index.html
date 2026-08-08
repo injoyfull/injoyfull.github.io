@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=117">
+  <link rel="stylesheet" href="../style.css?v=118">
 </head>
 <body class="pv3">
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -55,6 +55,7 @@
   <main id="main">
 
     <section class="phead">
+      <img class="phead__mark" src="../mark.png" alt="" width="48" height="48">
       <h1>어바웃 <span class="phead__en">ABOUT</span></h1>
       <p class="phead__lede">답이 정해지지 않은 재료로, <strong>나만의 답</strong>을 만드는 곳.<br>무엇을 믿고 이 판을 여는지 — 여기 다 적어둘게요.</p>
     </section>
@@ -245,6 +246,9 @@
     els.forEach(function (e) { io.observe(e); });
   })();
   </script>
-  <a class="meet-pill" href="/#meet" aria-label="워크숍으로 만나요"><span>워크숍으로<br>만나요</span></a>
+  <div class="dock">
+    <a class="dock__btn dock__btn--top" href="#top" aria-label="맨 위로">↑</a>
+    <a class="dock__btn dock__btn--meet" href="/#meet" aria-label="워크숍으로 만나요"><span>워크숍으로<br>만나요</span></a>
+  </div>
 </body>
 </html>
