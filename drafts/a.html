@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>A — 컨페티 팝 | 인조이풀 시안</title>
+<link rel="icon" href="../favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0} html{scroll-behavior:smooth}
+body{font-family:"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;color:#26211C;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit} img{max-width:100%}
+.switch{position:fixed;top:0;left:0;right:0;z-index:99;display:flex;gap:.5rem;justify-content:center;padding:.5rem;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);font-size:.8rem;font-weight:700;border-bottom:1px solid rgba(0,0,0,.08)}
+.switch a{padding:.3rem .8rem;border-radius:999px;border:1.5px solid rgba(0,102,179,.3)}
+.switch a.on{background:#0066B3;color:#fff;border-color:#0066B3}
+
+body{background:#FFFDF6}
+.hero{position:relative;padding:7rem 1.5rem 4rem;max-width:68rem;margin:0 auto}
+.confetti i{position:absolute;display:block;pointer-events:none}
+.confetti i:nth-child(1){width:26px;height:26px;background:#FFD971;border-radius:58% 42% 55% 45%/52% 58% 42% 48%;left:6%;top:18%;rotate:12deg}
+.confetti i:nth-child(2){width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:20px solid #4E9084;right:12%;top:14%;rotate:-14deg}
+.confetti i:nth-child(3){width:16px;height:16px;background:#C0788A;border-radius:50%;right:24%;top:44%}
+.confetti i:nth-child(4){width:34px;height:12px;background:#0066B3;border-radius:999px;left:14%;bottom:22%;rotate:24deg}
+.confetti i:nth-child(5){width:20px;height:20px;background:#D98E4F;border-radius:56% 44% 42% 58%/45% 55% 45% 55%;right:8%;bottom:16%;rotate:-8deg}
+.confetti i:nth-child(6){width:14px;height:14px;border:4px solid #FFD971;border-radius:50%;left:38%;top:8%}
+.kicker{display:inline-block;background:#26211C;color:#FFD971;font-weight:800;font-size:.72rem;letter-spacing:.22em;padding:.45rem .9rem;border-radius:999px;rotate:-2deg;margin-bottom:1.6rem}
+h1{font-weight:900;font-size:clamp(2.2rem,7vw,4rem);line-height:1.18;letter-spacing:-.03em}
+h1 .in{color:#0066B3}
+h1 .out{display:inline-block;background:#FFD971;padding:0 .18em;rotate:-1.5deg;border-radius:.2em}
+.sub{margin:1.4rem 0 2rem;font-size:1.05rem;color:#5C5348}
+.sub strong{color:#0066B3}
+.cta{display:inline-flex;align-items:center;gap:.5rem;background:#0066B3;color:#fff;font-weight:800;font-size:1.05rem;padding:.95rem 1.6rem;border-radius:1.4rem 1.1rem 1.5rem 1rem;border:3px solid #26211C;box-shadow:5px 5px 0 #26211C;transition:.12s}
+.cta:hover{translate:2px 2px;box-shadow:2px 2px 0 #26211C}
+.cta img{width:1.5rem;height:1.5rem}
+.stickers{max-width:68rem;margin:1rem auto 0;padding:0 1.5rem;display:flex;gap:.7rem;flex-wrap:wrap}
+.stk{background:#fff;border:3px solid #26211C;font-weight:800;padding:.55rem 1rem;border-radius:999px;box-shadow:4px 4px 0 rgba(38,33,28,.9)}
+.stk:nth-child(odd){rotate:-2deg;background:#FFD971}
+.stk:nth-child(3n){rotate:2.5deg;background:#E8F1FA}
+.band{background:#FFD971;border-top:3px solid #26211C;border-bottom:3px solid #26211C;margin-top:4rem;padding:3.5rem 1.5rem}
+.band .in2{max-width:68rem;margin:0 auto}
+.band h2{font-weight:900;font-size:clamp(1.5rem,4.4vw,2.4rem);line-height:1.35}
+.band h2 em{font-style:normal;color:#0066B3}
+.band p{margin-top:.8rem;font-weight:500}
+.grid{max-width:68rem;margin:3.5rem auto;padding:0 1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.card{background:#fff;border:3px solid #26211C;border-radius:1.3rem;padding:1.3rem 1.4rem;box-shadow:6px 6px 0 rgba(0,102,179,.25);transition:.15s}
+.card:hover{translate:0 -5px;box-shadow:6px 11px 0 rgba(0,102,179,.35)}
+.card b{font-size:1.3rem;font-weight:900}
+.card i{display:block;font-style:normal;color:#0066B3;font-weight:700;font-size:.85rem;margin:.2rem 0 .5rem}
+.card span{font-size:.9rem;color:#5C5348}
+.meet{background:#0066B3;color:#fff;padding:4rem 1.5rem;text-align:center;border-top:3px solid #26211C}
+.meet img{width:3.4rem;rotate:-6deg}
+.meet h2{font-weight:900;font-size:clamp(1.7rem,5vw,2.6rem);margin:.6rem 0 1.4rem}
+.meet a{display:inline-block;background:#FFD971;color:#26211C;font-weight:800;padding:.9rem 1.7rem;border-radius:999px;border:3px solid #26211C;box-shadow:5px 5px 0 rgba(0,0,0,.35)}
+
+</style>
+</head>
+<body>
+<nav class="switch">
+  <a href="a.html" class="on">A 컨페티 팝</a>
+  <a href="b.html" class="">B 종이 공작</a>
+  <a href="c.html" class="">C 팝 블록</a>
+  <a href="/">현재 사이트</a>
+</nav>
+
+<header class="hero">
+  <div class="confetti"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <span class="kicker">OPEN-ENDED CREATIVE WORKSHOP · 하남</span>
+  <h1><span class="in">인풋</span>은 가득한데,<br><span class="out">아웃풋</span>을 펼칠 곳이 없다.</h1>
+  <p class="sub">내면의 행복이 가득한, <strong>인조이풀</strong>의 시간과 공간을 선물합니다.</p>
+  <a class="cta" href="#"><img src="../smile.png" alt="">워크숍으로 만나요</a>
+</header>
+<div class="stickers">
+  <span class="stk">"내가 만들었는데, 너무 예뻐요"</span>
+  <span class="stk">"감동이에요"</span>
+  <span class="stk">"행복해요"</span>
+  <span class="stk">"와! 너무 멋지지 않아요?"</span>
+</div>
+<section class="band"><div class="in2">
+  <h2>여기는 하남의 <em>오픈형 자율 창작 워크숍</em>,<br>인조이풀이에요.</h2>
+  <p>답이 정해지지 않은 재료들을 만나 <b>나만의 답</b>을 찾아가요.</p>
+</div></section>
+<section class="grid">
+  <a class="card" href="#"><b>토들러팝</b><i>18~30개월 · 보호자와</i><span>아이의 첫 재료 경험 · 회당 20,000원</span></a>
+  <a class="card" href="#"><b>키즈팝</b><i>5~7세 · 멤버십</i><span>요일마다 다른 랩 · 월 4회 140,000원</span></a>
+  <a class="card" href="#"><b>크리디팝</b><i>8세 이상</i><span>나만의 아웃풋 창작공간 · 1회 15,000원</span></a>
+  <a class="card" href="#"><b>올드팝·시니어팝</b><i>성인 · 시니어</i><span>예술로 찾는 나다움 · 원데이 50,000원</span></a>
+</section>
+<section class="meet">
+  <img src="../smile.png" alt="">
+  <h2>워크숍으로 만나요.</h2>
+  <a href="#">네이버에서 날짜 고르기 →</a>
+</section>
+
+</body></html>
