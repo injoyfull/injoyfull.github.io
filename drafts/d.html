@@ -71,6 +71,45 @@ h2 .hl{background:#FFD971;padding:0 .12em;box-shadow:4px 4px 0 #26211C;display:i
 .meet img{width:4rem;rotate:-7deg}
 .meet h2{color:#fff;margin:.7rem 0 1.6rem}
 .meet .btn--yellow{background:#FFD971;color:#26211C}
+
+/* ── 토글 버튼 ── */
+#mode{width:2.1rem;height:2.1rem;border-radius:50%;border:2.5px solid #26211C;background:#FFD971;font-size:1rem;cursor:pointer;box-shadow:2.5px 2.5px 0 #26211C;transition:.12s;line-height:1}
+#mode:hover{translate:1px 1px;box-shadow:1px 1px 0 #26211C}
+
+/* ── 블랙 배경 모드 — 잉크 위의 버터와 파랑 ── */
+body.dark{background:#1B1713;color:#FFF6E0}
+body.dark .switch{background:rgba(27,23,19,.92);border-bottom-color:rgba(255,246,224,.15)}
+body.dark .switch a{color:#FFF6E0;border-color:rgba(255,217,113,.4)}
+body.dark .switch a.on{background:#FFD971;color:#26211C;border-color:#FFD971}
+body.dark #mode{background:#26211C;color:#FFD971;border-color:#FFD971;box-shadow:2.5px 2.5px 0 rgba(255,217,113,.9)}
+body.dark .hero{background:#1B1713}
+body.dark .chip{background:#26211C;color:#FFD971;border-color:#FFD971;box-shadow:3px 3px 0 rgba(255,217,113,.85)}
+body.dark .chip::before{background:#FFD971}
+body.dark h1{color:#FFF6E0}
+body.dark h1 .box{background:#FFD971;color:#26211C;box-shadow:5px 5px 0 rgba(255,246,224,.35)}
+body.dark .sub{color:rgba(255,246,224,.85)}
+body.dark .sub b{color:#FFD971}
+body.dark .tag{border-color:#FFF6E0;color:#26211C;box-shadow:2.5px 2.5px 0 rgba(255,246,224,.5)}
+body.dark .btn{border-color:#FFF6E0;box-shadow:4px 4px 0 rgba(255,246,224,.55)}
+body.dark .btn:hover{box-shadow:1px 1px 0 rgba(255,246,224,.55)}
+body.dark .btn--paper{background:#26211C;color:#FFF6E0}
+body.dark .shape{border-color:#FFF6E0;opacity:.85}
+body.dark .board{background:#26211C;border-color:#FFF6E0;box-shadow:10px 12px 0 rgba(255,217,113,.35)}
+body.dark .board__bar{border-bottom-color:#FFF6E0;color:#FFF6E0}
+body.dark .dot{border-color:#FFF6E0}
+body.dark .colh{border-color:#FFF6E0;color:#26211C}
+body.dark .kcard{background:#1B1713;border-color:#FFF6E0;box-shadow:3px 3px 0 rgba(255,246,224,.4);color:#FFF6E0}
+body.dark .kchip{border-color:#FFF6E0;color:#26211C}
+body.dark .sec2{background:#221D18;border-top-color:#FFF6E0}
+body.dark h2{color:#FFF6E0}
+body.dark h2 .hl{background:#FFD971;color:#26211C;box-shadow:4px 4px 0 rgba(255,246,224,.35)}
+body.dark .pcard{background:#26211C;border-color:#FFF6E0;box-shadow:5px 5px 0 rgba(255,246,224,.45);color:#FFF6E0}
+body.dark .pcard:hover{box-shadow:5px 10px 0 rgba(255,246,224,.5)}
+body.dark .pcard i{color:#FFD971}
+body.dark .pcard span{color:rgba(255,246,224,.7)}
+body.dark .pcard u{color:#FFD971;opacity:.8}
+body.dark .pc1,body.dark .pc2,body.dark .pc4{background:#26211C}
+body.dark .meet{border-top-color:#FFF6E0}
 </style>
 </head>
 <body>
@@ -80,6 +119,7 @@ h2 .hl{background:#FFD971;padding:0 .12em;box-shadow:4px 4px 0 #26211C;display:i
   <a href="c.html">C 팝 블록</a>
   <a href="d.html" class="on">D 라우드 팝</a>
   <a href="/">현재 사이트</a>
+  <button id="mode" aria-label="배경 색 바꾸기" type="button">☀</button>
 </nav>
 
 <header class="hero">
@@ -128,4 +168,13 @@ h2 .hl{background:#FFD971;padding:0 .12em;box-shadow:4px 4px 0 #26211C;display:i
   <h2>워크숍으로 만나요.</h2>
   <a class="btn btn--yellow" href="#">네이버에서 날짜 고르기 →</a>
 </section>
+<script>
+(function () {
+  var b = document.getElementById('mode');
+  b.addEventListener('click', function () {
+    var dark = document.body.classList.toggle('dark');
+    b.textContent = dark ? '☾' : '☀';
+  });
+})();
+</script>
 </body></html>
