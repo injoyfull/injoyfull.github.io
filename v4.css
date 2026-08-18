@@ -1,0 +1,177 @@
+/* ============================================================
+   인조이풀 v4 — 스파크 프레임 (2026-08-08 재시작)
+   문법: 색 프레임 위에 떠 있는 흰 카드 · 세리프 헤드라인 ·
+         손그림 낙서 선 · 아이콘 하나가 문장 하나
+   팔레트: 코랄 #F2705B · 옐로우 #F5B31E · 블루 #1B6BD6 ·
+           틸 #2A9D8F · 잉크 #14142B · 종이 #FFFDF8
+   ============================================================ */
+:root {
+  --coral: #F2705B;
+  --yellow: #F5B31E;
+  --blue: #1B6BD6;
+  --teal: #2A9D8F;
+  --ink: #14142B;
+  --paper: #FFFDF8;
+  --soft: #5A5670;
+  --r: 22px;
+  --gap: 12px;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.serif { font-family: "Gowun Batang", serif; font-weight: 700; letter-spacing: -.015em; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 999; background: #fff; padding: .6rem 1rem; }
+
+/* ── 내브 ── */
+.nav {
+  position: sticky; top: 0; z-index: 90;
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: .7rem clamp(1rem, 3vw, 2rem);
+  background: var(--paper);
+}
+.nav__logo { display: flex; align-items: center; gap: .5rem; font-weight: 800; font-size: 1.05rem; }
+.nav__menu { display: flex; gap: clamp(.8rem, 2.5vw, 1.8rem); margin-left: auto; font-size: .88rem; font-weight: 700; letter-spacing: .04em; }
+.nav__menu a { padding: .3rem .2rem; border-bottom: 2px solid transparent; transition: border-color .15s; }
+.nav__menu a:hover { border-bottom-color: var(--coral); }
+.nav__cta {
+  background: var(--ink); color: #fff; font-weight: 700; font-size: .88rem;
+  padding: .6rem 1.3rem; border-radius: 999px; transition: .15s;
+}
+.nav__cta:hover { background: var(--blue); translate: 0 -2px; }
+@media (max-width: 700px) { .nav__menu { gap: .7rem; font-size: .8rem; } }
+
+/* ── 프레임: 색 바탕 + 흰 카드가 뜬다 ── */
+.frame { padding: var(--gap); }
+.frame--coral { background: var(--coral); }
+.frame--yellow { background: var(--yellow); overflow: hidden; }
+.frame--blue { background: var(--blue); }
+.card { background: #fff; border-radius: var(--r); }
+
+/* ── ① 히어로 ── */
+.hero {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: var(--gap);
+  max-width: 84rem; margin: 0 auto; min-height: min(78vh, 44rem);
+}
+.hero__txt { padding: clamp(1.8rem, 4.5vw, 3.5rem); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero__txt h1 { font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 1.32; }
+.hero__txt > p { margin-top: 1.1rem; color: var(--soft); max-width: 28rem; }
+.hero__txt strong { color: var(--blue); }
+.squiggle { width: min(20rem, 70%); margin: 1.4rem 0 0; }
+.hero__cta { margin-top: 1.8rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .7rem;
+  font-weight: 700; font-size: 1rem;
+  padding: .95rem 1.7rem; border-radius: 999px; transition: .15s;
+}
+.btn--ink { background: var(--ink); color: #fff; }
+.btn--ink:hover { background: var(--blue); translate: 0 -2px; }
+.btn--ink .spark { display: inline-flex; align-items: center; justify-content: center; width: 1.9rem; height: 1.9rem; background: rgba(255,255,255,.16); border-radius: 50%; font-style: normal; }
+.btn--line { border: 1.5px solid var(--ink); }
+.btn--line:hover { background: var(--ink); color: #fff; }
+.card--photo { overflow: hidden; position: relative; min-height: 18rem; }
+.card--photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.card--photo figcaption {
+  position: absolute; left: 1.1rem; bottom: 1rem; z-index: 2;
+  background: rgba(255,255,255,.92); border-radius: 999px;
+  padding: .35rem .9rem; font-size: .78rem; font-weight: 700;
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .card--photo { min-height: 15rem; }
+}
+
+/* ── ② 아이콘 스트립 ── */
+.values { max-width: 74rem; margin: 0 auto; padding: clamp(3.5rem, 8vh, 5.5rem) 1.5rem; text-align: center; }
+.values h2 { font-size: clamp(1.5rem, 3.8vw, 2.4rem); line-height: 1.45; }
+.values__grid { list-style: none; padding: 0; margin: 3rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 2.2rem 1.5rem; }
+.values__grid svg { width: 3.6rem; height: 3.6rem; margin: 0 auto 1rem; display: block; transition: rotate .25s ease; }
+.values__grid li:hover svg { rotate: -8deg; }
+.values__grid p { font-size: .9rem; color: var(--soft); line-height: 1.65; }
+.values__grid b { color: var(--ink); font-size: 1rem; }
+.values__grid .v2 { translate: 0 1.4rem; }
+.values__grid .v4 { translate: 0 1.4rem; }
+@media (max-width: 700px) { .values__grid .v2, .values__grid .v4 { translate: none; } }
+
+/* ── ③ 클래스 카드 (옐로우 프레임) ── */
+.pwrap { max-width: 84rem; margin: 0 auto; position: relative; display: flex; flex-direction: column; gap: var(--gap); }
+.pheadc { padding: clamp(1.4rem, 3vw, 2rem) clamp(1.6rem, 3.5vw, 2.4rem); }
+.pheadc h2 { font-size: clamp(1.35rem, 3.4vw, 2.1rem); }
+.squiggle--free { position: absolute; right: 4%; top: -6px; width: min(20rem, 40%); z-index: 3; pointer-events: none; }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--gap); position: relative; z-index: 2; }
+.pcard { padding: 1.5rem 1.5rem 1.3rem; display: flex; flex-direction: column; gap: .15rem; transition: .16s; position: relative; }
+.pcard:hover { translate: 0 -5px; box-shadow: 0 14px 30px rgba(20, 20, 43, .16); }
+.pcard .ic svg { width: 2.5rem; height: 2.5rem; margin-bottom: .7rem; transition: rotate .25s; }
+.pcard:hover .ic svg { rotate: 12deg; }
+.pcard b { font-family: "Gowun Batang", serif; font-size: 1.35rem; }
+.pcard span { font-size: .85rem; color: var(--soft); }
+.pcard em { font-style: normal; font-weight: 700; font-size: .92rem; margin-top: .5rem; }
+.pcard u { text-decoration: none; font-size: .82rem; font-weight: 700; color: var(--blue); margin-top: .6rem; }
+.pcard:hover u { color: var(--coral); }
+.blob { position: absolute; right: -3rem; bottom: 3.5rem; width: 11rem; z-index: 1; opacity: .9; }
+.pmore { position: relative; z-index: 2; padding: .4rem 0 .6rem; text-align: center; }
+@media (max-width: 700px) { .blob { display: none; } }
+
+/* ── ④ 목소리 ── */
+.voices { max-width: 74rem; margin: 0 auto; padding: clamp(3.5rem, 8vh, 5rem) 1.5rem; text-align: center; }
+.voices h2 { font-size: clamp(1.4rem, 3.6vw, 2.2rem); margin-bottom: 2.2rem; }
+.voices ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.voices .card { padding: 1.6rem 1.5rem; font-family: "Gowun Batang", serif; font-size: 1.02rem; line-height: 1.75; box-shadow: 0 8px 22px rgba(20, 20, 43, .07); }
+.voices .card svg { width: 2.1rem; height: 2.1rem; margin: 0 auto .8rem; display: block; }
+.voices .card b { color: var(--blue); }
+.voices .card span { display: block; margin-top: .4rem; font-size: .8rem; color: var(--soft); font-family: "Apple SD Gothic Neo", sans-serif; }
+.voices__src { margin-top: 1.2rem; font-size: .74rem; letter-spacing: .08em; color: var(--soft); }
+
+/* ── ⑤ 올리한나 (블루 프레임) ── */
+.maker { display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--gap); max-width: 84rem; margin: 0 auto; }
+.maker__txt { padding: clamp(1.8rem, 4vw, 3rem); overflow: hidden; }
+.maker__tag { font-size: .72rem; font-weight: 800; letter-spacing: .2em; color: var(--coral); margin-bottom: 1rem; }
+.maker__txt h2 { font-size: clamp(1.4rem, 3.4vw, 2.2rem); line-height: 1.5; }
+.maker__sub { margin-top: 1rem; color: var(--soft); }
+.maker__sub strong { color: var(--ink); }
+.maker__txt .squiggle { width: min(15rem, 60%); margin: 1.2rem 0 1.4rem; }
+.maker .card--photo { min-height: 17rem; }
+@media (max-width: 860px) { .maker { grid-template-columns: 1fr; } }
+
+/* ── ⑥ 만나요 ── */
+.meet { max-width: 74rem; margin: 0 auto; padding: clamp(3.5rem, 9vh, 5.5rem) 1.5rem; text-align: center; }
+.meet__smile { margin: 0 auto 1rem; width: 3.4rem; height: auto; }
+.meet h2 { font-size: clamp(1.7rem, 4.4vw, 2.6rem); }
+.meet > p { margin-top: .6rem; color: var(--soft); }
+.meet__doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--gap); margin-top: 2rem; }
+.door { padding: 1.5rem 1.4rem; box-shadow: 0 8px 24px rgba(20, 20, 43, .08); border: 1.5px solid rgba(20, 20, 43, .07); transition: .16s; display: flex; flex-direction: column; gap: .15rem; }
+.door:hover { translate: 0 -5px; box-shadow: 0 16px 34px rgba(20, 20, 43, .14); border-color: var(--coral); }
+.door i { font-style: normal; font-size: .76rem; font-weight: 800; letter-spacing: .1em; color: var(--coral); }
+.door b { font-size: 1.2rem; }
+.door span { font-size: .84rem; color: var(--soft); }
+.meet__note { margin-top: 1.6rem; font-size: .88rem; color: var(--soft); }
+.meet__note a { font-weight: 700; color: var(--blue); }
+
+/* ── 푸터 ── */
+.foot { background: var(--ink); color: rgba(255, 255, 255, .85); text-align: center; padding: 3.5rem 1.5rem 2.5rem; }
+.foot__logo { width: min(13rem, 60vw); margin: 0 auto 1.2rem; filter: brightness(0) invert(1); opacity: .95; }
+.foot address { font-style: normal; margin-top: .5rem; font-size: .9rem; opacity: .75; }
+.foot__links { margin-top: 1.2rem; font-size: .9rem; }
+.foot__links a { font-weight: 700; color: #fff; opacity: .9; }
+.foot__links a:hover { color: var(--yellow); }
+.foot__copy { margin-top: 1.6rem; font-size: .78rem; opacity: .55; }
+
+/* ── 플로팅 독 ── */
+.dock { position: fixed; right: 1rem; bottom: 1rem; z-index: 80; display: flex; flex-direction: column; align-items: flex-end; gap: .5rem; }
+.dock__top { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: #fff; border: 1.5px solid rgba(20,20,43,.2); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--ink); box-shadow: 0 4px 14px rgba(20,20,43,.14); transition: .15s; }
+.dock__top:hover { background: var(--yellow); translate: 0 -2px; }
+.dock__meet { display: inline-flex; align-items: center; gap: .5rem; background: var(--ink); color: #fff; font-weight: 700; font-size: .8rem; padding: .55rem 1rem .55rem .6rem; border-radius: 999px; box-shadow: 0 6px 20px rgba(20,20,43,.3); transition: .15s; }
+.dock__meet:hover { background: var(--blue); translate: 0 -2px; }
+@media (max-width: 700px) { .dock__meet span { display: none; } .dock__meet { padding: .55rem; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
