@@ -175,3 +175,103 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ============================================================
+   v4 서브페이지 — 프로그램 · 어바웃 · 기업 (2026-08-09)
+   ============================================================ */
+.phead2 { max-width: 74rem; margin: 0 auto; padding: clamp(2.2rem, 5vh, 3.5rem) 1.5rem 1.6rem; }
+.phead2 h1 { font-family: "Gowun Batang", serif; font-weight: 700; font-size: clamp(1.9rem, 5vw, 3rem); }
+.phead2 .en { font-size: .7rem; font-weight: 800; letter-spacing: .26em; color: var(--coral); display: block; margin-bottom: .6rem; }
+.phead2 p { margin-top: .7rem; color: var(--soft); max-width: 34rem; }
+.phead2 .squiggle { width: min(14rem, 50%); margin-top: 1rem; }
+
+/* 프레임 안 컨텐츠 래퍼 */
+.fwrap { max-width: 84rem; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap); }
+.flabel { padding: 1.1rem 1.6rem; }
+.flabel b { font-family: "Gowun Batang", serif; font-size: 1.25rem; }
+.flabel span { margin-left: .7rem; font-size: .72rem; font-weight: 800; letter-spacing: .2em; color: var(--soft); }
+
+/* 아코디언 (v4) */
+details.acc2 { border-radius: var(--r); background: #fff; overflow: hidden; }
+.acc2 summary {
+  list-style: none; cursor: pointer;
+  display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1.1rem;
+  padding: 1.25rem 1.5rem; transition: background .15s;
+}
+.acc2 summary::-webkit-details-marker { display: none; }
+.acc2 summary:hover { background: #FFF8EC; }
+.acc2 summary .ic svg { width: 2.2rem; height: 2.2rem; display: block; transition: rotate .25s; }
+.acc2[open] summary .ic svg, .acc2 summary:hover .ic svg { rotate: 12deg; }
+.acc2 summary .tt b { font-family: "Gowun Batang", serif; font-size: 1.25rem; display: block; }
+.acc2 summary .tt span { font-size: .84rem; color: var(--soft); }
+.acc2 summary em { font-style: normal; font-weight: 700; font-size: .92rem; white-space: nowrap; }
+.acc2 summary .st { font-size: .7rem; font-weight: 800; padding: .3rem .75rem; border-radius: 999px; white-space: nowrap; }
+.st--open { background: var(--ink); color: #fff; }
+.st--always { background: rgba(27, 107, 214, .12); color: var(--blue); }
+.acc2 .bd { padding: .2rem 1.5rem 1.6rem; max-width: 44rem; }
+.acc2 .bd > p { color: var(--soft); }
+.acc2 .bd b { color: var(--ink); }
+.spec2 { margin: 1rem 0; display: grid; grid-template-columns: 4.5rem 1fr; gap: .45rem 1rem; font-size: .92rem; }
+.spec2 dt { font-weight: 800; color: var(--coral); }
+.spec2 dd { color: var(--ink); }
+.spec2 dd small { color: var(--soft); }
+.acc2 .cta { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.1rem; }
+.btn--sm { padding: .7rem 1.3rem; font-size: .9rem; }
+@media (max-width: 700px) {
+  .acc2 summary { grid-template-columns: auto 1fr; }
+  .acc2 summary em, .acc2 summary .st { grid-column: 2; justify-self: start; }
+  .acc2 summary em { margin-top: -.4rem; }
+}
+
+/* 화이트 카드 프로즈 (스토리·WHY) */
+.prosecard { padding: clamp(1.8rem, 4vw, 3rem); }
+.prosecard h2 { font-family: "Gowun Batang", serif; font-size: clamp(1.4rem, 3.4vw, 2.1rem); line-height: 1.5; margin-bottom: 1rem; }
+.prosecard p { color: var(--soft); max-width: 36rem; }
+.prosecard p + p { margin-top: .9rem; }
+.prosecard strong { color: var(--ink); }
+.prosecard .hl { background: linear-gradient(transparent 58%, rgba(245, 179, 30, .55) 58%); }
+
+/* 큰 인용 (아이의 말) */
+.bigquote { padding: clamp(2rem, 5vw, 3.2rem); text-align: center; }
+.bigquote blockquote { font-family: "Gowun Batang", serif; font-weight: 700; font-size: clamp(1.5rem, 4.4vw, 2.6rem); line-height: 1.5; }
+.bigquote blockquote b { color: var(--blue); }
+.bigquote figcaption { margin-top: 1rem; font-size: .85rem; color: var(--soft); }
+
+/* PSC-R 카드 */
+.pscr4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--gap); }
+.pscr4 .card { padding: 1.5rem 1.4rem; }
+.pscr4 svg { width: 2.4rem; height: 2.4rem; margin-bottom: .8rem; }
+.pscr4 b { font-family: "Gowun Batang", serif; font-size: 1.2rem; display: block; }
+.pscr4 i { font-style: normal; font-size: .72rem; font-weight: 800; letter-spacing: .16em; color: var(--soft); }
+.pscr4 p { margin-top: .6rem; font-size: .88rem; color: var(--soft); }
+
+/* 세 가지 언어 */
+.langs { max-width: 74rem; margin: 0 auto; padding: clamp(3rem, 7vh, 4.5rem) 1.5rem; text-align: center; }
+.langs h2 { font-family: "Gowun Batang", serif; font-size: clamp(1.4rem, 3.6vw, 2.2rem); margin-bottom: 2rem; }
+.langs ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1.6rem; }
+.langs svg { width: 3rem; height: 3rem; margin: 0 auto .8rem; display: block; transition: rotate .25s; }
+.langs li:hover svg { rotate: -8deg; }
+.langs b { font-size: 1.05rem; }
+.langs p { font-size: .88rem; color: var(--soft); margin-top: .3rem; }
+
+/* FAQ */
+.faq2 details { border-bottom: 1px solid rgba(20, 20, 43, .12); }
+.faq2 summary { list-style: none; cursor: pointer; padding: 1.1rem .3rem; font-weight: 700; display: flex; justify-content: space-between; gap: 1rem; }
+.faq2 summary::-webkit-details-marker { display: none; }
+.faq2 summary::after { content: "+"; color: var(--coral); font-weight: 400; font-size: 1.2rem; }
+.faq2 details[open] summary::after { content: "−"; }
+.faq2 .fa { padding: 0 .3rem 1.2rem; color: var(--soft); font-size: .95rem; max-width: 40rem; }
+.faq2 { max-width: 74rem; margin: 0 auto; padding: clamp(2.5rem, 6vh, 4rem) 1.5rem; }
+.faq2 h2 { font-family: "Gowun Batang", serif; font-size: clamp(1.4rem, 3.6vw, 2.1rem); margin-bottom: 1rem; }
+
+/* 행 리스트 (트랙 레코드) */
+.rows4 { display: flex; flex-direction: column; }
+.rows4 .row { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.2rem; padding: 1.1rem .3rem; border-bottom: 1px solid rgba(20,20,43,.12); align-items: baseline; }
+.rows4 .row:first-child { border-top: 1px solid rgba(20,20,43,.12); }
+.rows4 i { font-style: normal; font-size: .72rem; font-weight: 800; letter-spacing: .14em; color: var(--coral); }
+.rows4 b { display: block; }
+.rows4 p { font-size: .88rem; color: var(--soft); }
+
+/* 문의 스트립 */
+.contact4 { max-width: 74rem; margin: 0 auto; padding: 0 1.5rem clamp(3rem, 7vh, 4.5rem); text-align: center; font-size: .92rem; color: var(--soft); }
+.contact4 a { font-weight: 700; color: var(--blue); }
