@@ -65,7 +65,7 @@ img { max-width: 100%; display: block; }
   * { animation: none !important; }
   /* 애니메이션으로 등장하는 요소들이 숨은 채 남지 않도록 */
   .wordmark, .wordmark span, .hero h1, .hero__sub, .hero__cta, .hero__doors { opacity: 1 !important; transform: none !important; }
-  .cast, .sl { transform: none !important; }
+  .ride, .rider, .sl { transform: none !important; }
 }
 
 /* ── 공용 타이포 ── */
@@ -164,36 +164,35 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   justify-self: end; width: 100%;
   max-width: 44rem; padding: 0 clamp(24px, 3vw, 44px) 3.5rem var(--pad);
 }
-/* 오른쪽 — 놀이터. 한나님이 그린 미끄럼틀 위에서 논다. */
+/* 오른쪽 — 놀이터. 한나님이 그린 미끄럼틀 위에서 논다.
+   .ride 안에서 캐릭터 위치를 미끄럼틀 기준(%)으로 잡아 정확히 '위에' 앉힌다. */
 .hero__stage { position: relative; align-self: stretch; min-height: clamp(340px, 46vw, 560px); }
 .playground { position: absolute; inset: 0; }
-.sl { position: absolute; height: auto; }
-.sl--1 { width: 64%; top: 4%;    left: 6%;  animation: slSway 9s ease-in-out infinite; }
-.sl--2 { width: 47%; top: 24%;   right: 1%; animation: slSway 11s ease-in-out infinite 0.7s; }
-.sl--3 { width: 68%; bottom: 5%; left: 0;   animation: slSway 12s ease-in-out infinite 1.4s; }
-@keyframes slSway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+.sl { display: block; width: 100%; height: auto; }
 
-.hero__cast { position: absolute; inset: 0; z-index: 2; }
-/* 미끄럼틀을 타는 아이들 — 원판 없이 그대로 */
-.cast {
-  position: absolute; display: block; height: auto;
-  filter: drop-shadow(0 8px 16px rgba(43,42,38,0.2));
-}
-.cast--1 { width: 12%; top: 4%;     left: 44%; animation: slide1 4.2s ease-in-out infinite; }
-.cast--2 { width: 11%; top: 55%;    right: 13%; animation: slide2 5s ease-in-out infinite; }
-.cast--3 { width: 12%; bottom: 15%; left: 32%; animation: slide3 4.6s ease-in-out infinite; }
-@keyframes slide1 {
-  0%, 100% { transform: translate(0, 0) rotate(-5deg); }
-  50%      { transform: translate(9%, 14%) rotate(6deg); }
-}
-@keyframes slide2 {
-  0%, 100% { transform: translate(0, 0) rotate(4deg); }
-  50%      { transform: translate(-10%, 12%) rotate(-5deg); }
-}
-@keyframes slide3 {
-  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
-  50%      { transform: translate(12%, -8%) rotate(4deg); }
-}
+.ride { position: absolute; }
+.ride .rider { position: absolute; width: auto; height: auto; filter: drop-shadow(0 6px 12px rgba(43,42,38,0.22)); }
+
+/* ① 주황 스프링 — 뭉이가 오른쪽 아치 위에 */
+.ride--1 { width: 60%; top: 3%; left: 4%; animation: slSway 9s ease-in-out infinite; }
+.ride--1 .rider { width: 18%; left: 55%; bottom: 80%; animation: ride1 4.6s ease-in-out infinite; }
+/* ② 노랑 S자 — 도리가 꼭대기, 사다리 옆에서 막 출발 */
+.ride--2 { width: 42%; top: 22%; right: 2%; animation: slSway 11s ease-in-out infinite 0.7s; }
+.ride--2 .rider { width: 22%; left: 55%; bottom: 98%;   animation: ride2 5.4s ease-in-out infinite; }
+/* ③ 초록 물결 — 점피가 첫 마루 위에 */
+.ride--3 { width: 62%; bottom: 6%; left: 0; animation: slSway 12s ease-in-out infinite 1.4s; }
+.ride--3 .rider { width: 16%; left: 24%; bottom: 84%;   animation: ride3 5s ease-in-out infinite; }
+
+/* 나머지 미끄럼틀은 작게, 뒤에서 */
+.sl--d1, .sl--d2, .sl--d3 { position: absolute; opacity: 0.9; }
+.sl--d1 { width: 28%; top: 3%;    right: 1%; animation: slSway 10s ease-in-out infinite 2s; }
+.sl--d2 { width: 26%; top: 34%;   left: 0;   animation: slSway 13s ease-in-out infinite 0.3s; }
+.sl--d3 { width: 24%; bottom: 3%; right: 2%; animation: slSway 11s ease-in-out infinite 1.8s; }
+
+@keyframes slSway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+@keyframes ride1 { 0%,100% { transform: translate(0,0) rotate(-3deg); } 50% { transform: translate(7%, 2%) rotate(3deg); } }
+@keyframes ride2 { 0%,100% { transform: translate(0,0) rotate(2deg); }  50% { transform: translate(-5%, 2%) rotate(-3deg); } }
+@keyframes ride3 { 0%,100% { transform: translate(0,0) rotate(-2deg); } 50% { transform: translate(8%, 2%) rotate(3deg); } }
 .hero__tag {
   position: absolute; z-index: 3; left: 50%; bottom: 0;
   transform: translateX(-50%); white-space: nowrap;
@@ -209,12 +208,12 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   .hero { grid-template-columns: 1fr; min-height: 0; padding: 5.2rem var(--pad) 0; align-items: stretch; }
   .hero__stage { order: -1; min-height: 0; height: clamp(250px, 36svh, 330px); }
   .hero__in { justify-self: stretch; max-width: none; padding: 2.4rem 0 3.2rem; }
-  .sl--1 { width: 58%; top: 2%; left: 4%; }
-  .sl--2 { width: 40%; top: 20%; right: 2%; }
-  .sl--3 { width: 62%; bottom: 4%; left: 0; }
-  .cast--1 { width: 12%; top: 4%; left: 38%; }
-  .cast--2 { width: 11%; top: 50%; right: 11%; }
-  .cast--3 { width: 12%; bottom: 13%; left: 28%; }
+  .ride--1 { width: 56%; top: 2%; left: 2%; }
+  .ride--2 { width: 36%; top: 20%; right: 1%; }
+  .ride--3 { width: 58%; bottom: 4%; left: 0; }
+  .sl--d1 { width: 24%; top: 2%; right: 1%; }
+  .sl--d2 { display: none; }  /* 좁은 화면에선 초록과 겹쳐서 뺀다 */
+  .sl--d3 { width: 20%; bottom: 2%; right: 2%; }
 }
 
 /* 워드마크 — in:JOYFULL · 글자가 한 자씩 놓인다 */
