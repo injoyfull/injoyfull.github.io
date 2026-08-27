@@ -88,8 +88,10 @@ img { max-width: 100%; display: block; }
 }
 .top__name { font-weight: 900; font-size: 1.02rem; letter-spacing: 0.05em; }
 .top__links { display: flex; gap: clamp(0.9rem, 3vw, 1.6rem); align-items: center; }
-.top__link { font-size: 0.9rem; color: var(--ink-soft); border-bottom: 1px solid rgba(43,42,38,0.28); padding-bottom: 2px; transition: color 0.3s, border-color 0.3s; }
+.top__link { font-size: 0.9rem; color: var(--ink-soft); border-bottom: 1px solid rgba(43,42,38,0.28); padding-bottom: 2px; transition: color 0.3s, border-color 0.3s; white-space: nowrap; }
 .top__link:hover { color: var(--ink); border-color: var(--ink); }
+/* 모바일: 온페이지 앵커(클래스·글)는 숨기고 핵심만 */
+@media (max-width: 680px) { .top__links .top__link:nth-child(-n+2) { display: none; } }
 .top__ask {
   font-family: var(--hand); font-weight: 700; font-size: 1rem;
   background: var(--butter); color: var(--ink);

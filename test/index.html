@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>감각 스위치 테스트 — 꺼진 스위치 찾기 | 인조이풀</title>
+  <meta name="description" content="아기는 모든 감각이 켜진 채 태어나요. 살아가면서 하나씩 끄죠. 1분 테스트로 내 꺼진 스위치를 찾고, 오늘 켜는 미션 하나를 받아가세요 — 하남 창작 놀이터 인조이풀.">
+  <link rel="canonical" href="https://injoyfull.github.io/test/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="인조이풀">
+  <meta property="og:title" content="감각 스위치 테스트 — 내 꺼진 스위치는?">
+  <meta property="og:description" content="촉각·소리·시각·리듬. 1분이면 돼요. 정답 없는 테스트니까, 편하게.">
+  <meta property="og:url" content="https://injoyfull.github.io/test/">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://injoyfull.github.io/og.png?v=2">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/a2z-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/v6.css?v=2">
+  <style>
+    /* 감각 4색 — 나만시와 통일 */
+    :root { --touch: #D98E4F; --sound: #4E9084; --sight: #C0788A; --rhythm: #8C9A4E; }
+    .quiz { max-width: 40rem; margin: 0 auto; padding: 8rem var(--pad) 4rem; text-align: center; }
+    .quiz__label { font-family: var(--hand); font-weight: 700; font-size: 1.05rem; color: var(--ink-soft); }
+    .quiz h1 { margin-top: 0.6rem; font-weight: 900; font-size: clamp(1.9rem, 6vw, 3rem); line-height: 1.4; }
+    .quiz__sub { margin-top: 1.2rem; font-weight: 300; font-size: clamp(0.95rem, 2.4vw, 1.05rem); color: var(--ink-soft); }
+    .quiz__sub b { font-weight: 700; color: var(--ink); }
+    /* 스위치 4개 */
+    .switches { margin: 2.2rem auto 0; display: flex; justify-content: center; gap: clamp(0.7rem, 3vw, 1.4rem); flex-wrap: wrap; }
+    .sw { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; font-family: var(--hand); font-weight: 700; font-size: 0.95rem; color: var(--ink-soft); }
+    .sw i { font-style: normal; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: var(--shadow); background: #fff; }
+    .sw--touch i { background: var(--touch); } .sw--sound i { background: var(--sound); }
+    .sw--sight i { background: var(--sight); } .sw--rhythm i { background: var(--rhythm); }
+    .quiz__start { margin-top: 2.6rem; }
+    .quiz__hint { margin-top: 1.1rem; font-family: var(--hand); font-weight: 700; font-size: 0.98rem; color: var(--ink-soft); }
+    /* 문항 */
+    .qcard { margin-top: 2.4rem; background: var(--card); border-radius: 4px; box-shadow: var(--shadow); padding: clamp(1.8rem, 5vw, 2.8rem); transform: rotate(-0.4deg); }
+    @media (prefers-reduced-motion: reduce) { .qcard { transform: none; } }
+    .qcard__no { font-family: var(--hand); font-weight: 700; color: var(--ink-soft); }
+    .qcard__q { margin-top: 0.8rem; font-weight: 700; font-size: clamp(1.1rem, 3.2vw, 1.4rem); line-height: 1.6; }
+    .qcard__btns { margin-top: 1.8rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .qbtn { font-family: var(--a2z); font-weight: 700; font-size: 1rem; padding: 0.85rem 1.7rem; border: 0; border-radius: 999px; cursor: pointer; box-shadow: 0 3px 8px rgba(43,42,38,0.16); transition: transform 0.25s; }
+    .qbtn:hover { transform: scale(1.05) rotate(-1deg); }
+    .qbtn--o { background: var(--butter); color: var(--ink); }
+    .qbtn--x { background: var(--ink); color: var(--paper); }
+    .qbar { margin: 2rem auto 0; max-width: 16rem; height: 8px; border-radius: 999px; background: rgba(43,42,38,0.12); overflow: hidden; }
+    .qbar b { display: block; height: 100%; width: 0; background: var(--butter); transition: width 0.4s; }
+    /* 결과 */
+    .rcard { margin-top: 2.4rem; background: var(--card); border-radius: 4px; box-shadow: var(--shadow); padding: clamp(2rem, 5vw, 3rem); position: relative; }
+    .rcard .sticker { position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-2deg); }
+    .rcard__type { margin-top: 0.6rem; font-weight: 900; font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1.4; }
+    .rcard__desc { margin-top: 1rem; font-weight: 300; font-size: 0.98rem; color: var(--ink-soft); }
+    .rcard__mission { margin-top: 1.8rem; text-align: left; background: var(--butter-soft); border-radius: 3px; padding: 1.2rem 1.4rem; }
+    .rcard__mission i { font-style: normal; font-family: var(--hand); font-weight: 700; font-size: 0.98rem; color: var(--ink-soft); }
+    .rcard__mission p { margin-top: 0.3rem; font-weight: 700; font-size: 1.02rem; }
+    .rcard__club { margin-top: 2rem; border-top: 1px dashed rgba(43,42,38,0.2); padding-top: 1.8rem; }
+    .rcard__club p { font-weight: 300; font-size: 0.95rem; color: var(--ink-soft); }
+    .rcard__club p b { font-weight: 700; color: var(--ink); }
+    .rcard__cta { margin-top: 1.4rem; display: flex; justify-content: center; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+    .rcard__kids { margin-top: 1.2rem; font-size: 0.88rem; color: var(--ink-soft); }
+    .rcard__kids a { border-bottom: 1px solid rgba(43,42,38,0.3); padding-bottom: 2px; }
+    .quiz__again { margin-top: 1.6rem; }
+    .quiz__again button { background: none; border: 0; cursor: pointer; font-family: var(--hand); font-weight: 700; font-size: 1rem; color: var(--ink-soft); border-bottom: 1px solid rgba(43,42,38,0.3); padding-bottom: 2px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <a class="top__name" href="/">인조이풀</a>
+    <nav class="top__links" aria-label="바로가기">
+      <a class="top__link" href="/#now">클래스</a>
+      <a class="top__link" href="/fall/">가을시즌</a>
+      <a class="top__ask" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">문의하기</a>
+    </nav>
+  </header>
+
+  <main>
+  <section class="quiz">
+
+    <!-- 인트로 -->
+    <div id="intro">
+      <p class="quiz__label">정답 없는 테스트 ✦ 1분</p>
+      <h1>내 감각 스위치,<br>몇 개나 켜져 있을까?</h1>
+      <p class="quiz__sub">아기는 <b>모든 감각이 켜진 채</b> 태어나요.<br>살아가면서 필요한 것만 남기고 하나씩 끄죠.<br>익숙해진 것은 더 이상 보이지 않으니까요.</p>
+      <div class="switches" aria-hidden="true">
+        <span class="sw sw--touch"><i>✋</i>촉각</span>
+        <span class="sw sw--sound"><i>👂</i>소리</span>
+        <span class="sw sw--sight"><i>👀</i>시각</span>
+        <span class="sw sw--rhythm"><i>🦶</i>리듬</span>
+      </div>
+      <p class="quiz__start"><button class="qbtn qbtn--o" id="startBtn" type="button">스위치 찾으러 가기</button></p>
+      <p class="quiz__hint">유형을 정하는 게 아니라, 오늘의 꺼진 스위치를 찾는 거예요.</p>
+    </div>
+
+    <!-- 문항 -->
+    <div id="quiz" hidden>
+      <p class="quiz__label">최근 일주일을 떠올려 보세요 ✦</p>
+      <div class="qcard">
+        <p class="qcard__no"><span id="qNo">1</span> / 8</p>
+        <p class="qcard__q" id="qText"></p>
+        <div class="qcard__btns">
+          <button class="qbtn qbtn--o" id="btnO" type="button">있었다 ◯</button>
+          <button class="qbtn qbtn--x" id="btnX" type="button">없었다 ✕</button>
+        </div>
+      </div>
+      <div class="qbar" aria-hidden="true"><b id="qBar"></b></div>
+    </div>
+
+    <!-- 결과 -->
+    <div id="result" hidden>
+      <p class="quiz__label">테스트 끝 ✦ 오늘의 스위치</p>
+      <div class="rcard">
+        <span class="sticker sticker--butter" id="rSticker">꺼진 스위치</span>
+        <p class="rcard__type" id="rType"></p>
+        <p class="rcard__desc" id="rDesc"></p>
+        <div class="rcard__mission">
+          <i>오늘 켜보기 ✦ 1분 미션</i>
+          <p id="rMission"></p>
+        </div>
+        <div class="rcard__club">
+          <p>혼자 켜기 어렵다면, 같이 켜요.<br><b>정답 없는 90분 클럽</b> — 어른을 위한 창작 시간 · 원데이 ‘채워짐’ 50,000원 · 정원 6명</p>
+          <p class="rcard__cta">
+            <a class="kakao" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 신청하기</a>
+            <a class="quiet" href="/#now">클래스 보러 가기</a>
+          </p>
+          <p class="rcard__kids">아이의 스위치가 궁금하다면 — <a href="/#now">키즈팝 (5~7세)</a></p>
+        </div>
+      </div>
+      <p class="quiz__again"><button id="againBtn" type="button">다시 해보기 ↻</button></p>
+    </div>
+
+    <noscript><p class="quiz__sub">테스트는 자바스크립트가 켜져 있어야 해요. 대신 <a class="quiet" href="/#now">클래스 보러 가기</a>로 오세요!</p></noscript>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot__flag">가르치지 않습니다. 이미 그 안에 있는 것을 깨웁니다.</p>
+    <address>경기 하남시 덕풍북로 253, 1층 코너</address>
+    <p class="foot__links">
+      <a href="/">홈</a>
+      <a href="https://blog.naver.com/injoyfull" rel="noopener" target="_blank">블로그</a>
+      <a href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">인스타그램</a>
+      <a href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오 채널</a>
+    </p>
+    <p class="foot__copy">ⓒ in:JOYFULL · CREA:D</p>
+  </footer>
+
+  <script>
+    (function () {
+      var QUESTIONS = [
+        { s: 'sight',  q: '창밖에서 움직이는 것을 멍하니 바라본 적이 있다' },
+        { s: 'touch',  q: '손에 쥔 컵의 온도를 느끼면서 마신 적이 있다' },
+        { s: 'sound',  q: '이어폰 없이 걸으면서 주변 소리를 들은 적이 있다' },
+        { s: 'rhythm', q: '몸이 먼저 움직일 만큼 좋아하는 음악을 튼 적이 있다' },
+        { s: 'sight',  q: '오늘 만난 사람의 옷 색이 기억난다' },
+        { s: 'touch',  q: '새로운 질감을 일부러 만져본 적이 있다' },
+        { s: 'sound',  q: '냉장고 소리, 시계 소리 같은 작은 소리를 알아차린 적이 있다' },
+        { s: 'rhythm', q: '서두르지 않고 내 속도로 걸은 적이 있다' }
+      ];
+      var RESULTS = {
+        sight: {
+          name: '시각 스위치', color: 'var(--sight)',
+          desc: '매일 같은 길, 같은 방 — 익숙해진 것은 더 이상 보이지 않아요. 눈은 뜨고 있지만, 보는 스위치는 쉬는 중일지도요.',
+          mission: '창밖 3분. 움직이는 것 다섯 개를 찾아보세요.'
+        },
+        sound: {
+          name: '소리 스위치', color: 'var(--sound)',
+          desc: '세상은 지금도 소리를 내고 있어요. 존 케이지의 〈4′33″〉은 침묵이 아니라, 지금 나고 있는 소리를 알아차리게 하는 곡이래요.',
+          mission: '1분만 아무것도 하지 않고, 들리는 소리 세 개를 적어보세요.'
+        },
+        touch: {
+          name: '촉각 스위치', color: 'var(--touch)',
+          desc: '손은 하루 종일 바쁘지만, 느끼는 일은 드물죠. 이름을 맞히는 게 아니라 온도·무게·결을 말해보는 거예요.',
+          mission: '눈을 감고 손에 잡히는 것 하나 — 온도, 무게, 결을 말해보세요.'
+        },
+        rhythm: {
+          name: '리듬 스위치', color: 'var(--rhythm)',
+          desc: '남의 속도에 맞추다 보면 내 박자를 잊어요. 계획대로 안 되는 날이 오히려 감각이 열린 증거일 수도 있고요.',
+          mission: '좋아하는 노래 한 곡 — 몸이 먼저 움직이는 부분을 찾아보세요.'
+        },
+        all: {
+          name: '스위치가 꽤 켜져 있어요', color: 'var(--butter)',
+          desc: '일주일을 감각하며 사셨네요. 그렇다면 다음은 켜진 감각으로 나만의 것을 만들어볼 차례예요.',
+          mission: '오늘 채집한 작은 행복 하나에 이름을 붙여보세요. “창문 소리 행복”처럼요.'
+        }
+      };
+      var idx = 0, score = { touch: 0, sound: 0, sight: 0, rhythm: 0 };
+      var $ = function (id) { return document.getElementById(id); };
+      function show(step) {
+        $('intro').hidden = step !== 'intro';
+        $('quiz').hidden = step !== 'quiz';
+        $('result').hidden = step !== 'result';
+        window.scrollTo({ top: 0 });
+      }
+      function render() {
+        $('qNo').textContent = idx + 1;
+        $('qText').textContent = QUESTIONS[idx].q;
+        $('qBar').style.width = (idx / QUESTIONS.length * 100) + '%';
+      }
+      function answer(off) {
+        if (off) score[QUESTIONS[idx].s]++;
+        idx++;
+        if (idx < QUESTIONS.length) { render(); } else { finish(); }
+      }
+      function finish() {
+        var top = 'all', max = 0;
+        ['touch', 'sound', 'sight', 'rhythm'].forEach(function (s) {
+          if (score[s] > max) { max = score[s]; top = s; }
+        });
+        var r = RESULTS[top];
+        $('rSticker').textContent = top === 'all' ? '오늘의 발견' : '오늘의 꺼진 스위치';
+        $('rType').textContent = r.name;
+        $('rType').style.color = top === 'all' ? 'var(--ink)' : r.color;
+        $('rDesc').textContent = r.desc;
+        $('rMission').textContent = r.mission;
+        show('result');
+      }
+      $('startBtn').addEventListener('click', function () { idx = 0; score = { touch: 0, sound: 0, sight: 0, rhythm: 0 }; render(); show('quiz'); });
+      $('btnO').addEventListener('click', function () { answer(false); });
+      $('btnX').addEventListener('click', function () { answer(true); });
+      $('againBtn').addEventListener('click', function () { show('intro'); });
+    })();
+  </script>
+
+</body>
+</html>
