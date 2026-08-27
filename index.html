@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/a2z-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="v6.css?v=9">
+  <link rel="stylesheet" href="v6.css?v=11">
 </head>
 <body>
 
@@ -47,7 +47,7 @@
       <h1>어서 오세요.<br>정답 없는 90분입니다.</h1>
       <p class="hero__sub">이 문을 열고 들어오면 다섯 살이든 일흔이든 똑같아요.<br>모두 ‘자기 작업을 하는 사람’이 됩니다.</p>
       <p class="hero__cta">
-        <a class="btn btn--coral" href="/fall/">가을시즌 보기 <i>→</i></a>
+        <a class="btn btn--ink" href="/fall/">가을시즌 보기 <i>→</i></a>
         <a class="btn btn--kakao" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 문의 <i>→</i></a>
       </p>
       <p class="hero__doors">
@@ -123,56 +123,36 @@
   <section class="ways" id="now">
     <div class="ways__head rv">
       <h2 class="title">누구와 만나는 90분인가요</h2>
-      <p class="lead">아이와 어른의 시간은 완전히 나뉘어 있어요.</p>
+      <p class="lead">아이와 어른의 시간은 완전히 나뉘어 있어요. 편한 쪽으로 들어와 보세요.</p>
     </div>
     <div class="ways__grid">
 
-      <article class="wcard wcard--kids rv">
+      <a class="wcard wcard--kids rv" href="/fall/">
         <i>5~7세 · 어린이</i>
         <h3>키즈팝</h3>
         <p>그리는 법을 배우는 곳이 아니에요. 재료를 만지고, <b>멈춰서 보고</b>, 자기 것을 만드는 90분.</p>
-        <ul>
-          <li>평일 오후 · 토요일 오전</li>
-          <li>정원 6명</li>
-        </ul>
-        <p class="wcard__note">재료비 포함</p>
-        <p class="wcard__cta">
-          <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">문의하기 <i>→</i></a>
-          <a class="quiet" href="/fall/">가을 프로그램</a>
-        </p>
-      </article>
+        <span class="wcard__meta">평일 오후 · 토요일 오전 · 정원 6명 · 재료비 포함</span>
+        <span class="wcard__go">가을 프로그램 보기 <i>→</i></span>
+      </a>
 
-      <article class="wcard wcard--club rv">
+      <a class="wcard wcard--club rv" href="/fall/">
         <i>어른을 위한 창작 시간</i>
         <h3>정답 없는 90분 클럽</h3>
         <p><b>나를 만나는 90분.</b> 매번 다른 재료, 다른 맛을 선물해요.</p>
-        <ul>
-          <li>평일 저녁 · 토요일 오후</li>
-          <li>정원 6명</li>
-        </ul>
-        <p class="wcard__note">재료비 포함</p>
-        <p class="wcard__cta">
-          <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">문의하기 <i>→</i></a>
-          <a class="quiet" href="/test/">감각테스트</a>
-        </p>
-      </article>
+        <span class="wcard__meta">평일 저녁 · 토요일 오후 · 정원 6명 · 재료비 포함</span>
+        <span class="wcard__go">가을 프로그램 보기 <i>→</i></span>
+      </a>
 
-      <article class="wcard wcard--org rv">
+      <a class="wcard wcard--org rv" href="/for-business/">
         <i>기관 · 기업 · 단체</i>
         <h3>출강 · 협업</h3>
-        <p>잠든 감각을 깨우는 <b>정답 없는 90분</b>을, 사람들이 있는 곳으로 가져갑니다. 답이 정해지지 않은 재료 앞에서는 평소에 안 나오던 말이 나와요.</p>
-        <ul>
-          <li>다문화공유학교 출강</li>
-          <li>어린이집 출강</li>
-          <li>1인 기업 콜라보레이션</li>
-        </ul>
-        <p class="wcard__cta">
-          <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">문의하기 <i>→</i></a>
-          <a class="quiet" href="/for-business/">자세히</a>
-        </p>
-      </article>
+        <p>잠든 감각을 깨우는 <b>정답 없는 90분</b>을, 사람들이 있는 곳으로 가져갑니다.</p>
+        <span class="wcard__meta">다문화공유학교 · 어린이집 출강 · 1인 기업 콜라보</span>
+        <span class="wcard__go">해온 일 보기 <i>→</i></span>
+      </a>
 
     </div>
+    <p class="ways__ask rv">바로 물어보고 싶으시면 <a class="quiet" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 문의</a>해 주세요.</p>
   </section>
 
   <!-- ④ 깃발 -->
@@ -217,17 +197,22 @@
   </section>
   <svg class="wave" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1)"><path fill="#DDEAE4" d="M0,24 C130,42 260,6 420,18 C580,30 700,8 860,16 C1020,24 1150,40 1290,26 C1360,19 1410,24 1440,21 L1440,44 L0,44 Z"/></svg>
 
-  <!-- ⑥ 감각테스트 -->
-  <section class="tban">
-    <div class="tban__dots rv" aria-hidden="true">
-      <span style="background:#D98E4F">✋</span>
-      <span style="background:#4E9084">👂</span>
-      <span style="background:#C0788A">👀</span>
-      <span style="background:#8C9A4E">🦶</span>
+  <!-- ⑥ 감각검진 -->
+  <section class="checkup">
+    <div class="checkup__in">
+      <div>
+        <p class="checkup__eyebrow">지금 바로 · 1분 · 무료</p>
+        <h2>오늘 내 감각,<br>어디가 꺼져 있을까요?</h2>
+        <p class="checkup__sub">회원가입 없이 바로 시작할 수 있어요. 8문항, 약 1분.<br>응답은 저장되지 않고 이 화면에만 머물러요. 정답을 맞히는 검사가 아니라, 오늘의 나를 살펴보는 시간이에요.</p>
+        <p class="checkup__dots" aria-hidden="true">
+          <span style="background:#D98E4F">✋</span>
+          <span style="background:#4E9084">👂</span>
+          <span style="background:#C0788A">👀</span>
+          <span style="background:#8C9A4E">🦶</span>
+        </p>
+      </div>
+      <p class="checkup__cta"><a class="btn btn--lime" href="/test/">무료로 감각검진 하기 <i>→</i></a></p>
     </div>
-    <h2 class="rv">내 감각 스위치,<br>몇 개나 켜져 있을까?</h2>
-    <p class="rv">1분이면 돼요. 오늘 꺼져 있던 스위치 하나를 찾아드려요.</p>
-    <p class="tban__cta rv"><a class="btn btn--ink" href="/test/">감각테스트 해보기 <i>→</i></a></p>
   </section>
 
   <!-- ⑦ 문의 -->
@@ -238,7 +223,7 @@
       <a class="btn btn--kakao" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 문의하기 <i>→</i></a>
       <a class="btn btn--ink" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket" rel="noopener" target="_blank">네이버로 예약하기 <i>→</i></a>
     </p>
-    <p class="meet__note rv">무료 체험은 따로 없어요. 첫 시간도 회차 비용이 있어요 — 한 번 해보고 이어갈지 정하시면 됩니다.</p>
+    <p class="meet__note rv">문 앞에서 망설여지면, 그냥 물어봐 주세요. 무엇을 만들지는 오시는 분이 정합니다.<br>무료 체험은 따로 없어요 — 첫 시간도 회차 비용이 있고, 한 번 해보고 이어갈지 정하시면 됩니다.</p>
     <p class="meet__ways rv">
       <a class="quiet" href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">인스타그램</a>
       <a class="quiet" href="mailto:in.joyfull.kr@gmail.com">이메일</a>
