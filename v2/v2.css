@@ -57,3 +57,39 @@
 .row__text h2 b { font-weight: 700; }
 .row__body { margin-top: 1.2rem; font-weight: 300; font-size: clamp(0.95rem, 2vw, 1.02rem); line-height: 2; color: var(--ink-soft); }
 .row__text .btn { margin-top: 1.8rem; }
+
+/* ── 한나 — 환대는 주인이 먼저 나오는 것 ── */
+.host { padding: clamp(3.5rem, 9vh, 6rem) var(--pad); }
+.host__in {
+  max-width: var(--mid); margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+@media (max-width: 820px) { .host__in { grid-template-columns: 1fr; } }
+.host__art { max-width: 220px; width: 100%; justify-self: center; }
+.host__art svg { width: 100%; height: auto; animation: v2bob 5s ease-in-out infinite; transform-origin: center; }
+@media (prefers-reduced-motion: reduce) { .host__art svg { animation: none; } }
+.host__text h2 { margin-top: 1rem; font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.5rem); line-height: 1.4; }
+.host__text h2 b { font-weight: 700; }
+.host__text .btn { margin-top: 1.8rem; }
+
+/* ── 경계를 흐린다 — 색면이 끊기지 않고 서로 스며들게 ── */
+.v2 .v2hero { background: none; }
+.v2 .rows { background: none; }
+.v2 .checkup { background: none; color: var(--ink); }
+.v2 .meet { background: none; }
+.v2 {
+  background:
+    radial-gradient(120% 60% at 15% 4%,  #FFFDF6 0%, rgba(255,253,246,0) 60%),
+    radial-gradient(100% 46% at 88% 26%, #F8ECC8 0%, rgba(248,236,200,0) 62%),
+    radial-gradient(120% 50% at 10% 52%, #F6DFD3 0%, rgba(246,223,211,0) 60%),
+    radial-gradient(110% 44% at 90% 74%, #DDEAE4 0%, rgba(221,234,228,0) 62%),
+    var(--paper);
+}
+.v2 .v2hero__deco { display: none; }
+.v2 .checkup__eyebrow { color: var(--coral); }
+.v2 .checkup__sub { color: var(--ink-soft); }
+.v2 .checkup__in { padding: clamp(2.4rem, 5vw, 3.4rem); background: rgba(255,253,246,0.72); border-radius: 8px; backdrop-filter: blur(2px); }
+.v2 .meet blockquote, .v2 .meet cite, .v2 .meet__note { color: var(--ink); }
+.v2 .meet cite, .v2 .meet__note { color: var(--ink-soft); }
+.v2 .foot { border-top-color: rgba(43,42,38,0.1); }
