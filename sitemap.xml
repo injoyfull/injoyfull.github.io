@@ -3,8 +3,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://injoyfull.github.io/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://injoyfull.github.io/fall/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://injoyfull.github.io/notes/molip/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://injoyfull.github.io/notes/first-day/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://injoyfull.github.io/notes/why/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://injoyfull.github.io/en/</loc>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 가을시즌 — 가을을 타는 아이들 | 인조이풀</title>
+  <meta name="description" content="천진난만한 나를 만나는 시간들 — 잘하려고 하지 않는 3개월. 인조이풀 2026 가을시즌(9~11월) 모집. 정답없는 90분!">
+  <link rel="canonical" href="https://injoyfull.github.io/fall/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="인조이풀">
+  <meta property="og:title" content="2026 가을시즌 — 가을을 타는 아이들">
+  <meta property="og:description" content="천진난만한 나를 만나는 시간들 — 잘하려고 하지 않는 3개월. 정답없는 90분!">
+  <meta property="og:url" content="https://injoyfull.github.io/fall/">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://injoyfull.github.io/og.png?v=2">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/a2z-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/v6.css?v=2">
+  <style>
+    /* ── 가을시즌 전용 팔레트 (컨셉보드 확정 7색) ── */
+    :root {
+      --f-cream: #F3EAD8;
+      --f-orange: #E9612B;
+      --f-gold: #F4B63F;
+      --f-red: #D63E2E;
+      --f-green: #6B9A3F;
+      --f-blue: #3E86C4;
+      --f-ink: #33291F;
+    }
+    body { background: var(--f-cream); color: var(--f-ink); }
+
+    /* ── 스와치 히어로 — 시즌 컬러가 화면을 채운다 ── */
+    .fseason { position: relative; min-height: 100svh; display: flex; flex-direction: column; }
+    .fgrid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; min-height: 100svh; }
+    @media (max-width: 700px) { .fgrid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 1fr); } }
+    .fsw { position: relative; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: clamp(4.5rem, 12vh, 7rem); }
+    .fsw p { text-align: center; font-weight: 300; letter-spacing: 0.28em; font-size: clamp(0.62rem, 1.6vw, 0.8rem); text-transform: uppercase; }
+    .fsw p b { display: block; font-weight: 700; letter-spacing: 0.18em; font-size: clamp(0.72rem, 1.9vw, 0.95rem); margin-bottom: 0.2rem; }
+    .fsw--cream { background: var(--f-cream); color: var(--f-ink); }
+    .fsw--gold { background: var(--f-gold); color: var(--f-ink); }
+    .fsw--peach { background: #F8D9B8; color: var(--f-ink); }
+    .fsw--orange { background: var(--f-orange); color: #FFF4E6; }
+    .fsw--blue { background: var(--f-blue); color: #F0F7FD; }
+    .fsw--green { background: var(--f-green); color: #F2F8EA; }
+    /* FALL 대형 타이포 — 그리드 위에 얹힌다 */
+    .fword {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .fword b {
+      font-weight: 900; color: var(--f-ink);
+      font-size: clamp(4.6rem, 22vw, 15rem);
+      letter-spacing: 0.06em; line-height: 1;
+      text-shadow: 0 2px 0 rgba(243,234,216,0.4);
+    }
+    .fword span { position: absolute; margin-top: clamp(7rem, 30vw, 20rem); font-family: var(--hand); font-weight: 700; font-size: clamp(1.05rem, 3vw, 1.5rem); color: var(--f-ink); background: rgba(243,234,216,0.85); padding: 0.15rem 0.9rem; border-radius: 999px; transform: rotate(-2deg); }
+    /* 시즌 상단 라벨 */
+    .fseason__label { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem var(--pad); }
+    .fseason__label a { font-weight: 900; font-size: 1.02rem; letter-spacing: 0.05em; color: var(--f-ink); }
+    .fseason__label i { font-style: normal; font-weight: 100; letter-spacing: 0.3em; font-size: 0.8rem; text-transform: uppercase; }
+
+    /* ── 캐릭터 — 놀고 있는 3인방 ── */
+    .fchar { position: absolute; z-index: 2; pointer-events: none; filter: drop-shadow(0 6px 14px rgba(51,41,31,0.18)); }
+    .fchar--jumpy { width: clamp(90px, 15vw, 200px); left: 7%; bottom: 8%; animation: f-jump 2.6s ease-in-out infinite; }
+    .fchar--dori { width: clamp(80px, 13vw, 180px); right: 8%; top: 14%; animation: f-wiggle 3.4s ease-in-out infinite; }
+    .fchar--mungi { width: clamp(84px, 14vw, 190px); right: 14%; bottom: 12%; animation: f-float 5s ease-in-out infinite; }
+    @keyframes f-jump { 0%,100% { transform: translateY(0) rotate(-3deg); } 18% { transform: translateY(-14%) rotate(2deg); } 36% { transform: translateY(0) rotate(-2deg); } 54% { transform: translateY(-7%) rotate(3deg); } 70% { transform: translateY(0) rotate(-3deg); } }
+    @keyframes f-wiggle { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(6deg) translateY(-4%); } }
+    @keyframes f-float { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-10%) translateX(4%); } }
+    @media (prefers-reduced-motion: reduce) { .fchar { animation: none !important; } }
+
+    /* ── 시즌 선언 ── */
+    .fstate { padding: clamp(4.5rem, 12vh, 8rem) var(--pad); max-width: 60rem; margin: 0 auto; text-align: center; }
+    .fstate .hand { font-weight: 700; font-size: clamp(1.05rem, 2.8vw, 1.3rem); color: var(--f-orange); }
+    .fstate h1 { margin-top: 0.5rem; font-weight: 900; font-size: clamp(2.2rem, 7vw, 4.4rem); line-height: 1.3; }
+    .fstate .fsub { margin-top: 1.4rem; font-weight: 300; font-size: clamp(1rem, 2.6vw, 1.2rem); color: rgba(51,41,31,0.75); }
+    .fstate .fflag { margin-top: 2.6rem; display: inline-block; font-weight: 900; font-size: clamp(1.3rem, 3.6vw, 1.9rem); background: var(--f-ink); color: var(--f-cream); padding: 0.55rem 1.6rem; border-radius: 3px; transform: rotate(-1.5deg); }
+    @media (prefers-reduced-motion: reduce) { .fstate .fflag { transform: none; } }
+
+    /* ── 월별 팝업 카드 ── */
+    .fmonths { padding: 0 var(--pad) clamp(4rem, 10vh, 7rem); max-width: 68rem; margin: 0 auto; }
+    .fmonths__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.6vw, 28px); }
+    @media (max-width: 800px) { .fmonths__grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; } }
+    .fmon { background: #FFFDF6; border-radius: 4px; box-shadow: var(--shadow); padding: 2rem 1.7rem; position: relative; }
+    .fmon:nth-child(1) { border-top: 10px solid var(--f-orange); transform: rotate(-0.6deg); }
+    .fmon:nth-child(2) { border-top: 10px solid var(--f-gold); transform: rotate(0.5deg); }
+    .fmon:nth-child(3) { border-top: 10px solid var(--f-blue); transform: rotate(-0.4deg); }
+    @media (prefers-reduced-motion: reduce) { .fmon { transform: none; } }
+    .fmon img { width: 74px; height: 74px; object-fit: contain; position: absolute; top: -34px; right: 14px; filter: drop-shadow(0 4px 8px rgba(51,41,31,0.16)); }
+    .fmon i { font-style: normal; font-weight: 100; letter-spacing: 0.3em; font-size: 0.8rem; text-transform: uppercase; color: rgba(51,41,31,0.6); }
+    .fmon h3 { font-weight: 900; font-size: clamp(1.25rem, 3vw, 1.5rem); margin-top: 0.4rem; }
+    .fmon p { margin-top: 0.7rem; font-weight: 300; font-size: 0.93rem; color: rgba(51,41,31,0.72); }
+    .fmon .hand { display: block; margin-top: 1rem; font-weight: 700; font-size: 0.98rem; color: var(--f-orange); }
+
+    /* ── 모집 연결 ── */
+    .fjoin { background: var(--f-orange); color: #FFF4E6; text-align: center; padding: clamp(4.5rem, 12vh, 8rem) var(--pad); position: relative; overflow: hidden; }
+    .fjoin h2 { font-weight: 900; font-size: clamp(1.8rem, 5.4vw, 3.2rem); line-height: 1.4; position: relative; z-index: 1; }
+    .fjoin p { margin-top: 1rem; font-weight: 300; font-size: clamp(0.95rem, 2.4vw, 1.1rem); color: rgba(255,244,230,0.85); position: relative; z-index: 1; }
+    .fjoin__cta { margin-top: 2.6rem; display: flex; justify-content: center; gap: 1.3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .fjoin .kakao { background: var(--f-gold); color: var(--f-ink); }
+    .fjoin .book { background: var(--f-ink); color: var(--f-cream); }
+    .fjoin .cpiece { opacity: 0.35; mix-blend-mode: normal; }
+    .fjoin__sign { margin-top: 2.8rem; font-family: var(--hand); font-weight: 700; font-size: 1rem; color: rgba(255,244,230,0.85); position: relative; z-index: 1; }
+
+    /* 푸터를 가을 잉크로 */
+    .foot { border-top-color: rgba(51,41,31,0.15); color: rgba(51,41,31,0.65); }
+    .foot__flag { color: var(--f-ink); }
+  </style>
+</head>
+<body>
+
+  <main>
+  <!-- ① 시즌 스와치 히어로 -->
+  <section class="fseason" aria-label="2026 가을시즌 컬러">
+    <div class="fseason__label">
+      <a href="/">인조이풀</a>
+      <i>Season 2026 F/W</i>
+    </div>
+    <div class="fgrid" aria-hidden="true">
+      <div class="fsw fsw--cream"><p><b>종이 크림</b>#F3EAD8</p></div>
+      <div class="fsw fsw--gold"><p><b>도토리 골드</b>#F4B63F</p></div>
+      <div class="fsw fsw--peach"><p><b>천진 살구</b>#F8D9B8</p></div>
+      <div class="fsw fsw--orange"><p><b>단호박 주황</b>#E9612B</p></div>
+      <div class="fsw fsw--blue"><p><b>가을하늘 파랑</b>#3E86C4</p></div>
+      <div class="fsw fsw--green"><p><b>풀잎 초록</b>#6B9A3F</p></div>
+    </div>
+    <div class="fword">
+      <b>FALL</b>
+      <span>가을을 타는 아이들 🍂</span>
+    </div>
+    <img class="fchar fchar--jumpy" src="/fall/jumpy.png" alt="">
+    <img class="fchar fchar--dori" src="/fall/dori.png" alt="">
+    <img class="fchar fchar--mungi" src="/fall/mungi.png" alt="">
+  </section>
+
+  <!-- ② 시즌 선언 -->
+  <section class="fstate">
+    <p class="hand">2026 가을시즌 · 9월 — 11월 ✦</p>
+    <h1>가을을 타는 아이들</h1>
+    <p class="fsub">천진난만한 나를 만나는 시간들 — 잘하려고 하지 않는 3개월.</p>
+    <p><span class="fflag">정답없는 90분!</span></p>
+  </section>
+
+  <!-- ③ 월별 결 -->
+  <section class="fmonths" aria-label="월별 흐름">
+    <div class="fmonths__grid">
+      <article class="fmon">
+        <img src="/fall/jumpy.png" alt="점피 — 주황 낙서뭉치 캐릭터">
+        <i>Sep · 시작</i>
+        <h3>9월, 감각 깨우기</h3>
+        <p>몸으로 문을 여는 달. 폴짝 뛰면서 가을을 만나요.</p>
+        <span class="hand">점피가 먼저 뛰어요 ✦</span>
+      </article>
+      <article class="fmon">
+        <img src="/fall/dori.png" alt="도리 — 도토리 탐험가 캐릭터">
+        <i>Oct · 놀이</i>
+        <h3>10월, 몸으로 놀기</h3>
+        <p>줍고, 모으고, 만드는 달. 가을이 재료가 돼요.</p>
+        <span class="hand">도리가 줍고 만들어요 ✦</span>
+      </article>
+      <article class="fmon">
+        <img src="/fall/mungi.png" alt="뭉이 — 파랑 구름 캐릭터">
+        <i>Nov · 무르익음</i>
+        <h3>11월, 무르익기</h3>
+        <p>만든 것들을 모으고, 멈춰서 돌아보는 달.</p>
+        <span class="hand">뭉이가 안아주며 닫아요 ✦</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ④ 모집 연결 -->
+  <section class="fjoin">
+    <div class="collage" aria-hidden="true">
+      <div class="cpiece" style="background:#F4B63F;width:22%;height:16%;top:8%;left:4%;transform:rotate(-8deg)"></div>
+      <div class="cpiece" style="background:#3E86C4;width:14%;height:20%;bottom:10%;right:5%;transform:rotate(10deg)"></div>
+      <div class="cpiece" style="background:#6B9A3F;width:12%;height:10%;top:16%;right:16%;transform:rotate(-14deg)"></div>
+    </div>
+    <h2>가을시즌, 함께 타요</h2>
+    <p>키즈팝 · 정답 없는 90분 클럽 · 자리와 일정은 문의로 확인하세요.</p>
+    <div class="fjoin__cta">
+      <a class="kakao" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 문의하기</a>
+      <a class="book" href="/#now">지금 열려 있는 클래스</a>
+    </div>
+    <p class="fjoin__sign">가르치지 않습니다. 이미 그 안에 있는 것을 깨웁니다.</p>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot__flag">in:JOYFULL — Full of inner JOY</p>
+    <address>경기 하남시 덕풍북로 253, 1층 코너</address>
+    <p class="foot__links">
+      <a href="/">홈</a>
+      <a href="https://blog.naver.com/injoyfull" rel="noopener" target="_blank">블로그</a>
+      <a href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">인스타그램</a>
+      <a href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오 채널</a>
+    </p>
+    <p class="foot__copy">ⓒ in:JOYFULL · CREA:D</p>
+  </footer>
+
+</body>
+</html>
