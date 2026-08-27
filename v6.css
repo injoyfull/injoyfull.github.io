@@ -452,3 +452,9 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 .article-next { background: var(--butter-soft); padding: clamp(3rem, 8vh, 4.5rem) var(--pad); }
 .article-next__in { max-width: 40rem; margin: 0 auto; }
 .article-next__cta { margin-top: 1.8rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-weight: 300; font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ── 메뉴판 코스 ── */
+.menu__course { margin-top: 0.7rem; text-align: center; font-weight: 700; font-size: clamp(1.15rem, 3vw, 1.4rem); letter-spacing: 0.02em; }
+.menu__desc { margin-top: 0.4rem; text-align: center; font-weight: 300; font-size: 0.9rem; color: var(--ink-soft); }
+.menu__section .menu__list { margin-top: 1.4rem; }
+.menu__section .menu__more { margin-top: 1.1rem; text-align: center; }
