@@ -65,7 +65,7 @@ img { max-width: 100%; display: block; }
   * { animation: none !important; }
   /* 애니메이션으로 등장하는 요소들이 숨은 채 남지 않도록 */
   .wordmark, .wordmark span, .hero h1, .hero__sub, .hero__cta, .hero__doors { opacity: 1 !important; transform: none !important; }
-  .cast, .playground path { transform: none !important; }
+  .cast, .sl { transform: none !important; }
 }
 
 /* ── 공용 타이포 ── */
@@ -164,29 +164,35 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   justify-self: end; width: 100%;
   max-width: 44rem; padding: 0 clamp(24px, 3vw, 44px) 3.5rem var(--pad);
 }
-/* 오른쪽 — 놀이터. 상자도 원판도 없이, 미끄럼틀 위에서 논다. */
+/* 오른쪽 — 놀이터. 한나님이 그린 미끄럼틀 위에서 논다. */
 .hero__stage { position: relative; align-self: stretch; min-height: clamp(340px, 46vw, 560px); }
-.hero__stage .playground { position: absolute; inset: 0; width: 100%; height: 100%; }
-.playground path { animation: sway 9s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-.playground .pl2 { animation-duration: 11s; animation-delay: 0.8s; }
-.playground .pl3 { animation-duration: 8s;  animation-delay: 1.6s; }
-.playground .pl4 { animation-duration: 12s; animation-delay: 0.4s; }
-.playground .pl5 { animation-duration: 7s;  animation-delay: 2.2s; }
-@keyframes sway { 0%,100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+.playground { position: absolute; inset: 0; }
+.sl { position: absolute; height: auto; }
+.sl--1 { width: 64%; top: 4%;    left: 6%;  animation: slSway 9s ease-in-out infinite; }
+.sl--2 { width: 47%; top: 24%;   right: 1%; animation: slSway 11s ease-in-out infinite 0.7s; }
+.sl--3 { width: 68%; bottom: 5%; left: 0;   animation: slSway 12s ease-in-out infinite 1.4s; }
+@keyframes slSway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
 
 .hero__cast { position: absolute; inset: 0; z-index: 2; }
-/* 캐릭터는 미끄럼틀 위에 그대로 — 배경 원판 없음 */
+/* 미끄럼틀을 타는 아이들 — 원판 없이 그대로 */
 .cast {
   position: absolute; display: block; height: auto;
-  filter: drop-shadow(0 8px 16px rgba(43,42,38,0.18));
-  animation: bob 3.6s ease-in-out infinite;
+  filter: drop-shadow(0 8px 16px rgba(43,42,38,0.2));
 }
-.cast--1 { width: 27%; top: 22%;    left: 30%;  animation-delay: 0s;   --tilt: -4deg; }
-.cast--2 { width: 24%; top: 45%;    right: 6%;  animation-delay: 0.9s; --tilt: 5deg; }
-.cast--3 { width: 25%; bottom: 12%; left: 12%;  animation-delay: 1.8s; --tilt: -3deg; }
-@keyframes bob {
-  0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
-  50%      { transform: translateY(-8%) rotate(calc(var(--tilt, 0deg) * -1)); }
+.cast--1 { width: 19%; top: 1%;     left: 46%; animation: slide1 4.2s ease-in-out infinite; }
+.cast--2 { width: 18%; top: 44%;    right: 9%; animation: slide2 5s ease-in-out infinite; }
+.cast--3 { width: 20%; bottom: 13%; left: 27%; animation: slide3 4.6s ease-in-out infinite; }
+@keyframes slide1 {
+  0%, 100% { transform: translate(0, 0) rotate(-5deg); }
+  50%      { transform: translate(9%, 14%) rotate(6deg); }
+}
+@keyframes slide2 {
+  0%, 100% { transform: translate(0, 0) rotate(4deg); }
+  50%      { transform: translate(-10%, 12%) rotate(-5deg); }
+}
+@keyframes slide3 {
+  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+  50%      { transform: translate(12%, -8%) rotate(4deg); }
 }
 .hero__tag {
   position: absolute; z-index: 3; left: 50%; bottom: 0;
@@ -203,9 +209,12 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   .hero { grid-template-columns: 1fr; min-height: 0; padding: 5.2rem var(--pad) 0; align-items: stretch; }
   .hero__stage { order: -1; min-height: 0; height: clamp(250px, 36svh, 330px); }
   .hero__in { justify-self: stretch; max-width: none; padding: 2.4rem 0 3.2rem; }
-  .cast--1 { width: 26%; top: 16%; left: 28%; }
-  .cast--2 { width: 23%; top: 44%; right: 8%; }
-  .cast--3 { width: 24%; bottom: 14%; left: 10%; }
+  .sl--1 { width: 58%; top: 2%; left: 4%; }
+  .sl--2 { width: 40%; top: 20%; right: 2%; }
+  .sl--3 { width: 62%; bottom: 4%; left: 0; }
+  .cast--1 { width: 19%; top: 2%; left: 40%; }
+  .cast--2 { width: 17%; top: 42%; right: 8%; }
+  .cast--3 { width: 18%; bottom: 10%; left: 24%; }
 }
 
 /* 워드마크 — in:JOYFULL · 글자가 한 자씩 놓인다 */
