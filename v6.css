@@ -179,9 +179,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   position: absolute; display: block; height: auto;
   filter: drop-shadow(0 8px 16px rgba(43,42,38,0.2));
 }
-.cast--1 { width: 19%; top: 1%;     left: 46%; animation: slide1 4.2s ease-in-out infinite; }
-.cast--2 { width: 18%; top: 44%;    right: 9%; animation: slide2 5s ease-in-out infinite; }
-.cast--3 { width: 20%; bottom: 13%; left: 27%; animation: slide3 4.6s ease-in-out infinite; }
+.cast--1 { width: 12%; top: 4%;     left: 44%; animation: slide1 4.2s ease-in-out infinite; }
+.cast--2 { width: 11%; top: 55%;    right: 13%; animation: slide2 5s ease-in-out infinite; }
+.cast--3 { width: 12%; bottom: 15%; left: 32%; animation: slide3 4.6s ease-in-out infinite; }
 @keyframes slide1 {
   0%, 100% { transform: translate(0, 0) rotate(-5deg); }
   50%      { transform: translate(9%, 14%) rotate(6deg); }
@@ -212,9 +212,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   .sl--1 { width: 58%; top: 2%; left: 4%; }
   .sl--2 { width: 40%; top: 20%; right: 2%; }
   .sl--3 { width: 62%; bottom: 4%; left: 0; }
-  .cast--1 { width: 19%; top: 2%; left: 40%; }
-  .cast--2 { width: 17%; top: 42%; right: 8%; }
-  .cast--3 { width: 18%; bottom: 10%; left: 24%; }
+  .cast--1 { width: 12%; top: 4%; left: 38%; }
+  .cast--2 { width: 11%; top: 50%; right: 11%; }
+  .cast--3 { width: 12%; bottom: 13%; left: 28%; }
 }
 
 /* 워드마크 — in:JOYFULL · 글자가 한 자씩 놓인다 */
