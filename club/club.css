@@ -1,0 +1,74 @@
+/* ============================================================
+   가을을 타는 어른들 — 조용하고 단단하게.
+   아이들 페이지가 주황·골드라면, 여기는 크림·잉크·틸.
+   ============================================================ */
+.clubpage { --c-teal: #4E9084; --c-ink: #33291F; background: #FAF5EA; color: var(--c-ink); }
+
+/* 히어로 */
+.chero { position: relative; padding: 8.5rem var(--pad) clamp(3.5rem, 9vh, 5.5rem); overflow: hidden; }
+.chero__in { max-width: 46rem; margin: 0 auto; position: relative; z-index: 1; }
+.chero .eyebrow { color: var(--c-teal); }
+.chero h1 { margin-top: 1.2rem; font-weight: 400; font-size: clamp(2.1rem, 6.4vw, 3.6rem); line-height: 1.28; }
+.chero h1 b { font-weight: 700; }
+.chero__sub { margin-top: 1.5rem; font-weight: 300; font-size: clamp(1rem, 2.4vw, 1.18rem); line-height: 2; color: rgba(51,41,31,0.72); }
+.chero__sub b { font-weight: 400; color: var(--c-ink); }
+.chero__cta { margin-top: 2.4rem; display: flex; align-items: center; gap: 1.3rem; flex-wrap: wrap; }
+.chero__sl { position: absolute; width: clamp(180px, 26vw, 380px); height: auto; right: -4%; bottom: 6%; opacity: 0.85; transform: rotate(-4deg); pointer-events: none; }
+@media (max-width: 900px) { .chero__sl { display: none; } }
+
+/* 포지셔닝 */
+.say { background: #FFFDF6; padding: clamp(3.4rem, 9vh, 5.5rem) var(--pad); }
+.say__in { max-width: 52rem; margin: 0 auto; text-align: center; }
+.say__in .lead { margin-top: 0.9rem; }
+.say__grid { margin-top: 2.4rem; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.6vw, 28px); text-align: left; }
+@media (max-width: 760px) { .say__grid { grid-template-columns: 1fr; } }
+.say__yes, .say__no { border-radius: 4px; padding: 1.5rem 1.6rem; }
+.say__yes { background: #E6F0EC; }
+.say__no { background: #F2EEE4; }
+.say__lb { font-weight: 400; font-size: 0.76rem; letter-spacing: 0.2em; color: rgba(51,41,31,0.55); }
+.say__yes ul, .say__no ul { list-style: none; padding: 0; margin: 0.9rem 0 0; }
+.say__yes li, .say__no li { padding: 0.5rem 0; border-top: 1px dashed rgba(51,41,31,0.18); font-weight: 300; font-size: 0.94rem; line-height: 1.8; }
+.say__yes li::before { content: "○ "; color: var(--c-teal); }
+.say__no li::before { content: "✗ "; color: rgba(51,41,31,0.35); }
+.say__note { margin-top: 1.8rem; font-weight: 300; font-size: 0.9rem; line-height: 1.95; color: rgba(51,41,31,0.6); }
+
+/* 90분 */
+.flow90 { padding: clamp(3.4rem, 9vh, 5.5rem) var(--pad); }
+.flow90__in { max-width: 60rem; margin: 0 auto; text-align: center; }
+.flow90__list { list-style: none; counter-reset: f; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 2vw, 22px); text-align: left; }
+@media (max-width: 820px) { .flow90__list { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .flow90__list { grid-template-columns: 1fr; } }
+.flow90__list li { counter-increment: f; background: #FFFDF6; border-radius: 4px; padding: 1.3rem 1.3rem 1.4rem; border-top: 5px solid var(--c-teal); }
+.flow90__list li::before { content: counter(f); display: block; font-weight: 300; font-size: 0.78rem; color: rgba(51,41,31,0.4); }
+.flow90__list span { display: block; margin-top: 0.35rem; font-weight: 700; font-size: 1.05rem; }
+.flow90__list p { margin-top: 0.5rem; font-weight: 300; font-size: 0.88rem; line-height: 1.8; color: rgba(51,41,31,0.68); }
+
+/* 여섯 번 */
+.sess { background: #FFFDF6; padding: clamp(3.4rem, 9vh, 5.5rem) var(--pad); }
+.sess__in { max-width: 60rem; margin: 0 auto; text-align: center; }
+.sess__in .lead { margin-top: 0.9rem; }
+.sess__in .lead b { font-weight: 700; color: var(--c-ink); }
+.sess__grid { margin-top: 2.4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2.2vw, 24px); text-align: left; }
+@media (max-width: 860px) { .sess__grid { grid-template-columns: 1fr; max-width: 32rem; margin-left: auto; margin-right: auto; } }
+.cmon { background: #FAF5EA; border-radius: 4px; overflow: hidden; border-top: 6px solid var(--c); }
+.cmon header { display: flex; align-items: baseline; gap: 0.7rem; padding: 0.9rem 1.2rem; }
+.cmon__m { font-weight: 700; font-size: 1.1rem; }
+.cmon__tag { font-weight: 300; font-size: 0.8rem; color: rgba(51,41,31,0.55); }
+.cmon ul { list-style: none; margin: 0; padding: 0; }
+.cmon li { padding: 0.9rem 1.2rem; border-top: 1px solid rgba(51,41,31,0.08); display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-start; }
+.cs__t { font-weight: 700; font-size: 0.98rem; }
+.cs__d { margin-top: 0.3rem; font-weight: 300; font-size: 0.86rem; line-height: 1.8; color: rgba(51,41,31,0.68); }
+.sess__meta { margin-top: 1.8rem; font-weight: 300; font-size: 0.86rem; color: rgba(51,41,31,0.6); }
+.sess__meta b { font-weight: 700; color: var(--c-ink); }
+
+/* 왜 금요일 */
+.why { padding: clamp(3rem, 8vh, 4.5rem) var(--pad); }
+.why__in { max-width: 44rem; margin: 0 auto; text-align: center; }
+.why .eyebrow { color: var(--c-teal); }
+.why__d { margin-top: 1rem; font-weight: 300; font-size: clamp(0.98rem, 2.2vw, 1.08rem); line-height: 2.05; color: rgba(51,41,31,0.72); }
+
+/* 신청 */
+.clubpage .meet { background: #E6F0EC; }
+.clubpage .meet blockquote { font-weight: 400; }
+.clubpage .meet__note { line-height: 2; }
+.clubpage .foot { background: #FAF5EA; }
