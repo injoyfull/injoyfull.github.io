@@ -496,3 +496,4 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 @keyframes cardHop { 0%,100% { transform: translateY(0) rotate(0); } 40% { transform: translateY(-7px) rotate(-6deg); } 70% { transform: translateY(0) rotate(4deg); } }
 
 .hero h1 b { font-weight: 700; }
+.hero__sub b { font-weight: 700; color: var(--ink); }
