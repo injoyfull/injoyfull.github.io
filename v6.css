@@ -382,22 +382,21 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .journey__more { margin-top: 2rem; text-align: center; }
 
 /* ── ⑥ 감각검진 — 한 화면을 통째로 써서 시선을 잡는다 ── */
-.checkup { background: #17352A; color: #F2EFE4; padding: clamp(4.5rem, 13vh, 8rem) var(--pad); }
+.checkup { background: var(--ink); color: #F6F1E5; padding: clamp(4.5rem, 13vh, 8rem) var(--pad); }
 .checkup__in {
   max-width: var(--mid); margin: 0 auto;
   display: grid; grid-template-columns: minmax(0, 1fr) auto;
   gap: clamp(2rem, 5vw, 4rem); align-items: center;
 }
 @media (max-width: 860px) { .checkup__in { grid-template-columns: 1fr; } }
-.checkup__eyebrow { font-weight: 400; font-size: 0.76rem; letter-spacing: 0.28em; text-transform: uppercase; color: #C6E86A; }
+.checkup__eyebrow { font-weight: 400; font-size: 0.76rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--butter); }
 .checkup h2 { margin-top: 1.2rem; font-weight: 400; font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.38; letter-spacing: 0.01em; }
-.checkup__sub { margin-top: 1.4rem; font-weight: 300; font-size: clamp(0.92rem, 2vw, 1rem); line-height: 1.95; color: rgba(242,239,228,0.72); max-width: 34rem; }
+.checkup__sub { margin-top: 1.4rem; font-weight: 300; font-size: clamp(0.92rem, 2vw, 1rem); line-height: 1.95; color: rgba(246,241,229,0.72); max-width: 34rem; }
 .checkup__dots { margin-top: 1.9rem; display: flex; gap: 0.7rem; }
 .checkup__dots span { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; }
 .checkup__cta { justify-self: end; }
 @media (max-width: 860px) { .checkup__cta { justify-self: start; } }
-.btn--lime { background: #C6E86A; color: #17352A; font-weight: 700; box-shadow: 0 4px 14px rgba(0,0,0,0.28); }
-.btn--lime:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(198,232,106,0.3); }
+
 
 /* ── ⑦ 문의 ── */
 .meet { background: var(--coral-soft); padding: clamp(4.5rem, 12vh, 7.5rem) var(--pad); text-align: center; }
