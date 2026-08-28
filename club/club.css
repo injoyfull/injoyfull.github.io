@@ -72,3 +72,13 @@
 .clubpage .meet blockquote { font-weight: 400; }
 .clubpage .meet__note { line-height: 2; }
 .clubpage .foot { background: #FAF5EA; }
+
+/* 첫 회차 체험 */
+.trial { margin-top: 1.8rem; background: #FAF5EA; border-radius: 4px; border-left: 6px solid var(--c-teal);
+  padding: 1.3rem 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: 1.4rem; align-items: center; text-align: left; }
+@media (max-width: 700px) { .trial { grid-template-columns: 1fr; } }
+.trial__lb { font-weight: 400; font-size: 0.76rem; letter-spacing: 0.18em; color: var(--c-teal); }
+.trial__d { margin-top: 0.5rem; font-weight: 300; font-size: 0.9rem; line-height: 1.9; color: rgba(51,41,31,0.72); }
+.trial__d b { font-weight: 700; color: var(--c-ink); }
+.trial__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; white-space: nowrap; }
+.trial__cta span { font-weight: 300; font-size: 0.78rem; color: rgba(51,41,31,0.55); }
