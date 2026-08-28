@@ -118,3 +118,18 @@
 .fallpage .meet .btn--ink { background: var(--f-ink); color: var(--f-cream); }
 .fallpage .foot { background: var(--f-cream); border-top-color: rgba(51,41,31,0.14); color: rgba(51,41,31,0.62); }
 .fallpage .foot__flag { color: var(--f-ink); }
+
+/* ── 9월 특별 원데이 — 시즌으로 들어오는 문 ── */
+.special { margin-top: clamp(20px, 3vw, 30px); background: #FFFDF6; border-radius: 5px;
+  box-shadow: 0 1px 0 rgba(51,41,31,0.04), 0 14px 34px rgba(51,41,31,0.08);
+  border-left: 8px solid var(--f-red); overflow: hidden; }
+.special__in { display: grid; grid-template-columns: 1fr auto; gap: clamp(1.2rem, 3vw, 2.4rem);
+  align-items: end; padding: clamp(1.6rem, 3.5vw, 2.2rem); }
+@media (max-width: 760px) { .special__in { grid-template-columns: 1fr; align-items: start; } }
+.special__tag { font-weight: 400; font-size: 0.74rem; letter-spacing: 0.16em; color: var(--f-red); }
+.special h3 { margin-top: 0.5rem; font-weight: 700; font-size: clamp(1.2rem, 3.2vw, 1.5rem); }
+.special__d { margin-top: 0.8rem; font-weight: 300; font-size: 0.92rem; line-height: 1.95; color: rgba(51,41,31,0.72); }
+.special__d b { font-weight: 700; color: var(--f-ink); }
+.special__meta { margin-top: 0.9rem; font-weight: 300; font-size: 0.82rem; color: rgba(51,41,31,0.55); }
+.special__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; white-space: nowrap; }
+.special__cta span { font-weight: 300; font-size: 0.76rem; color: rgba(51,41,31,0.5); }
