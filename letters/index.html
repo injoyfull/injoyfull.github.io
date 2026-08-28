@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>인조이풀 레터 | 인조이풀</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/v6.css?v=34">
+  <style>
+    .lt { max-width: 44rem; margin: 0 auto; padding: 8.5rem var(--pad) 4rem; }
+    .lt__head { text-align: center; }
+    .lt__head h1 { margin-top: 1rem; font-weight: 400; font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: 0.02em; }
+    .lt__note { margin-top: 1.2rem; text-align: center; font-weight: 300; font-size: 0.94rem; line-height: 1.95; color: var(--ink-soft); }
+
+    .lt__pick { margin-top: 2.6rem; display: grid; gap: 12px; }
+    .cls {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      background: var(--card); border: 0; border-radius: 4px; box-shadow: var(--shadow);
+      padding: 1.2rem 1.4rem; cursor: pointer; font-family: var(--a2z); text-align: left; width: 100%;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .cls:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(43,42,38,0.12); }
+    .cls b { font-weight: 700; font-size: 1.05rem; }
+    .cls span { display: block; margin-top: 0.25rem; font-weight: 300; font-size: 0.84rem; color: var(--ink-soft); }
+    .cls i { font-style: normal; color: var(--ink-faint); }
+
+    .lock { margin-top: 2.4rem; background: var(--card); border-radius: 4px; box-shadow: var(--shadow); padding: clamp(1.8rem, 4vw, 2.6rem); }
+    .lock h2 { font-weight: 700; font-size: 1.15rem; }
+    .lock p { margin-top: 0.6rem; font-weight: 300; font-size: 0.9rem; line-height: 1.85; color: var(--ink-soft); }
+    .lock__row { margin-top: 1.4rem; display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    .lock input {
+      flex: 1; min-width: 12rem; font-family: var(--a2z); font-weight: 300; font-size: 1rem;
+      padding: 0.85rem 1.1rem; border: 1px solid rgba(43,42,38,0.18); border-radius: 999px;
+      background: var(--paper); color: var(--ink);
+    }
+    .lock input:focus { outline: 2px solid var(--butter); outline-offset: 1px; }
+    .lock__err { margin-top: 0.9rem; font-weight: 400; font-size: 0.88rem; color: var(--coral); }
+
+    .list { margin-top: 2.4rem; list-style: none; padding: 0; }
+    .list li + li { margin-top: 10px; }
+    .list button {
+      width: 100%; text-align: left; font-family: var(--a2z); cursor: pointer; border: 0;
+      background: var(--card); border-radius: 4px; box-shadow: var(--shadow); padding: 1.2rem 1.4rem;
+      display: flex; align-items: baseline; gap: 1rem; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .list button:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(43,42,38,0.12); }
+    .list time { font-weight: 300; font-size: 0.8rem; color: var(--ink-faint); white-space: nowrap; }
+    .list b { font-weight: 700; font-size: 1.02rem; flex: 1; }
+    .list i { font-style: normal; color: var(--ink-faint); }
+
+    .viewer { position: fixed; inset: 0; z-index: 100; background: rgba(43,42,38,0.9); display: flex; flex-direction: column; }
+    .viewer__bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem clamp(12px, 3vw, 24px); color: var(--paper); }
+    .viewer__bar b { font-weight: 400; font-size: 0.94rem; }
+    .viewer__bar button { background: var(--paper); color: var(--ink); border: 0; border-radius: 999px; padding: 0.5rem 1.1rem; font-family: var(--a2z); font-size: 0.88rem; cursor: pointer; }
+    .viewer iframe { flex: 1; width: 100%; border: 0; background: #fff; }
+    .viewer__wait { position: absolute; left: 0; right: 0; top: 50%; text-align: center; color: var(--paper); font-weight: 300; font-size: 0.95rem; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <a class="top__name" href="/">in<em>:</em>JOYFULL</a>
+    <nav class="top__links" aria-label="바로가기">
+      <a class="top__link top__link--key" href="/fall/">아이들</a>
+      <a class="top__link" href="/club/">어른들</a>
+      <a class="top__ask" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">문의하기</a>
+    </nav>
+  </header>
+
+  <main>
+  <section class="lt">
+    <div class="lt__head">
+      <p class="eyebrow">in:JOYFULL Letter</p>
+      <h1>인조이풀 레터</h1>
+      <p class="lt__note">그날 무엇을 만들었는지보다 <b>무엇이 일어났는지</b>를 적어 보내는 편지예요.<br>수업이 끝나면 반별로 한 통씩 올라갑니다.</p>
+    </div>
+
+    <div id="pick">
+      <div class="lt__pick" id="classes"></div>
+    </div>
+
+    <div id="lock" hidden>
+      <div class="lock">
+        <h2 id="lockName">반 이름</h2>
+        <p>반에 안내드린 암호를 넣어주세요. 암호는 이 화면에서만 쓰이고 어디에도 저장되지 않아요.</p>
+        <form class="lock__row" id="lockForm">
+          <input id="pw" type="password" placeholder="암호" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button class="btn btn--kakao" type="submit">열기 <i>→</i></button>
+        </form>
+        <p class="lock__err" id="err" hidden></p>
+        <p style="margin-top:1.2rem"><button class="quiet" id="back" type="button" style="background:none;border:0;cursor:pointer;font-family:var(--a2z)">다른 반 고르기</button></p>
+      </div>
+    </div>
+
+    <div id="opened" hidden>
+      <p class="eyebrow" id="openedName"></p>
+      <ul class="list" id="list"></ul>
+      <p style="margin-top:2rem"><button class="quiet" id="lockAgain" type="button" style="background:none;border:0;cursor:pointer;font-family:var(--a2z)">다시 잠그기</button></p>
+    </div>
+
+    <noscript><p class="lt__note">레터를 보려면 자바스크립트가 켜져 있어야 해요.</p></noscript>
+  </section>
+  </main>
+
+  <div class="viewer" id="viewer" hidden>
+    <div class="viewer__bar">
+      <b id="viewerTitle"></b>
+      <button type="button" id="close">닫기 ✕</button>
+    </div>
+    <p class="viewer__wait" id="wait">레터를 펼치는 중이에요…</p>
+    <iframe id="frame" sandbox="allow-scripts" title="인조이풀 레터"></iframe>
+  </div>
+
+  <footer class="foot">
+    <p class="foot__flag">가르치지 않습니다. 이미 그 안에 있는 것을 깨웁니다.</p>
+    <p class="foot__links">
+      <a href="/">홈</a>
+      <a href="/fall/">아이들</a>
+      <a href="/club/">어른들</a>
+      <a href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오 채널</a>
+    </p>
+    <p class="foot__copy">ⓒ in:JOYFULL · CREA:D</p>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var b64 = function (s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); };
+    var state = { manifest: null, cls: null, key: null };
+
+    function show(step) {
+      $('pick').hidden = step !== 'pick';
+      $('lock').hidden = step !== 'lock';
+      $('opened').hidden = step !== 'opened';
+    }
+
+    async function deriveKey(password, salt, iterations) {
+      var base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+      return crypto.subtle.deriveKey(
+        { name: 'PBKDF2', salt: salt, iterations: iterations, hash: 'SHA-256' },
+        base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    }
+
+    async function open(blob, key) {
+      var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(blob.iv) }, key, b64(blob.ct));
+      return new TextDecoder().decode(plain);
+    }
+
+    fetch('/letters/data/manifest.json').then(function (r) { return r.json(); }).then(function (m) {
+      state.manifest = m;
+      var wrap = $('classes');
+      m.classes.forEach(function (c) {
+        var b = document.createElement('button');
+        b.className = 'cls'; b.type = 'button';
+        b.innerHTML = '<span style="flex:1"><b>' + c.name + '</b><span>' + c.season + ' · 레터 ' + c.letters.length + '통</span></span><i>🔒</i>';
+        b.addEventListener('click', function () {
+          state.cls = c; $('lockName').textContent = c.name;
+          $('err').hidden = true; $('pw').value = '';
+          show('lock'); $('pw').focus();
+        });
+        wrap.appendChild(b);
+      });
+    });
+
+    $('back').addEventListener('click', function () { show('pick'); });
+    $('lockAgain').addEventListener('click', function () { state.key = null; show('pick'); });
+
+    $('lockForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var c = state.cls, btn = e.target.querySelector('button');
+      var label = btn.innerHTML; btn.innerHTML = '여는 중…'; btn.disabled = true; $('err').hidden = true;
+      try {
+        var key = await deriveKey($('pw').value, b64(c.kdf.salt), c.kdf.iter);
+        var check = await open(c.check, key);
+        if (check !== 'in:JOYFULL') throw new Error('bad');
+        state.key = key;
+        $('openedName').textContent = c.name + ' · ' + c.season;
+        var ul = $('list'); ul.innerHTML = '';
+        c.letters.forEach(function (L) {
+          var li = document.createElement('li');
+          var b = document.createElement('button'); b.type = 'button';
+          b.innerHTML = '<time>' + L.date + '</time><b>' + L.title + '</b><i>→</i>';
+          b.addEventListener('click', function () { openLetter(L, b); });
+          li.appendChild(b); ul.appendChild(li);
+        });
+        show('opened');
+      } catch (err) {
+        $('err').textContent = '암호가 맞지 않아요. 반에 안내된 암호를 확인해 주세요.';
+        $('err').hidden = false;
+      } finally { btn.innerHTML = label; btn.disabled = false; }
+    });
+
+    async function openLetter(L, btn) {
+      var label = btn.innerHTML; btn.innerHTML = '<time>' + L.date + '</time><b>여는 중…</b>';
+      try {
+        var blob = await (await fetch('/letters/data/' + L.file)).json();
+        var html = await open(blob, state.key);
+        $('viewerTitle').textContent = L.date + ' · ' + L.title;
+        $('wait').hidden = false;
+        $('frame').style.opacity = '0';
+        $('frame').srcdoc = html;
+        $('frame').onload = function () { $('wait').hidden = true; $('frame').style.opacity = '1'; };
+        $('viewer').hidden = false;
+        document.body.style.overflow = 'hidden';
+      } catch (e) {
+        alert('레터를 여는 중 문제가 생겼어요. 다시 시도해 주세요.');
+      } finally { btn.innerHTML = label; }
+    }
+
+    $('close').addEventListener('click', function () {
+      $('viewer').hidden = true; $('frame').srcdoc = ''; $('frame').style.opacity = '0';
+      document.body.style.overflow = '';
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !$('viewer').hidden) $('close').click();
+    });
+  })();
+  </script>
+
+</body>
+</html>
