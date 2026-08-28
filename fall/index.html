@@ -3,256 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 가을시즌 — 가을을 타는 아이들 | 인조이풀</title>
-  <meta name="description" content="9·10·11월, 그달에만 열리는 프로그램. 천진난만한 나를 만나는 시간들 — 잘하려고 하지 않는 3개월. 하남 창작 스튜디오 인조이풀 가을시즌 모집.">
+  <title>2026 가을 프로그램 — 가을을 타는 아이들 | 인조이풀</title>
+  <meta name="description" content="9월 폴짝 · 10월 픽픽 · 11월 톡톡. 매달 네 번, 회차별로 신청하는 정답 없는 90분. 하남 창작 스튜디오 인조이풀 가을시즌 모집.">
   <link rel="canonical" href="https://injoyfull.github.io/fall/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="인조이풀">
-  <meta property="og:title" content="2026 가을시즌 — 가을을 타는 아이들">
-  <meta property="og:description" content="9·10·11월, 그달에만 열리는 프로그램. 정답없는 90분!">
+  <meta property="og:title" content="2026 가을 프로그램 — 가을을 타는 아이들">
+  <meta property="og:description" content="9월 폴짝 · 10월 픽픽 · 11월 톡톡. 회차별로 신청하는 정답 없는 90분.">
   <meta property="og:url" content="https://injoyfull.github.io/fall/">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:image" content="https://injoyfull.github.io/og.png?v=3">
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/a2z-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/v6.css?v=9">
-  <style>
-    :root {
-      --f-cream: #F3EAD8; --f-orange: #E9612B; --f-gold: #F4B63F;
-      --f-red: #D63E2E; --f-green: #6B9A3F; --f-blue: #3E86C4; --f-ink: #33291F;
-    }
-    body { background: var(--f-cream); color: var(--f-ink); }
-
-    /* 스와치 히어로 */
-    .fseason { position: relative; min-height: 100svh; display: flex; }
-    .fgrid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; }
-    @media (max-width: 700px) { .fgrid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 1fr); } }
-    .fsw { display: flex; flex-direction: column; align-items: center; padding-top: clamp(4.5rem, 11vh, 6.5rem); }
-    .fsw p { text-align: center; font-weight: 300; letter-spacing: 0.26em; font-size: clamp(0.58rem, 1.5vw, 0.72rem); }
-    .fsw p b { display: block; font-weight: 400; letter-spacing: 0.16em; font-size: clamp(0.68rem, 1.8vw, 0.85rem); margin-bottom: 0.25rem; }
-    .fsw--cream { background: var(--f-cream); color: var(--f-ink); }
-    .fsw--gold { background: var(--f-gold); color: var(--f-ink); }
-    .fsw--peach { background: #F8D9B8; color: var(--f-ink); }
-    .fsw--orange { background: var(--f-orange); color: #FFF4E6; }
-    .fsw--blue { background: var(--f-blue); color: #F0F7FD; }
-    .fsw--green { background: var(--f-green); color: #F2F8EA; }
-    .fword { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
-    .fword b { font-weight: 400; color: var(--f-ink); font-size: clamp(4rem, 19vw, 13rem); letter-spacing: 0.14em; line-height: 1; text-indent: 0.14em; }
-    .fword span { margin-top: 1.2rem; font-weight: 400; font-size: clamp(0.9rem, 2.4vw, 1.1rem); letter-spacing: 0.1em; color: var(--f-ink); background: rgba(243,234,216,0.9); padding: 0.35rem 1.2rem; border-radius: 999px; }
-    .fseason__label { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem var(--pad); }
-    .fseason__label a { font-weight: 700; font-size: 1rem; color: var(--f-ink); }
-    .fseason__label a em { font-style: normal; color: var(--f-orange); }
-    .fseason__label i { font-style: normal; font-weight: 300; letter-spacing: 0.3em; font-size: 0.74rem; text-transform: uppercase; }
-
-    /* 캐릭터 */
-    .fchar { position: absolute; z-index: 2; pointer-events: none; filter: drop-shadow(0 6px 14px rgba(51,41,31,0.16)); }
-    .fchar--jumpy { width: clamp(84px, 13vw, 176px); left: 6%; bottom: 4%; animation: f-jump 2.8s ease-in-out infinite; }
-    .fchar--dori { width: clamp(76px, 11.5vw, 156px); right: 7%; top: 27%; animation: f-wiggle 3.6s ease-in-out infinite; }
-    .fchar--mungi { width: clamp(80px, 12vw, 164px); right: 13%; bottom: 5%; animation: f-float 5.2s ease-in-out infinite; }
-    @keyframes f-jump { 0%,100% { transform: translateY(0) rotate(-3deg); } 18% { transform: translateY(-14%) rotate(2deg); } 36% { transform: translateY(0) rotate(-2deg); } 54% { transform: translateY(-7%) rotate(3deg); } 70% { transform: translateY(0) rotate(-3deg); } }
-    @keyframes f-wiggle { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(6deg) translateY(-4%); } }
-    @keyframes f-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10%) translateX(4%); } }
-
-    /* 시즌 선언 */
-    .fstate { padding: clamp(4.5rem, 12vh, 7.5rem) var(--pad) clamp(2.5rem, 6vh, 4rem); max-width: 52rem; margin: 0 auto; text-align: center; }
-    .fstate .eyebrow { color: var(--f-orange); }
-    .fstate h1 { margin-top: 1.1rem; font-weight: 400; font-size: clamp(2rem, 6.4vw, 3.6rem); line-height: 1.35; letter-spacing: 0.01em; }
-    .fstate h1 b { font-weight: 700; }
-    .fstate .fsub { margin-top: 1.3rem; font-weight: 300; font-size: clamp(0.98rem, 2.5vw, 1.14rem); color: rgba(51,41,31,0.72); }
-    .fstate .fflag { display: inline-block; margin-top: 2.2rem; font-weight: 400; font-size: clamp(1.15rem, 3.2vw, 1.6rem); letter-spacing: 0.02em; background: var(--f-ink); color: var(--f-cream); padding: 0.6rem 1.7rem; border-radius: 2px; }
-
-    /* 프로그램 보드 */
-    .board { padding: 0 var(--pad) clamp(4rem, 10vh, 7rem); max-width: 60rem; margin: 0 auto; }
-    .board__head { text-align: center; padding-bottom: 2.4rem; }
-    .board__head h2 { font-weight: 400; font-size: clamp(1.5rem, 4.2vw, 2.1rem); letter-spacing: 0.02em; }
-    .board__head p { margin-top: 0.8rem; font-weight: 300; font-size: 0.96rem; color: rgba(51,41,31,0.68); }
-    .month { background: #FFFDF6; border-radius: 4px; box-shadow: 0 1px 0 rgba(51,41,31,0.04), 0 14px 34px rgba(51,41,31,0.08); overflow: hidden; }
-    .month + .month { margin-top: clamp(20px, 3vw, 32px); }
-    .month__bar { display: flex; align-items: center; gap: 1rem; padding: 1.2rem clamp(1.4rem, 3.5vw, 2.2rem); color: #FFF6EC; flex-wrap: wrap; }
-    .month--sep .month__bar { background: var(--f-orange); }
-    .month--oct .month__bar { background: var(--f-gold); color: var(--f-ink); }
-    .month--nov .month__bar { background: var(--f-blue); }
-    .month__no { font-weight: 300; letter-spacing: 0.28em; font-size: 0.72rem; text-transform: uppercase; opacity: 0.85; }
-    .month__name { font-weight: 700; font-size: clamp(1.15rem, 3.2vw, 1.4rem); letter-spacing: 0.01em; }
-    .month__tag { margin-left: auto; font-weight: 300; font-size: 0.88rem; }
-    .month__body { display: grid; grid-template-columns: 1fr 1fr; }
-    @media (max-width: 760px) { .month__body { grid-template-columns: 1fr; } }
-    .track { padding: clamp(1.6rem, 4vw, 2.2rem); display: flex; flex-direction: column; }
-    .track + .track { border-left: 1px solid rgba(51,41,31,0.1); }
-    @media (max-width: 760px) { .track + .track { border-left: 0; border-top: 1px solid rgba(51,41,31,0.1); } }
-    .track i { font-style: normal; font-weight: 400; font-size: 0.72rem; letter-spacing: 0.2em; color: rgba(51,41,31,0.55); }
-    .track h3 { margin-top: 0.5rem; font-weight: 700; font-size: 1.18rem; letter-spacing: 0.01em; }
-    .track p { margin-top: 0.7rem; font-weight: 300; font-size: 0.92rem; line-height: 1.85; color: rgba(51,41,31,0.7); flex: 1; }
-    .track dl { margin: 1.1rem 0 0; display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 0.9rem; font-size: 0.86rem; }
-    .track dt { font-weight: 400; color: rgba(51,41,31,0.5); }
-    .track dd { margin: 0; font-weight: 300; }
-    .track__cta { margin-top: 1.4rem; }
-    .track__cta .btn--kakao { background: var(--f-gold); }
-    .track__cta .btn--kakao:hover { box-shadow: 0 12px 26px rgba(244,182,63,0.4); }
-
-    /* 스티커판 */
-    .stamp { background: #FFFDF6; padding: clamp(3.4rem, 9vh, 5.4rem) var(--pad); }
-    .stamp__in { max-width: 46rem; margin: 0 auto; text-align: center; }
-    .stamp__in h2 { font-weight: 400; font-size: clamp(1.5rem, 4.2vw, 2.1rem); letter-spacing: 0.02em; }
-    .stamp__in p { margin-top: 1rem; font-weight: 300; font-size: 0.98rem; color: rgba(51,41,31,0.7); line-height: 1.9; }
-    .stamp__row { margin-top: 2.2rem; display: flex; justify-content: center; gap: clamp(0.8rem, 3vw, 1.6rem); flex-wrap: wrap; }
-    .stamp__row div { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
-    .stamp__row img { width: clamp(56px, 9vw, 78px); height: auto; }
-    .stamp__row b { font-weight: 400; font-size: 0.82rem; letter-spacing: 0.08em; color: rgba(51,41,31,0.65); }
-
-    /* 모집 CTA */
-    .fjoin { background: var(--f-orange); color: #FFF4E6; text-align: center; padding: clamp(4.5rem, 12vh, 7.5rem) var(--pad); }
-    .fjoin h2 { font-weight: 400; font-size: clamp(1.7rem, 5vw, 2.8rem); line-height: 1.45; letter-spacing: 0.01em; }
-    .fjoin h2 b { font-weight: 700; }
-    .fjoin p { margin-top: 1rem; font-weight: 300; font-size: clamp(0.94rem, 2.3vw, 1.06rem); color: rgba(255,244,230,0.85); }
-    .fjoin__cta { margin-top: 2.4rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .fjoin .btn--kakao { background: var(--f-gold); color: var(--f-ink); }
-    .fjoin .btn--ink { background: var(--f-ink); color: var(--f-cream); }
-    .fjoin__sign { margin-top: 2.6rem; font-weight: 300; font-size: 0.92rem; color: rgba(255,244,230,0.8); }
-
-    .foot { border-top-color: rgba(51,41,31,0.14); color: rgba(51,41,31,0.62); background: var(--f-cream); }
-    .foot__flag { color: var(--f-ink); }
-  </style>
+  <link rel="stylesheet" href="/v6.css?v=26">
+  <link rel="stylesheet" href="/fall/fall.css?v=1">
 </head>
-<body>
+<body class="fallpage">
+
+  <header class="top">
+    <a class="top__name" href="/">in<em>:</em>JOYFULL</a>
+    <nav class="top__links" aria-label="바로가기">
+      <a class="top__link" href="/menu/">메뉴</a>
+      <a class="top__link" href="/test/">감각테스트</a>
+      <a class="top__ask" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">문의하기</a>
+    </nav>
+  </header>
 
   <main>
-  <!-- ① 시즌 스와치 -->
-  <section class="fseason" aria-label="2026 가을시즌">
-    <div class="fseason__label">
-      <a href="/">in<em>:</em>JOYFULL</a>
-      <i>Season 2026 F/W</i>
+  <!-- 시즌 한 줄 -->
+  <section class="fhero">
+    <img class="fhero__sl fhero__sl--a" src="/slides/slide1.png" alt="" aria-hidden="true">
+    <img class="fhero__sl fhero__sl--b" src="/slides/slide5.png" alt="" aria-hidden="true">
+    <div class="fhero__in">
+      <p class="eyebrow">Season 2026 F/W · 9월—11월</p>
+      <h1>가을을 타는 <b>아이들</b></h1>
+      <p class="fhero__sub">잘하려고 하지 않는 3개월. 매달 네 번, <b>그달에만 열리는 프로그램</b>을 하나씩 신청합니다.</p>
+      <p class="fhero__flag">정답없는 90분!</p>
     </div>
-    <div class="fgrid" aria-hidden="true">
-      <div class="fsw fsw--cream"><p><b>종이 크림</b>#F3EAD8</p></div>
-      <div class="fsw fsw--gold"><p><b>도토리 골드</b>#F4B63F</p></div>
-      <div class="fsw fsw--peach"><p><b>천진 살구</b>#F8D9B8</p></div>
-      <div class="fsw fsw--orange"><p><b>단호박 주황</b>#E9612B</p></div>
-      <div class="fsw fsw--blue"><p><b>가을하늘 파랑</b>#3E86C4</p></div>
-      <div class="fsw fsw--green"><p><b>풀잎 초록</b>#6B9A3F</p></div>
-    </div>
-    <div class="fword">
-      <b>FALL</b>
-      <span>가을을 타는 아이들</span>
-    </div>
-    <img class="fchar fchar--jumpy" src="/fall/jumpy.png" alt="">
-    <img class="fchar fchar--dori" src="/fall/dori.png" alt="">
-    <img class="fchar fchar--mungi" src="/fall/mungi.png" alt="">
   </section>
 
-  <!-- ② 시즌 선언 -->
-  <section class="fstate">
-    <p class="eyebrow">2026 F/W · 9월—11월</p>
-    <h1>천진난만한 <b>나</b>를<br>만나는 시간들</h1>
-    <p class="fsub">잘하려고 하지 않는 3개월. 가을 타는 마음을 문제로 보지 않고, 놀이의 재료로 씁니다.</p>
-    <p><span class="fflag">정답없는 90분!</span></p>
+  <!-- 오늘의 꾸러미 -->
+  <section class="kit">
+    <div class="kit__in">
+      <p class="eyebrow">Core Method</p>
+      <h2>오늘의 꾸러미</h2>
+      <p class="kit__lead">완성 예시도, 순서도 드리지 않습니다. 재료 한 꾸러미만 건넵니다.<br>“오늘의 꾸러미예요. 마음껏 열어보세요.”</p>
+      <ul class="kit__why">
+        <li><b>왜 소분인가</b><span>재료가 한정되면 선택이 생깁니다. 넘치면 낭비, 부족하면 발명.</span></li>
+        <li><b>왜 모호한가</b><span>답을 주면 따라 하기가 됩니다. 모호함이 자기 방식을 부릅니다.</span></li>
+        <li><b>왜 선물인가</b><span>과제는 잘해야 하고, 선물은 열어보면 됩니다.</span></li>
+      </ul>
+    </div>
   </section>
 
-  <!-- ③ 프로그램 보드 -->
-  <section class="board" id="board">
-    <div class="board__head">
-      <h2>그달에만 열리는 프로그램</h2>
-      <p>정기반이 아니에요. 매달 한 번, 그달의 재료로 여는 프로그램을 하나씩 신청합니다.<br>어린이와 어른의 시간은 완전히 나뉘어 있어요.</p>
+  <!-- 월별 프로그램 -->
+  <section class="mons" id="programs">
+    <div class="mons__head">
+      <h2 class="title">이달의 프로그램</h2>
+      <p class="lead">매달 네 회차. <b>한 회차만 신청해도 됩니다.</b> 처음 오셔도 문제없어요.</p>
     </div>
-
-    <article class="month month--sep">
-      <div class="month__bar">
-        <span class="month__no">Drop 01 · September</span>
-        <span class="month__name">폴짝</span>
-        <span class="month__tag">몸이 먼저 깨어난다</span>
-      </div>
-      <div class="month__body">
-        <div class="track">
-          <i>5~7세 · 어린이 프로그램</i>
-          <h3>폴짝 드로잉</h3>
-          <p>뛰고 멈춘 그 자리에 선이 남습니다. 몸의 움직임이 그대로 그림이 되는 90분.</p>
-          <dl><dt>시간</dt><dd>평일 오후 · 토요일 오전</dd><dt>정원</dt><dd>6명</dd></dl>
-          <p class="track__cta"><a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a></p>
+    <article class="mon mon--sep" id="m9">
+      <header class="mon__head">
+        <img class="mon__icon" src="/slides/slide1.png" alt="" aria-hidden="true">
+        <div>
+          <p class="mon__no">Drop 01 · September</p>
+          <h3>9월, 가을을 타다 : <b>폴짝</b></h3>
+          <p class="mon__tag">몸이 먼저 깨어난다</p>
         </div>
-        <div class="track">
-          <i>어른 · 정답 없는 90분 클럽</i>
-          <h3>10초 낙서 클럽</h3>
-          <p>10초 안에 그리기. 잘 그릴 시간을 안 주는 게 규칙입니다.</p>
-          <dl><dt>시간</dt><dd>평일 저녁 · 토요일 오후</dd><dt>정원</dt><dd>6명</dd></dl>
-          <p class="track__cta"><a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a></p>
-        </div>
-      </div>
+      </header>
+      <ul class="mon__list">
+          <li class="ses">
+            <span class="ses__no">1회차</span>
+            <div>
+              <p class="ses__t">말랑한 공 <em>촉각</em></p>
+              <p class="ses__d">안 보이는 상자에 손만 넣어 만져봅니다. 그다음 풍선에 솜을 채워 나만의 공을 만들어요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">2회차</span>
+            <div>
+              <p class="ses__t">따뜻한 색 · 차가운 색 <em>시각</em></p>
+              <p class="ses__d">“따뜻한 색!” 하면 그 색을 찾아 달려갑니다. 몸으로 나눈 뒤 나의 컬러휠을 채워요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">3회차</span>
+            <div>
+              <p class="ses__t">찢는 소리 <em>청각</em></p>
+              <p class="ses__d">눈을 감고 한지·신문·비닐 찢는 소리를 맞혀봅니다. 가위 없이 손으로만 찢어 붙여요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">4회차</span>
+            <div>
+              <p class="ses__t">감각 네 자리 <em>종합</em></p>
+              <p class="ses__d">만지는·보는·듣는·냄새 나는 네 자리를 돌아본 뒤, 끌리는 자리에 앉아 그 자리의 꾸러미만으로.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+      </ul>
+      <p class="mon__meta">5~7세 어린이 · 화요일 16:30–18:00 · 90분 · 정원 6명 · 재료비 포함 · <b>회차당 35,000원</b></p>
     </article>
-
-    <article class="month month--oct">
-      <div class="month__bar">
-        <span class="month__no">Drop 02 · October</span>
-        <span class="month__name">주움</span>
-        <span class="month__tag">손이 먼저 안다</span>
-      </div>
-      <div class="month__body">
-        <div class="track">
-          <i>5~7세 · 어린이 프로그램</i>
-          <h3>도토리 수집단</h3>
-          <p>나가서 줍고, 돌아와서 만듭니다. 무엇을 주웠는지가 그 아이의 감각 기록.</p>
-          <dl><dt>시간</dt><dd>평일 오후 · 토요일 오전</dd><dt>정원</dt><dd>6명</dd></dl>
-          <p class="track__cta"><a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a></p>
+    <article class="mon mon--oct" id="m10">
+      <header class="mon__head">
+        <img class="mon__icon" src="/slides/slide4.png" alt="" aria-hidden="true">
+        <div>
+          <p class="mon__no">Drop 02 · October</p>
+          <h3>10월, 가을을 타다 : <b>픽픽</b></h3>
+          <p class="mon__tag">손이 먼저 안다</p>
         </div>
-        <div class="track">
-          <i>어른 · 정답 없는 90분 클럽</i>
-          <h3>주운 것으로 만드는 밤</h3>
-          <p>사 온 재료 없이, 오늘 주머니에 있던 것으로만.</p>
-          <dl><dt>시간</dt><dd>평일 저녁 · 토요일 오후</dd><dt>정원</dt><dd>6명</dd></dl>
-          <p class="track__cta"><a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a></p>
-        </div>
-      </div>
+      </header>
+      <ul class="mon__list">
+          <li class="ses">
+            <span class="ses__no">1회차</span>
+            <div>
+              <p class="ses__t">자연 스탬프 <em>야외</em></p>
+              <p class="ses__d">밖에서 결이 있는 것만 줍습니다. 클레이에 눌러 자연이 만든 무늬를 남겨요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">2회차</span>
+            <div>
+              <p class="ses__t">자연물 놀이터 <em>자유</em></p>
+              <p class="ses__d">조건 없이 마음껏 줍고, 바닥에 놀이터를 짓습니다. 결과물은 가져가지 않고 사진으로만 남겨요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">3회차</span>
+            <div>
+              <p class="ses__t">눌러서 남기기 <em>판화</em></p>
+              <p class="ses__d">폼시트에 눌러 새기고 잉크를 굴립니다. 좌우가 뒤집히는 놀라움이 이날의 핵심.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">4회차</span>
+            <div>
+              <p class="ses__t">뿅뿅 도장 <em>촉각·소리</em></p>
+              <p class="ses__d">휴지심에 풍선을 씌워 바람을 만듭니다. 같은 도구로 찍기도 하고 불기도 해요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+      </ul>
+      <p class="mon__meta">5~7세 어린이 · 화요일 16:30–18:00 · 90분 · 정원 6명 · 재료비 포함 · <b>회차당 35,000원</b></p>
     </article>
-
-    <article class="month month--nov">
-      <div class="month__bar">
-        <span class="month__no">Drop 03 · November</span>
-        <span class="month__name">발굴</span>
-        <span class="month__tag">멈추면 보인다 · 피날레</span>
-      </div>
-      <div class="month__body">
-        <div class="track">
-          <i>5~7세 · 어린이 프로그램</i>
-          <h3>미발견 나 발굴전</h3>
-          <p>자란 전시 벽을 아이가 완성합니다. 내 작품 골라 걸고 설명 카드를 직접 쓰는 꼬마 큐레이터.</p>
-          <dl><dt>시간</dt><dd>평일 오후 · 토요일 오전</dd><dt>정원</dt><dd>6명</dd></dl>
-          <p class="track__cta"><a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a></p>
+    <article class="mon mon--nov" id="m11">
+      <header class="mon__head">
+        <img class="mon__icon" src="/slides/slide6.png" alt="" aria-hidden="true">
+        <div>
+          <p class="mon__no">Drop 03 · November</p>
+          <h3>11월, 가을을 타다 : <b>톡톡</b></h3>
+          <p class="mon__tag">멈추면 보인다 · 피날레</p>
         </div>
-        <div class="track">
-          <i>어른 · 정답 없는 90분 클럽</i>
-          <h3>천진난만한 나, 한 권</h3>
-          <p>3개월의 낙서와 사진을 한 권으로 엮어 들고 갑니다.</p>
-          <dl><dt>시간</dt><dd>평일 저녁 · 토요일 오후</dd><dt>정원</dt><dd>6명</dd></dl>
-          <p class="track__cta"><a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a></p>
-        </div>
-      </div>
+      </header>
+      <ul class="mon__list">
+          <li class="ses">
+            <span class="ses__no">1회차</span>
+            <div>
+              <p class="ses__t">실의 길 <em>선</em></p>
+              <p class="ses__d">공간에 늘여둔 실을 짚으며 걷습니다. 그다음 핀에 실을 걸어 면을 만들어요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">2회차</span>
+            <div>
+              <p class="ses__t">공중에 걸기 <em>균형</em></p>
+              <p class="ses__d">손가락 위에서 균형점을 찾고, 지난 회차 조각들을 실에 매답니다. 바닥에 두지 않아요.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">3회차</span>
+            <div>
+              <p class="ses__t">나뭇가지에 색을 <em>자연물</em></p>
+              <p class="ses__d">10월에 주워둔 가지를 고릅니다. 칠하거나 감아서 모아 세우면 색색의 숲.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+          <li class="ses">
+            <span class="ses__no">4회차</span>
+            <div>
+              <p class="ses__t">여덟 조각 한 그림 <em>피날레</em></p>
+              <p class="ses__d">한 그림을 여덟으로 나눠 각자 채웁니다. 붙이는 순간 처음으로 전체를 봅니다.</p>
+            </div>
+            <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청 <i>→</i></a>
+          </li>
+      </ul>
+      <p class="mon__meta">5~7세 어린이 · 화요일 16:30–18:00 · 90분 · 정원 6명 · 재료비 포함 · <b>회차당 35,000원</b></p>
     </article>
   </section>
 
-  <!-- ④ 스티커판 -->
-  <section class="stamp">
-    <div class="stamp__in">
-      <span class="eyebrow">Season Card</span>
-      <h2 style="margin-top:1rem">세 달을 모으면</h2>
-      <p>참여할 때마다 그달의 한정 스티커를 <b>아이 손으로</b> 붙입니다.<br>9·10·11월 세 칸을 채우면, 11월 발굴전에 내 작품을 겁니다.</p>
-      <div class="stamp__row">
-        <div><img src="/fall/jumpy.png" alt="점피"><b>9월 · 점피</b></div>
-        <div><img src="/fall/dori.png" alt="도리"><b>10월 · 도리</b></div>
-        <div><img src="/fall/mungi.png" alt="뭉이"><b>11월 · 뭉이</b></div>
-      </div>
-      <p style="margin-top:1.8rem">세 친구는 달을 나눠 맡지 않아요. <b>매 90분 안에서 순서대로</b> 만납니다 — 점피가 몸으로 열고, 도리가 줍고 만들고, 뭉이가 안아주며 닫아요.</p>
+  <!-- 어른 · 크리디팝 -->
+  <section class="more">
+    <div class="more__in">
+      <article class="more__card">
+        <p class="eyebrow">어른 · 격주 금요일</p>
+        <h3>천진난만한 나를 만나는 90분</h3>
+        <p class="more__d">잘 그리려는 마음을 잠깐 내려놓는 90분. 정답이 없어서, 처음 오셔도 아무 문제 없어요. 매회 차 한 잔으로 시작합니다.</p>
+        <ul class="ad__list">
+          <li>
+            <span class="ad__m">9월</span>
+            <div><p class="ad__t">10초 낙서 클럽</p><p class="ad__d">10초 안에 그리기. 잘 그릴 시간을 안 주는 게 규칙입니다.</p></div>
+            <div><p class="ad__t">손으로만 찢기</p><p class="ad__d">가위 없이 한지로 만드는 밤.</p></div>
+          </li>
+          <li>
+            <span class="ad__m">10월</span>
+            <div><p class="ad__t">주운 것으로 만드는 밤</p><p class="ad__d">사 온 재료 없이, 오늘 주머니에 있던 것으로만.</p></div>
+            <div><p class="ad__t">눌러서 남기기</p><p class="ad__d">폼시트 판화 — 뒤집힌 나를 봅니다.</p></div>
+          </li>
+          <li>
+            <span class="ad__m">11월</span>
+            <div><p class="ad__t">공중에 걸기</p><p class="ad__d">실과 나뭇가지로 균형을 잡습니다.</p></div>
+            <div><p class="ad__t">천진난만한 나, 한 권</p><p class="ad__d">3개월의 낙서와 사진을 한 권으로.</p></div>
+          </li>
+        </ul>
+        <p class="more__meta">격주 금 10:30–12:00 · 90분 · 정원 6명 · <b>회당 30,000원</b> · 4회 패스 15% 할인</p>
+        <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a>
+      </article>
+
+      <article class="more__card">
+        <p class="eyebrow">초등+ · 상시</p>
+        <h3>크리디팝 — 내 작업실처럼</h3>
+        <p class="more__d">예약 없이 들러서 1시간 작업합니다. 도착하면 스티커판에 도장을 찍고, 꾸러미 카드를 한 장 뽑고, 그 자리의 트레이를 꺼내면 끝. 진행자는 가르치지 않고 지켜봅니다.</p>
+        <ul class="st__list">
+          <li><b>선의 자리</b><span>드로잉 · 판화 · 실</span></li>
+          <li><b>색의 자리</b><span>물감 · 파스텔 · 컬러지</span></li>
+          <li><b>형태의 자리</b><span>클레이 · 종이접기 · 입체</span></li>
+          <li><b>자연의 자리</b><span>나뭇가지 · 잎 · 돌 · 말린 꽃</span></li>
+        </ul>
+        <p class="more__meta">초등 이상 · 상시 · 60분 · <b>1회 15,000원</b> · 재료비 포함</p>
+        <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">신청·문의 <i>→</i></a>
+      </article>
     </div>
   </section>
 
-  <!-- ⑤ 모집 -->
-  <section class="fjoin">
-    <h2>이번 가을,<br><b>가을을 타는 아이들</b>과 함께</h2>
-    <p>일정과 자리는 카카오로 안내해드려요. 프로그램은 회차별로 신청합니다.</p>
-    <div class="fjoin__cta">
+  <!-- 회차별 vs 멤버십 -->
+  <section class="plans">
+    <div class="plans__in">
+      <div class="mons__head">
+        <h2 class="title">한 번만 와도, 계속 와도</h2>
+        <p class="lead">회차별로 신청하셔도 됩니다. 멤버십은 여기에 세 가지가 더 붙어요.</p>
+      </div>
+      <div class="plans__grid">
+        <article class="plan">
+          <p class="eyebrow">One session</p>
+          <h3>회차별 신청</h3>
+          <p class="plan__price">회당 35,000원</p>
+          <ul>
+            <li>원하는 회차만 골라서</li>
+            <li>연속 참여 강요 없음</li>
+            <li>재료비 포함 · 정원 6명</li>
+          </ul>
+          <a class="btn btn--ink btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">회차 신청 <i>→</i></a>
+        </article>
+        <article class="plan plan--m">
+          <span class="sticker sticker--coral">멤버십 혜택</span>
+          <p class="eyebrow">Monthly · 4 sessions</p>
+          <h3>월 멤버십</h3>
+          <p class="plan__price">월 140,000원 <em>(회당 35,000원)</em></p>
+          <ul>
+            <li><b>그날의 사진</b> — 만드는 손과 작품을 찍어 보내드려요</li>
+            <li><b>한 달 리포트</b> — 무엇에 오래 머물렀는지, 무엇이 달라졌는지</li>
+            <li><b>다른 워크숍도 멤버십가</b> — 원데이·어른 클럽까지</li>
+          </ul>
+          <a class="btn btn--kakao btn--sm" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">멤버십 문의 <i>→</i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 시즌 컬러 -->
+  <section class="palette">
+    <details>
+      <summary>2026 F/W 시즌 컬러 일곱 가지</summary>
+      <div class="palette__row">
+        <span style="--c:#F3EAD8"><b>종이 크림</b>#F3EAD8</span>
+        <span style="--c:#E9612B"><b>단호박 주황</b>#E9612B</span>
+        <span style="--c:#F4B63F"><b>도토리 골드</b>#F4B63F</span>
+        <span style="--c:#D63E2E"><b>감빛 레드</b>#D63E2E</span>
+        <span style="--c:#6B9A3F"><b>풀잎 초록</b>#6B9A3F</span>
+        <span style="--c:#3E86C4"><b>가을하늘 파랑</b>#3E86C4</span>
+        <span style="--c:#33291F"><b>손그림 잉크</b>#33291F</span>
+      </div>
+      <p class="palette__note">이번 시즌 모든 인쇄물과 카드에 쓰는 색이에요.</p>
+    </details>
+  </section>
+
+  <!-- 신청 -->
+  <section class="meet" id="meet">
+    <blockquote>이번 가을,<br>같이 타요.<cite>가을을 타는 아이들 · 9월—11월</cite></blockquote>
+    <p class="meet__cta">
       <a class="btn btn--kakao" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 신청하기 <i>→</i></a>
       <a class="btn btn--ink" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket" rel="noopener" target="_blank">네이버로 예약하기 <i>→</i></a>
-    </div>
-    <p class="fjoin__sign">가르치지 않습니다. 이미 그 안에 있는 것을 깨웁니다.</p>
+    </p>
+    <p class="meet__note">일정과 남은 자리는 카카오로 안내해드려요.<br>가르치지 않습니다. 이미 그 안에 있는 것을 깨웁니다.</p>
   </section>
   </main>
 
@@ -264,7 +315,6 @@
       <a href="/menu/">메뉴</a>
       <a href="/test/">감각테스트</a>
       <a href="https://blog.naver.com/injoyfull" rel="noopener" target="_blank">블로그</a>
-      <a href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">인스타그램</a>
       <a href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오 채널</a>
     </p>
     <p class="foot__copy">ⓒ in:JOYFULL · CREA:D</p>
