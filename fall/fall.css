@@ -69,7 +69,7 @@
 .more__card h3 { margin-top: 0.7rem; font-weight: 700; font-size: clamp(1.2rem, 3vw, 1.45rem); }
 .more__d { margin-top: 0.9rem; font-weight: 300; font-size: 0.92rem; line-height: 1.9; color: rgba(51,41,31,0.7); }
 .ad__list, .st__list { list-style: none; padding: 0; margin: 1.3rem 0 0; }
-.ad__list li { display: grid; grid-template-columns: auto 1fr 1fr; gap: 0.9rem; padding: 0.75rem 0; border-top: 1px dashed rgba(51,41,31,0.18); }
+.ad__list li { display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; padding: 0.75rem 0; border-top: 1px dashed rgba(51,41,31,0.18); }
 @media (max-width: 560px) { .ad__list li { grid-template-columns: auto 1fr; } }
 .ad__m { font-weight: 700; font-size: 0.82rem; color: var(--f-orange); white-space: nowrap; }
 .ad__t { font-weight: 400; font-size: 0.9rem; }
@@ -133,3 +133,7 @@
 .special__meta { margin-top: 0.9rem; font-weight: 300; font-size: 0.82rem; color: rgba(51,41,31,0.55); }
 .special__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; white-space: nowrap; }
 .special__cta span { font-weight: 300; font-size: 0.76rem; color: rgba(51,41,31,0.5); }
+
+/* 초청강사 특별회차 */
+.special--guest { border-left-color: var(--f-green); }
+.special--guest .special__tag { color: var(--f-green); }
