@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>감각테스트 — 내 꺼진 스위치는? | 인조이풀</title>
+  <title>감각검진 — 내 꺼진 스위치는? | 인조이풀</title>
   <meta name="description" content="아기는 모든 감각이 켜진 채 태어나요. 1분 테스트로 오늘 꺼져 있던 스위치를 찾고, 켜는 미션 하나를 받아가세요 — 하남 창작 스튜디오 인조이풀.">
   <link rel="canonical" href="https://injoyfull.github.io/test/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="인조이풀">
-  <meta property="og:title" content="감각테스트 — 내 꺼진 스위치는?">
+  <meta property="og:title" content="감각검진 — 내 꺼진 스위치는?">
   <meta property="og:description" content="촉각·소리·시각·리듬. 1분이면 돼요. 정답 없는 테스트니까, 편하게.">
   <meta property="og:url" content="https://injoyfull.github.io/test/">
   <meta property="og:locale" content="ko_KR">
@@ -212,7 +212,7 @@
         var text = '내 오늘의 감각 스위치는 “' + current.name + '”.\n' + current.mission + '\n정답 없는 90분 · 인조이풀';
         var url = 'https://injoyfull.github.io/test/';
         if (navigator.share) {
-          navigator.share({ title: '감각테스트', text: text, url: url }).catch(function () {});
+          navigator.share({ title: '감각검진', text: text, url: url }).catch(function () {});
           return;
         }
         var done = function () { btn.innerHTML = '복사됐어요 ✓'; setTimeout(function () { btn.innerHTML = '결과 공유하기 <i>→</i>'; }, 2000); };
