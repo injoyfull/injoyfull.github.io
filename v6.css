@@ -219,9 +219,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   .ride--1 { width: 24%; top: 0;   left: 4%; }
   .ride--2 { width: 19%; top: 6%;  right: 6%; }
   .ride--3 { width: 26%; bottom: 16%; left: 29%; }
-  .sl--d1 { width: 12%; top: 0;    left: 56%; right: auto; }
-  .sl--d2 { width: 14%; top: 0;    left: 36%; }
-  .sl--d3 { width: 11%; bottom: 2%; right: 27%; }
+  .sl--d1 { width: 12%; top: 0;    left: 36%; right: auto; }
+  .sl--d2 { width: 14%; top: 38%;  left: 56%; }
+  .sl--d3 { width: 11%; bottom: 2%; left: 8%; right: auto; }
 }
 
 @media (max-width: 880px) {
