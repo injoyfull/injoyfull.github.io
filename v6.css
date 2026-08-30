@@ -214,12 +214,14 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 @media (min-width: 881px) {
   .hero__stage { height: clamp(250px, 34svh, 400px); }
   .hero__in { padding-top: 1.6rem; }
-  .ride--1 { width: 26%; top: 0;   left: 4%; }
-  .ride--2 { width: 20%; top: 8%;  right: 8%; }
-  .ride--3 { width: 30%; bottom: 2%; left: 27%; }
-  .sl--d1 { width: 12%; top: 2%;   right: 31%; }
-  .sl--d2 { width: 15%; top: 12%;  left: 33%; }
-  .sl--d3 { width: 12%; bottom: 10%; right: 5%; }
+  .playground { max-width: 1440px; margin: 0 auto; } /* 초광폭에서 미끄럼틀이 커져 겹치는 것 방지 */
+  /* 칸을 나눠 서로 겹치지 않게 — 윗줄(주황·파랑·자주) / 오른쪽(노랑) / 아랫줄(초록·분홍) */
+  .ride--1 { width: 24%; top: 0;   left: 4%; }
+  .ride--2 { width: 19%; top: 6%;  right: 6%; }
+  .ride--3 { width: 26%; bottom: 16%; left: 29%; }
+  .sl--d1 { width: 12%; top: 0;    left: 56%; right: auto; }
+  .sl--d2 { width: 14%; top: 0;    left: 36%; }
+  .sl--d3 { width: 11%; bottom: 2%; right: 27%; }
 }
 
 @media (max-width: 880px) {
