@@ -156,7 +156,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 
 /* ── ① 히어로 — 환대가 먼저, 바로 들어가게 ── */
 .hero {
-  min-height: min(86svh, 780px); position: relative;
+  min-height: 100svh; position: relative;
   display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
   align-items: center; padding: 6.6rem var(--pad) 0 0;
 }
@@ -206,7 +206,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .hero__tag:hover { transform: translateX(-50%) translateY(-3px); box-shadow: 0 12px 26px rgba(43, 42, 38, 0.26); }
 
 @media (max-width: 880px) {
-  .hero { grid-template-columns: 1fr; min-height: 0; padding: 5.2rem var(--pad) 0; align-items: stretch; }
+  .hero { grid-template-columns: 1fr; min-height: 100svh; padding: 5.2rem var(--pad) 0; align-items: stretch; align-content: center; }
   .hero__stage { order: -1; min-height: 0; height: clamp(250px, 36svh, 330px); }
   .hero__in { justify-self: stretch; max-width: none; padding: 2.4rem 0 3.2rem; }
   .ride--1 { width: 56%; top: 2%; left: 2%; }
@@ -499,3 +499,25 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 
 .hero h1 b { font-weight: 700; }
 .hero__sub b { font-weight: 700; color: var(--ink); }
+
+/* ── 인트로 — 세 친구가 뛰어 들어왔다가, 놀이터로 ── */
+.opening {
+  position: fixed; inset: 0; z-index: 200; background: var(--paper);
+  display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer;
+  animation: openLift 0.75s cubic-bezier(0.4, 0, 0.2, 1) 1.75s forwards;
+}
+.opening__run {
+  display: flex; align-items: flex-end; gap: clamp(16px, 5vw, 56px);
+  animation: runIn 2.1s cubic-bezier(0.25, 0.6, 0.35, 1) forwards;
+}
+.opening__run img {
+  width: clamp(62px, 12vw, 132px); height: auto;
+  filter: drop-shadow(0 10px 18px rgba(43,42,38,0.16));
+}
+.opening__run img:nth-child(1) { animation: hop 0.5s ease-in-out infinite; }
+.opening__run img:nth-child(2) { animation: hop 0.5s ease-in-out infinite 0.16s; }
+.opening__run img:nth-child(3) { animation: hop 0.5s ease-in-out infinite 0.32s; }
+@keyframes runIn  { from { transform: translateX(-62vw); } to { transform: translateX(8vw); } }
+@keyframes hop    { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-22%) rotate(5deg); } }
+@keyframes openLift { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .opening { display: none; } }
