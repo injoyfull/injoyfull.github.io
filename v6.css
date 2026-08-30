@@ -266,13 +266,13 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   opacity: 0; animation: fade 0.6s ease-out 0.6s forwards;
 }
 .hero__cta {
-  margin-top: 2.4rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-  opacity: 0; animation: fade 0.6s ease-out 0.78s forwards;
+  margin-top: 2.8rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  opacity: 0; animation: fade 0.6s ease-out 0.6s forwards;
 }
 /* 바로 들어가는 문 — 스크롤하지 않아도 갈 곳이 보인다 */
 .hero__doors {
   margin-top: 1.7rem; display: flex; gap: clamp(1rem, 2.4vw, 1.8rem); flex-wrap: wrap;
-  opacity: 0; animation: fade 0.6s ease-out 0.96s forwards;
+  opacity: 0; animation: fade 0.6s ease-out 0.78s forwards;
 }
 .hero__doors a {
   font-weight: 400; font-size: 0.92rem; color: var(--ink-soft);
