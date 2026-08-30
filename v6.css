@@ -213,8 +213,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 /* 넓은 화면 — 놀이터가 가로로 넓어지니 미끄럼틀은 작게, 멀리 흩어놓는다 */
 @media (min-width: 881px) {
   .hero__stage { height: clamp(320px, 52svh, 620px); }
-  .hero__in { padding-top: 1.6rem; }
-  .playground { max-width: 1440px; margin: 0 auto; } /* 초광폭에서 미끄럼틀이 커져 겹치는 것 방지 */
+  .hero__in { padding-top: 3.6rem; }
+  /* 초광폭 상한 + 무대 위아래 숨 쉴 여백 — 미끄럼틀이 네브바·로고에 붙지 않게 */
+  .playground { max-width: 1440px; margin: 0 auto; top: clamp(32px, 7svh, 72px); bottom: clamp(32px, 7svh, 72px); }
   /* 칸을 나눠 서로 겹치지 않게 — 윗줄(주황·파랑·자주) / 오른쪽(노랑) / 아랫줄(초록·분홍) */
   .ride--1 { width: 24%; top: 0;   left: 4%; }
   .ride--2 { width: 19%; top: 6%;  right: 6%; }
