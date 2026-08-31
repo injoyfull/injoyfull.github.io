@@ -28,9 +28,9 @@
 .kit__lead { margin-top: 1.1rem; font-weight: 300; font-size: 0.98rem; line-height: 2; color: rgba(51,41,31,0.72); }
 .kit__why { list-style: none; padding: 0; margin: 2.2rem 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2.4vw, 26px); text-align: left; }
 @media (max-width: 760px) { .kit__why { grid-template-columns: 1fr; } }
-.kit__why li { background: var(--f-cream); border-radius: 3px; padding: 1.2rem 1.3rem; }
-.kit__why b { display: block; font-weight: 700; font-size: 0.98rem; }
-.kit__why span { display: block; margin-top: 0.4rem; font-weight: 300; font-size: 0.88rem; line-height: 1.8; color: rgba(51,41,31,0.68); }
+.kit__why li { background: var(--f-cream); border-radius: 3px; padding: 1.05rem 1.2rem; }
+.kit__why b { display: block; font-weight: 700; font-size: 0.95rem; }
+.kit__why span { display: block; margin-top: 0.35rem; font-weight: 300; font-size: 0.86rem; line-height: 1.75; color: rgba(51,41,31,0.68); }
 
 /* ── 월별 프로그램 ── */
 .mons { padding: clamp(3.4rem, 9vh, 5.5rem) var(--pad) clamp(3rem, 7vh, 4.5rem); max-width: 60rem; margin: 0 auto; }
@@ -40,16 +40,16 @@
 .mon { background: #FFFDF6; border-radius: 5px; box-shadow: 0 1px 0 rgba(51,41,31,0.04), 0 14px 34px rgba(51,41,31,0.08); overflow: hidden; }
 .mon + .mon { margin-top: clamp(20px, 3vw, 30px); }
 .mon__head { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 1.8rem); padding: 1.4rem clamp(1.4rem, 3.5vw, 2.2rem); color: #FFF6EC; }
-/* 헤더 배경은 그 달의 미끄럼틀이 살아나는 보색으로 —
-   9월 주황 스프링→파랑 / 10월 노랑 S→초록 / 11월 파랑 물결→골드 */
-.mon--sep .mon__head { background: var(--f-blue); }
-.mon--oct .mon__head { background: var(--f-green); }
+/* 헤더 배경은 그 달의 미끄럼틀(획+사다리 모두)이 살아나는 색으로 —
+   9월 주황 스프링·파란 사다리→초록 / 10월 노랑 S·파란 틀→감빛 레드 / 11월 파랑 물결·주황 사다리→골드 */
+.mon--sep .mon__head { background: var(--f-green); }
+.mon--oct .mon__head { background: var(--f-red); }
 .mon--nov .mon__head { background: var(--f-gold); color: var(--f-ink); }
 /* 신청 버튼은 그 달의 헤더 색과 매칭 */
-.mon--sep .btn--kakao { background: var(--f-blue); color: #FFF6EC; }
-.mon--oct .btn--kakao { background: var(--f-green); color: #FFF6EC; }
+.mon--sep .btn--kakao { background: var(--f-green); color: #FFF6EC; }
+.mon--oct .btn--kakao { background: var(--f-red); color: #FFF6EC; }
 .mon--nov .btn--kakao { background: var(--f-gold); color: var(--f-ink); }
-.mon__icon { width: clamp(64px, 11vw, 108px); height: auto; flex: 0 0 auto; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18)); }
+.mon__icon { width: clamp(76px, 13vw, 128px); height: auto; flex: 0 0 auto; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18)); }
 .mon__no { font-weight: 300; letter-spacing: 0.24em; font-size: 0.7rem; text-transform: uppercase; opacity: 0.85; }
 .mon__head h3 { margin-top: 0.3rem; font-weight: 400; font-size: clamp(1.15rem, 3.2vw, 1.5rem); letter-spacing: 0.01em; }
 .mon__head h3 b { font-weight: 700; }
@@ -62,8 +62,8 @@
 .ses__no { font-weight: 400; font-size: 0.78rem; letter-spacing: 0.06em; color: rgba(51,41,31,0.5); white-space: nowrap; padding-top: 0.3rem; }
 .ses__t { font-weight: 700; font-size: 1.02rem; }
 .ses__t em { font-style: normal; margin-left: 0.5rem; font-weight: 300; font-size: 0.76rem; letter-spacing: 0.1em; color: rgba(51,41,31,0.5); }
-.ses__d { margin-top: 0.3rem; font-weight: 300; font-size: 0.88rem; line-height: 1.8; color: rgba(51,41,31,0.68); }
-.ses__w { margin-top: 0.35rem; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.04em; color: rgba(51,41,31,0.55); }
+.ses__d { margin-top: 0.35rem; font-weight: 300; font-size: 0.9rem; line-height: 1.85; color: rgba(51,41,31,0.68); max-width: 56ch; }
+.ses__w { margin-top: 0.45rem; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.04em; color: rgba(51,41,31,0.55); }
 .ses__w b { font-weight: 700; color: var(--f-ink); }
 .ses--soon { grid-template-columns: 1fr auto; }
 .mons__note { margin-top: 0.7rem; text-align: center; font-weight: 300; font-size: 0.8rem; color: rgba(51,41,31,0.5); }
