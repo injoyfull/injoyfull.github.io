@@ -40,9 +40,15 @@
 .mon { background: #FFFDF6; border-radius: 5px; box-shadow: 0 1px 0 rgba(51,41,31,0.04), 0 14px 34px rgba(51,41,31,0.08); overflow: hidden; }
 .mon + .mon { margin-top: clamp(20px, 3vw, 30px); }
 .mon__head { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 1.8rem); padding: 1.4rem clamp(1.4rem, 3.5vw, 2.2rem); color: #FFF6EC; }
-.mon--sep .mon__head { background: var(--f-orange); }
-.mon--oct .mon__head { background: var(--f-gold); color: var(--f-ink); }
-.mon--nov .mon__head { background: var(--f-blue); }
+/* 헤더 배경은 그 달의 미끄럼틀이 살아나는 보색으로 —
+   9월 주황 스프링→파랑 / 10월 노랑 S→초록 / 11월 파랑 물결→골드 */
+.mon--sep .mon__head { background: var(--f-blue); }
+.mon--oct .mon__head { background: var(--f-green); }
+.mon--nov .mon__head { background: var(--f-gold); color: var(--f-ink); }
+/* 신청 버튼은 그 달의 헤더 색과 매칭 */
+.mon--sep .btn--kakao { background: var(--f-blue); color: #FFF6EC; }
+.mon--oct .btn--kakao { background: var(--f-green); color: #FFF6EC; }
+.mon--nov .btn--kakao { background: var(--f-gold); color: var(--f-ink); }
 .mon__icon { width: clamp(64px, 11vw, 108px); height: auto; flex: 0 0 auto; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18)); }
 .mon__no { font-weight: 300; letter-spacing: 0.24em; font-size: 0.7rem; text-transform: uppercase; opacity: 0.85; }
 .mon__head h3 { margin-top: 0.3rem; font-weight: 400; font-size: clamp(1.15rem, 3.2vw, 1.5rem); letter-spacing: 0.01em; }
@@ -56,6 +62,10 @@
 .ses__t { font-weight: 700; font-size: 1.02rem; }
 .ses__t em { font-style: normal; margin-left: 0.5rem; font-weight: 300; font-size: 0.76rem; letter-spacing: 0.1em; color: rgba(51,41,31,0.5); }
 .ses__d { margin-top: 0.3rem; font-weight: 300; font-size: 0.88rem; line-height: 1.8; color: rgba(51,41,31,0.68); }
+.ses__w { margin-top: 0.35rem; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.04em; color: rgba(51,41,31,0.55); }
+.ses__w b { font-weight: 700; color: var(--f-ink); }
+.ses--soon { grid-template-columns: 1fr auto; }
+.mons__note { margin-top: 0.7rem; text-align: center; font-weight: 300; font-size: 0.8rem; color: rgba(51,41,31,0.5); }
 .mon__meta { padding: 1rem clamp(1.4rem, 3.5vw, 2.2rem) 1.3rem; border-top: 1px solid rgba(51,41,31,0.09);
   font-weight: 300; font-size: 0.84rem; color: rgba(51,41,31,0.6); }
 .mon__meta b { font-weight: 700; color: var(--f-ink); }
