@@ -116,6 +116,16 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 }
 .top__link:hover { color: var(--paper); }
 .top__link:hover::after { right: 0; }
+/* 지금 보고 있는 페이지 */
+.top__link--on { color: var(--paper); font-weight: 700; }
+.top__link--on::after { right: 0; }
+/* 로고 옆 — 지금 어느 페이지인지 */
+.top__brand { display: flex; align-items: baseline; gap: 0; margin: 0; min-width: 0; }
+.top__here {
+  font-weight: 400; font-size: 0.86rem; letter-spacing: 0.02em;
+  color: rgba(250, 245, 234, 0.72); white-space: nowrap;
+}
+.top__here::before { content: "·"; margin: 0 0.5rem; color: rgba(250, 245, 234, 0.4); }
 .top__ask {
   font-weight: 400; font-size: 0.88rem; letter-spacing: 0.02em;
   background: var(--butter); color: var(--ink);
@@ -126,7 +136,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .top__ask:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(43,42,38,0.18); }
 @media (max-width: 620px) {
   .top { padding: 1.1rem var(--pad); }
-  .top__links .top__link:not(.top__link--key) { display: none; }
+  .top__links .top__link:not(.top__link--key):not(.top__link--on) { display: none; }
+  .top__here { font-size: 0.78rem; }
+  .top__here::before { margin: 0 0.35rem; }
   .top__links { gap: 0.9rem; }
   .top__ask { padding: 0.45rem 0.95rem; font-size: 0.84rem; }
 }
