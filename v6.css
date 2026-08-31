@@ -21,8 +21,8 @@
   --coral-soft: #F6DFD3;
   --butter-soft: #F8ECC8;
   --teal-soft: #DDEAE4;
-  --joy: #2702CE;       /* 조이블루 — 파랑 미끄럼틀 원색 */
-  --joy-deep: #1D0299;  /* 조이블루 호버 */
+  --joy: #1A1150;       /* 조이 블루블랙 — 파랑 미끄럼틀과 같은 색상, 깊이만 잉크로 */
+  --joy-deep: #120B38;  /* 블루블랙 호버 */
   --a2z: "A2Z", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   --pad: clamp(24px, 5vw, 88px);
   --wide: 82rem;   /* 넓은 섹션 */
