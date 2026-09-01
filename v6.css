@@ -21,8 +21,8 @@
   --coral-soft: #F6DFD3;
   --butter-soft: #F8ECC8;
   --teal-soft: #DDEAE4;
-  --joy: #1B4B5A;       /* 딥 페트롤 — 크레용 색표의 진한 청록 (네브바·버튼·헤드라인) */
-  --joy-deep: #143842;  /* 딥 페트롤 호버 */
+  --joy: #2B2A26;       /* 잉크 — 버튼·헤드라인 (네브바는 크림) */
+  --joy-deep: #3d3b35;
   --a2z: "A2Z", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   --pad: clamp(24px, 5vw, 88px);
   --wide: 82rem;   /* 넓은 섹션 */
@@ -96,17 +96,18 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .top {
   position: fixed; top: 0; left: 0; right: 0; z-index: 90;
   display: flex; justify-content: space-between; align-items: center;
-  gap: 1rem; padding: 1rem var(--pad);
-  background: var(--joy);
-  box-shadow: 0 2px 14px rgba(43, 42, 38, 0.18);
+  gap: 1rem; padding: 0.85rem var(--pad);
+  background: var(--card);
+  box-shadow: 0 1px 0 rgba(43,42,38,0.08), 0 2px 14px rgba(43, 42, 38, 0.06);
   transition: padding 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.top--solid { box-shadow: 0 4px 22px rgba(43, 42, 38, 0.28); }
-.top__name { font-weight: 700; font-size: 1.02rem; letter-spacing: 0.02em; color: var(--paper); }
-.top__name em { font-style: normal; color: var(--butter); }
+.top--solid { box-shadow: 0 1px 0 rgba(43,42,38,0.1), 0 4px 22px rgba(43, 42, 38, 0.12); }
+.top__name { font-weight: 700; font-size: 1.02rem; letter-spacing: 0.02em; color: var(--ink); display: flex; align-items: center; }
+.top__name em { font-style: normal; color: var(--coral); }
+.top__logo { height: clamp(30px, 4.5vw, 42px); width: auto; display: block; }
 .top__links { display: flex; gap: clamp(0.9rem, 2.6vw, 1.7rem); align-items: center; }
 .top__link {
-  font-weight: 400; font-size: 0.92rem; color: rgba(250, 245, 234, 0.82);
+  font-weight: 400; font-size: 0.92rem; color: var(--ink-soft);
   white-space: nowrap; padding-bottom: 3px; position: relative;
   transition: color 0.3s var(--ease);
 }
@@ -114,18 +115,18 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   content: ""; position: absolute; left: 0; right: 100%; bottom: 0;
   height: 1px; background: var(--butter); transition: right 0.35s var(--ease);
 }
-.top__link:hover { color: var(--paper); }
+.top__link:hover { color: var(--ink); }
 .top__link:hover::after { right: 0; }
 /* 지금 보고 있는 페이지 */
-.top__link--on { color: var(--paper); font-weight: 700; }
+.top__link--on { color: var(--ink); font-weight: 700; }
 .top__link--on::after { right: 0; }
 /* 로고 옆 — 지금 어느 페이지인지 */
 .top__brand { display: flex; align-items: baseline; gap: 0; margin: 0; min-width: 0; }
 .top__here {
   font-weight: 400; font-size: 0.86rem; letter-spacing: 0.02em;
-  color: rgba(250, 245, 234, 0.72); white-space: nowrap;
+  color: var(--ink-soft); white-space: nowrap;
 }
-.top__here::before { content: "·"; margin: 0 0.5rem; color: rgba(250, 245, 234, 0.4); }
+.top__here::before { content: "·"; margin: 0 0.5rem; color: var(--ink-faint); }
 .top__ask {
   font-weight: 400; font-size: 0.88rem; letter-spacing: 0.02em;
   background: var(--butter); color: var(--ink);
@@ -153,8 +154,8 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 }
 .btn i { font-style: normal; transition: transform 0.35s var(--ease); }
 .btn:hover i { transform: translateX(4px); }
-.btn--ink { background: var(--joy); color: var(--paper); box-shadow: 0 3px 10px rgba(27,75,90,0.26); }
-.btn--ink:hover { background: var(--joy-deep); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(27,75,90,0.34); }
+.btn--ink { background: var(--joy); color: var(--paper); box-shadow: 0 3px 10px rgba(43,42,38,0.2); }
+.btn--ink:hover { background: var(--joy-deep); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(43,42,38,0.28); }
 .btn--kakao { background: var(--butter); color: var(--ink); box-shadow: 0 3px 10px rgba(43,42,38,0.14); }
 .btn--kakao:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(226,167,25,0.34); }
 .btn--coral { background: var(--coral); color: #FFF6EE; box-shadow: 0 3px 10px rgba(226,96,60,0.24); }
@@ -185,8 +186,8 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 }
 /* 오른쪽 — 놀이터. 한나님이 그린 미끄럼틀 위에서 논다.
    .ride 안에서 캐릭터 위치를 미끄럼틀 기준(%)으로 잡아 정확히 '위에' 앉힌다. */
-.hero__stage { position: relative; order: -1; min-height: 0; height: clamp(250px, 40svh, 470px); }
-.playground { position: absolute; inset: 0; }
+.hero__stage { position: relative; order: -1; min-height: 0; }
+.playground { position: relative; margin: clamp(20px, 3.5svh, 44px) auto; }
 .sl { display: block; width: 100%; height: auto; }
 
 .ride { position: absolute; }
@@ -226,10 +227,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 
 /* 넓은 화면 — 놀이터가 가로로 넓어지니 미끄럼틀은 작게, 멀리 흩어놓는다 */
 @media (min-width: 881px) {
-  .hero__stage { height: clamp(320px, 52svh, 620px); }
   .hero__in { padding-top: 3.6rem; }
-  /* 초광폭 상한 + 무대 위아래 숨 쉴 여백 — 미끄럼틀이 네브바·로고에 붙지 않게 */
-  .playground { max-width: 1440px; margin: 0 auto; top: clamp(32px, 7svh, 72px); bottom: clamp(32px, 7svh, 72px); }
+  /* 고정 비율 무대 — 어느 화면에서든 그림 배치가 그대로 유지된다 */
+  .playground { max-width: 1440px; aspect-ratio: 3 / 1; margin-top: clamp(36px, 6svh, 64px); margin-bottom: clamp(28px, 5svh, 56px); }
   /* 칸을 나눠 서로 겹치지 않게 — 윗줄(주황·파랑·자주) / 오른쪽(노랑) / 아랫줄(초록·분홍) */
   .ride--1 { width: 24%; top: 0;   left: 4%; }
   .ride--2 { width: 19%; top: 6%;  right: 6%; }
@@ -241,7 +241,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 
 @media (max-width: 880px) {
   .hero { padding: 5.2rem var(--pad) 0; }
-  .hero__stage { height: clamp(250px, 36svh, 330px); }
+  .playground { max-width: 560px; aspect-ratio: 5 / 4; }
   .hero__in { justify-self: stretch; max-width: none; padding: 2.4rem 0 3.2rem; }
   .ride--1 { width: 56%; top: 2%; left: 2%; }
   .ride--2 { width: 36%; top: 20%; right: 1%; }

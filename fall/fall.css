@@ -194,16 +194,7 @@
 /* ── 오픈 알림 안내 ── */
 .ses__soonnote { margin-top: 0.4rem; font-weight: 300; font-size: 0.8rem; color: rgba(51,41,31,0.5); }
 
-/* ── 이 페이지만 가을 잉크 네브바 (시즌 팔레트 · 손그림 잉크) ── */
-.fallpage .top { background: var(--f-ink); }
-.fallpage .top__here { color: rgba(243,234,216,0.72); }
-.fallpage .top__here::before { color: rgba(243,234,216,0.42); }
-.fallpage .top__link { color: rgba(243,234,216,0.82); }
-.fallpage .top__link::after { background: var(--f-gold); }
-.fallpage .top__link:hover, .fallpage .top__link--on { color: #FFF6EC; }
-.fallpage .top__name { color: #FFF6EC; }
-.fallpage .top__name em { color: var(--f-gold); }
-.fallpage .top__ask { background: var(--f-gold); color: var(--f-ink); }
+/* 네브바는 전 페이지 공통(크림 + 가로형 로고) — v6.css */
 
 /* ── 히어로 — 여기도 놀이터 ── */
 .fhero h1 b { color: var(--f-orange); }
