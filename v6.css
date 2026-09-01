@@ -569,3 +569,9 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 @keyframes hop    { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-22%) rotate(5deg); } }
 @keyframes openLift { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .opening { display: none; } }
+
+/* ── 왜 이 공간을 열었나 ── */
+.why { margin: 2.6rem auto 0; max-width: 46rem; text-align: left; }
+.why p { font-weight: 300; font-size: clamp(0.95rem, 2.2vw, 1.04rem); line-height: 2.05; color: var(--ink-soft); }
+.why p + p { margin-top: 1.1rem; }
+.why b { font-weight: 700; color: var(--ink); }
