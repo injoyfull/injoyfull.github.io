@@ -1,0 +1,40 @@
+/* ============================================================
+   기업 · 기관 — 상시 열려 있는 비즈니스 영역 (v6 문법)
+   ============================================================ */
+.bhero { padding: 9rem var(--pad) clamp(3rem, 7vh, 4.5rem); max-width: 62rem; margin: 0 auto; text-align: center; }
+.bhero h1 { margin-top: 1.1rem; font-weight: 400; font-size: clamp(2rem, 5.6vw, 3.2rem); line-height: 1.35; letter-spacing: 0.01em; }
+.bhero h1 b { font-weight: 700; color: var(--joy); }
+.bhero__sub { margin-top: 1.4rem; font-weight: 300; font-size: clamp(0.98rem, 2.3vw, 1.12rem); line-height: 1.95; color: var(--ink-soft); }
+.bhero__sub b { font-weight: 400; color: var(--ink); }
+.bhero__open {
+  display: inline-block; margin-top: 1.8rem;
+  font-weight: 400; font-size: 0.86rem; letter-spacing: 0.06em;
+  background: var(--teal-soft); color: #2C5C54;
+  padding: 0.4rem 1.1rem; border-radius: 999px;
+}
+
+/* ── 진행과 견적 ── */
+.brows { background: var(--card); padding: clamp(3.4rem, 9vh, 5.5rem) var(--pad); }
+.brows__in { max-width: 56rem; margin: 0 auto; }
+.brows__list { list-style: none; padding: 0; margin: 2.2rem 0 0; }
+.brows__list li {
+  display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: clamp(1rem, 3vw, 2rem);
+  padding: 1.1rem 0; border-top: 1px solid rgba(43,42,38,0.1);
+}
+@media (max-width: 560px) { .brows__list li { grid-template-columns: 1fr; gap: 0.3rem; } }
+.brows__list dt, .brows__k {
+  font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; color: var(--joy);
+}
+.brows__v { font-weight: 300; font-size: 0.96rem; line-height: 1.85; color: var(--ink-soft); }
+.brows__v b { font-weight: 700; color: var(--ink); }
+.brows__v em { font-style: normal; font-size: 0.86rem; color: var(--ink-faint); }
+.brows__cta { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+
+/* ── 해온 일 ── */
+.bwork { padding: clamp(3.4rem, 9vh, 5.5rem) var(--pad); max-width: 56rem; margin: 0 auto; }
+.bwork__grid { margin-top: 2.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 26px); }
+@media (max-width: 760px) { .bwork__grid { grid-template-columns: 1fr; } }
+.bwork__grid article { background: var(--card); border-radius: 4px; padding: 1.4rem 1.5rem; box-shadow: var(--shadow); }
+.bwork__grid i { font-style: normal; font-weight: 400; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--ink-faint); }
+.bwork__grid b { display: block; margin-top: 0.55rem; font-weight: 700; font-size: 1.02rem; }
+.bwork__grid span { display: block; margin-top: 0.35rem; font-weight: 300; font-size: 0.88rem; line-height: 1.8; color: var(--ink-soft); }

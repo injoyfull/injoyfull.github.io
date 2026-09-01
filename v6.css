@@ -239,7 +239,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   .ride--2 { width: 32%; top: -5%;  right: -3%; }  /* 노랑 — 가장 크게, 놀이터의 주인공 */
   .ride--3 { width: 34%; bottom: 0;  left: 17%; }  /* 초록 — 화면의 중심축 */
   .sl--d1 { width: 22%; top: 0;     left: 34%; right: auto; }  /* 자주 */
-  .sl--d2 { width: 19%; bottom: -8%; right: 1%; top: auto; left: auto; } /* 파랑 — 노랑 아래로 비켜서 */
+  .sl--d2 { width: 14%; top: 4%; left: 56.5%; right: auto; bottom: auto; } /* 파랑 — 윗줄, 자주와 노랑 사이 */
   .sl--d3 { width: 22%; top: 34%; right: 30%; left: auto; bottom: auto;
     animation: slSwayFlip 11s ease-in-out infinite 1.8s; } /* 핑크 — 초록과 노랑을 잇는 다리 */
 }
@@ -583,3 +583,6 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
   .top__mark { display: block; }
 }
 .foot__mark { width: clamp(44px, 6vw, 56px); height: auto; margin: 0 auto 1.3rem; opacity: 0.92; }
+
+/* 푸터 서명 — 가로형 로고 */
+.foot__logo { width: clamp(180px, 22vw, 260px); height: auto; margin: 0 auto 1.4rem; opacity: 0.95; }
