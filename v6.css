@@ -21,8 +21,8 @@
   --coral-soft: #F6DFD3;
   --butter-soft: #F8ECC8;
   --teal-soft: #DDEAE4;
-  --joy: #1A1150;       /* 조이 블루블랙 — 파랑 미끄럼틀과 같은 색상, 깊이만 잉크로 */
-  --joy-deep: #120B38;  /* 블루블랙 호버 */
+  --joy: #1B4B5A;       /* 딥 페트롤 — 크레용 색표의 진한 청록 (네브바·버튼·헤드라인) */
+  --joy-deep: #143842;  /* 딥 페트롤 호버 */
   --a2z: "A2Z", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   --pad: clamp(24px, 5vw, 88px);
   --wide: 82rem;   /* 넓은 섹션 */
@@ -153,8 +153,8 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 }
 .btn i { font-style: normal; transition: transform 0.35s var(--ease); }
 .btn:hover i { transform: translateX(4px); }
-.btn--ink { background: var(--joy); color: var(--paper); box-shadow: 0 3px 10px rgba(39,2,206,0.22); }
-.btn--ink:hover { background: var(--joy-deep); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(39,2,206,0.3); }
+.btn--ink { background: var(--joy); color: var(--paper); box-shadow: 0 3px 10px rgba(27,75,90,0.26); }
+.btn--ink:hover { background: var(--joy-deep); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(27,75,90,0.34); }
 .btn--kakao { background: var(--butter); color: var(--ink); box-shadow: 0 3px 10px rgba(43,42,38,0.14); }
 .btn--kakao:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(226,167,25,0.34); }
 .btn--coral { background: var(--coral); color: #FFF6EE; box-shadow: 0 3px 10px rgba(226,96,60,0.24); }
