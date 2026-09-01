@@ -214,3 +214,10 @@
 .kit__char { position: absolute; top: -30px; left: clamp(1rem, 3vw, 1.3rem);
   width: clamp(54px, 7vw, 72px); height: auto;
   filter: drop-shadow(0 4px 9px rgba(51,41,31,0.22)); }
+
+/* ── 세션 실물 사진 — 말보다 증거 ── */
+.ses__pic {
+  margin-top: 0.75rem; width: clamp(150px, 26%, 230px);
+  aspect-ratio: 1 / 1; object-fit: cover;
+  border-radius: 8px; box-shadow: 0 3px 12px rgba(51,41,31,0.16);
+}
