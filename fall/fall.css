@@ -193,3 +193,33 @@
 
 /* ── 오픈 알림 안내 ── */
 .ses__soonnote { margin-top: 0.4rem; font-weight: 300; font-size: 0.8rem; color: rgba(51,41,31,0.5); }
+
+/* ── 이 페이지만 가을 잉크 네브바 (시즌 팔레트 · 손그림 잉크) ── */
+.fallpage .top { background: var(--f-ink); }
+.fallpage .top__here { color: rgba(243,234,216,0.72); }
+.fallpage .top__here::before { color: rgba(243,234,216,0.42); }
+.fallpage .top__link { color: rgba(243,234,216,0.82); }
+.fallpage .top__link::after { background: var(--f-gold); }
+.fallpage .top__link:hover, .fallpage .top__link--on { color: #FFF6EC; }
+.fallpage .top__name { color: #FFF6EC; }
+.fallpage .top__name em { color: var(--f-gold); }
+.fallpage .top__ask { background: var(--f-gold); color: var(--f-ink); }
+
+/* ── 히어로 — 여기도 놀이터 ── */
+.fhero h1 b { color: var(--f-orange); }
+.fhero__sl--c { width: clamp(110px, 14vw, 200px); top: 5%; right: 3%; transform: rotate(5deg); }
+.fhero__ch { position: absolute; height: auto; pointer-events: none; z-index: 1;
+  filter: drop-shadow(0 5px 10px rgba(51,41,31,0.22)); }
+.fhero__ch--a { width: clamp(38px, 4.4vw, 62px); top: 7%;    left: 6%; animation: fhop 4.6s ease-in-out infinite; }
+.fhero__ch--b { width: clamp(40px, 4.8vw, 68px); bottom: 12%; right: 13%; animation: fhop 5.4s ease-in-out infinite 0.6s; }
+.fhero__ch--c { width: clamp(34px, 4vw, 56px);  top: 20%;   right: 7%; animation: fhop 5s ease-in-out infinite 1.2s; }
+@keyframes fhop { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+@media (max-width: 820px) { .fhero__ch { display: none; } }
+@media (prefers-reduced-motion: reduce) { .fhero__ch { animation: none !important; } }
+
+/* ── 꾸러미 — 상자마다 친구가 한 명씩 ── */
+.kit__why { margin-top: 3.4rem; }
+.kit__why li { position: relative; padding-top: 2.4rem; }
+.kit__char { position: absolute; top: -30px; left: clamp(1rem, 3vw, 1.3rem);
+  width: clamp(54px, 7vw, 72px); height: auto;
+  filter: drop-shadow(0 4px 9px rgba(51,41,31,0.22)); }
