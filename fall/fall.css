@@ -148,3 +148,48 @@
 /* 초청강사 특별회차 */
 .special--guest { border-left-color: var(--f-green); }
 .special--guest .special__tag { color: var(--f-green); }
+
+/* ── 가격은 회차 아래 별도 칸으로 ── */
+.mon__price {
+  display: flex; flex-wrap: wrap; gap: 0;
+  border-top: 1px solid rgba(51,41,31,0.12); background: #FDF8EE;
+}
+.mon__price span {
+  flex: 1 1 240px; padding: 0.95rem clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 300; font-size: 0.88rem; color: rgba(51,41,31,0.62);
+}
+.mon__price span + span { border-left: 1px solid rgba(51,41,31,0.1); }
+@media (max-width: 620px) { .mon__price span + span { border-left: 0; border-top: 1px solid rgba(51,41,31,0.1); } }
+.mon__price b { display: block; margin-top: 0.15rem; font-weight: 700; font-size: 1.02rem; color: var(--f-ink); }
+.mon__price em { font-style: normal; font-weight: 300; font-size: 0.82rem; color: rgba(51,41,31,0.55); }
+.mon__price .on { background: #FCF1D8; }
+
+/* ── 회차 안 협업 표시 ── */
+.ses__with {
+  display: inline-block; margin-top: 0.4rem;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
+  background: var(--f-red); color: #FFF4EE;
+  padding: 0.22rem 0.7rem; border-radius: 999px;
+}
+
+/* ── 9월 원데이 — 오렌지 판 ── */
+.oneday {
+  margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3vw, 30px);
+  background: var(--f-orange); color: #FFF4E9;
+  border-radius: 5px; overflow: hidden;
+  box-shadow: 0 1px 0 rgba(51,41,31,0.05), 0 16px 38px rgba(233,97,43,0.26);
+}
+.oneday__in { padding: clamp(1.8rem, 4vw, 2.6rem); display: grid; grid-template-columns: 1fr auto; gap: clamp(1.2rem, 3vw, 2.4rem); align-items: center; }
+@media (max-width: 760px) { .oneday__in { grid-template-columns: 1fr; } }
+.oneday__tag { font-weight: 700; font-size: 0.76rem; letter-spacing: 0.16em; color: #FFE0C4; }
+.oneday h3 { margin-top: 0.5rem; font-weight: 700; font-size: clamp(1.5rem, 4vw, 2rem); color: #FFF9F2; }
+.oneday__d { margin-top: 0.7rem; font-weight: 300; font-size: 0.94rem; line-height: 1.9; color: rgba(255,244,233,0.88); max-width: 46ch; }
+.oneday__facts { list-style: none; padding: 0; margin: 1.2rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; }
+.oneday__facts li { font-weight: 300; font-size: 0.9rem; color: rgba(255,244,233,0.9); }
+.oneday__facts b { font-weight: 700; color: #FFF9F2; }
+.oneday__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.55rem; white-space: nowrap; }
+.oneday__cta .btn { background: #FFF6EC; color: var(--f-orange); box-shadow: 0 4px 14px rgba(51,41,31,0.2); }
+.oneday__cta span { font-weight: 300; font-size: 0.78rem; color: rgba(255,244,233,0.78); }
+
+/* ── 오픈 알림 안내 ── */
+.ses__soonnote { margin-top: 0.4rem; font-weight: 300; font-size: 0.8rem; color: rgba(51,41,31,0.5); }
