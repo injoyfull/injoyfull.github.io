@@ -236,10 +236,10 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   /* 칸을 나눠 서로 겹치지 않게 — 윗줄(주황·파랑·자주) / 오른쪽(노랑) / 아랫줄(초록·분홍) */
   /* 과감하게 — 무대를 가득 채우고, 가장자리 밖으로 살짝 뻗는다 */
   .ride--1 { width: 34%; top: -4%;  left: -2%; }   /* 주황 — 왼쪽 밖으로 */
-  .ride--2 { width: 24%; top: -2%;  right: -1%; }  /* 노랑 — 오른쪽 가득 */
+  .ride--2 { width: 32%; top: -5%;  right: -3%; }  /* 노랑 — 가장 크게, 놀이터의 주인공 */
   .ride--3 { width: 34%; bottom: 0;  left: 17%; }  /* 초록 — 화면의 중심축 */
   .sl--d1 { width: 22%; top: 0;     left: 34%; right: auto; }  /* 자주 */
-  .sl--d2 { width: 24%; bottom: -4%; right: 2%; top: auto; left: auto; } /* 파랑 — 아래로 뚫고 */
+  .sl--d2 { width: 19%; bottom: -8%; right: 1%; top: auto; left: auto; } /* 파랑 — 노랑 아래로 비켜서 */
   .sl--d3 { width: 22%; top: 34%; right: 30%; left: auto; bottom: auto;
     animation: slSwayFlip 11s ease-in-out infinite 1.8s; } /* 핑크 — 초록과 노랑을 잇는 다리 */
 }
