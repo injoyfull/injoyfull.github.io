@@ -221,3 +221,7 @@
   aspect-ratio: 1 / 1; object-fit: cover;
   border-radius: 8px; box-shadow: 0 3px 12px rgba(51,41,31,0.16);
 }
+
+/* 원데이 — 쿠폰은 아랫줄 전체, 마감 안내는 버튼 오른끝에 맞춤 */
+.oneday__facts .full { flex-basis: 100%; }
+.oneday__cta { align-items: flex-end; text-align: right; }
