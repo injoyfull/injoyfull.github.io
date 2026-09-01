@@ -15,7 +15,7 @@
 .fhero h1 b { font-weight: 700; }
 .fhero__sub { margin-top: 1.3rem; font-weight: 300; font-size: clamp(0.98rem, 2.3vw, 1.12rem); color: rgba(51,41,31,0.72); }
 .fhero__sub b { font-weight: 400; color: var(--f-ink); }
-.fhero__flag { display: inline-block; margin-top: 1.8rem; font-weight: 400; font-size: clamp(1.1rem, 3vw, 1.5rem); background: var(--f-ink); color: var(--f-cream); padding: 0.5rem 1.5rem; border-radius: 2px; }
+.fhero__flag { display: inline-block; margin-top: 1.8rem; font-weight: 400; font-size: clamp(1.1rem, 3vw, 1.5rem); background: var(--f-green); color: #FFF9EE; padding: 0.5rem 1.5rem; border-radius: 2px; }
 .fhero__sl { position: absolute; height: auto; opacity: 0.9; pointer-events: none; }
 .fhero__sl--a { width: clamp(150px, 20vw, 300px); top: 8%; left: -3%; transform: rotate(-6deg); }
 .fhero__sl--b { width: clamp(160px, 22vw, 330px); bottom: -8%; right: -4%; transform: rotate(4deg); }
