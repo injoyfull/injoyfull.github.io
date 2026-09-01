@@ -234,12 +234,13 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   .hero__tag { left: 2%; transform: none; }
   .hero__tag:hover { transform: translateY(-3px); }
   /* 칸을 나눠 서로 겹치지 않게 — 윗줄(주황·파랑·자주) / 오른쪽(노랑) / 아랫줄(초록·분홍) */
-  .ride--1 { width: 24%; top: 0;   left: 4%; }
-  .ride--2 { width: 19%; top: 6%;  right: 6%; }
-  .ride--3 { width: 26%; bottom: 16%; left: 29%; }
-  .sl--d1 { width: 12%; top: 0;    left: 36%; right: auto; }
-  .sl--d2 { width: 14%; top: 38%;  left: 56%; }
-  .sl--d3 { width: 11%; bottom: 2%; left: 8%; right: auto; }
+  .ride--1 { width: 30%; top: 0;   left: 1%; }   /* 주황 — 왼쪽 끝, 더 크게 */
+  .ride--2 { width: 21%; top: 2%;  right: 5%; }   /* 노랑 */
+  .ride--3 { width: 26%; bottom: 4%; left: 27%; } /* 초록 */
+  .sl--d1 { width: 13%; top: 0;    left: 44%; right: auto; }   /* 자주 — 왼쪽으로 */
+  .sl--d2 { width: 17%; bottom: 0; right: 1%; top: auto; left: auto; } /* 파랑 — 오른쪽 아래 */
+  .sl--d3 { width: 15%; top: 46%; right: 27%; left: auto; bottom: auto;
+    animation: slSwayFlip 11s ease-in-out infinite 1.8s; } /* 핑크 — 대칭(사다리 오른쪽)·더 크게·위로 */
 }
 
 @media (max-width: 880px) {
