@@ -230,6 +230,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   .hero__in { padding-top: 3.6rem; }
   /* 고정 비율 무대 — 어느 화면에서든 그림 배치가 그대로 유지된다 */
   .playground { max-width: 1440px; aspect-ratio: 3 / 1; margin-top: clamp(36px, 6svh, 64px); margin-bottom: clamp(28px, 5svh, 56px); }
+  /* 시즌 배지는 왼쪽, 헤드라인 시작점에 맞춰 */
+  .hero__tag { left: 2%; transform: none; }
+  .hero__tag:hover { transform: translateY(-3px); }
   /* 칸을 나눠 서로 겹치지 않게 — 윗줄(주황·파랑·자주) / 오른쪽(노랑) / 아랫줄(초록·분홍) */
   .ride--1 { width: 24%; top: 0;   left: 4%; }
   .ride--2 { width: 19%; top: 6%;  right: 6%; }
