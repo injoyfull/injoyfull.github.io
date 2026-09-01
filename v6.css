@@ -575,3 +575,11 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 .why p { font-weight: 300; font-size: clamp(0.95rem, 2.2vw, 1.04rem); line-height: 2.05; color: var(--ink-soft); }
 .why p + p { margin-top: 1.1rem; }
 .why b { font-weight: 700; color: var(--ink); }
+
+/* ── 스마일 마크 — 좁은 화면의 네브바, 그리고 페이지 끝 서명 ── */
+.top__mark { display: none; height: 34px; width: auto; }
+@media (max-width: 620px) {
+  .top__logo { display: none; }
+  .top__mark { display: block; }
+}
+.foot__mark { width: clamp(44px, 6vw, 56px); height: auto; margin: 0 auto 1.3rem; opacity: 0.92; }
