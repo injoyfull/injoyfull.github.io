@@ -224,4 +224,4 @@
 
 /* 원데이 — 쿠폰은 아랫줄 전체, 마감 안내는 버튼 오른끝에 맞춤 */
 .oneday__facts .full { flex-basis: 100%; }
-.oneday__cta { align-items: flex-end; text-align: right; }
+.oneday__cta { align-items: flex-start; text-align: left; }
