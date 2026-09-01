@@ -195,13 +195,13 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 
 /* ① 주황 스프링 — 뭉이가 오른쪽 아치 위에 */
 .ride--1 { width: 60%; top: 3%; left: 4%; animation: slSway 9s ease-in-out infinite; }
-.ride--1 .rider { width: 18%; left: 55%; bottom: 74%; animation: ride1 4.6s ease-in-out infinite; }
+.ride--1 .rider { width: 26%; left: 52%; bottom: 72%; animation: ride1 3.8s ease-in-out infinite; }
 /* ② 노랑 S자 — 도리가 꼭대기, 사다리 옆에서 막 출발 */
 .ride--2 { width: 42%; top: 22%; right: 2%; animation: slSway 11s ease-in-out infinite 0.7s; }
-.ride--2 .rider { width: 22%; left: 22%; bottom: 33%;   animation: ride2 5.4s ease-in-out infinite; }
+.ride--2 .rider { width: 30%; left: 20%; bottom: 36%;   animation: ride2 4.6s ease-in-out infinite; }
 /* ③ 초록 물결 — 점피가 첫 마루 위에 */
 .ride--3 { width: 62%; bottom: 6%; left: 0; animation: slSway 12s ease-in-out infinite 1.4s; }
-.ride--3 .rider { width: 16%; left: 24%; bottom: 84%;   animation: ride3 5s ease-in-out infinite; }
+.ride--3 .rider { width: 24%; left: 22%; bottom: 80%;   animation: ride3 4.2s ease-in-out infinite; }
 
 /* 나머지 미끄럼틀은 작게, 뒤에서 */
 .sl--d1, .sl--d2, .sl--d3 { position: absolute; opacity: 0.9; }
@@ -211,9 +211,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 
 @keyframes slSway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
 @keyframes slSwayFlip { 0%,100% { transform: scaleX(-1) rotate(-1deg); } 50% { transform: scaleX(-1) rotate(1deg); } }
-@keyframes ride1 { 0%,100% { transform: translate(0,0) rotate(-3deg); } 50% { transform: translate(7%, 2%) rotate(3deg); } }
-@keyframes ride2 { 0%,100% { transform: translate(0,0) rotate(2deg); }  50% { transform: translate(-5%, 2%) rotate(-3deg); } }
-@keyframes ride3 { 0%,100% { transform: translate(0,0) rotate(-2deg); } 50% { transform: translate(8%, 2%) rotate(3deg); } }
+@keyframes ride1 { 0%,100% { transform: translate(0,0) rotate(-6deg); } 50% { transform: translate(11%, -9%) rotate(8deg); } }
+@keyframes ride2 { 0%,100% { transform: translate(0,0) rotate(5deg); }  50% { transform: translate(-10%, 7%) rotate(-7deg); } }
+@keyframes ride3 { 0%,100% { transform: translate(0,0) rotate(-5deg); } 50% { transform: translate(13%, 7%) rotate(7deg); } }
 .hero__tag {
   position: absolute; z-index: 3; left: 50%; bottom: 0;
   transform: translateX(-50%); white-space: nowrap;
