@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>감각검진 — 내 꺼진 스위치는? | 인조이풀</title>
+  <title>감각 스위치 — 오늘 내 꺼진 스위치는? | 인조이풀</title>
   <meta name="description" content="아기는 모든 감각이 켜진 채 태어나요. 1분 테스트로 오늘 꺼져 있던 스위치를 찾고, 켜는 미션 하나를 받아가세요 — 하남 창작 스튜디오 인조이풀.">
   <link rel="canonical" href="https://injoyfull.github.io/test/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="인조이풀">
-  <meta property="og:title" content="감각검진 — 내 꺼진 스위치는?">
+  <meta property="og:title" content="감각 스위치 — 오늘 내 꺼진 스위치는?">
   <meta property="og:description" content="촉각·소리·시각·리듬. 1분이면 돼요. 정답 없는 테스트니까, 편하게.">
   <meta property="og:url" content="https://injoyfull.github.io/test/">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:image" content="https://injoyfull.github.io/og.png?v=3">
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/v6.css?v=64">
+  <link rel="stylesheet" href="/v6.css?v=65">
   <style>
-    :root { --touch: #D98E4F; --sound: #4E9084; --sight: #C0788A; --rhythm: #8C9A4E; }
+    :root { --touch: #F0913F; --sound: #21A79A; --sight: #E86F92; --rhythm: #96B62B; }
     .quiz { max-width: 38rem; margin: 0 auto; padding: 8.5rem var(--pad) 4rem; text-align: center; }
     .quiz h1 { margin-top: 1.1rem; font-weight: 400; font-size: clamp(1.7rem, 5.4vw, 2.6rem); line-height: 1.45; letter-spacing: 0.01em; }
     .quiz h1 b { font-weight: 700; }
@@ -25,7 +25,9 @@
     .quiz__sub b { font-weight: 400; color: var(--ink); }
     .switches { margin: 2.4rem auto 0; display: flex; justify-content: center; gap: clamp(0.8rem, 3vw, 1.5rem); flex-wrap: wrap; }
     .sw { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.14em; color: var(--ink-soft); }
-    .sw i { font-style: normal; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: var(--shadow); }
+    .sw i { font-style: normal; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 14px rgba(43,42,38,0.16); transition: transform 0.4s var(--ease); }
+    .sw i svg { width: 27px; height: 27px; fill: #fff; }
+    .sw:hover i { transform: translateY(-4px) rotate(-5deg); }
     .sw--touch i { background: var(--touch); } .sw--sound i { background: var(--sound); }
     .sw--sight i { background: var(--sight); } .sw--rhythm i { background: var(--rhythm); }
     .quiz__start { margin-top: 2.6rem; }
@@ -57,12 +59,11 @@
 <body>
 
   <header class="top">
-    <p class="top__brand"><a class="top__name" href="/"><img class="top__logo" src="/photos/logo-wide.png" alt="인조이풀 in:JOYFULL arts center"><img class="top__mark" src="/mark.png" alt="" aria-hidden="true"></a><span class="top__here">감각검진</span></p>
+    <p class="top__brand"><a class="top__name" href="/"><img class="top__logo" src="/photos/logo-wide.png" alt="인조이풀 in:JOYFULL arts center"><img class="top__mark" src="/mark.png" alt="" aria-hidden="true"></a><span class="top__here">감각 스위치</span></p>
     <nav class="top__links" aria-label="바로가기">
       <a class="top__link top__link--key" href="/fall/">프로그램</a>
-      <a class="top__link" href="/for-business/">기업·기관</a>
-      <a class="top__link" href="/menu/">생각상자</a>
-      <a class="top__link top__link--on" href="/test/" aria-current="page">감각검진</a>
+      <a class="top__link" href="/menu/">행복상자</a>
+      <a class="top__link top__link--on" href="/test/" aria-current="page">감각 스위치</a>
       <a class="top__link" href="/en/" lang="en">EN</a>
       <a class="top__ask" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">문의하기</a>
     </nav>
@@ -76,10 +77,10 @@
       <h1>내 감각 스위치,<br><b>몇 개나 켜져 있을까?</b></h1>
       <p class="quiz__sub">아기는 <b>모든 감각이 켜진 채</b> 태어나요.<br>살아가면서 필요한 것만 남기고 하나씩 끄죠.<br>익숙해진 것은 더 이상 보이지 않으니까요.</p>
       <div class="switches" aria-hidden="true">
-        <span class="sw sw--touch"><i>✋</i>촉각</span>
-        <span class="sw sw--sound"><i>👂</i>소리</span>
-        <span class="sw sw--sight"><i>👀</i>시각</span>
-        <span class="sw sw--rhythm"><i>🦶</i>리듬</span>
+        <span class="sw sw--touch"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.2" cy="9.2" r="1.9"/><circle cx="12" cy="7.3" r="2"/><circle cx="16.8" cy="9.2" r="1.9"/><path d="M12 11.2c3.1 0 5.4 1.9 5.4 4.4 0 2.3-2 3.9-5.4 3.9s-5.4-1.6-5.4-3.9c0-2.5 2.3-4.4 5.4-4.4Z"/></svg></i>촉각</span>
+        <span class="sw sw--sound"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.4" cy="12" r="2.4"/><path d="M12.4 8.5a5.3 5.3 0 0 1 0 7" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><path d="M16.3 5.6a9.6 9.6 0 0 1 0 12.8" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg></i>소리</span>
+        <span class="sw sw--sight"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.6" cy="10.2" r="2.1"/><circle cx="15.4" cy="10.2" r="2.1"/><path d="M7.5 15c1.2 1.7 2.7 2.5 4.5 2.5s3.3-.8 4.5-2.5" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg></i>시각</span>
+        <span class="sw sw--rhythm"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17.2Q8.4 8.6 12 12.4 15.6 16.2 19 7.4" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".38"/><circle cx="5" cy="17.2" r="2.45"/><circle cx="12" cy="12.4" r="2.45"/><circle cx="19" cy="7.4" r="2.45"/></svg></i>리듬</span>
       </div>
       <p class="quiz__start"><button class="btn btn--ink" id="startBtn" type="button">스위치 찾으러 가기 <i>→</i></button></p>
       <p class="quiz__hint">유형을 정하는 게 아니라, 오늘의 꺼진 스위치를 찾는 거예요.</p>
@@ -133,7 +134,7 @@
     <p class="foot__links">
       <a href="/">홈</a>
       <a href="/fall/">프로그램</a>
-      <a href="/menu/">생각상자</a>
+      <a href="/menu/">행복상자</a>
       <a href="/letters/">인조이풀 레터</a>
       <a href="https://blog.naver.com/injoyfull" rel="noopener" target="_blank">블로그</a>
       <a href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">인스타그램</a>
@@ -155,19 +156,19 @@
         { s: 'rhythm', q: '서두르지 않고 내 속도로 걸은 적이 있다' }
       ];
       var RESULTS = {
-        sight: { name: '시각 스위치', color: 'var(--sight)', icon: '👀',
+        sight: { name: '시각 스위치', color: 'var(--sight)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.6" cy="10.2" r="2.1"/><circle cx="15.4" cy="10.2" r="2.1"/><path d="M7.5 15c1.2 1.7 2.7 2.5 4.5 2.5s3.3-.8 4.5-2.5" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
           desc: '매일 같은 길, 같은 방 — 익숙해진 것은 더 이상 보이지 않아요. 눈은 뜨고 있지만, 보는 스위치는 쉬는 중일지도요.',
           mission: '창밖 3분. 움직이는 것 다섯 개를 찾아보세요.' },
-        sound: { name: '소리 스위치', color: 'var(--sound)', icon: '👂',
+        sound: { name: '소리 스위치', color: 'var(--sound)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.4" cy="12" r="2.4"/><path d="M12.4 8.5a5.3 5.3 0 0 1 0 7" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><path d="M16.3 5.6a9.6 9.6 0 0 1 0 12.8" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
           desc: '세상은 지금도 소리를 내고 있어요. 존 케이지의 〈4′33″〉은 침묵이 아니라, 지금 나고 있는 소리를 알아차리게 하는 곡이래요.',
           mission: '1분만 아무것도 하지 않고, 들리는 소리 세 개를 적어보세요.' },
-        touch: { name: '촉각 스위치', color: 'var(--touch)', icon: '✋',
+        touch: { name: '촉각 스위치', color: 'var(--touch)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.2" cy="9.2" r="1.9"/><circle cx="12" cy="7.3" r="2"/><circle cx="16.8" cy="9.2" r="1.9"/><path d="M12 11.2c3.1 0 5.4 1.9 5.4 4.4 0 2.3-2 3.9-5.4 3.9s-5.4-1.6-5.4-3.9c0-2.5 2.3-4.4 5.4-4.4Z"/></svg>',
           desc: '손은 하루 종일 바쁘지만, 느끼는 일은 드물죠. 이름을 맞히는 게 아니라 온도·무게·결을 말해보는 거예요.',
           mission: '눈을 감고 손에 잡히는 것 하나 — 온도, 무게, 결을 말해보세요.' },
-        rhythm: { name: '리듬 스위치', color: 'var(--rhythm)', icon: '🦶',
+        rhythm: { name: '리듬 스위치', color: 'var(--rhythm)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17.2Q8.4 8.6 12 12.4 15.6 16.2 19 7.4" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".38"/><circle cx="5" cy="17.2" r="2.45"/><circle cx="12" cy="12.4" r="2.45"/><circle cx="19" cy="7.4" r="2.45"/></svg>',
           desc: '남의 속도에 맞추다 보면 내 박자를 잊어요. 계획대로 안 되는 날이 오히려 감각이 열린 증거일 수도 있고요.',
           mission: '좋아하는 노래 한 곡 — 몸이 먼저 움직이는 부분을 찾아보세요.' },
-        all: { name: '스위치가 꽤 켜져 있어요', color: 'var(--butter)', icon: '✦',
+        all: { name: '스위치가 꽤 켜져 있어요', color: 'var(--butter)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.2 3.6c.6 4.2 2.1 5.8 6.3 6.4-4.2.6-5.7 2.2-6.3 6.4-.6-4.2-2.1-5.8-6.3-6.4 4.2-.6 5.7-2.2 6.3-6.4Z"/><circle cx="18" cy="17.4" r="1.9"/></svg>',
           desc: '일주일을 감각하며 사셨네요. 그렇다면 다음은 켜진 감각으로 나만의 것을 만들어볼 차례예요.',
           mission: '오늘 채집한 작은 행복 하나에 이름을 붙여보세요. “창문 소리 행복”처럼요.' }
       };
@@ -196,7 +197,7 @@
         });
         current = RESULTS[top];
         $('rSticker').textContent = top === 'all' ? '오늘의 발견' : '오늘의 꺼진 스위치';
-        $('rIcon').firstElementChild.textContent = current.icon;
+        $('rIcon').firstElementChild.innerHTML = current.icon;
         $('rIcon').firstElementChild.style.background = current.color;
         $('rType').textContent = current.name;
         $('rType').style.color = top === 'all' ? 'var(--ink)' : current.color;
@@ -216,7 +217,7 @@
         var text = '내 오늘의 감각 스위치는 “' + current.name + '”.\n' + current.mission + '\n정답 없는 90분 · 인조이풀';
         var url = 'https://injoyfull.github.io/test/';
         if (navigator.share) {
-          navigator.share({ title: '감각검진', text: text, url: url }).catch(function () {});
+          navigator.share({ title: '감각 스위치', text: text, url: url }).catch(function () {});
           return;
         }
         var done = function () { btn.innerHTML = '복사됐어요 ✓'; setTimeout(function () { btn.innerHTML = '결과 공유하기 <i>→</i>'; }, 2000); };
