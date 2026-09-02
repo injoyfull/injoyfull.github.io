@@ -163,7 +163,7 @@
 .mon__price b { display: block; margin-top: 0.15rem; font-weight: 700; font-size: 1.02rem; color: var(--f-ink); }
 .mon__price em { font-style: normal; font-weight: 300; font-size: 0.82rem; color: rgba(51,41,31,0.55); }
 .mon__price .on { background: #FCF1D8; }
-.mon__note { margin-top: 0.9rem; font-weight: 300; font-size: 0.86rem; line-height: 1.7; color: rgba(51,41,31,0.6); }
+.mon__note { padding: 0.85rem clamp(1.4rem, 3.5vw, 2.2rem) 1.05rem; font-weight: 300; font-size: 0.78rem; line-height: 1.75; color: rgba(51,41,31,0.5); }
 
 /* ── 회차 안 협업 표시 ── */
 .ses__with {
@@ -226,3 +226,13 @@
 /* 원데이 — 쿠폰은 아랫줄 전체, 마감 안내는 버튼 오른끝에 맞춤 */
 .oneday__facts .full { flex-basis: 100%; }
 .oneday__cta { align-items: flex-start; text-align: left; }
+
+/* 넓은 화면에선 가장자리에 붙지 않게 — 잘리지 않고 온전한 모양으로 보이도록 */
+@media (min-width: 1100px) {
+  .fhero__sl--a { top: 11%; left: 1.5%; }
+  .fhero__sl--b { bottom: -3%; right: 2%; }
+  .fhero__sl--c { top: 9%; right: 6%; }
+  .fhero__ch--a { top: 10%; left: 11%; }
+  .fhero__ch--b { bottom: 12%; right: 19%; }
+  .fhero__ch--c { top: 24%; right: 10%; }
+}
