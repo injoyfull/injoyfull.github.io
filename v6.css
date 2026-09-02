@@ -183,6 +183,8 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .hero__in {
   justify-self: start; width: 100%;
   max-width: 44rem; padding: 2.4rem 0 3.5rem;
+  /* 넓은 화면에서 다른 섹션과 왼쪽 시작선을 맞춘다 */
+  margin-left: max(0px, calc((100vw - var(--wide)) / 2));
 }
 /* 오른쪽 — 놀이터. 한나님이 그린 미끄럼틀 위에서 논다.
    .ride 안에서 캐릭터 위치를 미끄럼틀 기준(%)으로 잡아 정확히 '위에' 앉힌다. */
@@ -277,9 +279,9 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .wordmark .wm-ko span:nth-child(3) { animation-delay: 0.28s; }
 /* 영문 표기는 작게 — 로고를 그대로 옮겨온 자리 */
 .wordmark .wm-en {
-  display: block; margin-top: 0.7rem;
-  font-weight: 400; font-size: clamp(0.72rem, 1.5vw, 0.84rem);
-  letter-spacing: 0.3em; color: var(--ink-faint);
+  display: block; margin-top: 0.55rem;
+  font-weight: 400; font-size: clamp(0.95rem, 2.1vw, 1.28rem);
+  letter-spacing: 0.15em; color: var(--ink-soft);
   opacity: 0; animation: place 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.15) 0.4s forwards;
 }
 /* 콜론은 눈이라서, 가끔 깜빡인다 */
@@ -353,7 +355,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 
 /* ── ② 이번 시즌 ── */
 .season { background: var(--butter-soft); padding: clamp(3.6rem, 9vh, 5.8rem) var(--pad); }
-.season__in { max-width: var(--wide); margin: 0 auto; }
+.season__in { max-width: calc(var(--wide) - 2 * var(--pad)); margin: 0 auto; }
 .season__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
 .season__head h2 { font-weight: 400; font-size: clamp(1.7rem, 4.8vw, 2.9rem); line-height: 1.4; letter-spacing: 0.01em; }
 .season__head h2 b { font-weight: 700; }
@@ -426,7 +428,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 
 /* ── ⑤ 여정 — 레이어가 쌓인다 ── */
 .journey { background: var(--teal-soft); padding: clamp(3.6rem, 9vh, 5.8rem) var(--pad); }
-.journey__in { max-width: var(--mid); margin: 0 auto; }
+.journey__in { max-width: calc(var(--wide) - 2 * var(--pad)); margin: 0 auto; }
 .journey__head { text-align: center; }
 .journey__grid { margin-top: 2.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2.2vw, 26px); }
 @media (max-width: 800px) { .journey__grid { grid-template-columns: 1fr; max-width: 28rem; margin-left: auto; margin-right: auto; } }
@@ -441,7 +443,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 /* ── ⑥ 감각검진 — 한 화면을 통째로 써서 시선을 잡는다 ── */
 .checkup { background: var(--ink); color: #F6F1E5; padding: clamp(4.5rem, 13vh, 8rem) var(--pad); }
 .checkup__in {
-  max-width: var(--mid); margin: 0 auto;
+  max-width: calc(var(--wide) - 2 * var(--pad)); margin: 0 auto;
   display: grid; grid-template-columns: minmax(0, 1fr) auto;
   gap: clamp(2rem, 5vw, 4rem); align-items: center;
 }
@@ -527,14 +529,19 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 .menu__section .menu__more { margin-top: 1.1rem; text-align: center; }
 
 /* ── ② 저는 이런 사람이에요 — 환대는 주인이 먼저 나오는 것 ── */
-.host { padding: clamp(3.5rem, 9vh, 6rem) var(--pad); }
+.host { padding: clamp(3.5rem, 9vh, 6rem) var(--pad); max-width: var(--wide); margin: 0 auto; }
 .host__in {
-  max-width: var(--mid); margin: 0 auto;
-  display: grid; grid-template-columns: minmax(0, 0.58fr) minmax(0, 1.42fr);
-  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+  display: grid; grid-template-columns: minmax(0, 1fr) clamp(190px, 19vw, 250px);
+  gap: clamp(2rem, 5vw, 4rem); align-items: start;
 }
-@media (max-width: 820px) { .host__in { grid-template-columns: 1fr; gap: 1.8rem; } }
-.host__art { max-width: 230px; width: 100%; justify-self: center; }
+/* 글이 먼저, 사진은 오른쪽 — 왼쪽 시작선을 다른 섹션과 맞춘다 */
+.host__text { grid-column: 1; grid-row: 1; max-width: 48rem; }
+.host__art  { grid-column: 2; grid-row: 1; width: 100%; margin-top: 0.4rem; }
+@media (max-width: 820px) {
+  .host__in { grid-template-columns: 1fr; gap: 1.8rem; }
+  .host__text, .host__art { grid-column: 1; grid-row: auto; }
+  .host__art { max-width: 210px; margin: 0 auto; }
+}
 .host__art img {
   width: 100%; height: auto; aspect-ratio: 1; object-fit: cover;
   border-radius: 50%; display: block;
