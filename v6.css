@@ -279,9 +279,11 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .wordmark .wm-ko span:nth-child(3) { animation-delay: 0.28s; }
 /* 영문 표기는 작게 — 로고를 그대로 옮겨온 자리 */
 .wordmark .wm-en {
-  display: block; margin-top: 0.55rem;
+  display: inline-block; margin-top: 0.7rem;
   font-weight: 400; font-size: clamp(0.95rem, 2.1vw, 1.28rem);
   letter-spacing: 0.15em; color: var(--ink-soft);
+  border: 1.5px solid rgba(43, 42, 38, 0.28); border-radius: 3px;
+  padding: 0.34em 0.62em 0.34em 0.72em;
   opacity: 0; animation: place 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.15) 0.4s forwards;
 }
 /* 콜론은 눈이라서, 가끔 깜빡인다 */
