@@ -452,6 +452,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .checkup__dots { margin-top: 1.9rem; display: flex; gap: 0.7rem; }
 .checkup__dots span { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 9px rgba(43,42,38,0.14); }
 .checkup__dots svg { width: 21px; height: 21px; fill: #fff; }
+.checkup__dots .more { background: none; border: 2px dashed rgba(43,42,38,0.22); color: var(--ink-faint); font-size: 1.15rem; font-weight: 300; box-shadow: none; }
 .checkup__cta { justify-self: end; }
 @media (max-width: 860px) { .checkup__cta { justify-self: start; } }
 
