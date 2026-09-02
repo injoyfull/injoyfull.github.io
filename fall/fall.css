@@ -163,6 +163,7 @@
 .mon__price b { display: block; margin-top: 0.15rem; font-weight: 700; font-size: 1.02rem; color: var(--f-ink); }
 .mon__price em { font-style: normal; font-weight: 300; font-size: 0.82rem; color: rgba(51,41,31,0.55); }
 .mon__price .on { background: #FCF1D8; }
+.mon__note { margin-top: 0.9rem; font-weight: 300; font-size: 0.86rem; line-height: 1.7; color: rgba(51,41,31,0.6); }
 
 /* ── 회차 안 협업 표시 ── */
 .ses__with {
