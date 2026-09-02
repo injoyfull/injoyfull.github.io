@@ -229,10 +229,10 @@
 
 /* 넓은 화면에선 가장자리에 붙지 않게 — 잘리지 않고 온전한 모양으로 보이도록 */
 @media (min-width: 1100px) {
-  .fhero__sl--a { top: 11%; left: 1.5%; }
-  .fhero__sl--b { bottom: -3%; right: 2%; }
-  .fhero__sl--c { top: 9%; right: 6%; }
-  .fhero__ch--a { top: 10%; left: 11%; }
-  .fhero__ch--b { bottom: 12%; right: 19%; }
-  .fhero__ch--c { top: 24%; right: 10%; }
+  .fhero__sl--a { top: 20%;    left: 1.5%; }
+  .fhero__sl--b { bottom: 3%;  right: 2%; }
+  .fhero__sl--c { top: 18%;    right: 6%; }
+  .fhero__ch--a { top: 19%;    left: 11%; }
+  .fhero__ch--b { bottom: 15%; right: 19%; }
+  .fhero__ch--c { top: 33%;    right: 10%; }
 }
