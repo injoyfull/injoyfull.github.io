@@ -218,24 +218,20 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 @keyframes ride2 { 0%,100% { transform: translate(0,0) rotate(5deg); }  50% { transform: translate(-10%, 7%) rotate(-7deg); } }
 @keyframes ride3 { 0%,100% { transform: translate(0,0) rotate(-5deg); } 50% { transform: translate(13%, 7%) rotate(7deg); } }
 .hero__tag {
-  position: absolute; z-index: 3; left: 50%; bottom: 0;
-  transform: translateX(-50%); white-space: nowrap;
+  display: inline-block; margin-bottom: 1.6rem; white-space: nowrap;
   background: var(--butter); color: var(--ink);
   font-weight: 400; font-size: clamp(0.78rem, 1.5vw, 0.9rem); letter-spacing: 0.04em;
   padding: 0.5rem 1.15rem; border-radius: 999px;
   box-shadow: 0 4px 14px rgba(43, 42, 38, 0.18);
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
-.hero__tag:hover { transform: translateX(-50%) translateY(-3px); box-shadow: 0 12px 26px rgba(43, 42, 38, 0.26); }
+.hero__tag:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(43, 42, 38, 0.26); }
 
 /* 넓은 화면 — 놀이터가 가로로 넓어지니 미끄럼틀은 작게, 멀리 흩어놓는다 */
 @media (min-width: 881px) {
   .hero__in { padding-top: 3.6rem; }
   /* 고정 비율 무대 — 어느 화면에서든 그림 배치가 그대로 유지된다 */
   .playground { max-width: 1440px; aspect-ratio: 3 / 1; margin-top: clamp(36px, 6svh, 64px); margin-bottom: clamp(28px, 5svh, 56px); }
-  /* 시즌 배지는 왼쪽, 헤드라인 시작점에 맞춰 */
-  .hero__tag { left: 2%; transform: none; }
-  .hero__tag:hover { transform: translateY(-3px); }
   /* 칸을 나눠 서로 겹치지 않게 — 윗줄(주황·파랑·자주) / 오른쪽(노랑) / 아랫줄(초록·분홍) */
   /* 과감하게 — 무대를 가득 채우고, 가장자리 밖으로 살짝 뻗는다 */
   .ride--1 { width: 34%; top: -4%;  left: -2%; }   /* 주황 — 왼쪽 밖으로 */
@@ -261,7 +257,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 }
 
 /* 워드마크 — 인조이풀. 로고의 파랑 위에, JOY 자리에만 노란 하이라이트 */
-.wordmark { display: inline-block; }
+.wordmark { display: table; }
 .wordmark .wm-ko {
   display: block; font-weight: 700; color: var(--joy);
   font-size: clamp(2rem, 5.4vw, 3.6rem);
