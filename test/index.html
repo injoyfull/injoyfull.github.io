@@ -57,6 +57,27 @@
     .rcard__cta { margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
     .quiz__again { margin-top: 1.8rem; }
     .quiz__again button { background: none; border: 0; cursor: pointer; font-family: var(--a2z); font-weight: 300; font-size: 0.9rem; color: var(--ink-soft); border-bottom: 1px solid var(--ink-faint); padding-bottom: 2px; }
+
+    /* 스위치 판 — 결과는 유형이 아니라 오늘의 켜짐/꺼짐 */
+    .rcount { font-weight: 700; font-size: clamp(2.2rem, 7vw, 3.2rem); line-height: 1; letter-spacing: -0.01em; }
+    .rcount span { font-weight: 300; font-size: 1rem; letter-spacing: 0.04em; color: var(--ink-soft); margin-left: 0.5rem; }
+    .rcount em { font-style: normal; }
+    .board { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem; }
+    @media (max-width: 480px) { .board { grid-template-columns: repeat(3, 1fr); } }
+    .board span {
+      display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+      height: 46px; border-radius: 999px; font-size: 0.8rem; letter-spacing: 0.05em; font-weight: 400;
+      opacity: 0; transform: scale(0.85); animation: pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+    }
+    .board span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.85; }
+    .board .on { color: #FFFDF8; box-shadow: 0 3px 10px rgba(43,42,38,0.12); }
+    .board .off { border: 1.5px dashed rgba(43,42,38,0.28); color: var(--ink-faint); background: none; }
+    .board .off::before { background: none; border: 1.5px solid currentColor; }
+    @keyframes pop { to { opacity: 1; transform: scale(1); } }
+    .board__key { margin-top: 1rem; font-weight: 300; font-size: 0.84rem; line-height: 1.7; color: var(--ink-faint); }
+    .rpick { margin-top: 2.1rem; padding-top: 1.9rem; border-top: 1px solid rgba(43,42,38,0.1); }
+    .rpick .sw { margin-top: 1rem; }
+    .rcard__tag { display: inline-block; margin-top: 0.6rem; font-weight: 400; font-size: 0.74rem; letter-spacing: 0.08em; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--butter-soft); color: var(--ink-soft); }
     [hidden] { display: none !important; }
   </style>
 </head>
@@ -90,7 +111,7 @@
       </div>
       <p class="quiz__more">학교에서 배운 감각은 다섯 개.<br>
         <b>몸이 쓰는 감각은 그보다 훨씬 많아요.</b><br>
-        균형, 몸의 위치, 배고픔, 온도 — 아직 이름 붙지 않은 것까지.</p>
+        균형, 몸의 위치, 배고픔, 온도, 시간 — 이번 판에는 이런 것들도 함께 올라와요.</p>
       <p class="quiz__start"><button class="btn btn--ink" id="startBtn" type="button">스위치 찾으러 가기 <i>→</i></button></p>
       <p class="quiz__hint">유형을 정하는 게 아니라, 오늘의 꺼진 스위치를 찾는 거예요.</p>
     </div>
@@ -109,15 +130,24 @@
     </div>
 
     <div id="result" hidden>
-      <p class="eyebrow" id="rSticker">오늘의 꺼진 스위치</p>
+      <p class="eyebrow">오늘의 스위치 판</p>
       <div class="rcard">
-        <span class="sw" id="rIcon" aria-hidden="true" style="display:inline-flex"><i></i></span>
-        <p class="rcard__type" id="rType"></p>
-        <p class="rcard__desc" id="rDesc"></p>
-        <div class="rcard__mission">
-          <i>오늘 켜보기 · 1분 미션</i>
-          <p id="rMission"></p>
+        <p class="rcount"><b id="rOn">0</b><span>/ <em id="rAll">12</em> 켜짐</span></p>
+        <div class="board" id="rBoard" aria-label="오늘의 스위치"></div>
+        <p class="board__key">색이 찬 건 켜진 스위치, 비어 있는 건 이번 주에 쉬고 있던 스위치예요.</p>
+
+        <div class="rpick">
+          <p class="eyebrow" id="rSticker">오늘 켜볼 스위치 하나</p>
+          <span class="sw" id="rIcon" aria-hidden="true" style="display:inline-flex"><i></i></span>
+          <p class="rcard__type" id="rType"></p>
+          <p class="rcard__tag" id="rTag" hidden>학교에서 배운 적 없는 감각이에요</p>
+          <p class="rcard__desc" id="rDesc"></p>
+          <div class="rcard__mission">
+            <i>오늘 켜보기 · 1분 미션</i>
+            <p id="rMission"></p>
+          </div>
         </div>
+
         <p class="rcard__share">
           <button class="btn btn--ink btn--sm" id="shareBtn" type="button">결과 공유하기 <i>→</i></button>
         </p>
@@ -154,76 +184,96 @@
 
   <script>
     (function () {
-      /* 감각마다 여섯 문항 — 매번 세 개씩만 뽑아 쓴다. 그래서 다시 하면 다른 질문이 나온다. */
-      var POOL = {
-        sight: [
-          '창밖에서 움직이는 것을 멍하니 바라본 적이 있다',
-          '오늘 만난 사람의 옷 색이 기억난다',
-          '하늘색이 어제와 달랐다는 걸 알아차린 적이 있다',
-          '지나가다 예뻐서 잠깐 멈춰 선 것이 있다',
-          '그림자의 모양을 눈으로 따라가 본 적이 있다',
-          '늘 지나던 길에서 처음 보는 것을 발견한 적이 있다'
-        ],
-        touch: [
-          '손에 쥔 컵의 온도를 느끼면서 마신 적이 있다',
-          '새로운 질감을 일부러 만져본 적이 있다',
-          '맨발로 바닥을 밟아본 적이 있다',
-          '바람이 피부에 닿는 걸 느낀 적이 있다',
-          '옷감을 손끝으로 비벼본 적이 있다',
-          '물의 온도가 바뀌는 걸 손으로 느껴본 적이 있다'
-        ],
-        sound: [
-          '이어폰 없이 걸으면서 주변 소리를 들은 적이 있다',
-          '냉장고 소리, 시계 소리 같은 작은 소리를 알아차린 적이 있다',
-          '빗소리를 끝까지 들어본 적이 있다',
-          '조용한 곳에서 내 숨소리를 들은 적이 있다',
-          '새소리가 어디서 나는지 찾아본 적이 있다',
-          '누군가의 목소리 톤이 달라진 걸 알아챈 적이 있다'
-        ],
-        rhythm: [
-          '몸이 먼저 움직일 만큼 좋아하는 음악을 튼 적이 있다',
-          '서두르지 않고 내 속도로 걸은 적이 있다',
-          '이유 없이 기지개를 크게 켠 적이 있다',
-          '앉은 자리에서 발끝으로 박자를 맞춘 적이 있다',
-          '오늘 몸이 무거운지 가벼운지 느껴본 적이 있다',
-          '숨을 깊게 한 번 쉬고 다시 시작한 적이 있다'
-        ]
+      /* 아홉 감각. 학교에서 배운 것도, 배운 적 없는 것도 같은 판 위에 올린다. */
+      var SENSES = {
+        touch:   { name: '촉각',    color: '#F0913F', school: true,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.2" cy="9.2" r="1.9"/><circle cx="12" cy="7.3" r="2"/><circle cx="16.8" cy="9.2" r="1.9"/><path d="M12 11.2c3.1 0 5.4 1.9 5.4 4.4 0 2.3-2 3.9-5.4 3.9s-5.4-1.6-5.4-3.9c0-2.5 2.3-4.4 5.4-4.4Z"/></svg>',
+          desc: '손은 하루 종일 바쁘지만, 느끼는 일은 드물죠. 이름을 맞히는 게 아니라 온도·무게·결을 말해보는 거예요.' },
+        sound:   { name: '소리',    color: '#21A79A', school: true,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.4" cy="12" r="2.4"/><path d="M12.4 8.5a5.3 5.3 0 0 1 0 7" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><path d="M16.3 5.6a9.6 9.6 0 0 1 0 12.8" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
+          desc: '세상은 지금도 소리를 내고 있어요. 존 케이지의 〈4′33″〉은 침묵이 아니라, 지금 나고 있는 소리를 알아차리게 하는 곡이래요.' },
+        sight:   { name: '시각',    color: '#E86F92', school: true,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.6" cy="10.2" r="2.1"/><circle cx="15.4" cy="10.2" r="2.1"/><path d="M7.5 15c1.2 1.7 2.7 2.5 4.5 2.5s3.3-.8 4.5-2.5" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
+          desc: '매일 같은 길, 같은 방 — 익숙해진 것은 더 이상 보이지 않아요. 눈은 뜨고 있지만, 보는 스위치는 쉬는 중일지도요.' },
+        rhythm:  { name: '리듬',    color: '#96B62B', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17.2Q8.4 8.6 12 12.4 15.6 16.2 19 7.4" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".38"/><circle cx="5" cy="17.2" r="2.45"/><circle cx="12" cy="12.4" r="2.45"/><circle cx="19" cy="7.4" r="2.45"/></svg>',
+          desc: '남의 속도에 맞추다 보면 내 박자를 잊어요. 계획대로 안 되는 날이 오히려 감각이 열린 증거일 수도 있고요.' },
+        balance: { name: '균형',    color: '#7C6BC9', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 15.5 19.5 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12.4" r="2.3"/><path d="M12 14.8v4.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>',
+          desc: '몸을 세우는 일은 하루 종일 하고 있는데, 그걸 느끼는 일은 드물어요. 한 발로 서보면 금방 알아요 — 몸이 얼마나 부지런히 나를 붙잡고 있는지.' },
+        body:    { name: '몸의 위치', color: '#4F86D9', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17 12 9l6 5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><circle cx="6" cy="17" r="2.1"/><circle cx="12" cy="9" r="2.1"/><circle cx="18" cy="14" r="2.1"/></svg>',
+          desc: '눈을 감아도 내 손이 어디 있는지 알죠. 학교에서 배운 적 없지만, 몸이 늘 쓰고 있는 감각이에요.' },
+        inner:   { name: '안',      color: '#B85C8A', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12h4l2-5 3 10 2-5h6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          desc: '배고픔, 숨, 심장 소리. 몸 안에서 오는 신호는 제일 먼저 꺼지고, 제일 늦게 알아차려요.' },
+        temp:    { name: '온도',    color: '#5FA8C9', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.4 4.6a1.6 1.6 0 0 1 3.2 0v8.1a3.7 3.7 0 1 1-3.2 0z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="16.3" r="1.7"/></svg>',
+          desc: '더위와 추위 사이에 수백 가지 온도가 있어요. 손끝은 알고 있는데, 머리가 안 물어볼 뿐이에요.' },
+        time:    { name: '시간',    color: '#8A8F9C', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.6" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 8v4.3l2.8 1.7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>',
+          desc: '시계 없이 1분을 재보면, 내가 요즘 어떤 속도로 사는지 보여요.' }
       };
-      var PER_SENSE = 3;   /* 감각당 세 문항 → 모두 열두 문항 */
-      function pick(arr, n) {
+
+      /* 스위치 서른 개. 매회 감각마다 하나씩 아홉 개를 고르고, 세 개를 더 얹어 열두 개. */
+      var SWITCHES = [
+        { s: 'touch',  q: '손에 쥔 컵의 온도를 느끼면서 마신 적이 있다',           m: '지금 손에 닿는 것 하나 — 온도, 무게, 결을 말해보세요.' },
+        { s: 'touch',  q: '새로운 질감을 일부러 만져본 적이 있다',               m: '오늘 처음 만지는 것 하나를 찾아, 손끝으로 3초만 머물러보세요.' },
+        { s: 'touch',  q: '맨발로 바닥을 밟아본 적이 있다',                     m: '양말을 벗고, 집 안에서 가장 차가운 바닥을 찾아보세요.' },
+        { s: 'touch',  q: '옷감을 손끝으로 비벼본 적이 있다',                   m: '입고 있는 옷의 소매를 비벼, 그 결을 말로 옮겨보세요.' },
+        { s: 'sound',  q: '이어폰 없이 걸으면서 주변 소리를 들은 적이 있다',       m: '다음 외출, 첫 5분은 이어폰 없이 걸어보세요.' },
+        { s: 'sound',  q: '냉장고 소리, 시계 소리 같은 작은 소리를 알아차린 적이 있다', m: '1분만 가만히 — 들리는 소리 세 개를 적어보세요.' },
+        { s: 'sound',  q: '빗소리를 끝까지 들어본 적이 있다',                   m: '창을 열고, 바깥 소리 하나에 이름을 붙여보세요.' },
+        { s: 'sound',  q: '조용한 곳에서 내 숨소리를 들은 적이 있다',             m: '눈을 감고 숨 열 번 — 소리만 들어보세요.' },
+        { s: 'sight',  q: '창밖에서 움직이는 것을 멍하니 바라본 적이 있다',        m: '창밖 3분. 움직이는 것 다섯 개를 찾아보세요.' },
+        { s: 'sight',  q: '오늘 만난 사람의 옷 색이 기억난다',                   m: '오늘 만나는 사람의 옷 색을 하나만 기억해 두세요.' },
+        { s: 'sight',  q: '하늘색이 어제와 달랐다는 걸 알아차린 적이 있다',        m: '지금 하늘색에 이름을 붙여보세요. “우유 탄 파랑”처럼요.' },
+        { s: 'sight',  q: '늘 지나던 길에서 처음 보는 것을 발견한 적이 있다',      m: '늘 가던 길에서, 처음 보는 것 하나를 찾아보세요.' },
+        { s: 'rhythm', q: '몸이 먼저 움직일 만큼 좋아하는 음악을 튼 적이 있다',    m: '좋아하는 노래 한 곡 — 몸이 먼저 움직이는 부분을 찾아보세요.' },
+        { s: 'rhythm', q: '서두르지 않고 내 속도로 걸은 적이 있다',               m: '오늘 한 번, 일부러 반 박자 느리게 걸어보세요.' },
+        { s: 'rhythm', q: '앉은 자리에서 발끝으로 박자를 맞춘 적이 있다',          m: '지금 나는 소리에 발끝으로 박자를 맞춰보세요.' },
+        { s: 'balance', q: '한 발로 서서 양말을 신은 적이 있다',                 m: '양말 신을 때 한 발로 서보세요. 흔들리는 게 정상이에요.' },
+        { s: 'balance', q: '눈을 감고 잠깐 서 있어본 적이 있다',                 m: '눈 감고 10초 서 있기. 몸이 나를 어떻게 붙잡는지 느껴보세요.' },
+        { s: 'balance', q: '흔들리는 버스 안에서 손잡이 없이 균형을 잡아본 적이 있다', m: '다음에 서서 이동할 때, 손잡이를 놓고 3초만 버텨보세요.' },
+        { s: 'body',   q: '눈을 감고 코끝을 정확히 짚어본 적이 있다',             m: '눈을 감고 코끝을 짚어보세요. 몸은 알고 있어요.' },
+        { s: 'body',   q: '어깨가 올라가 있다는 걸 알아채고 내린 적이 있다',       m: '지금 어깨 — 올라가 있나요? 한 번 내려보세요.' },
+        { s: 'body',   q: '기지개를 켜면서 어디가 당기는지 느껴본 적이 있다',      m: '기지개 한 번, 제일 당기는 곳에 이름을 붙여보세요.' },
+        { s: 'inner',  q: '배고픈지 아닌지, 먹기 전에 물어본 적이 있다',          m: '다음 끼니 전에 물어보세요 — 배고픈가, 습관인가.' },
+        { s: 'inner',  q: '심장이 빨라지는 걸 알아차린 적이 있다',               m: '손목에 손가락을 대고 열 번, 심장을 세어보세요.' },
+        { s: 'inner',  q: '숨이 얕아졌다는 걸 알아채고 깊게 쉰 적이 있다',        m: '지금 숨을 끝까지 내쉬어보세요. 그다음 숨은 저절로 깊어져요.' },
+        { s: 'temp',   q: '바람이 피부에 닿는 걸 느낀 적이 있다',                m: '창문을 열고, 바람이 먼저 닿는 곳을 찾아보세요.' },
+        { s: 'temp',   q: '물의 온도가 바뀌는 걸 손으로 느껴본 적이 있다',        m: '손 씻을 때 물 온도를 천천히 바꿔보세요. 어디서 “따뜻함”이 시작되나요.' },
+        { s: 'temp',   q: '햇빛 쪽과 그늘 쪽의 온도 차이를 느껴본 적이 있다',     m: '햇빛과 그늘 사이를 한 번 오가며, 온도의 경계를 찾아보세요.' },
+        { s: 'time',   q: '시계를 안 보고 몇 시쯤인지 맞혀본 적이 있다',          m: '지금 몇 시일까요 — 맞혀보고 나서 시계를 보세요.' },
+        { s: 'time',   q: '아무것도 안 하고 1분을 버텨본 적이 있다',             m: '시계 없이 1분을 재보세요. 실제로는 몇 초였을까요.' },
+        { s: 'time',   q: '하루가 길게 느껴진 날과 짧게 느껴진 날의 차이를 떠올려본 적이 있다', m: '오늘 하루가 길었는지 짧았는지, 잠들기 전에 한 줄 적어보세요.' }
+      ];
+      var ROUND = 12;
+      var ALL_ON = {
+        name: '스위치가 꽤 켜져 있어요', color: '#F2C94C',
+        icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.2 3.6c.6 4.2 2.1 5.8 6.3 6.4-4.2.6-5.7 2.2-6.3 6.4-.6-4.2-2.1-5.8-6.3-6.4 4.2-.6 5.7-2.2 6.3-6.4Z"/><circle cx="18" cy="17.4" r="1.9"/></svg>',
+        desc: '일주일을 감각하며 사셨네요. 그렇다면 다음은 켜진 감각으로 나만의 것을 만들어볼 차례예요.',
+        m: '오늘 채집한 작은 행복 하나에 이름을 붙여보세요. “창문 소리 행복”처럼요.'
+      };
+
+      function shuffle(arr) {
         var a = arr.slice();
         for (var i = a.length - 1; i > 0; i--) {
           var j = Math.floor(Math.random() * (i + 1));
           var t = a[i]; a[i] = a[j]; a[j] = t;
         }
-        return a.slice(0, n);
+        return a;
       }
       function buildQuestions() {
-        var out = [];
-        ['sight', 'touch', 'sound', 'rhythm'].forEach(function (s) {
-          pick(POOL[s], PER_SENSE).forEach(function (q) { out.push({ s: s, q: q }); });
+        var bySense = {}, picked = [], rest = [];
+        shuffle(SWITCHES).forEach(function (sw) {
+          if (!bySense[sw.s]) { bySense[sw.s] = true; picked.push(sw); } else { rest.push(sw); }
         });
-        return pick(out, out.length);   /* 감각이 뭉치지 않게 한 번 더 섞는다 */
+        picked = picked.concat(rest.slice(0, ROUND - picked.length));
+        return shuffle(picked);
       }
       var QUESTIONS = buildQuestions();
-      var RESULTS = {
-        sight: { name: '시각 스위치', color: 'var(--sight)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.6" cy="10.2" r="2.1"/><circle cx="15.4" cy="10.2" r="2.1"/><path d="M7.5 15c1.2 1.7 2.7 2.5 4.5 2.5s3.3-.8 4.5-2.5" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
-          desc: '매일 같은 길, 같은 방 — 익숙해진 것은 더 이상 보이지 않아요. 눈은 뜨고 있지만, 보는 스위치는 쉬는 중일지도요.',
-          mission: '창밖 3분. 움직이는 것 다섯 개를 찾아보세요.' },
-        sound: { name: '소리 스위치', color: 'var(--sound)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.4" cy="12" r="2.4"/><path d="M12.4 8.5a5.3 5.3 0 0 1 0 7" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><path d="M16.3 5.6a9.6 9.6 0 0 1 0 12.8" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
-          desc: '세상은 지금도 소리를 내고 있어요. 존 케이지의 〈4′33″〉은 침묵이 아니라, 지금 나고 있는 소리를 알아차리게 하는 곡이래요.',
-          mission: '1분만 아무것도 하지 않고, 들리는 소리 세 개를 적어보세요.' },
-        touch: { name: '촉각 스위치', color: 'var(--touch)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.2" cy="9.2" r="1.9"/><circle cx="12" cy="7.3" r="2"/><circle cx="16.8" cy="9.2" r="1.9"/><path d="M12 11.2c3.1 0 5.4 1.9 5.4 4.4 0 2.3-2 3.9-5.4 3.9s-5.4-1.6-5.4-3.9c0-2.5 2.3-4.4 5.4-4.4Z"/></svg>',
-          desc: '손은 하루 종일 바쁘지만, 느끼는 일은 드물죠. 이름을 맞히는 게 아니라 온도·무게·결을 말해보는 거예요.',
-          mission: '눈을 감고 손에 잡히는 것 하나 — 온도, 무게, 결을 말해보세요.' },
-        rhythm: { name: '리듬 스위치', color: 'var(--rhythm)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17.2Q8.4 8.6 12 12.4 15.6 16.2 19 7.4" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".38"/><circle cx="5" cy="17.2" r="2.45"/><circle cx="12" cy="12.4" r="2.45"/><circle cx="19" cy="7.4" r="2.45"/></svg>',
-          desc: '남의 속도에 맞추다 보면 내 박자를 잊어요. 계획대로 안 되는 날이 오히려 감각이 열린 증거일 수도 있고요.',
-          mission: '좋아하는 노래 한 곡 — 몸이 먼저 움직이는 부분을 찾아보세요.' },
-        all: { name: '스위치가 꽤 켜져 있어요', color: 'var(--butter)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.2 3.6c.6 4.2 2.1 5.8 6.3 6.4-4.2.6-5.7 2.2-6.3 6.4-.6-4.2-2.1-5.8-6.3-6.4 4.2-.6 5.7-2.2 6.3-6.4Z"/><circle cx="18" cy="17.4" r="1.9"/></svg>',
-          desc: '일주일을 감각하며 사셨네요. 그렇다면 다음은 켜진 감각으로 나만의 것을 만들어볼 차례예요.',
-          mission: '오늘 채집한 작은 행복 하나에 이름을 붙여보세요. “창문 소리 행복”처럼요.' }
-      };
-      var idx = 0, score = { touch: 0, sound: 0, sight: 0, rhythm: 0 }, current = null;
+      var idx = 0, answers = [], current = null;
       var $ = function (id) { return document.getElementById(id); };
       function show(step) {
         $('intro').hidden = step !== 'intro';
@@ -237,37 +287,55 @@
         $('qText').textContent = QUESTIONS[idx].q;
         $('qBar').style.width = (idx / QUESTIONS.length * 100) + '%';
       }
-      function answer(off) {
-        if (off) score[QUESTIONS[idx].s]++;
+      function answer(on) {
+        answers[idx] = on;
         idx++;
         if (idx < QUESTIONS.length) { render(); } else { finish(); }
       }
       function finish() {
-        var top = 'all', max = 0;
-        ['touch', 'sound', 'sight', 'rhythm'].forEach(function (s) {
-          if (score[s] > max) { max = score[s]; top = s; }
+        var onCount = 0, off = [];
+        var board = $('rBoard'); board.innerHTML = '';
+        QUESTIONS.forEach(function (sw, i) {
+          var sense = SENSES[sw.s], on = !!answers[i];
+          if (on) { onCount++; } else { off.push(sw); }
+          var el = document.createElement('span');
+          el.className = on ? 'on' : 'off';
+          el.textContent = sense.name;
+          el.style.animationDelay = (i * 0.06) + 's';
+          if (on) { el.style.background = sense.color; }
+          board.appendChild(el);
         });
-        current = RESULTS[top];
-        $('rSticker').textContent = top === 'all' ? '오늘의 발견' : '오늘의 꺼진 스위치';
-        $('rIcon').firstElementChild.innerHTML = current.icon;
-        $('rIcon').firstElementChild.style.background = current.color;
+        $('rOn').textContent = onCount;
+        $('rAll').textContent = QUESTIONS.length;
+
+        var pick = off.length ? off[Math.floor(Math.random() * off.length)] : null;
+        var sense = pick ? SENSES[pick.s] : ALL_ON;
+        current = {
+          onCount: onCount, total: QUESTIONS.length,
+          name: pick ? sense.name + ' 스위치' : ALL_ON.name,
+          mission: pick ? pick.m : ALL_ON.m
+        };
+        $('rSticker').textContent = pick ? '오늘 켜볼 스위치 하나' : '오늘의 발견';
+        $('rIcon').firstElementChild.innerHTML = sense.icon;
+        $('rIcon').firstElementChild.style.background = sense.color;
         $('rType').textContent = current.name;
-        $('rType').style.color = top === 'all' ? 'var(--ink)' : current.color;
-        $('rDesc').textContent = current.desc;
+        $('rType').style.color = pick ? sense.color : 'var(--ink)';
+        $('rTag').hidden = !(pick && !sense.school);
+        $('rDesc').textContent = sense.desc;
         $('rMission').textContent = current.mission;
         show('result');
       }
       $('startBtn').addEventListener('click', function () {
         QUESTIONS = buildQuestions();
-        idx = 0; score = { touch: 0, sound: 0, sight: 0, rhythm: 0 }; render(); show('quiz');
+        idx = 0; answers = []; render(); show('quiz');
       });
-      $('btnO').addEventListener('click', function () { answer(false); });
-      $('btnX').addEventListener('click', function () { answer(true); });
+      $('btnO').addEventListener('click', function () { answer(true); });
+      $('btnX').addEventListener('click', function () { answer(false); });
       $('againBtn').addEventListener('click', function () { QUESTIONS = buildQuestions(); show('intro'); });
       $('shareBtn').addEventListener('click', function () {
         if (!current) return;
         var btn = $('shareBtn');
-        var text = '내 오늘의 감각 스위치는 “' + current.name + '”.\n' + current.mission + '\n정답 없는 90분 · 인조이풀';
+        var text = '오늘 내 감각 스위치, ' + current.total + '개 중 ' + current.onCount + '개가 켜져 있어요.\n오늘 켜볼 스위치: ' + current.name + ' — ' + current.mission + '\n정답 없는 90분 · 인조이풀';
         var url = 'https://injoyfull.github.io/test/';
         if (navigator.share) {
           navigator.share({ title: '감각 스위치', text: text, url: url }).catch(function () {});
