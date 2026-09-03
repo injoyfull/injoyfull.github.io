@@ -98,7 +98,7 @@
     <div id="quiz" hidden>
       <p class="eyebrow">최근 일주일을 떠올려 보세요</p>
       <div class="qcard">
-        <p class="qcard__no"><span id="qNo">1</span> / 8</p>
+        <p class="qcard__no"><span id="qNo">1</span> / <span id="qTotal">12</span></p>
         <p class="qcard__q" id="qText"></p>
         <div class="qcard__btns">
           <button class="btn btn--kakao" id="btnO" type="button">있었다</button>
@@ -124,12 +124,12 @@
         <div class="rcard__club">
           <p>혼자 켜기 어렵다면, 같이 켜요.<br><b>창작클럽 '90</b> — 어른을 위한 창작 시간. 매번 다른 재료, 다른 맛을 선물해요.</p>
           <p class="rcard__cta">
-            <a class="btn btn--kakao" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 신청하기 <i>→</i></a>
-            <a class="quiet" href="/fall/">가을 프로그램 보기</a>
+            <a class="btn btn--ink" href="https://map.naver.com/p/entry/place/1884601567?placePath=%2Fticket" rel="noopener" target="_blank">네이버로 신청하기 <i>→</i></a>
+            <a class="quiet" href="/club/">창작클럽 ’90 자세히</a>
           </p>
         </div>
       </div>
-      <p class="quiz__again"><button id="againBtn" type="button">다시 해보기</button></p>
+      <p class="quiz__again"><button id="againBtn" type="button">다른 질문으로 다시 해보기</button></p>
     </div>
 
     <noscript><p class="quiz__sub">테스트는 자바스크립트가 켜져 있어야 해요. 대신 <a class="quiet" href="/fall/">가을 프로그램 보기</a>로 오세요.</p></noscript>
@@ -154,16 +154,58 @@
 
   <script>
     (function () {
-      var QUESTIONS = [
-        { s: 'sight',  q: '창밖에서 움직이는 것을 멍하니 바라본 적이 있다' },
-        { s: 'touch',  q: '손에 쥔 컵의 온도를 느끼면서 마신 적이 있다' },
-        { s: 'sound',  q: '이어폰 없이 걸으면서 주변 소리를 들은 적이 있다' },
-        { s: 'rhythm', q: '몸이 먼저 움직일 만큼 좋아하는 음악을 튼 적이 있다' },
-        { s: 'sight',  q: '오늘 만난 사람의 옷 색이 기억난다' },
-        { s: 'touch',  q: '새로운 질감을 일부러 만져본 적이 있다' },
-        { s: 'sound',  q: '냉장고 소리, 시계 소리 같은 작은 소리를 알아차린 적이 있다' },
-        { s: 'rhythm', q: '서두르지 않고 내 속도로 걸은 적이 있다' }
-      ];
+      /* 감각마다 여섯 문항 — 매번 세 개씩만 뽑아 쓴다. 그래서 다시 하면 다른 질문이 나온다. */
+      var POOL = {
+        sight: [
+          '창밖에서 움직이는 것을 멍하니 바라본 적이 있다',
+          '오늘 만난 사람의 옷 색이 기억난다',
+          '하늘색이 어제와 달랐다는 걸 알아차린 적이 있다',
+          '지나가다 예뻐서 잠깐 멈춰 선 것이 있다',
+          '그림자의 모양을 눈으로 따라가 본 적이 있다',
+          '늘 지나던 길에서 처음 보는 것을 발견한 적이 있다'
+        ],
+        touch: [
+          '손에 쥔 컵의 온도를 느끼면서 마신 적이 있다',
+          '새로운 질감을 일부러 만져본 적이 있다',
+          '맨발로 바닥을 밟아본 적이 있다',
+          '바람이 피부에 닿는 걸 느낀 적이 있다',
+          '옷감을 손끝으로 비벼본 적이 있다',
+          '물의 온도가 바뀌는 걸 손으로 느껴본 적이 있다'
+        ],
+        sound: [
+          '이어폰 없이 걸으면서 주변 소리를 들은 적이 있다',
+          '냉장고 소리, 시계 소리 같은 작은 소리를 알아차린 적이 있다',
+          '빗소리를 끝까지 들어본 적이 있다',
+          '조용한 곳에서 내 숨소리를 들은 적이 있다',
+          '새소리가 어디서 나는지 찾아본 적이 있다',
+          '누군가의 목소리 톤이 달라진 걸 알아챈 적이 있다'
+        ],
+        rhythm: [
+          '몸이 먼저 움직일 만큼 좋아하는 음악을 튼 적이 있다',
+          '서두르지 않고 내 속도로 걸은 적이 있다',
+          '이유 없이 기지개를 크게 켠 적이 있다',
+          '앉은 자리에서 발끝으로 박자를 맞춘 적이 있다',
+          '오늘 몸이 무거운지 가벼운지 느껴본 적이 있다',
+          '숨을 깊게 한 번 쉬고 다시 시작한 적이 있다'
+        ]
+      };
+      var PER_SENSE = 3;   /* 감각당 세 문항 → 모두 열두 문항 */
+      function pick(arr, n) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+        return a.slice(0, n);
+      }
+      function buildQuestions() {
+        var out = [];
+        ['sight', 'touch', 'sound', 'rhythm'].forEach(function (s) {
+          pick(POOL[s], PER_SENSE).forEach(function (q) { out.push({ s: s, q: q }); });
+        });
+        return pick(out, out.length);   /* 감각이 뭉치지 않게 한 번 더 섞는다 */
+      }
+      var QUESTIONS = buildQuestions();
       var RESULTS = {
         sight: { name: '시각 스위치', color: 'var(--sight)', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.6" cy="10.2" r="2.1"/><circle cx="15.4" cy="10.2" r="2.1"/><path d="M7.5 15c1.2 1.7 2.7 2.5 4.5 2.5s3.3-.8 4.5-2.5" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
           desc: '매일 같은 길, 같은 방 — 익숙해진 것은 더 이상 보이지 않아요. 눈은 뜨고 있지만, 보는 스위치는 쉬는 중일지도요.',
@@ -191,6 +233,7 @@
       }
       function render() {
         $('qNo').textContent = idx + 1;
+        $('qTotal').textContent = QUESTIONS.length;
         $('qText').textContent = QUESTIONS[idx].q;
         $('qBar').style.width = (idx / QUESTIONS.length * 100) + '%';
       }
@@ -215,11 +258,12 @@
         show('result');
       }
       $('startBtn').addEventListener('click', function () {
+        QUESTIONS = buildQuestions();
         idx = 0; score = { touch: 0, sound: 0, sight: 0, rhythm: 0 }; render(); show('quiz');
       });
       $('btnO').addEventListener('click', function () { answer(false); });
       $('btnX').addEventListener('click', function () { answer(true); });
-      $('againBtn').addEventListener('click', function () { show('intro'); });
+      $('againBtn').addEventListener('click', function () { QUESTIONS = buildQuestions(); show('intro'); });
       $('shareBtn').addEventListener('click', function () {
         if (!current) return;
         var btn = $('shareBtn');
@@ -229,10 +273,25 @@
           navigator.share({ title: '감각 스위치', text: text, url: url }).catch(function () {});
           return;
         }
-        var done = function () { btn.innerHTML = '복사됐어요 ✓'; setTimeout(function () { btn.innerHTML = '결과 공유하기 <i>→</i>'; }, 2000); };
+        var full = text + '\n' + url;
+        var flash = function (msg) {
+          btn.innerHTML = msg;
+          setTimeout(function () { btn.innerHTML = '결과 공유하기 <i>→</i>'; }, 2200);
+        };
+        var legacy = function () {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = full; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:-999px;opacity:0';
+            document.body.appendChild(ta); ta.select();
+            var ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            flash(ok ? '복사됐어요 ✓' : '길게 눌러 복사해 주세요');
+          } catch (e) { flash('길게 눌러 복사해 주세요'); }
+        };
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text + '\n' + url).then(done).catch(function () {});
-        }
+          navigator.clipboard.writeText(full).then(function () { flash('복사됐어요 ✓'); }).catch(legacy);
+        } else { legacy(); }
       });
     })();
   </script>
