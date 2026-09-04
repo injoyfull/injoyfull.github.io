@@ -615,3 +615,9 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 .say__list li:last-child { border-bottom: 1px dashed rgba(43,42,38,0.16); }
 .say__list li::before { content: ""; position: absolute; left: 0.1rem; top: 1.75rem; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--teal); }
 .say__list b { font-weight: 400; color: var(--ink); }
+
+/* ── 줄바꿈 — 제목·리드·인용은 두 줄을 고르게, 본문은 외톨이 단어 없이 ── */
+h1, h2, h3, .title, .lead, .eyebrow, .hero h1, .hero__en, .voice blockquote, .meet blockquote,
+.flag h2, .season__head h2, .checkup h2, .wcard h3, .drop b, .step b, .lang b, .jstep b,
+.fhero h1, .fhero__sub, .mon__t, .ses__t, .oneday h3, .rcard__type, .quiz h1, .bhero h1, .say .lead { text-wrap: balance; }
+p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wcard p, .step p, .lang p, .jstep p, .ses__d, .rcard__desc, .say__list li { text-wrap: pretty; }
