@@ -18,7 +18,7 @@
 .fhero__flag { display: inline-block; margin-top: 1.8rem; font-weight: 400; font-size: clamp(1.1rem, 3vw, 1.5rem); background: var(--f-green); color: #FFF9EE; padding: 0.5rem 1.5rem; border-radius: 2px; }
 .fhero__sl { position: absolute; height: auto; opacity: 0.9; pointer-events: none; }
 .fhero__sl--a { width: clamp(150px, 20vw, 300px); top: 8%; left: -3%; transform: rotate(-6deg); }
-.fhero__sl--b { width: clamp(160px, 22vw, 330px); bottom: -8%; right: -4%; transform: rotate(4deg); }
+.fhero__sl--b { width: clamp(160px, 22vw, 330px); bottom: -8%; left: -4%; transform: rotate(4deg); }
 @media (max-width: 820px) { .fhero__sl { display: none; } }
 
 /* ── 오늘의 꾸러미 ── */
@@ -203,7 +203,7 @@
 .fhero__ch { position: absolute; height: auto; pointer-events: none; z-index: 1;
   filter: drop-shadow(0 5px 10px rgba(51,41,31,0.22)); }
 .fhero__ch--a { width: clamp(38px, 4.4vw, 62px); top: 7%;    left: 6%; animation: fhop 4.6s ease-in-out infinite; }
-.fhero__ch--b { width: clamp(40px, 4.8vw, 68px); bottom: 12%; right: 13%; animation: fhop 5.4s ease-in-out infinite 0.6s; }
+.fhero__ch--b { width: clamp(40px, 4.8vw, 68px); bottom: 12%; left: 0; animation: fhop 5.4s ease-in-out infinite 0.6s; }
 .fhero__ch--c { width: clamp(34px, 4vw, 56px);  top: 20%;   right: 7%; animation: fhop 5s ease-in-out infinite 1.2s; }
 @keyframes fhop { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
 @media (max-width: 820px) { .fhero__ch { display: none; } }
@@ -230,9 +230,9 @@
 /* 넓은 화면에선 가장자리에 붙지 않게 — 잘리지 않고 온전한 모양으로 보이도록 */
 @media (min-width: 1100px) {
   .fhero__sl--a { top: 20%;    left: 1.5%; }
-  .fhero__sl--b { bottom: 3%;  right: 2%; }
+  .fhero__sl--b { bottom: 3%;  left: 2%; }
   .fhero__sl--c { top: 18%;    right: 6%; }
   .fhero__ch--a { top: 19%;    left: 11%; }
-  .fhero__ch--b { bottom: 15%; right: 19%; }
+  .fhero__ch--b { bottom: 15%; left: 2%; }
   .fhero__ch--c { top: 33%;    right: 10%; }
 }
