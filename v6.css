@@ -351,6 +351,26 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   display: block; margin-top: 1.5rem; font-style: normal;
   font-weight: 400; font-size: 0.82rem; letter-spacing: 0.2em; color: var(--ink-soft);
 }
+.voice > .eyebrow { margin-bottom: 1.6rem; }
+/* 큰 말 하나 아래, 작은 말 넷 — 들은 그대로 */
+.voice__grid {
+  margin: 3rem auto 0; max-width: 58rem;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(12px, 1.8vw, 20px);
+  text-align: left;
+}
+@media (max-width: 720px) { .voice__grid { grid-template-columns: 1fr; } }
+.voice__grid blockquote {
+  max-width: none; margin: 0;
+  background: var(--card); border-radius: 4px; box-shadow: var(--shadow);
+  padding: 1.4rem 1.6rem;
+  font-weight: 300; font-size: clamp(0.98rem, 2.2vw, 1.1rem); line-height: 1.8;
+}
+.voice__grid cite { margin-top: 0.7rem; font-size: 0.74rem; letter-spacing: 0.16em; color: var(--ink-faint); }
+.voice__fact {
+  margin: 2.4rem auto 0; max-width: 40rem;
+  font-weight: 300; font-size: clamp(0.98rem, 2.2vw, 1.08rem); line-height: 1.9; color: var(--ink-soft);
+}
+.voice__fact b { font-weight: 400; color: var(--ink); }
 
 /* ── ② 이번 시즌 ── */
 .season { background: var(--butter-soft); padding: clamp(3.6rem, 9vh, 5.8rem) var(--pad); }
