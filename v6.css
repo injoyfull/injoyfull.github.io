@@ -608,3 +608,10 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 
 /* 푸터 서명 — 가로형 로고 */
 .foot__logo { width: clamp(180px, 22vw, 260px); height: auto; margin: 0 auto 1.4rem; opacity: 0.95; }
+
+/* 어른들의 90분 — 취미반이 아닌 이유, 한 줄씩 */
+.say__list { list-style: none; margin: 2.2rem auto 0; max-width: 42rem; padding: 0; text-align: left; }
+.say__list li { padding: 1.1rem 0 1.1rem 1.6rem; position: relative; border-top: 1px dashed rgba(43,42,38,0.16); font-weight: 300; font-size: clamp(1rem, 2.3vw, 1.1rem); line-height: 1.85; color: var(--ink-soft); }
+.say__list li:last-child { border-bottom: 1px dashed rgba(43,42,38,0.16); }
+.say__list li::before { content: ""; position: absolute; left: 0.1rem; top: 1.75rem; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--teal); }
+.say__list b { font-weight: 400; color: var(--ink); }
