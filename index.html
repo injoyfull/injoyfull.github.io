@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/a2z-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="v6.css?v=72">
+  <link rel="stylesheet" href="v6.css?v=73">
 </head>
 <body>
 
@@ -107,19 +107,12 @@
   </section>
 
   <!-- 고객의 한 문장 -->
-  <section class="voice">
-    <p class="eyebrow rv">들은 말들 · 2026 학부모 설문</p>
-    <blockquote class="rv">
-      “집에서나 길을 가다가도 모든 것들이 재료가 되는<br>아이의 모습을 보면서 참 신기했습니다.”
-      <cite>학부모</cite>
+  <section class="voice" id="voice">
+    <p class="eyebrow rv">들은 말들</p>
+    <blockquote class="rv" id="voiceQ" title="눌러서 다음 말 보기">
+      <span id="voiceText">“집에서나 길을 가다가도 모든 것들이 재료가 되는 아이의 모습을 보면서 참 신기했습니다.”</span>
+      <cite id="voiceCite">학부모</cite>
     </blockquote>
-    <div class="voice__grid">
-      <blockquote class="rv">“오늘은 뭘 만들지? 뭐 해볼까? 설레해요.”<cite>학부모</cite></blockquote>
-      <blockquote class="rv">“오래 다니다 보니 할머니 댁에 가는 것처럼 익숙하고 편안해 보이기도 합니다.”<cite>학부모</cite></blockquote>
-      <blockquote class="rv">“인조이풀은 공간 자체로 저희 가족에게 쉼이고 힐링입니다.”<cite>학부모</cite></blockquote>
-      <blockquote class="rv">“정답이 없는 일을 해본 건 처음이에요.”<cite>30대 참여자</cite></blockquote>
-    </div>
-    <p class="voice__fact rv">설문에 답한 아홉 가족 모두, 인조이풀을 <b>‘자기 생각을 표현하는 시간’</b>이라고 했어요.</p>
   </section>
 
   <!-- ③ 이번 시즌 -->
@@ -325,6 +318,42 @@
       if (!top) return;
       var onScroll = function () { top.classList.toggle('top--solid', window.scrollY > 40); };
       onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var VOICES = [
+        ['“집에서나 길을 가다가도 모든 것들이 재료가 되는 아이의 모습을 보면서 참 신기했습니다.”', '학부모'],
+        ['“선생님, 저는 여기 숨 쉬러 와요.”', '어느 쪼이'],
+        ['“어릴 적 엄청 아끼던, 나만의 다이어리 같은 곳이에요.”', '학부모'],
+        ['“종이를 바꾸면 되지!”', '어느 쪼이'],
+        ['“오늘은 뭘 만들지? 뭐 해볼까? 설레해요.”', '학부모'],
+        ['“클레이 해도 돼요?”', '어느 쪼이'],
+        ['“오래 다니다 보니 할머니 댁에 가는 것처럼 익숙하고 편안해 보이기도 합니다.”', '학부모'],
+        ['“정답이 없는 일을 해본 건 처음이에요.”', '30대 참여자'],
+        ['“인조이풀은 공간 자체로 저희 가족에게 쉼이고 힐링입니다.”', '학부모'],
+        ['“미술하러 가는 날이 언제냐고 자주 물어보고 신나해요.”', '학부모']
+      ];
+      var q = document.getElementById('voiceQ'), t = document.getElementById('voiceText'), c = document.getElementById('voiceCite');
+      if (!q) return;
+      var i = 0, timer = null, paused = false;
+      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function swap(next) {
+        i = (typeof next === 'number' ? next : i + 1) % VOICES.length;
+        if (still) { t.textContent = VOICES[i][0]; c.textContent = VOICES[i][1]; return; }
+        q.classList.add('is-swapping');
+        setTimeout(function () {
+          t.textContent = VOICES[i][0]; c.textContent = VOICES[i][1];
+          q.classList.remove('is-swapping');
+        }, 550);
+      }
+      function tick() { if (!paused && !document.hidden) swap(); }
+      function start() { if (!timer && !still) timer = setInterval(tick, 5600); }
+      q.addEventListener('mouseenter', function () { paused = true; });
+      q.addEventListener('mouseleave', function () { paused = false; });
+      q.addEventListener('click', function () { swap(); });
+      start();
     })();
   </script>
 </body>
