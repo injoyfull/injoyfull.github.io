@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/a2z-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="v6.css?v=76">
+  <link rel="stylesheet" href="v6.css?v=77">
 </head>
 <body>
 
@@ -109,10 +109,9 @@
 
   <!-- 고객의 한 문장 -->
   <section class="voice" id="voice">
-    <p class="eyebrow rv">들은 말들</p>
     <blockquote class="rv" id="voiceQ" title="눌러서 다음 말 보기">
-      <span id="voiceText">“집에서나 길을 가다가도 모든 것들이 재료가 되는 아이의 모습을 보면서 참 신기했습니다.”</span>
-      <cite id="voiceCite">학부모</cite>
+      <span id="voiceText">“어릴 적 엄청 아끼던, 나만의 다이어리 같은 곳이에요.”</span>
+      <cite id="voiceCite"></cite>
     </blockquote>
   </section>
 
@@ -325,16 +324,18 @@
   <script>
     (function () {
       var VOICES = [
-        ['“집에서나 길을 가다가도 모든 것들이 재료가 되는 아이의 모습을 보면서 참 신기했습니다.”', '학부모'],
-        ['“선생님, 저는 여기 숨 쉬러 와요.”', '어느 쪼이'],
-        ['“어릴 적 엄청 아끼던, 나만의 다이어리 같은 곳이에요.”', '학부모'],
-        ['“종이를 바꾸면 되지!”', '어느 쪼이'],
-        ['“오늘은 뭘 만들지? 뭐 해볼까? 설레해요.”', '학부모'],
-        ['“클레이 해도 돼요?”', '어느 쪼이'],
-        ['“오래 다니다 보니 할머니 댁에 가는 것처럼 익숙하고 편안해 보이기도 합니다.”', '학부모'],
-        ['“정답이 없는 일을 해본 건 처음이에요.”', '30대 참여자'],
-        ['“인조이풀은 공간 자체로 저희 가족에게 쉼이고 힐링입니다.”', '학부모'],
-        ['“미술하러 가는 날이 언제냐고 자주 물어보고 신나해요.”', '학부모']
+        ['“어릴 적 엄청 아끼던, 나만의 다이어리 같은 곳이에요.”', ''],
+        ['“인조이풀은 숨쉬는 곳이에요.”', ''],
+        ['“인조이풀 가는 날, 아침부터 신나해요.”', ''],
+        ['“공간 자체로 아이와 엄마에게 쉼이고 힐링입니다.”', ''],
+        ['“종이를 바꾸면 되지!”', '그림을 망쳤다고 울던 아이가, 몇 달 뒤'],
+        ['“할머니 댁에 가는 것 같아요.”', ''],
+        ['“사랑방처럼 편안해요.”', ''],
+        ['“오늘은 무엇을 만들지 설레해요.”', ''],
+        ['“정답이 없는 일은 처음이에요.”', ''],
+        ['“길을 가다가도 모든 것들이 재료가 되는 것이 신기해요.”', ''],
+        ['“생각을 표현하는 것이 성장했어요.”', ''],
+        ['“매번 다른 내용들이 기대돼요.”', '']
       ];
       var q = document.getElementById('voiceQ'), t = document.getElementById('voiceText'), c = document.getElementById('voiceCite');
       if (!q) return;
