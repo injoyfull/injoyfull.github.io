@@ -677,4 +677,5 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
 @media (max-width: 820px) { .host__art--cut { max-width: 240px; } }
 @keyframes fhop { 0%,100% { transform: rotate(8deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-6px); } }
 
-.wcard--pop { border-top-color: #4E9084; }
+.wcard--pop::before { background: var(--teal); }
+.wcard--pop:hover { transform: translateY(-5px) rotate(-0.5deg); }
