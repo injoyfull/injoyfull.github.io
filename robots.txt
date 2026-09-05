@@ -3,4 +3,4 @@ Allow: /
 Disallow: /letters/
 Disallow: /v2/
 
-Sitemap: https://injoyfull.github.io/sitemap.xml
+Sitemap: https://myinjoyfull.com/sitemap.xml
