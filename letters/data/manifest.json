@@ -5,12 +5,12 @@
    "name": "키즈팝 목요반",
    "season": "2026 F/W",
    "kdf": {
-    "salt": "cnTfrtHA0zKyNbT72Oh+aA==",
+    "salt": "f4qT49Gw1cYynm6qbZwrhg==",
     "iter": 600000
    },
    "check": {
-    "iv": "d7VSWqTg1hylYDj2",
-    "ct": "vrfJK0ukFzJBhBWfLMEFSJ4R0thDt7uYaqs="
+    "iv": "v2vZeK9YUG/50re5",
+    "ct": "om5grXQ5ItIr+q0IaDR0xBnHBvr6mfXuILs="
    },
    "letters": [
     {
@@ -24,6 +24,33 @@
      "title": "나만의 색깔, 나만의 이야기",
      "date": "2026.08.27",
      "file": "kids-thu-02.json"
+    },
+    {
+     "id": "kids-thu-03",
+     "title": "가을을 디자인하다 첫 번째, 돌",
+     "date": "2026.09.03",
+     "file": "kids-thu-03.json"
+    }
+   ]
+  },
+  {
+   "id": "kids-tue",
+   "name": "키즈팝 화요반",
+   "season": "2026 F/W",
+   "kdf": {
+    "salt": "mBClNCjw3ITa0rfFobjnUw==",
+    "iter": 600000
+   },
+   "check": {
+    "iv": "+op881Es7mHjFjee",
+    "ct": "1imCPanvrZbqbo1nJu4JTjb5Pjv+XbaDRpc="
+   },
+   "letters": [
+    {
+     "id": "kids-tue-01",
+     "title": "가을을 디자인하다 첫 번째, 돌",
+     "date": "2026.09.01",
+     "file": "kids-tue-01.json"
     }
    ]
   }
