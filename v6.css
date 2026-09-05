@@ -645,3 +645,9 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
 .foot__links a[href="/letters/"]::before { background: #B85C8A; }
 .top__link[href="/en/"]::before, .foot__links a[href="/en/"]::before, .foot__links a[href="/"]::before,
 .foot__links a[href^="https://blog"]::before, .foot__links a[href^="https://www.instagram"]::before, .foot__links a[href^="https://pf.kakao"]::before { display: none; }
+
+/* ── 스마일 마크 — 작은 서명처럼 ── */
+.mark-xs { width: 16px; height: 16px; vertical-align: -3px; margin-right: 0.3rem; }
+.mark-sm { width: 26px; height: 26px; vertical-align: -6px; margin-left: 0.35rem; }
+.mark-md { display: block; width: clamp(44px, 5vw, 60px); height: auto; margin-bottom: 1rem; }
+.mark-md--c { margin-left: auto; margin-right: auto; }
