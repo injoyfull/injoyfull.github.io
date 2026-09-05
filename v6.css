@@ -628,3 +628,20 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
 /* 감각 스위치의 색 — 시각 스위치의 분홍 */
 .btn--pink { background: #E86F92; color: #FFF7F9; box-shadow: 0 3px 10px rgba(232,111,146,0.32); }
 .btn--pink:hover { background: #E05C83; }
+
+/* ── nav-dots: 네브·푸터 글자는 작게, 갈 곳마다 그 자리의 색점 하나 ── */
+.top__link { font-size: 0.86rem; }
+.foot__links a { font-size: 0.8rem; }
+.top__link::before, .foot__links a::before {
+  content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  margin-right: 0.38rem; vertical-align: 0.12em; background: rgba(43,42,38,0.18);
+}
+.top__link[href="/fall/"]::before,  .foot__links a[href="/fall/"]::before  { background: #E9612B; }  /* 가을 프로그램 — 주황 */
+.top__link[href="/club/"]::before,  .foot__links a[href="/club/"]::before  { background: #4E9084; }  /* 어른들 — 청록 */
+.top__link[href="/about/"]::before, .foot__links a[href="/about/"]::before { background: #0066B3; }  /* 소개 — 인조이풀 블루 */
+.top__link[href="/menu/"]::before,  .foot__links a[href="/menu/"]::before  { background: #F2C94C; }  /* 행복상자 — 노랑 */
+.top__link[href="/test/"]::before,  .foot__links a[href="/test/"]::before  { background: #E86F92; }  /* 감각 스위치 — 분홍 */
+.foot__links a[href^="https://popfolio"]::before { background: #7C6BC9; }
+.foot__links a[href="/letters/"]::before { background: #B85C8A; }
+.top__link[href="/en/"]::before, .foot__links a[href="/en/"]::before, .foot__links a[href="/"]::before,
+.foot__links a[href^="https://blog"]::before, .foot__links a[href^="https://www.instagram"]::before, .foot__links a[href^="https://pf.kakao"]::before { display: none; }
