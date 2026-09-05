@@ -546,7 +546,7 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
   .host__text, .host__art { grid-column: 1; grid-row: auto; }
   .host__art { max-width: 210px; margin: 0 auto; }
 }
-.host__art img {
+.host__art:not(.host__art--cut) img {
   width: 100%; height: auto; aspect-ratio: 1; object-fit: cover;
   border-radius: 50%; display: block;
   box-shadow: 0 10px 30px rgba(43,42,38,0.14);
@@ -654,3 +654,25 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
 
 /* 제목 앞 마크 — 글자 크기와 같게 */
 .mark-h { display: inline-block; width: 1em; height: 1em; max-width: 1em; object-fit: contain; vertical-align: -0.1em; margin-right: 0.3em; }
+
+/* ── 소개 사진 — 원 대신 콜라주 스티커: 배경을 떼어낸 사람 + 손으로 오린 듯한 종이 한 장 + 도리 ── */
+.host__art--cut { position: relative; padding: 6% 4% 0; margin-top: 0; }
+.host__art--cut::before {
+  content: ""; position: absolute; inset: 10% -2% 4% 2%; z-index: 0;
+  background: var(--butter-soft, #F8ECC8);
+  border-radius: 58% 42% 55% 45% / 46% 57% 43% 54%;
+  transform: rotate(-4deg);
+}
+.host__cut {
+  position: relative; z-index: 1; display: block; width: 100%; height: auto;
+  transform: rotate(-2.5deg);
+  filter: drop-shadow(0 10px 18px rgba(43,42,38,0.18));
+}
+.host__pal {
+  position: absolute; z-index: 2; right: -6%; bottom: -4%;
+  width: 30%; height: auto; transform: rotate(8deg);
+  filter: drop-shadow(0 6px 12px rgba(43,42,38,0.2));
+  animation: fhop 5s ease-in-out infinite 0.6s;
+}
+@media (max-width: 820px) { .host__art--cut { max-width: 240px; } }
+@keyframes fhop { 0%,100% { transform: rotate(8deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-6px); } }
