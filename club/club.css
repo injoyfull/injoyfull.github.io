@@ -81,3 +81,14 @@
 .trial__d b { font-weight: 700; color: var(--c-ink); }
 .trial__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; white-space: nowrap; }
 .trial__cta span { font-weight: 300; font-size: 0.78rem; color: rgba(51,41,31,0.55); }
+
+/* About ME · Around ME — 두 칸 */
+.sess__grid--2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) { .sess__grid--2 { grid-template-columns: 1fr; } }
+.curri { margin-top: 1.8rem; background: #FFFDF6; border-radius: 4px; padding: 1.4rem clamp(1.2rem, 3vw, 1.8rem); text-align: left; }
+.curri__lb { font-weight: 400; font-size: 0.74rem; letter-spacing: 0.2em; color: rgba(51,41,31,0.5); }
+.curri__list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.55rem; }
+.curri__list li { font-weight: 300; font-size: 0.98rem; line-height: 1.8; color: rgba(51,41,31,0.72); padding-left: 1rem; position: relative; }
+.curri__list li::before { content: ""; position: absolute; left: 0; top: 0.78em; width: 6px; height: 6px; border-radius: 50%; background: var(--c-teal, #4E9084); }
+.curri__list b { font-weight: 400; color: var(--f-ink, #33291F); }
+.curri__note { margin-top: 0.9rem; font-weight: 300; font-size: 0.86rem; color: rgba(51,41,31,0.55); }
