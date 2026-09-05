@@ -624,3 +624,7 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
 
 /* 출처가 없는 말은 출처 줄을 접는다 */
 .voice cite:empty { display: none; }
+
+/* 감각 스위치의 색 — 시각 스위치의 분홍 */
+.btn--pink { background: #E86F92; color: #FFF7F9; box-shadow: 0 3px 10px rgba(232,111,146,0.32); }
+.btn--pink:hover { background: #E05C83; }
