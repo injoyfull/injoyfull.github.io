@@ -344,7 +344,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
   padding: clamp(4.5rem, 12vh, 8rem) var(--pad); text-align: center;
 }
 .voice blockquote {
-  font-weight: 300; font-size: clamp(1.4rem, 4.4vw, 2.6rem);
+  font-weight: 300; font-size: clamp(1.2rem, 3.4vw, 2rem);
   line-height: 1.7; max-width: 52rem; margin: 0 auto;
 }
 .voice cite {
@@ -476,7 +476,7 @@ h2.title { font-weight: 400; font-size: clamp(1.6rem, 4.4vw, 2.7rem); letter-spa
 .foot__flag { color: var(--ink); font-weight: 400; font-size: 0.98rem; }
 .foot address { font-style: normal; margin-top: 1.1rem; }
 .foot__links { margin-top: 0.8rem; display: flex; justify-content: center; gap: 1.1rem; flex-wrap: wrap; }
-.foot__links a { font-weight: 400; white-space: nowrap; transition: color 0.3s; }
+.foot__links a { font-weight: 400; font-size: 0.86rem; white-space: nowrap; transition: color 0.3s; }
 .foot__links a:hover { color: var(--ink); }
 .foot__copy { margin-top: 1.7rem; font-weight: 100; font-size: 0.78rem; letter-spacing: 0.22em; }
 
