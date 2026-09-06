@@ -679,3 +679,6 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
 
 .wcard--pop::before { background: var(--teal); }
 .wcard--pop:hover { transform: translateY(-5px) rotate(-0.5deg); }
+
+/* 소개 끝 — 두 문으로 보내는 한 줄 */
+.host__hook { margin-top: 1.6rem; font-weight: 300; font-size: 0.92rem; color: var(--ink-faint); }
