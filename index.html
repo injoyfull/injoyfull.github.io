@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/a2z-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="v6.css?v=87">
+  <link rel="stylesheet" href="v6.css?v=88">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -37,6 +37,7 @@
       <img src="/fall/dori.png" alt="">
       <img src="/fall/mungi.png" alt="">
     </div>
+    <p class="opening__tag">감각을 깨우는 창작 놀이터, <b>인조이풀</b></p>
   </div>
 
   <header class="top">
@@ -63,6 +64,11 @@
       <p class="hero__cta">
         <a class="btn btn--ink" href="/fall/">이번 달 프로그램 보기 <i>→</i></a>
         <a class="btn btn--kakao" href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">카카오로 문의 <i>→</i></a>
+      </p>
+      <p class="hero__quick" aria-label="프로그램 바로가기">
+        <a class="hero__chip hero__chip--kids" href="/fall/"><b>키즈팝</b> 5~7세</a>
+        <a class="hero__chip hero__chip--pop" href="/fall/#more"><b>크리디팝</b> 초등</a>
+        <a class="hero__chip hero__chip--club" href="/club/"><b>창작클럽 ’90</b> 어른</a>
       </p>
     </div>
     <div class="hero__stage">
@@ -305,7 +311,10 @@
       if (!o) return;
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var done = function () { if (o && o.parentNode) o.parentNode.removeChild(o); };
-      if (reduce) { done(); return; }
+      // 사이트 안에서 홈으로 돌아온 경우(같은 주소에서 왔거나 #으로 온 경우)는 오프닝 없이 바로 놀이터로
+      var fromInside = false;
+      try { fromInside = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+      if (reduce || fromInside || location.hash) { done(); return; }
       o.addEventListener('animationend', function (e) { if (e.target === o) done(); });
       o.addEventListener('click', done);            // 누르면 바로 건너뛰기
       setTimeout(done, 3200);                        // 어떤 이유로든 끝나지 않으면 안전하게 제거
