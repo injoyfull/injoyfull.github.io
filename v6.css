@@ -716,7 +716,8 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
   .top__links::-webkit-scrollbar { display: none; }
   .top__links .top__link:not(.top__link--key):not(.top__link--on) { display: inline-block; }
   .top__link { font-size: 0.86rem; }
-  .top__ask { order: 2; flex: 0 0 auto; }
+  .top__ask { position: absolute; right: var(--pad); top: 0.72rem; flex: 0 0 auto; }
+  .top__brand { padding-right: 6.5rem; }
   .hero { padding-top: 7.4rem; }
   .ahero, .quiz, .menu, .soon, .chero { padding-top: 8.6rem; }
 }
