@@ -592,11 +592,11 @@ a.mrow:hover .mrow__arrow { color: var(--coral); transform: translateX(4px); }
 .opening__bg {
   position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%) scale(1.06);
   width: clamp(280px, 78vw, 1100px); height: auto; max-width: none;
-  opacity: 0; filter: blur(0.6px);
+  opacity: 0; filter: blur(0.5px) saturate(1.45) brightness(1.04);
   animation: bgIn 1.6s ease-out 0.15s forwards;
 }
 .opening__run { position: relative; z-index: 1; }
-@keyframes bgIn { to { opacity: 0.13; transform: translate(-50%, -50%) scale(1); } }
+@keyframes bgIn { to { opacity: 0.22; transform: translate(-50%, -50%) scale(1); } }
 @keyframes hop    { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-22%) rotate(5deg); } }
 @keyframes openLift { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .opening { display: none; } }
