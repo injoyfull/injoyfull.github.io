@@ -721,3 +721,11 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
   .hero { padding-top: 7.4rem; }
   .ahero, .quiz, .menu, .soon, .chero { padding-top: 8.6rem; }
 }
+
+/* 어디로 들어가나 — 카드 첫 줄은 '누구'가 칩으로 보이게 */
+.wcard__who { display: inline-block; font-style: normal; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em;
+  color: var(--ink); background: var(--butter-soft, #F8ECC8); padding: 0.28rem 0.7rem; border-radius: 999px; }
+.wcard--kids .wcard__who { background: #F6DFD3; }
+.wcard--pop  .wcard__who { background: #DDEAE4; }
+.wcard--club .wcard__who { background: #F8ECC8; }
+.ways__head .lead b { font-weight: 700; color: var(--ink); }
