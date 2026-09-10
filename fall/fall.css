@@ -71,7 +71,7 @@
   font-weight: 300; font-size: 0.84rem; color: rgba(51,41,31,0.6); }
 .mon__meta b { font-weight: 700; color: var(--f-ink); }
 
-/* ── 어른 · 크리디팝 ── */
+/* ── 어른 · 크리디패스 ── */
 .more { padding: 0 var(--pad) clamp(3rem, 8vh, 5rem); }
 .more__in { max-width: 60rem; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.6vw, 28px); }
 @media (max-width: 860px) { .more__in { grid-template-columns: 1fr; } }
@@ -238,7 +238,7 @@
 }
 
 
-/* ── 가을 첫 화면 — 세 가지 문 (키즈팝 · 크리디팝 · 창작클럽 ’90) ── */
+/* ── 가을 첫 화면 — 세 가지 문 (키즈팝 · 크리디패스 · 창작클럽 ’90) ── */
 .fhero__doors {
   margin: 2rem auto 0; max-width: 40rem;
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; text-align: left;
