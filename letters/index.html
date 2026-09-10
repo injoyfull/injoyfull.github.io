@@ -177,7 +177,7 @@
       m.classes.forEach(function (c) {
         var b = document.createElement('button');
         b.className = 'cls'; b.type = 'button';
-        b.innerHTML = '<span style="flex:1"><b>' + c.name + '</b><span>' + c.season + ' · 레터 ' + c.letters.length + '통</span></span><i>🔒</i>';
+        b.innerHTML = '<span style="flex:1"><b>' + c.name + '</b><span>' + c.season + '</span></span><i>🔒</i>';
         b.addEventListener('click', function () {
           state.cls = c; $('lockName').textContent = c.name;
           $('err').hidden = true; $('pw').value = '';
