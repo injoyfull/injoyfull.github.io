@@ -26,9 +26,17 @@
       transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
     .cls:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(43,42,38,0.12); }
+    .cls { --c: #E9612B; --c-soft: #FBE3D6; position: relative; overflow: hidden; border-radius: 16px; padding-left: 1.6rem; }
+    .cls::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px; background: var(--c); }
+    .cls--kids-thu { --c: #E9612B; --c-soft: #FBE3D6; }
+    .cls--kids-tue { --c: #F2C94C; --c-soft: #FBF0C8; }
+    .cls__av { flex: 0 0 auto; width: 58px; height: 58px; border-radius: 50%; background: var(--c-soft); display: grid; place-items: center; }
+    .cls__av img { width: 40px; height: auto; display: block; }
+    .cls__txt { flex: 1; }
     .cls b { font-weight: 700; font-size: 1.05rem; }
     .cls span { display: block; margin-top: 0.25rem; font-weight: 300; font-size: 0.84rem; color: var(--ink-soft); }
-    .cls i { font-style: normal; color: var(--ink-faint); }
+    .cls i { font-style: normal; font-size: 0.8rem; color: var(--ink); background: var(--c-soft); border-radius: 999px; padding: 0.35rem 0.75rem; }
+    .cls:hover::before { width: 10px; }
 
     .lock { margin-top: 2.4rem; background: var(--card); border-radius: 4px; box-shadow: var(--shadow); padding: clamp(1.8rem, 4vw, 2.6rem); }
     .lock h2 { font-weight: 700; font-size: 1.15rem; }
@@ -176,8 +184,9 @@
       var wrap = $('classes');
       m.classes.forEach(function (c) {
         var b = document.createElement('button');
-        b.className = 'cls'; b.type = 'button';
-        b.innerHTML = '<span style="flex:1"><b>' + c.name + '</b></span><i>🔒</i>';
+        b.className = 'cls cls--' + c.id; b.type = 'button';
+        var av = { 'kids-thu': '/fall/dori.png', 'kids-tue': '/fall/jumpy.png' }[c.id] || '/fall/mungi.png';
+        b.innerHTML = '<span class="cls__av"><img src="' + av + '" alt=""></span><span class="cls__txt"><b>' + c.name + '</b><span>암호를 알고 있는 우리 반만 열려요</span></span><i>🔒 열기</i>';
         b.addEventListener('click', function () {
           state.cls = c; $('lockName').textContent = c.name;
           $('err').hidden = true; $('pw').value = '';
