@@ -739,3 +739,10 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
 .wcard--pop  .wcard__who { background: #DDEAE4; }
 .wcard--club .wcard__who { background: #F8ECC8; }
 .ways__head .lead b { font-weight: 700; color: var(--ink); }
+
+/* ── tap-targets: 휴대폰에서 손가락으로 누르기 쉽게 ── */
+@media (max-width: 620px) {
+  .top__link { padding: 0.55rem 0.15rem; }
+  .quiet { display: inline-block; padding: 0.45rem 0; }
+  .foot__links a { padding: 0.35rem 0.1rem; }
+}
