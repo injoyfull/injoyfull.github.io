@@ -182,7 +182,9 @@
     fetch('/letters/data/manifest.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (m) {
       state.manifest = m;
       var wrap = $('classes');
-      m.classes.forEach(function (c) {
+      // 요일 순서로 보여준다 (화 → 수 → 목 → 금). manifest는 id 순이라 여기서 다시 정렬.
+      var DAY = { 'kids-tue': 1, 'kids-wed': 2, 'kids-thu': 3, 'kids-fri': 4 };
+      m.classes.slice().sort(function (a, b) { return (DAY[a.id] || 9) - (DAY[b.id] || 9); }).forEach(function (c) {
         var b = document.createElement('button');
         b.className = 'cls cls--' + c.id; b.type = 'button';
         var av = { 'kids-thu': '/fall/dori.png', 'kids-tue': '/fall/jumpy.png' }[c.id] || '/fall/mungi.png';
