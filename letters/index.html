@@ -179,7 +179,7 @@
       return new TextDecoder().decode(plain);
     }
 
-    fetch('/letters/data/manifest.json').then(function (r) { return r.json(); }).then(function (m) {
+    fetch('/letters/data/manifest.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (m) {
       state.manifest = m;
       var wrap = $('classes');
       m.classes.forEach(function (c) {
@@ -227,7 +227,7 @@
     async function openLetter(L, btn) {
       var label = btn.innerHTML; btn.innerHTML = '<time>' + L.date + '</time><b>여는 중…</b>';
       try {
-        var blob = await (await fetch('/letters/data/' + L.file)).json();
+        var blob = await (await fetch('/letters/data/' + L.file + '?t=' + Date.now(), { cache: 'no-store' })).json();
         var html = await open(blob, state.key);
         $('viewerTitle').textContent = L.date + ' · ' + L.title;
         $('wait').hidden = false;
