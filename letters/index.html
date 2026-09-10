@@ -177,7 +177,7 @@
       m.classes.forEach(function (c) {
         var b = document.createElement('button');
         b.className = 'cls'; b.type = 'button';
-        b.innerHTML = '<span style="flex:1"><b>' + c.name + '</b><span>' + c.season + '</span></span><i>🔒</i>';
+        b.innerHTML = '<span style="flex:1"><b>' + c.name + '</b></span><i>🔒</i>';
         b.addEventListener('click', function () {
           state.cls = c; $('lockName').textContent = c.name;
           $('err').hidden = true; $('pw').value = '';
@@ -199,7 +199,7 @@
         var check = await open(c.check, key);
         if (check !== 'in:JOYFULL') throw new Error('bad');
         state.key = key;
-        $('openedName').textContent = c.name + ' · ' + c.season;
+        $('openedName').textContent = c.name;
         var ul = $('list'); ul.innerHTML = '';
         c.letters.forEach(function (L) {
           var li = document.createElement('li');
