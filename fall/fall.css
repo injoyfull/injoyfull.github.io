@@ -264,3 +264,12 @@
   .door span { margin-left: 0.45rem; }
   #programs, #pop, #club { scroll-margin-top: 8.6rem; }
 }
+
+
+/* ── 크리디패스 회차권 ── */
+.pass { list-style: none; margin: 0.9rem 0 1.2rem; padding: 0; border-top: 1px solid rgba(51,41,31,0.14); }
+.pass li { display: flex; align-items: baseline; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px dashed rgba(51,41,31,0.18); font-size: 0.9rem; }
+.pass b { font-weight: 700; min-width: 3.2em; }
+.pass span { font-weight: 400; color: var(--f-ink, #33291F); }
+.pass em { font-style: normal; font-weight: 300; font-size: 0.82rem; color: rgba(51,41,31,0.6); margin-left: 0.35rem; }
+#membership { scroll-margin-top: 6.5rem; }
