@@ -259,5 +259,13 @@
       onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
     })();
   </script>
+  <script>
+    /* 방문 통계 — Vercel Web Analytics. 쿠키·개인정보 없음. 실제 도메인에서만 켠다. */
+    if (location.hostname === 'myinjoyfull.com' || location.hostname.endsWith('.vercel.app')) {
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js';
+      document.head.appendChild(s);
+    }
+  </script>
 </body>
 </html>
