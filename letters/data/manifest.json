@@ -5,12 +5,12 @@
    "name": "키즈팝 목요반",
    "season": "2026 F/W",
    "kdf": {
-    "salt": "UyrV/QDXLFqMbUrNi3/ztw==",
+    "salt": "Qxx2wMYwRuOSVHaXqIWDrQ==",
     "iter": 600000
    },
    "check": {
-    "iv": "3R3obh7rjsOdDwHl",
-    "ct": "Ucj1vOVX3GQ2quPVDYQc3O4AUWC5pjjytZw="
+    "iv": "5iH0TOcv/iwABv2x",
+    "ct": "FDXD4TrtQe8jWIOZO6oHo+eK6K9gPLitL8I="
    },
    "letters": [
     {
@@ -38,12 +38,12 @@
    "name": "키즈팝 화요반",
    "season": "2026 F/W",
    "kdf": {
-    "salt": "9+VzNojE/JK3X4UxFHARzQ==",
+    "salt": "CV0zqaciWD7NRxzDyXyNEQ==",
     "iter": 600000
    },
    "check": {
-    "iv": "OZn1vllcaYFirXao",
-    "ct": "SEwXbSxuBB2OcJdiOUQYAjsoRyiq2BIvo1E="
+    "iv": "ueFMazkZAhhc6Gm5",
+    "ct": "pmDH40acPSb+iNZThctMIsymDidOF/Hf24I="
    },
    "letters": [
     {
