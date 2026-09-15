@@ -5,12 +5,12 @@
    "name": "키즈팝 목요반",
    "season": "2026 F/W",
    "kdf": {
-    "salt": "hO9YL/JmxbMRwq4BQ8Ma2g==",
+    "salt": "zAMk4N6ToZZPNvqdT+f3Fg==",
     "iter": 600000
    },
    "check": {
-    "iv": "XvwPmNldeCOEIp08",
-    "ct": "tIx5Ci8EScFUOuBwqEzN/qg4iuKJcZT20h8="
+    "iv": "IZNKhSNXuKrU6a6+",
+    "ct": "2s0x1CKrmQ9APoqss1+NQlhMoyoqOuVm+jw="
    },
    "letters": [
     {
@@ -30,6 +30,12 @@
      "title": "가을을 디자인하다 첫 번째, 돌",
      "date": "2026.09.03",
      "file": "kids-thu-03.json"
+    },
+    {
+     "id": "kids-thu-04",
+     "title": "가을을 디자인하다 두 번째, 한복",
+     "date": "2026.09.10",
+     "file": "kids-thu-04.json"
     }
    ]
   },
