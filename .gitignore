@@ -9,3 +9,9 @@ plan-v0.1-구기획-archive.md
 
 # 히어로 원본 사진 (작업용 — 배포 안 함)
 photos/_new/
+
+# 인조이풀 레터 자동 동기화 — 암호·상태·로그는 로컬에만
+tools/letters.local.json
+tools/.letters-sync-state.json
+tools/.letters-sync.lock
+tools/letters-sync.log
