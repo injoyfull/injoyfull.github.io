@@ -1,0 +1,36 @@
+/* ── English pages — small additions on top of v6 and each page's own CSS ── */
+
+/* nav & footer colour dots for the /en/ paths (mirrors the Korean ones) */
+.top__link[href="/en/programs/"]::before, .foot__links a[href="/en/programs/"]::before { background: #E9612B; }
+.top__link[href="/en/club/"]::before,     .foot__links a[href="/en/club/"]::before     { background: #4E9084; }
+.top__link[href="/en/about/"]::before,    .foot__links a[href="/en/about/"]::before    { background: #0066B3; }
+.top__link[href="/en/hanna/"]::before,    .foot__links a[href="/en/hanna/"]::before    { background: #F2C94C; }
+.top__link--lang::before, .foot__links a[lang="ko"]::before, .foot__links a[href="/en/"]::before { display: none; }
+
+/* Latin text reads better a touch tighter than Korean */
+body { word-break: normal; overflow-wrap: break-word; }
+
+/* ── Home · "What we do" — three plain facts for first-time visitors ── */
+.brief { padding: clamp(3.2rem, 8vh, 5rem) var(--pad) clamp(1rem, 3vh, 2rem); }
+.brief__in { max-width: calc(var(--wide) - 2 * var(--pad)); margin: 0 auto; }
+.brief .eyebrow { color: var(--joy); }
+.brief__grid { margin-top: 1.8rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 24px); }
+.brief__item { position: relative; background: var(--card); border-radius: 14px; box-shadow: var(--shadow); padding: 1.5rem 1.4rem 1.5rem 1.6rem; }
+.brief__item::before { content: ""; position: absolute; left: 0; top: 1.3rem; bottom: 1.3rem; width: 5px; border-radius: 5px; background: var(--c); }
+.brief__item h3 { font-weight: 700; font-size: 1.04rem; }
+.brief__item p { margin-top: 0.6rem; font-weight: 300; font-size: 0.92rem; line-height: 1.8; color: var(--ink-soft); }
+.brief__item b { font-weight: 700; color: var(--ink); }
+@media (max-width: 860px) { .brief__grid { grid-template-columns: 1fr; } }
+
+/* ── Programs · booking help line under the three doors ── */
+.en__book { margin: 1.4rem auto 0; max-width: 36rem; font-weight: 300; font-size: 0.88rem; line-height: 1.8; color: rgba(51,41,31,0.7); }
+
+/* ── About · English labels in the blended circles ── */
+.fuse__fig--en .fuse__lb { font-size: 19px; }
+.fuse__fig--en .fuse__mid text { font-size: 17px; }
+.fuse__fig--en .fuse__more text { font-size: 14px; }
+@media (max-width: 560px) {
+  .fuse__fig--en .fuse__lb { font-size: 23px; }
+  .fuse__fig--en .fuse__mid text { font-size: 21px; }
+  .fuse__fig--en .fuse__more text { font-size: 17px; }
+}
