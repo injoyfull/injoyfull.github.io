@@ -97,9 +97,9 @@
 .j90__steps { list-style: none; margin: 0.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 24px); }
 .j90__step { text-align: center; padding: 0 0.4rem; }
 .j90__pin { display: none; }
-.j90__step b { display: block; font-weight: 700; font-size: 1.06rem; }
+.j90__step b { display: block; font-weight: 700; font-size: 1rem; }
 .j90__step i { display: block; margin-top: 0.15rem; font-style: normal; font-weight: 400; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--ink-faint); }
-.j90__step p { margin-top: 0.6rem; font-weight: 300; font-size: 0.9rem; line-height: 1.85; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
+.j90__step p { margin-top: 0.5rem; font-weight: 300; font-size: 0.8rem; line-height: 1.75; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
 .j90.in .j90__step { opacity: 0; animation: j90fade 0.6s ease-out forwards; }
 .j90.in .j90__step--1 { animation-delay: 0.7s; }
 .j90.in .j90__step--2 { animation-delay: 1.45s; }
@@ -131,42 +131,45 @@
 /* ── 어우러지는 표현 — 겹치는 원 ── */
 .fuse { padding: clamp(3.5rem, 9vh, 5.5rem) var(--pad); max-width: var(--wide); margin: 0 auto; text-align: center; }
 .fuse .lead { margin: 1rem auto 0; max-width: 40rem; }
-.fuse__fig { margin: 2rem auto 0; max-width: 560px; }
+.fuse__fig { margin: 1.6rem auto 0; max-width: 600px; }
 .fuse__fig svg { display: block; width: 100%; height: auto; overflow: visible; font-family: inherit; }
-.fuse__c circle { mix-blend-mode: multiply; }
-.fuse__c--art circle   { fill: #E2603C; fill-opacity: 0.42; }
-.fuse__c--code circle  { fill: #0066B3; fill-opacity: 0.34; }
-.fuse__c--block circle { fill: #F2C94C; fill-opacity: 0.62; }
-.fuse__lb { font-size: 17px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
-.fuse__core circle { fill: #FFFDF6; stroke: var(--ink); stroke-width: 1.5; }
-.fuse__core text { font-size: 15px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
-.fuse__more circle { fill: none; stroke: rgba(43,42,38,0.28); stroke-width: 1.5; stroke-dasharray: 3 6; }
-.fuse__more text { font-size: 13px; font-weight: 300; fill: var(--ink-soft); text-anchor: middle; }
+.fuse__c--art circle   { fill: #EE8466; fill-opacity: 0.55; }
+.fuse__c--code circle  { fill: #5E9BD3; fill-opacity: 0.45; }
+.fuse__c--block circle { fill: #F4C74E; fill-opacity: 0.6; }
+.fuse__lb { font-size: 21px; font-weight: 700; fill: var(--ink); text-anchor: middle; letter-spacing: -0.01em; }
+.fuse__mid text { font-size: 19px; font-weight: 700; fill: #6B4A1E; text-anchor: middle; }
+.fuse__more circle { fill: #FFFDF6; stroke: rgba(43,42,38,0.3); stroke-width: 1.5; stroke-dasharray: 3 6; }
+.fuse__more text { font-size: 15px; font-weight: 400; fill: var(--ink-soft); text-anchor: middle; }
 .fuse__cap { margin-top: 1rem; font-weight: 300; font-size: 0.9rem; color: var(--ink-faint); word-break: keep-all; }
+@media (max-width: 560px) {
+  .fuse__lb { font-size: 26px; } .fuse__mid text { font-size: 23px; } .fuse__more text { font-size: 19px; }
+}
 
-/* 멀리 있던 원들이 가운데로 모여 겹친다 */
-.fuse__c, .fuse__core, .fuse__more, .fuse__lb { transform-box: fill-box; transform-origin: center; }
+/* 멀리 있던 원들이 가운데로 모여 겹치고, 가운데가 환해진다 */
+.fuse__c, .fuse__more { transform-box: fill-box; transform-origin: center; }
 .fuse__c--art   { transform: translate(-70px, -30px); opacity: 0; }
 .fuse__c--code  { transform: translate(70px, -30px);  opacity: 0; }
 .fuse__c--block { transform: translate(0, 70px);      opacity: 0; }
-.fuse__lb, .fuse__core, .fuse__more { opacity: 0; }
-.fuse__core { transform: scale(0.4); }
+.fuse__lb, .fuse__core, .fuse__mid { opacity: 0; }
+.fuse__more { opacity: 0; transform: scale(0.7); }
 .fuse__fig.in .fuse__c { animation: fuseIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 .fuse__fig.in .fuse__c--code  { animation-delay: 0.12s; }
 .fuse__fig.in .fuse__c--block { animation-delay: 0.24s; }
 .fuse__fig.in .fuse__lb { animation: fuseFade 0.6s ease-out 0.9s forwards; }
-.fuse__fig.in .fuse__core { animation: fusePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards; }
-.fuse__fig.in .fuse__more { animation: fuseFade 0.8s ease-out forwards; }
+.fuse__fig.in .fuse__core { animation: fuseFade 0.9s ease-out 1.3s forwards; }
+.fuse__fig.in .fuse__mid { animation: fuseFade 0.6s ease-out 1.6s forwards; }
+.fuse__fig.in .fuse__more { animation: fuseIn 0.7s cubic-bezier(0.34, 1.4, 0.64, 1) forwards; }
 .fuse__fig.in .fuse__more--1 { animation-delay: 1.9s; }
-.fuse__fig.in .fuse__more--2 { animation-delay: 2.1s; }
-.fuse__fig.in .fuse__more--3 { animation-delay: 2.3s; }
+.fuse__fig.in .fuse__more--2 { animation-delay: 2.02s; }
+.fuse__fig.in .fuse__more--3 { animation-delay: 2.14s; }
+.fuse__fig.in .fuse__more--4 { animation-delay: 2.26s; }
+.fuse__fig.in .fuse__more--5 { animation-delay: 2.38s; }
+.fuse__fig.in .fuse__more--6 { animation-delay: 2.5s; }
 @keyframes fuseIn { to { transform: none; opacity: 1; } }
 @keyframes fuseFade { to { opacity: 1; } }
-@keyframes fusePop { to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-  .fuse__c, .fuse__lb, .fuse__core, .fuse__more { transform: none; opacity: 1; animation: none !important; }
+  .fuse__c, .fuse__lb, .fuse__core, .fuse__mid, .fuse__more { transform: none; opacity: 1; animation: none !important; }
 }
-
 
 /* ── 서랍이 많은 이유 — 서랍장과 흩어진 재료 ── */
 .drawer__fig { margin: 2rem auto 0.4rem; max-width: 620px; }
