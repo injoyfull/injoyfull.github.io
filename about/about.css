@@ -126,3 +126,43 @@
   .j90__ink { stroke-dashoffset: 0; } .j90__dot, .j90__pin { transform: none; } .j90__walker { opacity: 1; transform: none; }
   .j90.in .j90__step, .j90.in .j90__ink, .j90.in .j90__dot, .j90.in .j90__walker, .j90.in .j90__pin { animation: none; opacity: 1; }
 }
+
+
+/* ── 어우러지는 표현 — 겹치는 원 ── */
+.fuse { padding: clamp(3.5rem, 9vh, 5.5rem) var(--pad); max-width: var(--wide); margin: 0 auto; text-align: center; }
+.fuse .lead { margin: 1rem auto 0; max-width: 40rem; }
+.fuse__fig { margin: 2rem auto 0; max-width: 560px; }
+.fuse__fig svg { display: block; width: 100%; height: auto; overflow: visible; font-family: inherit; }
+.fuse__c circle { mix-blend-mode: multiply; }
+.fuse__c--art circle   { fill: #E2603C; fill-opacity: 0.42; }
+.fuse__c--code circle  { fill: #0066B3; fill-opacity: 0.34; }
+.fuse__c--block circle { fill: #F2C94C; fill-opacity: 0.62; }
+.fuse__lb { font-size: 17px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+.fuse__core circle { fill: #FFFDF6; stroke: var(--ink); stroke-width: 1.5; }
+.fuse__core text { font-size: 15px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+.fuse__more circle { fill: none; stroke: rgba(43,42,38,0.28); stroke-width: 1.5; stroke-dasharray: 3 6; }
+.fuse__more text { font-size: 13px; font-weight: 300; fill: var(--ink-soft); text-anchor: middle; }
+.fuse__cap { margin-top: 1rem; font-weight: 300; font-size: 0.9rem; color: var(--ink-faint); word-break: keep-all; }
+
+/* 멀리 있던 원들이 가운데로 모여 겹친다 */
+.fuse__c, .fuse__core, .fuse__more, .fuse__lb { transform-box: fill-box; transform-origin: center; }
+.fuse__c--art   { transform: translate(-70px, -30px); opacity: 0; }
+.fuse__c--code  { transform: translate(70px, -30px);  opacity: 0; }
+.fuse__c--block { transform: translate(0, 70px);      opacity: 0; }
+.fuse__lb, .fuse__core, .fuse__more { opacity: 0; }
+.fuse__core { transform: scale(0.4); }
+.fuse__fig.in .fuse__c { animation: fuseIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.fuse__fig.in .fuse__c--code  { animation-delay: 0.12s; }
+.fuse__fig.in .fuse__c--block { animation-delay: 0.24s; }
+.fuse__fig.in .fuse__lb { animation: fuseFade 0.6s ease-out 0.9s forwards; }
+.fuse__fig.in .fuse__core { animation: fusePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards; }
+.fuse__fig.in .fuse__more { animation: fuseFade 0.8s ease-out forwards; }
+.fuse__fig.in .fuse__more--1 { animation-delay: 1.9s; }
+.fuse__fig.in .fuse__more--2 { animation-delay: 2.1s; }
+.fuse__fig.in .fuse__more--3 { animation-delay: 2.3s; }
+@keyframes fuseIn { to { transform: none; opacity: 1; } }
+@keyframes fuseFade { to { opacity: 1; } }
+@keyframes fusePop { to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .fuse__c, .fuse__lb, .fuse__core, .fuse__more { transform: none; opacity: 1; animation: none !important; }
+}
