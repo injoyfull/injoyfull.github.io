@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sense Switch — which of your switches is off today? | in:JOYFULL</title>
+  <meta name="description" content="Babies are born with every sense switched on. Take a 1-minute quiz to find a switch that has been off this week, and get one small mission to turn it back on — in:JOYFULL, Hanam, Korea.">
+  <link rel="canonical" href="https://myinjoyfull.com/en/test/">
+  <link rel="alternate" hreflang="en" href="https://myinjoyfull.com/en/test/">
+  <link rel="alternate" hreflang="ko" href="https://myinjoyfull.com/test/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="in:JOYFULL">
+  <meta property="og:title" content="Sense Switch — which of your switches is off today?">
+  <meta property="og:description" content="Touch, sound, sight, rhythm and more. One minute, no right answers.">
+  <meta property="og:url" content="https://myinjoyfull.com/en/test/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://myinjoyfull.com/og.png?v=5">
+  <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/v6.css?v=93">
+  <link rel="stylesheet" href="/en/en.css?v=3">
+  <style>
+    :root { --touch: #F0913F; --sound: #21A79A; --sight: #E86F92; --rhythm: #96B62B; }
+    .quiz { max-width: 38rem; margin: 0 auto; padding: 8.5rem var(--pad) 4rem; text-align: center; }
+    .quiz h1 { margin-top: 1.1rem; font-weight: 400; font-size: clamp(1.7rem, 5.4vw, 2.6rem); line-height: 1.45; letter-spacing: 0.01em; }
+    .quiz h1 b { font-weight: 700; }
+    .quiz__sub { margin-top: 1.4rem; font-weight: 300; font-size: clamp(0.95rem, 2.4vw, 1.05rem); color: var(--ink-soft); line-height: 2; }
+    .quiz__sub b { font-weight: 400; color: var(--ink); }
+    .switches { margin: 2.4rem auto 0; display: flex; justify-content: center; gap: clamp(0.8rem, 3vw, 1.5rem); flex-wrap: wrap; }
+    .sw { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.14em; color: var(--ink-soft); }
+    .sw i { font-style: normal; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 14px rgba(43,42,38,0.16); transition: transform 0.4s var(--ease); }
+    .sw i svg { width: 27px; height: 27px; fill: #fff; }
+    .sw:hover i { transform: translateY(-4px) rotate(-5deg); }
+    .sw--touch i { background: var(--touch); } .sw--sound i { background: var(--sound); }
+    .sw--sight i { background: var(--sight); } .sw--rhythm i { background: var(--rhythm); }
+    .sw--more i { background: none; border: 2px dashed rgba(43,42,38,0.22); color: var(--ink-faint); font-size: 1.5rem; font-weight: 300; box-shadow: none; }
+    .sw--more { color: var(--ink-faint); }
+    .quiz__more { margin: 2rem auto 0; max-width: 27rem; font-weight: 300; font-size: 0.92rem; line-height: 1.95; color: var(--ink-soft); }
+    .quiz__more b { font-weight: 400; color: var(--ink); }
+    .quiz__start { margin-top: 2.6rem; }
+    .quiz__hint { margin-top: 1.3rem; font-weight: 300; font-size: 0.88rem; color: var(--ink-faint); }
+
+    .quiz__frame { margin-top: 0.7rem; font-weight: 300; font-size: 0.86rem; color: var(--ink-faint); }
+    .qcard { margin-top: 2.4rem; background: var(--card); border-radius: 4px; box-shadow: var(--shadow); padding: clamp(2rem, 5vw, 3rem); }
+    .qcard__no { font-weight: 400; font-size: 0.76rem; letter-spacing: 0.24em; color: var(--ink-faint); }
+    .qcard__q { margin-top: 1rem; font-weight: 400; font-size: clamp(1.1rem, 3.2vw, 1.35rem); line-height: 1.7; }
+    .qcard__btns { margin-top: 2rem; display: flex; justify-content: center; gap: 0.9rem; flex-wrap: wrap; }
+    .qbar { margin: 2rem auto 0; max-width: 15rem; height: 6px; border-radius: 999px; background: rgba(43,42,38,0.1); overflow: hidden; }
+    .qbar b { display: block; height: 100%; width: 0; background: var(--butter); transition: width 0.45s var(--ease); }
+
+    .rcard { margin-top: 2.4rem; background: var(--card); border-radius: 4px; box-shadow: var(--shadow); padding: clamp(2.2rem, 5vw, 3.2rem); }
+    .rcard__type { margin-top: 1.1rem; font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.4; letter-spacing: 0.01em; }
+    .rcard__desc { margin-top: 1.1rem; font-weight: 300; font-size: 0.98rem; color: var(--ink-soft); line-height: 2; }
+    .rcard__mission { margin-top: 1.9rem; text-align: left; background: var(--butter-soft); border-radius: 3px; padding: 1.3rem 1.5rem; }
+    .rcard__mission i { font-style: normal; font-weight: 400; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); }
+    .rcard__mission p { margin-top: 0.5rem; font-weight: 400; font-size: 1.02rem; line-height: 1.8; }
+    .rcard__share { margin-top: 1.6rem; }
+    .rcard__club { margin-top: 2rem; border-top: 1px solid rgba(43,42,38,0.1); padding-top: 1.9rem; }
+    .rcard__club p { font-weight: 300; font-size: 0.95rem; color: var(--ink-soft); line-height: 1.9; }
+    .rcard__club p b { font-weight: 400; color: var(--ink); }
+    .rcard__cta { margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .quiz__again { margin-top: 1.8rem; }
+    .quiz__again button { background: none; border: 0; cursor: pointer; font-family: var(--a2z); font-weight: 300; font-size: 0.9rem; color: var(--ink-soft); border-bottom: 1px solid var(--ink-faint); padding-bottom: 2px; }
+
+    /* Switch board — the result is today’s on/off, not a type */
+    .rcount { font-weight: 700; font-size: clamp(2.2rem, 7vw, 3.2rem); line-height: 1; letter-spacing: -0.01em; }
+    .rcount span { font-weight: 300; font-size: 1rem; letter-spacing: 0.04em; color: var(--ink-soft); margin-left: 0.5rem; }
+    .rcount em { font-style: normal; }
+    .board { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem; }
+    @media (max-width: 480px) { .board { grid-template-columns: repeat(3, 1fr); } }
+    .board span {
+      display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+      height: 46px; border-radius: 999px; font-size: 0.8rem; letter-spacing: 0.05em; font-weight: 400;
+      opacity: 0; transform: scale(0.85); animation: pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+    }
+    .board span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.85; }
+    .board .on { color: #FFFDF8; box-shadow: 0 3px 10px rgba(43,42,38,0.12); }
+    .board .off { border: 1.5px dashed rgba(43,42,38,0.28); color: var(--ink-faint); background: none; }
+    .board .off::before { background: none; border: 1.5px solid currentColor; }
+    @keyframes pop { to { opacity: 1; transform: scale(1); } }
+    .board__key { margin-top: 1rem; font-weight: 300; font-size: 0.84rem; line-height: 1.7; color: var(--ink-faint); }
+    .rpick { margin-top: 2.1rem; padding-top: 1.9rem; border-top: 1px solid rgba(43,42,38,0.1); }
+    .rpick .sw { margin-top: 1rem; }
+    .rcard__tag { display: inline-block; margin-top: 0.6rem; font-weight: 400; font-size: 0.74rem; letter-spacing: 0.08em; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--butter-soft); color: var(--ink-soft); }
+    .board span { letter-spacing: 0.01em; font-size: 0.76rem; }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#FAF5EA">
+</head>
+<body>
+
+  <header class="top">
+    <p class="top__brand"><a class="top__name" href="/en/"><img class="top__logo" src="/photos/logo-wide.webp" alt="in:JOYFULL arts center"><img class="top__mark" src="/mark.webp" alt="" aria-hidden="true"></a><span class="top__here">Sense Switch</span></p>
+    <nav class="top__links" aria-label="Menu">
+      <a class="top__link top__link--key" href="/en/programs/">Programs</a>
+      <a class="top__link" href="/en/about/">About</a>
+      <a class="top__link" href="/en/hanna/">Hanna</a>
+      <a class="top__link top__link--on" href="/en/test/" aria-current="page">Sense Switch</a>
+      <a class="top__link top__link--lang" href="/test/" lang="ko">한국어</a>
+      <a class="top__ask" href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">Message us</a>
+    </nav>
+  </header>
+
+  <main>
+  <section class="quiz">
+
+    <div id="intro">
+      <p class="eyebrow">1 minute · no answers</p>
+      <h1>Your sense switches —<br><b>how many are on?</b></h1>
+      <p class="quiz__sub">Babies are born with <b>every sense switched on</b>.<br>As we grow, we keep what we need and switch the rest off, one by one —<br>because what becomes familiar stops being noticed.</p>
+      <div class="switches" aria-hidden="true">
+        <span class="sw sw--touch"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.2" cy="9.2" r="1.9"/><circle cx="12" cy="7.3" r="2"/><circle cx="16.8" cy="9.2" r="1.9"/><path d="M12 11.2c3.1 0 5.4 1.9 5.4 4.4 0 2.3-2 3.9-5.4 3.9s-5.4-1.6-5.4-3.9c0-2.5 2.3-4.4 5.4-4.4Z"/></svg></i>Touch</span>
+        <span class="sw sw--sound"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.4" cy="12" r="2.4"/><path d="M12.4 8.5a5.3 5.3 0 0 1 0 7" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><path d="M16.3 5.6a9.6 9.6 0 0 1 0 12.8" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg></i>Sound</span>
+        <span class="sw sw--sight"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.6" cy="10.2" r="2.1"/><circle cx="15.4" cy="10.2" r="2.1"/><path d="M7.5 15c1.2 1.7 2.7 2.5 4.5 2.5s3.3-.8 4.5-2.5" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg></i>Sight</span>
+        <span class="sw sw--rhythm"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17.2Q8.4 8.6 12 12.4 15.6 16.2 19 7.4" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".38"/><circle cx="5" cy="17.2" r="2.45"/><circle cx="12" cy="12.4" r="2.45"/><circle cx="19" cy="7.4" r="2.45"/></svg></i>Rhythm</span>
+        <span class="sw sw--more"><i aria-hidden="true">+</i>Unnamed</span>
+      </div>
+      <p class="quiz__more">At school we learned five senses.<br>
+        <b>The body uses far more than that.</b><br>
+        Balance, body position, hunger, temperature, time — they’re all on this board, too.</p>
+      <p class="quiz__start"><button class="btn btn--pink" id="startBtn" type="button">Find my switches <i>→</i></button></p>
+      <p class="quiz__hint">This isn’t about putting you in a type — it’s about finding a switch that’s off today.</p>
+    </div>
+
+    <div id="quiz" hidden>
+      <p class="eyebrow">Think back over the past week</p>
+      <p class="quiz__frame">If it happened even once, choose “Yes.” It doesn’t have to match exactly.</p>
+      <div class="qcard">
+        <p class="qcard__no"><span id="qNo">1</span> / <span id="qTotal">12</span></p>
+        <p class="qcard__q" id="qText"></p>
+        <div class="qcard__btns">
+          <button class="btn btn--kakao" id="btnO" type="button">Yes, it happened</button>
+          <button class="btn btn--ink" id="btnX" type="button">No</button>
+        </div>
+      </div>
+      <div class="qbar" aria-hidden="true"><b id="qBar"></b></div>
+    </div>
+
+    <div id="result" hidden>
+      <p class="eyebrow">Today’s switch board</p>
+      <div class="rcard">
+        <p class="rcount"><b id="rOn">0</b><span>/ <em id="rAll">12</em> on</span></p>
+        <div class="board" id="rBoard" aria-label="Today’s switches"></div>
+        <p class="board__key">Filled ones are switched on. Empty ones have been resting this week.</p>
+
+        <div class="rpick">
+          <p class="eyebrow" id="rSticker">One switch to turn on today</p>
+          <span class="sw" id="rIcon" aria-hidden="true" style="display:inline-flex"><i></i></span>
+          <p class="rcard__type" id="rType"></p>
+          <p class="rcard__tag" id="rTag" hidden>A sense school never taught us</p>
+          <p class="rcard__desc" id="rDesc"></p>
+          <div class="rcard__mission">
+            <i>Switch it on · 1-minute mission</i>
+            <p id="rMission"></p>
+          </div>
+        </div>
+
+        <p class="rcard__share">
+          <button class="btn btn--ink btn--sm" id="shareBtn" type="button">Share my result <i>→</i></button>
+        </p>
+        <div class="rcard__club">
+          <p>If it’s hard to switch on alone, let’s do it together.<br><b>Creative Club ’90</b> — creative time for adults, with different materials and a different flavor every time.</p>
+          <p class="rcard__cta">
+            <a class="btn btn--ink" href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">Message us on Instagram <i>→</i></a>
+            <a class="quiet" href="/en/club/">About Creative Club ’90</a>
+          </p>
+        </div>
+      </div>
+      <p class="quiz__again"><button id="againBtn" type="button">Try again with different questions</button></p>
+    </div>
+
+    <noscript><p class="quiz__sub">The quiz needs JavaScript. Meanwhile, have a look at our <a class="quiet" href="/en/programs/">fall programs</a>.</p></noscript>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <img class="foot__logo" src="/photos/logo-wide.webp" alt="in:JOYFULL arts center" width="260">
+    <p class="foot__flag">We don’t show samples. The child decides what to make — and we wait.<span class="en" lang="ko">샘플을 보여주지 않습니다. 무엇을 만들지는 아이가 정하고, 우리는 기다립니다.</span></p>
+    <address>1F corner, 253 Deokpungbuk-ro, Hanam-si, Gyeonggi-do, Korea</address>
+    <p class="foot__links">
+      <a href="/en/">Home</a>
+      <a href="/en/programs/">Kids programs</a>
+      <a href="/en/club/">Creative Club ’90</a>
+      <a href="/en/about/">About</a>
+      <a href="/en/hanna/">Hanna</a>
+      <a href="/en/test/">Sense Switch quiz</a>
+      <a href="https://popfolio-two.vercel.app" rel="noopener" target="_blank">Children’s work · Popfolio</a>
+      <a href="https://blog.naver.com/injoyfull" rel="noopener" target="_blank">Blog (Korean)</a>
+      <a href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">Instagram</a>
+      <a href="https://pf.kakao.com/_VgyqG" rel="noopener" target="_blank">KakaoTalk</a>
+      <a href="/test/" lang="ko">한국어</a>
+    </p>
+    <p class="foot__copy"><img class="mark-xs" src="/mark.webp" alt="" aria-hidden="true"> ⓒ in:JOYFULL · CREA:D</p>
+  </footer>
+
+  <script>
+    (function () {
+      /* Nine senses — the ones school taught and the ones it didn’t, on the same board. */
+      var SENSES = {
+        touch:   { name: 'Touch',    color: '#F0913F', school: true,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.2" cy="9.2" r="1.9"/><circle cx="12" cy="7.3" r="2"/><circle cx="16.8" cy="9.2" r="1.9"/><path d="M12 11.2c3.1 0 5.4 1.9 5.4 4.4 0 2.3-2 3.9-5.4 3.9s-5.4-1.6-5.4-3.9c0-2.5 2.3-4.4 5.4-4.4Z"/></svg>',
+          desc: 'Our hands are busy all day, but they rarely get to feel. It’s not about naming things — it’s about saying the temperature, the weight, the texture.' },
+        sound:   { name: 'Sound',    color: '#21A79A', school: true,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.4" cy="12" r="2.4"/><path d="M12.4 8.5a5.3 5.3 0 0 1 0 7" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><path d="M16.3 5.6a9.6 9.6 0 0 1 0 12.8" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
+          desc: 'The world is making sound right now. John Cage’s 4′33″ isn’t silence — it’s a piece that makes you notice the sounds already happening.' },
+        sight:   { name: 'Sight',    color: '#E86F92', school: true,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.6" cy="10.2" r="2.1"/><circle cx="15.4" cy="10.2" r="2.1"/><path d="M7.5 15c1.2 1.7 2.7 2.5 4.5 2.5s3.3-.8 4.5-2.5" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>',
+          desc: 'The same road, the same room every day — what’s familiar stops being seen. Your eyes are open, but the seeing switch may be resting.' },
+        rhythm:  { name: 'Rhythm',    color: '#96B62B', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17.2Q8.4 8.6 12 12.4 15.6 16.2 19 7.4" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".38"/><circle cx="5" cy="17.2" r="2.45"/><circle cx="12" cy="12.4" r="2.45"/><circle cx="19" cy="7.4" r="2.45"/></svg>',
+          desc: 'Keeping up with other people’s pace, we forget our own beat. A day that doesn’t go to plan might even be a sign your senses are open.' },
+        balance: { name: 'Balance',    color: '#7C6BC9', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 15.5 19.5 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12.4" r="2.3"/><path d="M12 14.8v4.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>',
+          desc: 'We hold ourselves upright all day, yet rarely feel it. Stand on one foot and you’ll see how busily your body keeps you steady.' },
+        body:    { name: 'Body position', color: '#4F86D9', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17 12 9l6 5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><circle cx="6" cy="17" r="2.1"/><circle cx="12" cy="9" r="2.1"/><circle cx="18" cy="14" r="2.1"/></svg>',
+          desc: 'Even with your eyes closed, you know where your hand is. School never taught it, but your body uses this sense all the time.' },
+        inner:   { name: 'Inner body',      color: '#B85C8A', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12h4l2-5 3 10 2-5h6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          desc: 'Hunger, breath, heartbeat. Signals from inside the body are the first to switch off and the last to be noticed.' },
+        temp:    { name: 'Temperature',    color: '#5FA8C9', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.4 4.6a1.6 1.6 0 0 1 3.2 0v8.1a3.7 3.7 0 1 1-3.2 0z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="16.3" r="1.7"/></svg>',
+          desc: 'Between hot and cold there are hundreds of temperatures. Your fingertips know them — your mind just doesn’t ask.' },
+        time:    { name: 'Time',    color: '#8A8F9C', school: false,
+          icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.6" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 8v4.3l2.8 1.7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>',
+          desc: 'Count one minute without a clock and you’ll see the pace you’ve been living at lately.' }
+      };
+
+      /* Thirty switches. Each round: one per sense (nine), plus three more — twelve in all. */
+      var SWITCHES = [
+        { s: 'touch',  q: 'I held a drink and felt how warm or cold the cup was',           m: 'Pick one thing your hand is touching now — say its temperature, weight and texture.' },
+        { s: 'touch',  q: 'I touched something new just to see how it felt',               m: 'Find one thing you haven’t touched today and rest your fingertips on it for 3 seconds.' },
+        { s: 'touch',  q: 'I walked barefoot and noticed how the floor felt',                     m: 'Take off your socks and find the coldest floor in your home.' },
+        { s: 'touch',  q: 'I noticed the texture of my clothes or blanket with my fingertips',                   m: 'Rub the sleeve you’re wearing and put its texture into words.' },
+        { s: 'sound',  q: 'While walking, I listened to the sounds around me',       m: 'Next time you go out, walk the first 5 minutes without earphones.' },
+        { s: 'sound',  q: 'I noticed a small sound, like the fridge humming or a clock ticking', m: 'Be still for one minute — write down three sounds you hear.' },
+        { s: 'sound',  q: 'I stayed still and listened to one sound for a while (rain, birds, water boiling…)',                   m: 'Open a window and give one outside sound a name.' },
+        { s: 'sound',  q: 'Somewhere quiet, I heard my own breathing',             m: 'Close your eyes for ten breaths — listen only to the sound.' },
+        { s: 'sight',  q: 'I gazed out of a window at things moving outside',        m: 'Three minutes at a window. Find five things that move.' },
+        { s: 'sight',  q: 'I can remember the color of something someone wore this week',                   m: 'Remember the color of one thing someone you meet today is wearing.' },
+        { s: 'sight',  q: 'I noticed the sky was a different color from the day before',        m: 'Give today’s sky color a name — like “milky blue.”' },
+        { s: 'sight',  q: 'On a route I always take, I spotted something I’d never seen',      m: 'On a route you always take, find one thing you’ve never noticed.' },
+        { s: 'rhythm', q: 'Listening to music, my body started moving before I knew it',    m: 'Play one song you love — find the part where your body moves first.' },
+        { s: 'rhythm', q: 'I walked slowly, with nowhere I had to be',               m: 'Once today, walk half a beat slower on purpose.' },
+        { s: 'rhythm', q: 'Sitting down, I tapped out a beat with my toes or fingers',          m: 'Tap your toes along to whatever sound is around you now.' },
+        { s: 'balance', q: 'I stood on one foot to put on a sock',                 m: 'Stand on one foot when you put on your socks. Wobbling is normal.' },
+        { s: 'balance', q: 'I stood for a moment with my eyes closed',                 m: 'Stand with your eyes closed for 10 seconds. Feel how your body holds you up.' },
+        { s: 'balance', q: 'I stood somewhere moving without holding on (a bus, subway, boat…)', m: 'Next time you ride standing, let go of the handle for just 3 seconds.' },
+        { s: 'body',   q: 'I found something in a dark room without turning on the light',             m: 'Turn off the light and walk once around the room. Your body remembers the way.' },
+        { s: 'body',   q: 'I noticed tension somewhere in my body and let it go (shoulders, jaw, hands…)',       m: 'Shoulders, jaw, hands — where is the tension right now? Release just that spot.' },
+        { s: 'body',   q: 'When I stretched, I noticed where it pulled',      m: 'Stretch once and name the place that pulls the most.' },
+        { s: 'inner',  q: 'Before eating, I checked whether I was really hungry',          m: 'Before your next meal, ask: am I hungry, or is it habit?' },
+        { s: 'inner',  q: 'I noticed my heart beating faster',               m: 'Put two fingers on your wrist and count ten heartbeats.' },
+        { s: 'inner',  q: 'I noticed my breathing was shallow and took a deep breath',        m: 'Breathe all the way out now. The next breath will deepen on its own.' },
+        { s: 'temp',   q: 'I paused for a moment to feel the wind on me',                m: 'Open a window and notice where the breeze touches you first.' },
+        { s: 'temp',   q: 'I felt the water temperature change on my hands',        m: 'When you wash your hands, change the water temperature slowly. Where does “warm” begin?' },
+        { s: 'temp',   q: 'I felt the difference between the sunny side and the shade',     m: 'Step between sun and shade and find the edge where the temperature changes.' },
+        { s: 'time',   q: 'I guessed the time without looking at a clock',          m: 'What time is it? Guess first, then check the clock.' },
+        { s: 'time',   q: 'I stayed still doing nothing at all (even for a minute)',             m: 'Count one minute without a clock. How many seconds was it really?' },
+        { s: 'time',   q: 'A day felt unusually long, or unusually short', m: 'Before bed, write one line: did today feel long or short?' }
+      ];
+      var ROUND = 12;
+      var ALL_ON = {
+        name: 'Most of your switches are on', color: '#F2C94C',
+        icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.2 3.6c.6 4.2 2.1 5.8 6.3 6.4-4.2.6-5.7 2.2-6.3 6.4-.6-4.2-2.1-5.8-6.3-6.4 4.2-.6 5.7-2.2 6.3-6.4Z"/><circle cx="18" cy="17.4" r="1.9"/></svg>',
+        desc: 'You spent the week with your senses awake. Next, it’s time to make something of your own with them.',
+        m: 'Give one small happiness you collected today a name — like “window-sound happiness.”'
+      };
+
+      function shuffle(arr) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+        return a;
+      }
+      function buildQuestions() {
+        var bySense = {}, picked = [], rest = [];
+        shuffle(SWITCHES).forEach(function (sw) {
+          if (!bySense[sw.s]) { bySense[sw.s] = true; picked.push(sw); } else { rest.push(sw); }
+        });
+        picked = picked.concat(rest.slice(0, ROUND - picked.length));
+        return shuffle(picked);
+      }
+      var QUESTIONS = buildQuestions();
+      var idx = 0, answers = [], current = null;
+      var $ = function (id) { return document.getElementById(id); };
+      function show(step) {
+        $('intro').hidden = step !== 'intro';
+        $('quiz').hidden = step !== 'quiz';
+        $('result').hidden = step !== 'result';
+        window.scrollTo({ top: 0 });
+      }
+      function render() {
+        $('qNo').textContent = idx + 1;
+        $('qTotal').textContent = QUESTIONS.length;
+        $('qText').textContent = QUESTIONS[idx].q;
+        $('qBar').style.width = (idx / QUESTIONS.length * 100) + '%';
+      }
+      function answer(on) {
+        answers[idx] = on;
+        idx++;
+        if (idx < QUESTIONS.length) { render(); } else { finish(); }
+      }
+      function finish() {
+        var onCount = 0, off = [];
+        var board = $('rBoard'); board.innerHTML = '';
+        QUESTIONS.forEach(function (sw, i) {
+          var sense = SENSES[sw.s], on = !!answers[i];
+          if (on) { onCount++; } else { off.push(sw); }
+          var el = document.createElement('span');
+          el.className = on ? 'on' : 'off';
+          el.textContent = sense.name;
+          el.style.animationDelay = (i * 0.06) + 's';
+          if (on) { el.style.background = sense.color; }
+          board.appendChild(el);
+        });
+        $('rOn').textContent = onCount;
+        $('rAll').textContent = QUESTIONS.length;
+
+        var pick = off.length ? off[Math.floor(Math.random() * off.length)] : null;
+        var sense = pick ? SENSES[pick.s] : ALL_ON;
+        current = {
+          onCount: onCount, total: QUESTIONS.length,
+          name: pick ? sense.name + ' switch' : ALL_ON.name,
+          mission: pick ? pick.m : ALL_ON.m
+        };
+        $('rSticker').textContent = pick ? 'One switch to turn on today' : 'Today’s discovery';
+        $('rIcon').firstElementChild.innerHTML = sense.icon;
+        $('rIcon').firstElementChild.style.background = sense.color;
+        $('rType').textContent = current.name;
+        $('rType').style.color = pick ? sense.color : 'var(--ink)';
+        $('rTag').hidden = !(pick && !sense.school);
+        $('rDesc').textContent = sense.desc;
+        $('rMission').textContent = current.mission;
+        show('result');
+      }
+      $('startBtn').addEventListener('click', function () {
+        QUESTIONS = buildQuestions();
+        idx = 0; answers = []; render(); show('quiz');
+      });
+      $('btnO').addEventListener('click', function () { answer(true); });
+      $('btnX').addEventListener('click', function () { answer(false); });
+      $('againBtn').addEventListener('click', function () { QUESTIONS = buildQuestions(); show('intro'); });
+      $('shareBtn').addEventListener('click', function () {
+        if (!current) return;
+        var btn = $('shareBtn');
+        var text = 'My sense switches today: ' + current.onCount + ' of ' + current.total + ' are on.\nOne to switch on: ' + current.name + ' — ' + current.mission + '\n90 minutes with no right answers · in:JOYFULL';
+        var url = 'https://myinjoyfull.com/en/test/';
+        if (navigator.share) {
+          navigator.share({ title: 'Sense Switch', text: text, url: url }).catch(function () {});
+          return;
+        }
+        var full = text + '\n' + url;
+        var flash = function (msg) {
+          btn.innerHTML = msg;
+          setTimeout(function () { btn.innerHTML = 'Share my result <i>→</i>'; }, 2200);
+        };
+        var legacy = function () {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = full; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:-999px;opacity:0';
+            document.body.appendChild(ta); ta.select();
+            var ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            flash(ok ? 'Copied ✓' : 'Press and hold to copy');
+          } catch (e) { flash('Press and hold to copy'); }
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(full).then(function () { flash('Copied ✓'); }).catch(legacy);
+        } else { legacy(); }
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var top = document.querySelector('.top');
+      if (!top) return;
+      var onScroll = function () { top.classList.toggle('top--solid', window.scrollY > 40); };
+      onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+  <script>
+    /* Visit stats — Vercel Web Analytics. No cookies, no personal data. Live domain only. */
+    if (location.hostname === 'myinjoyfull.com' || location.hostname.endsWith('.vercel.app')) {
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js';
+      document.head.appendChild(s);
+    }
+  </script>
+</body>
+</html>

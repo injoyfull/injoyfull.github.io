@@ -34,3 +34,8 @@ body { word-break: normal; overflow-wrap: break-word; }
   .fuse__fig--en .fuse__mid text { font-size: 21px; }
   .fuse__fig--en .fuse__more text { font-size: 17px; }
 }
+.top__link[href="/en/test/"]::before, .foot__links a[href="/en/test/"]::before { background: #E86F92; }
+
+/* English nav has longer words — keep the contact button on one line */
+.top__ask { white-space: nowrap; }
+@media (max-width: 1000px) and (min-width: 621px) { .top__here { display: none; } }
