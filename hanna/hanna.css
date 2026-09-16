@@ -6,6 +6,7 @@
 .hhero h1 .en { display: block; margin-top: 0.35rem; font-size: 0.42em; font-weight: 300; letter-spacing: 0.08em; color: var(--ink-faint); }
 .hhero .lead { margin-top: 1.2rem; }
 .hhero__d { margin-top: 1.4rem; max-width: 34rem; font-weight: 300; font-size: 0.98rem; line-height: 2; color: var(--ink-soft); }
+.hhero__d + .hhero__d { margin-top: 0.9rem; }
 .hhero__art { position: relative; margin: 0; }
 .hhero__photo { width: 100%; max-width: 380px; height: auto; margin: 0 auto; display: block; }
 .hhero__ch { position: absolute; right: 4%; bottom: -4%; width: clamp(64px, 9vw, 104px); height: auto; transform: rotate(6deg); }
