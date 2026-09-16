@@ -74,3 +74,55 @@
 .path__more { margin-top: 1.6rem; }
 #career { scroll-margin-top: 6.5rem; }
 @media (max-width: 620px) { .path__brief li { grid-template-columns: 1fr; gap: 0.2rem; } #career { scroll-margin-top: 8.6rem; } }
+
+
+/* ── 90분의 여정 — 길이 그려지고 점이 찍힌다 ── */
+.j90 { margin-top: 2rem; }
+.j90__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.j90__base { fill: none; stroke: rgba(43,42,38,0.16); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 10; }
+.j90__ink { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1300; stroke-dashoffset: 1300; }
+.j90__dot { transform-box: fill-box; transform-origin: center; transform: scale(0); }
+.j90__walker { opacity: 0; transform: translateY(6px); }
+.j90.in .j90__ink { animation: j90draw 2.8s cubic-bezier(0.45, 0, 0.3, 1) 0.35s forwards; }
+.j90.in .j90__dot { animation: j90pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.j90.in .j90__dot--1 { animation-delay: 0.55s; }
+.j90.in .j90__dot--2 { animation-delay: 1.3s; }
+.j90.in .j90__dot--3 { animation-delay: 2.05s; }
+.j90.in .j90__dot--4 { animation-delay: 2.8s; }
+.j90.in .j90__walker { animation: j90walker 0.6s ease-out 3.2s forwards; }
+@keyframes j90draw { to { stroke-dashoffset: 0; } }
+@keyframes j90pop { to { transform: scale(1); } }
+@keyframes j90walker { to { opacity: 1; transform: translateY(0); } }
+
+.j90__steps { list-style: none; margin: 0.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 24px); }
+.j90__step { text-align: center; padding: 0 0.4rem; }
+.j90__pin { display: none; }
+.j90__step b { display: block; font-weight: 700; font-size: 1.06rem; }
+.j90__step i { display: block; margin-top: 0.15rem; font-style: normal; font-weight: 400; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--ink-faint); }
+.j90__step p { margin-top: 0.6rem; font-weight: 300; font-size: 0.9rem; line-height: 1.85; color: var(--ink-soft); word-break: keep-all; text-wrap: pretty; }
+.j90.in .j90__step { opacity: 0; animation: j90fade 0.6s ease-out forwards; }
+.j90.in .j90__step--1 { animation-delay: 0.7s; }
+.j90.in .j90__step--2 { animation-delay: 1.45s; }
+.j90.in .j90__step--3 { animation-delay: 2.2s; }
+.j90.in .j90__step--4 { animation-delay: 2.95s; }
+@keyframes j90fade { to { opacity: 1; } }
+
+/* 좁은 화면 — 세로 길 위에 점이 차례로 찍힌다 */
+@media (max-width: 640px) {
+  .j90__svg { display: none; }
+  .j90__steps { grid-template-columns: 1fr; gap: 0; position: relative; margin-top: 0.4rem; padding-left: 3.2rem; }
+  .j90__steps::before { content: ""; position: absolute; left: 1.05rem; top: 0.6rem; bottom: 0.6rem; border-left: 3px dotted rgba(43,42,38,0.2); }
+  .j90__step { position: relative; text-align: left; padding: 0.9rem 0 1.1rem; }
+  .j90__pin { display: block; position: absolute; left: -3.2rem; top: 0.95rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; box-shadow: inset 0 0 0 0.45rem var(--c); background: #FFF8EC; transform: scale(0); }
+  .j90__step--1 .j90__pin { --c: #E2603C; } .j90__step--2 .j90__pin { --c: #F2C94C; }
+  .j90__step--3 .j90__pin { --c: #4E9084; } .j90__step--4 .j90__pin { --c: #0066B3; }
+  .j90.in .j90__pin { animation: j90pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+  .j90.in .j90__step--1 .j90__pin { animation-delay: 0.3s; } .j90.in .j90__step--2 .j90__pin { animation-delay: 0.8s; }
+  .j90.in .j90__step--3 .j90__pin { animation-delay: 1.3s; } .j90.in .j90__step--4 .j90__pin { animation-delay: 1.8s; }
+  .j90.in .j90__step--1 { animation-delay: 0.35s; } .j90.in .j90__step--2 { animation-delay: 0.85s; }
+  .j90.in .j90__step--3 { animation-delay: 1.35s; } .j90.in .j90__step--4 { animation-delay: 1.85s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .j90__ink { stroke-dashoffset: 0; } .j90__dot, .j90__pin { transform: none; } .j90__walker { opacity: 1; transform: none; }
+  .j90.in .j90__step, .j90.in .j90__ink, .j90.in .j90__dot, .j90.in .j90__walker, .j90.in .j90__pin { animation: none; opacity: 1; }
+}
