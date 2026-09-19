@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """행복맛집 「오늘의 메뉴」 자동 추가
 
-네이버 블로그 RSS를 읽어, 「생각서랍」 카테고리에서 제목이 「… — ○○의 맛」으로 끝나는
+네이버 블로그 RSS를 읽어, 「행복맛집」(또는 예전 「생각서랍」) 카테고리에서 제목이 「… — ○○의 맛」으로 끝나는
 새 글을 menu/index.html 의 오늘의 메뉴 맨 위에 한 줄씩 넣는다.
 
 - 오늘의 메뉴 전체가 tools/blog-tastes.json 한 곳에서 나온다 (최신이 위).
@@ -19,7 +19,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MENU = os.path.join(ROOT, 'menu', 'index.html')
 STORE = os.path.join(ROOT, 'tools', 'blog-tastes.json')
 RSS = 'https://rss.blog.naver.com/injoyfull.xml'
-CATEGORY = '생각서랍'
+CATEGORIES = {'행복맛집', '생각서랍'}   # 행복맛집 카테고리가 생기면 거기 글도, 기존 생각서랍 글도 함께
 START, END = '<!-- auto:taste:start', '<!-- auto:taste:end -->'
 TITLE_RE = re.compile(r'^(?P<desc>.+?)\s*[—–-]\s*(?P<name>[^—–-]+의 맛)\s*$')
 
@@ -39,7 +39,7 @@ def parse(xml):
     for it in re.findall(r'<item>(.*?)</item>', xml, re.S):
         g = lambda tag: clean((re.search(rf'<{tag}>(.*?)</{tag}>', it, re.S) or [None, ''])[1])
         title, link, cat, date = g('title'), g('link'), g('category'), g('pubDate')
-        if cat != CATEGORY:
+        if cat not in CATEGORIES:
             continue
         m = TITLE_RE.match(title)
         if not m:
