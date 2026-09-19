@@ -273,3 +273,24 @@
 .pass span { font-weight: 400; color: var(--f-ink, #33291F); }
 .pass em { font-style: normal; font-weight: 300; font-size: 0.82rem; color: rgba(51,41,31,0.6); margin-left: 0.35rem; }
 #membership { scroll-margin-top: 6.5rem; }
+
+
+/* ── 월 카드 — 먼저 접힌 채로: 헤더 + 세션 이름 넷, 누르면 펼쳐진다 ── */
+.mon__fold > summary { list-style: none; cursor: pointer; }
+.mon__fold > summary::-webkit-details-marker { display: none; }
+.mon__peek { list-style: none; margin: 0; padding: 0.4rem clamp(1.4rem, 3.5vw, 2.2rem) 0; }
+.mon__peek li { display: grid; grid-template-columns: 4.2em 1fr auto; align-items: baseline; gap: 0.8rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(51,41,31,0.08); }
+.mon__peek span { font-weight: 400; font-size: 0.78rem; letter-spacing: 0.06em; color: rgba(51,41,31,0.5); }
+.mon__peek b { font-weight: 700; font-size: 1.02rem; }
+.mon__peek em { font-style: normal; font-weight: 300; font-size: 0.76rem; letter-spacing: 0.1em; color: rgba(51,41,31,0.5); }
+.mon__open { display: block; padding: 0.95rem clamp(1.4rem, 3.5vw, 2.2rem) 1.15rem; font-weight: 700; font-size: 0.86rem; color: var(--f-ink); }
+.mon__open::after { content: " ↓"; }
+.mon__open-b { display: none; }
+.mon__fold[open] .mon__peek { display: none; }
+.mon__fold[open] .mon__open { padding-top: 0.7rem; padding-bottom: 0.2rem; font-weight: 400; color: rgba(51,41,31,0.55); }
+.mon__fold[open] .mon__open::after { content: " ↑"; }
+.mon__fold[open] .mon__open-a { display: none; }
+.mon__fold[open] .mon__open-b { display: inline; }
+.mon__sum:hover .mon__open-a { text-decoration: underline; text-underline-offset: 4px; }
+.mon--oct .mon__open { color: var(--f-red); }
+.mon--sep .mon__open { color: #B7791F; }
