@@ -746,3 +746,34 @@ p, li, .host__d, .why p, .quiz__sub, .quiz__more, .steps__note, .meet__note, .wc
   .quiet { display: inline-block; padding: 0.45rem 0; }
   .foot__links a { padding: 0.35rem 0.1rem; }
 }
+
+/* ── 가독성 최종 점검 (2026-09-20) — 휴대폰 기준 ── */
+/* 흐린 글씨: 회색 두 단계를 한 톤씩 진하게. 장식선은 그대로 은은하게 */
+:root { --ink-soft: rgba(43, 42, 38, 0.68); --ink-faint: rgba(43, 42, 38, 0.42); }
+/* 글자로 쓰이던 가장 옅은 회색은 읽히는 회색으로 */
+body .host__hook, body .wcard__meta, body .fuse__cap, body .path__cred, body .quiz__hint,
+body .board__key, body .sw--more, body .mrow--soon .mrow__name, body .mrow--soon .mrow__desc,
+body .meet__note, body .foot__copy { color: var(--ink-soft); }
+/* 버튼: 한 단계 작게, 줄이 바뀌어도 답답하지 않게 */
+.btn { padding: 0.82rem 1.6rem; font-size: 0.94rem; line-height: 1.35; }
+.btn--sm { padding: 0.62rem 1.2rem; font-size: 0.88rem; }
+.btn--pink { background: #D9587F; }
+.btn--pink:hover { background: #C84B72; }
+/* 행복맛집 한 줄 메뉴 — 설명이 길어도 화면 밖으로 밀리지 않게 */
+.mrow__desc { min-width: 0; }
+/* 레터 반 카드 — 두 줄이 되면 숨 쉴 간격 */
+.cls span, .cls i { line-height: 1.5; }
+
+@media (max-width: 620px) {
+  .btn { padding: 0.7rem 1.3rem; font-size: 0.9rem; }
+  .btn--sm { padding: 0.56rem 1.05rem; font-size: 0.85rem; }
+  .hero__cta, .meet__cta, .host__cta { gap: 0.6rem; }
+  /* 작은 한글 라벨은 13px 안팎으로 */
+  .eyebrow { font-size: 0.76rem; letter-spacing: 0.2em; }
+  .wcard__who, .sticker, .drop i, .jstep i { font-size: 0.8rem; letter-spacing: 0.08em; }
+  .mrow__desc { font-size: 0.86rem; }
+}
+/* 코랄 바탕 흰 글씨 버튼·스티커 — 조금 더 깊은 코랄로 */
+.btn--coral, .sticker--coral { background: #D4532F; }
+/* 제목 옆 영어 부제 — 장식이지만 읽힐 만큼 */
+.title .en, h2 .en, h1 .en { color: rgba(43, 42, 38, 0.52); }

@@ -19,8 +19,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/fonts/a2z-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/a2z-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/v6.css?v=93">
-  <link rel="stylesheet" href="/fall/fall.css?v=25">
+  <link rel="stylesheet" href="/v6.css?v=95">
+  <link rel="stylesheet" href="/fall/fall.css?v=27">
   <link rel="stylesheet" href="/en/en.css?v=3">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
@@ -203,6 +203,8 @@
     </details>
     </article>
     <article class="mon mon--nov" id="m11">
+    <details class="mon__fold">
+      <summary class="mon__sum">
       <header class="mon__head">
         <img class="mon__icon" src="/slides/slide6.webp" alt="" aria-hidden="true">
         <div>
@@ -211,6 +213,9 @@
           <p class="mon__tag">The month that closes the season · four sessions in preparation</p>
         </div>
       </header>
+          <ol class="mon__peek mon__peek--soon"><li><span>Sessions 1–4</span><b>Four sessions in preparation</b><em>Announced mid-October</em></li></ol>
+          <span class="mon__open"><span class="mon__open-a">Get updates</span><span class="mon__open-b">Close</span></span>
+      </summary>
       <ul class="mon__list">
           <li class="ses ses--soon">
             <div>
@@ -221,6 +226,7 @@
             <a class="btn btn--kakao btn--sm" href="https://www.instagram.com/in.joyfull" rel="noopener" target="_blank">Follow for updates <i>→</i></a>
           </li>
       </ul>
+    </details>
     </article>
   </section>
 
@@ -367,7 +373,7 @@
       function openFromHash() {
         var id = location.hash.slice(1); if (!id) return;
         var el = document.getElementById(id); if (!el) return;
-        var d = el.querySelector('details.mon__fold') || el.closest('details.mon__fold');
+        var d = el.matches('article.mon') ? el.querySelector('details.mon__fold') : null;
         if (d && !d.open) { d.open = true; el.scrollIntoView(); }
       }
       openFromHash(); window.addEventListener('hashchange', openFromHash);

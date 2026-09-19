@@ -297,3 +297,31 @@
 
 /* 날짜 옆 보조 표시 — 야외 회차 */
 .ses__aux { display: inline-block; margin-left: 0.4rem; padding: 0.08rem 0.55rem; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; color: var(--f-red); background: rgba(214,62,46,0.1); vertical-align: 0.05em; }
+
+/* ── 가독성 최종 점검 — 옅은 글씨 진하게, 작은 글씨 키우기 ── */
+.ses__no, .ses__t em, .ses__w, .mons__note, .mon__peek span, .mon__peek em, .ses__soonnote, .mon__note,
+.st__list span, .more__meta, .pass em { color: rgba(51,41,31,0.7); }
+.fhero .eyebrow { color: #C24E1C; }
+@media (max-width: 620px) {
+  .ses__no, .mon__peek span { font-size: 0.8rem; }
+  .ses__t em, .mon__peek em { font-size: 0.78rem; letter-spacing: 0.04em; }
+  .ses__w, .ses__with, .mons__note, .mon__note, .ses__soonnote { font-size: 0.84rem; }
+  .ses__d { font-size: 0.92rem; }
+  .mon__peek li { grid-template-columns: 3.6em 1fr auto; gap: 0.6rem; }
+}
+
+/* 월 카드 미끄럼틀 — 가로로 긴 그림도 작아 보이지 않게 일정한 틀 안에 */
+.mon__icon { width: clamp(112px, 15vw, 150px); height: clamp(78px, 10vw, 104px); object-fit: contain; }
+@media (max-width: 620px) {
+  .mon__head { gap: 0.9rem; padding: 1.2rem 1.1rem; }
+  .mon__icon { width: 104px; height: 76px; }
+  .mon__no { font-size: 0.72rem; letter-spacing: 0.16em; }
+  .ses__aux { font-size: 0.76rem; }
+  .palette__row span { font-size: 0.76rem; }
+}
+/* 색 바탕 위 흰 글씨 — 대비를 한 단계 올린다 */
+.oneday { background: #D2531F; }
+.oneday__d, .oneday__facts li { color: #FFF4E9; }
+.mon--nov .mon__head, .fhero__flag { background: #557F2F; }
+.mon--nov .btn--kakao { background: #557F2F; }
+.fhero h1 b { color: #D4561E; }

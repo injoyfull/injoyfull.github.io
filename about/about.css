@@ -198,3 +198,4 @@
 @media (prefers-reduced-motion: reduce) {
   .dr__open, .dr__it { transform: none; opacity: 1; animation: none !important; }
 }
+.j90__step i { color: rgba(43, 42, 38, 0.55); }

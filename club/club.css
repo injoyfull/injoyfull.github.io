@@ -92,3 +92,10 @@
 .curri__list li::before { content: ""; position: absolute; left: 0; top: 0.78em; width: 6px; height: 6px; border-radius: 50%; background: var(--c-teal, #4E9084); }
 .curri__list b { font-weight: 400; color: var(--f-ink, #33291F); }
 .curri__note { margin-top: 0.9rem; font-weight: 300; font-size: 0.86rem; color: rgba(51,41,31,0.55); }
+
+/* ── 가독성 최종 점검 ── */
+@media (max-width: 620px) {
+  .curri__lb, .trial__lb, .cmon__tag { font-size: 0.82rem; }
+}
+.chero .eyebrow, .why .eyebrow, .trial__lb { color: #3A6F65; }
+.cmon__tag, .curri__lb, .curri__note, .trial__cta span { color: rgba(51,41,31,0.72); }
