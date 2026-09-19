@@ -294,3 +294,6 @@
 .mon__sum:hover .mon__open-a { text-decoration: underline; text-underline-offset: 4px; }
 .mon--oct .mon__open { color: var(--f-red); }
 .mon--sep .mon__open { color: #B7791F; }
+
+/* 날짜 옆 보조 표시 — 야외 회차 */
+.ses__aux { display: inline-block; margin-left: 0.4rem; padding: 0.08rem 0.55rem; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; color: var(--f-red); background: rgba(214,62,46,0.1); vertical-align: 0.05em; }
