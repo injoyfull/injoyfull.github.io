@@ -199,3 +199,15 @@
   .dr__open, .dr__it { transform: none; opacity: 1; animation: none !important; }
 }
 .j90__step i { color: rgba(43, 42, 38, 0.55); }
+
+/* ── 맛있게 드세요 (행복맛집 서사) ── */
+.enjoy { background: var(--butter-soft, #FBEFC8); padding: clamp(4rem, 11vh, 7rem) var(--pad); text-align: center; }
+.enjoy .eyebrow { color: #C0501F; }
+.enjoy h2 { margin-top: 0.9rem; font-weight: 400; font-size: clamp(1.35rem, 4vw, 2.3rem); line-height: 1.6; }
+.enjoy h2 b { font-weight: 700; color: #C0501F; }
+.enjoy__body { margin: 2rem auto 0; max-width: 34rem; }
+.enjoy__body p { font-weight: 300; font-size: clamp(0.98rem, 2.4vw, 1.08rem); line-height: 2; color: var(--ink-soft); }
+.enjoy__body p + p { margin-top: 1.2rem; }
+.enjoy__tastes { color: var(--ink) !important; font-weight: 400 !important; }
+.enjoy__sign { color: var(--ink) !important; font-weight: 700 !important; }
+.enjoy .btn { margin-top: 2.2rem; }

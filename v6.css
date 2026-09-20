@@ -777,3 +777,9 @@ body .meet__note, body .foot__copy { color: var(--ink-soft); }
 .btn--coral, .sticker--coral { background: #D4532F; }
 /* 제목 옆 영어 부제 — 장식이지만 읽힐 만큼 */
 .title .en, h2 .en, h1 .en { color: rgba(43, 42, 38, 0.52); }
+
+/* 푸터 문패 — 행복맛집 한 줄 */
+.foot__tag { margin: 1.2rem 0 0.5rem; color: #C0501F; font-weight: 700; font-size: 0.94rem; letter-spacing: 0.02em; }
+.tastebanner { margin: 2.2rem auto 0; padding: 1.6rem 1.4rem; max-width: 36rem; border-radius: 16px; background: #FBEFC8; text-align: center; }
+.tastebanner__q { font-weight: 700; font-size: 1.08rem; }
+.tastebanner__d { margin: 0.5rem 0 1.1rem; font-weight: 300; font-size: 0.94rem; line-height: 1.85; color: var(--ink-soft); }
