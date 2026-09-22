@@ -325,3 +325,11 @@
 .mon--nov .mon__head, .fhero__flag { background: #557F2F; }
 .mon--nov .btn--kakao { background: #557F2F; }
 .fhero h1 b { color: #D4561E; }
+
+/* 모바일 점검 2 */
+.oneday__cta .btn { color: #B8481A; }
+.palette__row span { font-size: 0.74rem; color: rgba(51,41,31,0.66); }
+@media (max-width: 620px) {
+  .mon__no { font-size: 0.78rem; }
+  .mon__peek em { font-size: 0.84rem; }
+}

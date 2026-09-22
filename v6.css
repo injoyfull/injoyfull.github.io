@@ -816,3 +816,14 @@ body .meet__note, body .foot__copy { color: var(--ink-soft); }
   .foot__col:last-child .foot__links { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.1rem; }
 }
 .drop__aux { display: inline-block; margin-left: 0.3rem; padding: 0.05rem 0.5rem; border-radius: 999px; background: #E4EEDC; color: #3F6A24; font-style: normal; font-weight: 400; font-size: 0.8em; white-space: nowrap; }
+
+/* 모바일 점검 2 (2026-09-22) — 좁은 폰에서 메뉴 한 줄 · 작은 한글 라벨 13px 이상 */
+@media (max-width: 400px) {
+  .top__links { gap: 0.72rem; }
+  .top__link { font-size: 0.86rem; }
+}
+@media (max-width: 620px) {
+  .wcard__who, .drop i, .hero__tag, .member-key a, .foot__h { font-size: 0.82rem; }
+  .drop__aux, .ses__aux { font-size: 0.8rem; }
+  .switches .sw { font-size: 0.82rem; letter-spacing: 0.08em; }
+}
