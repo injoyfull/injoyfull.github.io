@@ -784,3 +784,34 @@ body .meet__note, body .foot__copy { color: var(--ink-soft); }
 .tastebanner__q { font-weight: 700; font-size: 1.08rem; }
 .tastebanner__d { margin: 0.5rem 0 1.1rem; font-weight: 300; font-size: 0.94rem; line-height: 1.85; color: var(--ink-soft); }
 .host__pre { display: block; margin-bottom: 0.2rem; font-size: 0.72em; color: #C0501F; font-weight: 700; }
+
+/* 멤버 레터 열쇠 — 홈 히어로 · 프로그램 */
+.member-key { margin-top: 1rem; }
+.member-key a { display: inline-block; font-weight: 400; font-size: 0.9rem; color: var(--ink-soft); border-bottom: 1px dashed rgba(43,42,38,0.35); padding-bottom: 2px; transition: color .3s; }
+.member-key a b { color: #C0501F; font-weight: 700; }
+.member-key a:hover { color: var(--ink); }
+.plan__btns { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.2rem; }
+.plan__btns .btn { margin-top: 0; }
+/* 레터 — 손님 안내 · 행복맛집 초대 */
+.lt__guest { margin-top: 2rem; padding: 1.3rem 1.3rem 1.4rem; border-radius: 14px; background: var(--butter-soft); }
+.lt__guest p { font-weight: 300; font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft); }
+.lt__guest b { color: var(--ink); font-weight: 700; }
+.lt__guestlinks { margin-top: 0.9rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.lt__invite { display: block; margin-top: 2.4rem; padding: 1.5rem 1.4rem; border-radius: 16px; background: var(--butter-soft); transition: transform .3s; }
+.lt__invite:hover { transform: translateY(-2px); }
+.lt__invite span { display: block; font-weight: 300; font-size: 0.92rem; line-height: 1.8; color: var(--ink-soft); }
+.lt__invite .lt__inviteq { font-size: 0.84rem; }
+.lt__invite b { display: block; margin: 0.2rem 0 0.4rem; font-size: 1.12rem; font-weight: 700; color: #C0501F; }
+
+/* 푸터 — 카테고리별 링크 */
+.foot__cols { margin: 2rem auto 0; max-width: 46rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; text-align: left; }
+.foot__h { font-weight: 700; font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ink); padding-bottom: 0.55rem; border-bottom: 1px solid rgba(43,42,38,0.14); }
+.foot__col .foot__links { margin-top: 0.8rem; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0.6rem; }
+.foot__col .foot__links a { font-size: 0.88rem; white-space: normal; }
+.foot__lang { margin-top: 1.8rem; }
+.foot__lang a { font-weight: 400; font-size: 0.86rem; border-bottom: 1px solid rgba(43,42,38,0.3); }
+@media (max-width: 620px) {
+  .foot__cols { grid-template-columns: 1fr 1fr; gap: 1.4rem 1.2rem; }
+  .foot__col:last-child { grid-column: 1 / -1; }
+  .foot__col:last-child .foot__links { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.1rem; }
+}
