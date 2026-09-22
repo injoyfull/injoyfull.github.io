@@ -815,3 +815,4 @@ body .meet__note, body .foot__copy { color: var(--ink-soft); }
   .foot__col:last-child { grid-column: 1 / -1; }
   .foot__col:last-child .foot__links { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.1rem; }
 }
+.drop__aux { display: inline-block; margin-left: 0.3rem; padding: 0.05rem 0.5rem; border-radius: 999px; background: #E4EEDC; color: #3F6A24; font-style: normal; font-weight: 400; font-size: 0.8em; white-space: nowrap; }
