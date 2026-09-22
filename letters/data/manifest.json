@@ -5,12 +5,12 @@
    "name": "키즈팝 목요반",
    "season": "2026 F/W",
    "kdf": {
-    "salt": "zAMk4N6ToZZPNvqdT+f3Fg==",
+    "salt": "M2aOgoKrKYrBlz+TnOg7zg==",
     "iter": 600000
    },
    "check": {
-    "iv": "IZNKhSNXuKrU6a6+",
-    "ct": "2s0x1CKrmQ9APoqss1+NQlhMoyoqOuVm+jw="
+    "iv": "fdRw5e9SM/rIjW4B",
+    "ct": "T8VH5rDv3SfUug+14u0iA5Gf7ng1O4qiefw="
    },
    "letters": [
     {
@@ -36,6 +36,12 @@
      "title": "가을을 디자인하다 두 번째, 한복",
      "date": "2026.09.10",
      "file": "kids-thu-04.json"
+    },
+    {
+     "id": "kids-thu-05",
+     "title": "가을을 디자인하다 세 번째, 토끼",
+     "date": "2026.09.20",
+     "file": "kids-thu-05.json"
     }
    ]
   },
@@ -44,12 +50,12 @@
    "name": "키즈팝 화요반",
    "season": "2026 F/W",
    "kdf": {
-    "salt": "ZrdopCQTaAXvEfVKMFGrWA==",
+    "salt": "F3y37wzpOZPp/H5qRyv5MQ==",
     "iter": 600000
    },
    "check": {
-    "iv": "btQkqitBVQxuQv6G",
-    "ct": "324NxAB2kIIjXTATZ8X/Mc1SAugambydt5s="
+    "iv": "twa8vEKq4Yyx30g5",
+    "ct": "FfwKZGJW3XMSbvkS3Tplm7NBW0unLme8lwc="
    },
    "letters": [
     {
@@ -63,6 +69,12 @@
      "title": "가을을 디자인하다 두 번째, 한복",
      "date": "2026.09.08",
      "file": "kids-tue-02.json"
+    },
+    {
+     "id": "kids-tue-03",
+     "title": "가을을 디자인하다 세 번째, 토끼",
+     "date": "2026.09.20",
+     "file": "kids-tue-03.json"
     }
    ]
   }
