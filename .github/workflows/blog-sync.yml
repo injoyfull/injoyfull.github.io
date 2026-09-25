@@ -1,0 +1,45 @@
+# 행복맛집 「오늘의 메뉴」 — 네이버 블로그 새 글(생각서랍 · "… — ○○의 맛")을 자동으로 올린다.
+# 하루 네 번(한국 시간 9시·13시·19시·23시) 블로그를 확인하고, 새 맛이 있으면 커밋하고 사이트를 다시 배포한다.
+# 바로 돌리고 싶으면 GitHub 저장소 → Actions → blog-sync → Run workflow.
+name: blog-sync
+
+on:
+  schedule:
+    - cron: "0 0,4,10,14 * * *"   # UTC 기준 = 한국 9·13·19·23시
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: blog-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 블로그 확인
+        id: sync
+        run: |
+          out=$(python3 tools/sync-blog.py)
+          echo "$out"
+          if echo "$out" | grep -q '^changed$'; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: 커밋하고 올리기
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "injoyfull-bot"
+          git config user.email "injoyfull-bot@users.noreply.github.com"
+          git add menu/index.html tools/blog-tastes.json
+          git commit -m "행복맛집 — 블로그 새 맛 자동 추가"
+          git push
+
+      - name: 사이트 다시 배포
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
