@@ -76,3 +76,29 @@
 .path__col span { font-size: 0.82rem; line-height: 1.7; }
 @media (max-width: 900px) { .tools__row { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 420px) { .tools__row { grid-template-columns: 1fr; } }
+
+/* 서랍장 — 카드 대신 진짜 서랍처럼: 나무 틀 · 이름표 홀더 · 손잡이 · 살짝 열린 서랍 속 */
+.tool, .tool__knob { all: unset; }
+.cabinet { margin-top: 1.4rem; padding: 14px; gap: 14px; border-radius: 14px;
+  background: #CFAE82; box-shadow: inset 0 2px 0 rgba(255,255,255,0.35), inset 0 -4px 0 rgba(0,0,0,0.12), 0 14px 28px rgba(43,42,38,0.12); }
+.drawer { --d: #FBE3D6; display: flex; flex-direction: column; }
+.drawer:nth-child(2) { --d: #DCE8F4; } .drawer:nth-child(3) { --d: #F8DDE6; } .drawer:nth-child(4) { --d: #FBF0C8; }
+.drawer__front { position: relative; z-index: 1; background: var(--d); border-radius: 6px; padding: 1.1rem 0.8rem 1rem; text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(43,42,38,0.08), inset 0 -6px 0 rgba(43,42,38,0.08), 0 4px 0 rgba(43,42,38,0.14); }
+.drawer__label { display: inline-block; max-width: 100%; padding: 0.35rem 0.8rem; border: 2px solid #A88758; border-radius: 3px; background: #FFFDF8;
+  font-weight: 700; font-size: 0.92rem; line-height: 1.4; color: var(--ink); box-shadow: inset 0 1px 2px rgba(43,42,38,0.12); word-break: keep-all; }
+.drawer__label em { display: block; font-style: normal; font-weight: 400; font-size: 0.66rem; letter-spacing: 0.16em; color: var(--ink-faint); }
+.drawer__pull { display: block; width: 58px; height: 14px; margin: 0.8rem auto 0; border: 4px solid #8C6D45; border-top: 0; border-radius: 0 0 16px 16px; }
+.drawer__tray { margin: 0 8px; padding: 1.1rem 1rem 0.9rem; background: #FFFDF8; border-radius: 0 0 6px 6px;
+  box-shadow: inset 0 8px 10px -8px rgba(43,42,38,0.35), inset 0 0 0 1px rgba(43,42,38,0.08); flex: 1; }
+.drawer__tray p { font-weight: 300; font-size: 0.84rem; line-height: 1.7; color: var(--ink-soft); word-break: keep-all; }
+.drawer__tray small { display: block; margin-top: 0.6rem; font-size: 0.74rem; line-height: 1.6; color: var(--ink-faint); word-break: keep-all; }
+@media (hover: hover) {
+  .drawer__tray { transition: transform 0.35s var(--ease); transform-origin: top; }
+  .drawer:hover .drawer__front { transform: translateY(2px); }
+}
+
+/* 마지막 한마디 — 한나가 말하듯, 손글씨로 (그리운X국한박 사랑스러운 · 원본 파일 그대로 사용) */
+@font-face { font-family: "Griun Sarang"; src: url(/fonts/griun-sarang.ttf) format("truetype"); font-display: swap; }
+.meet blockquote { font-family: "Griun Sarang", var(--a2z), sans-serif; font-weight: 400; font-size: clamp(1.2rem, 3vw, 1.65rem); line-height: 1.75; letter-spacing: 0; max-width: 30rem; }
+.meet blockquote cite { font-family: var(--a2z); }
