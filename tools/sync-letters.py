@@ -95,7 +95,7 @@ PHOTO_EXT = ('.jpg', '.jpeg', '.png', '.heic', '.heif', '.webp')
 
 def token_of(name):
     """「2609_1차」 같은 회차 표시 — 레터 파일 이름과 사진 폴더 이름을 잇는 열쇠."""
-    m = re.search(r'(\d{4})_(\d+)\s*차', unicodedata.normalize('NFC', name))
+    m = re.search(r'(\d{4})\D{0,3}?(\d+)\s*차', unicodedata.normalize('NFC', name))   # 2609_1차 · 2609월/1차 · 2609/1차
     return f'{m.group(1)}_{int(m.group(2))}차' if m else None
 
 
@@ -104,10 +104,16 @@ def photo_dir(letter_path):
     base = os.path.join(os.path.dirname(letter_path), '사진')
     if not tok or not os.path.isdir(base):
         return None
-    for d in sorted(os.listdir(base)):
+    for d in sorted(os.listdir(base)):                      # 「사진/2609_1차」
         full = os.path.join(base, d)
-        if os.path.isdir(full) and token_of(d) == tok:
+        if not os.path.isdir(full):
+            continue
+        if token_of(d) == tok:
             return full
+        for sub in sorted(os.listdir(full)):                # 「사진/2609월/1차」 — 월로 묶어도 된다
+            fs = os.path.join(full, sub)
+            if os.path.isdir(fs) and token_of(d + '/' + sub) == tok:
+                return fs
     return None
 
 
