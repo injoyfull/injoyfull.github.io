@@ -42,3 +42,17 @@
 
 /* 마무리 인용 — 긴 문장이라 한 단계 작게 */
 .meet blockquote { font-size: clamp(1.25rem, 3.4vw, 2rem); line-height: 1.6; max-width: 36rem; margin: 0 auto; }
+
+/* 걸어온 길 — 사진 둘레로 글이 흐르게 (2026-09-28) */
+.hhero__in { display: block; max-width: 54rem; margin: 0 auto; }
+.hhero__txt::after { content: ""; display: block; clear: both; }
+.hhero__art { float: right; width: clamp(260px, 40%, 400px); margin: 0.4rem 0 0 0;
+  shape-margin: 1.4rem;
+  /* 사진 윤곽(투명 배경)을 따라 — photos/hanna-cut.webp 의 알파에서 뽑은 좌표 */
+  shape-outside: polygon(100% 0%, 25% 0%, 25% 5%, 22% 5%, 22% 10%, 20% 10%, 20% 15%, 19% 15%, 19% 20%, 6% 20%, 6% 25%, 0% 25%, 0% 35%, 2% 35%, 2% 44%, 3% 44%, 3% 49%, 4% 49%, 4% 54%, 6% 54%, 6% 59%, 11% 59%, 11% 64%, 17% 64%, 17% 69%, 20% 69%, 20% 89%, 13% 89%, 13% 94%, 10% 94%, 10% 100%, 100% 100%); }
+.hhero__photo { max-width: none; width: 100%; }
+.hhero__d { max-width: none; text-align: justify; }
+@media (max-width: 820px) {
+  .hhero__art { float: none; width: min(260px, 72%); margin: 1.6rem auto 0.4rem; shape-outside: none; }
+  .hhero__d { text-align: left; }
+}
