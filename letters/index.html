@@ -68,6 +68,30 @@
     .viewer__bar button { background: var(--paper); color: var(--ink); border: 0; border-radius: 999px; padding: 0.5rem 1.1rem; font-family: var(--a2z); font-size: 0.88rem; cursor: pointer; }
     .viewer iframe { flex: 1; width: 100%; border: 0; background: #fff; }
     .viewer__wait { position: absolute; left: 0; right: 0; top: 50%; text-align: center; color: var(--paper); font-weight: 300; font-size: 0.95rem; }
+    /* 사진 앨범 */
+    .list li { display: flex; gap: 8px; }
+    .list li > button:first-child { flex: 1; }
+    .list .ph-btn { flex: 0 0 auto; width: auto; align-items: center; gap: 0.35rem; padding: 0 1.1rem; font-size: 0.86rem; font-weight: 400; color: var(--ink); background: var(--butter-soft); white-space: nowrap; }
+    .viewer__acts { display: flex; gap: 0.5rem; }
+    .viewer__bar button.is-soft { background: var(--butter); }
+    .album { flex: 1; overflow-y: auto; background: var(--paper); padding: 1rem clamp(10px, 3vw, 24px) 5.5rem; }
+    .album__hint { max-width: 60rem; margin: 0 auto 0.9rem; font-weight: 300; font-size: 0.88rem; line-height: 1.8; color: var(--ink-soft); }
+    .album__grid { max-width: 60rem; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+    .album__grid button { position: relative; aspect-ratio: 1; border: 0; padding: 0; border-radius: 6px; overflow: hidden; background: #ECE4D4; cursor: zoom-in; }
+    .album__grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .album__all { position: fixed; left: 50%; bottom: 1.2rem; transform: translateX(-50%); z-index: 3; box-shadow: 0 8px 22px rgba(43,42,38,0.25); }
+    .zoom { position: fixed; inset: 0; z-index: 120; background: rgba(20,19,17,0.94); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 1rem; }
+    .zoom img { max-width: 100%; max-height: calc(100vh - 7rem); border-radius: 4px; }
+    .zoom__acts { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+    .zoom__acts button, .zoom__acts a { background: var(--paper); color: var(--ink); border: 0; border-radius: 999px; padding: 0.6rem 1.2rem; font-family: var(--a2z); font-size: 0.9rem; cursor: pointer; }
+    .viewer__bar { background: #2B2A26; }
+    @media (max-width: 480px) {
+      .album__grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+      .list li { flex-direction: column; gap: 6px; }
+      .list .ph-btn { justify-content: center; padding: 0.75rem 1rem; }
+      .viewer__bar b { font-size: 0.82rem; }
+      .viewer__bar button { padding: 0.45rem 0.8rem; font-size: 0.82rem; }
+    }
     [hidden] { display: none !important; }
   </style>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -95,7 +119,7 @@
     <div class="lt__head">
       <p class="eyebrow">in:JOYFULL Letter</p>
       <h1>인조이풀 레터</h1>
-      <p class="lt__note">그날 무엇을 만들었는지보다 <b>무엇이 일어났는지</b>를 적어 보내는 편지예요.<br>수업이 끝나면 반별로 한 통씩 올라갑니다.</p>
+      <p class="lt__note">그날 무엇을 만들었는지보다 <b>무엇이 일어났는지</b>를 적어 보내는 편지예요.<br>회차가 끝나면 반별로 한 통씩, <b>그날 찍은 사진</b>과 함께 올라갑니다.</p>
     </div>
 
     <div id="pick">
@@ -138,10 +162,29 @@
   <div class="viewer" id="viewer" hidden>
     <div class="viewer__bar">
       <b id="viewerTitle"></b>
-      <button type="button" id="close">닫기 ✕</button>
+      <span class="viewer__acts">
+        <button type="button" id="toLetter" hidden>레터</button>
+        <button type="button" id="toAlbum" class="is-soft" hidden></button>
+        <button type="button" id="close">닫기 ✕</button>
+      </span>
     </div>
     <p class="viewer__wait" id="wait">레터를 펼치는 중이에요…</p>
     <iframe id="frame" sandbox="allow-scripts" title="인조이풀 레터"></iframe>
+    <div class="album" id="album" hidden>
+      <p class="album__hint">그날 찍은 사진이에요. 사진을 누르면 크게 보고 한 장씩 저장할 수 있어요.</p>
+      <div class="album__grid" id="grid"></div>
+      <button class="btn btn--sm btn--coral album__all" type="button" id="saveAll">사진 모두 저장</button>
+    </div>
+  </div>
+
+  <div class="zoom" id="zoom" hidden>
+    <img id="zoomImg" alt="">
+    <div class="zoom__acts">
+      <button type="button" id="zPrev" aria-label="이전 사진">←</button>
+      <button type="button" id="zSave">이 사진 저장</button>
+      <button type="button" id="zNext" aria-label="다음 사진">→</button>
+      <button type="button" id="zClose">닫기 ✕</button>
+    </div>
   </div>
 
   <footer class="foot">
@@ -243,7 +286,14 @@
           var b = document.createElement('button'); b.type = 'button';
           b.innerHTML = '<time>' + L.date + '</time><b>' + L.title + '</b><i>→</i>';
           b.addEventListener('click', function () { openLetter(L, b); });
-          li.appendChild(b); ul.appendChild(li);
+          li.appendChild(b);
+          if (L.photos) {
+            var pb = document.createElement('button'); pb.type = 'button'; pb.className = 'ph-btn';
+            pb.innerHTML = '📷 사진 ' + L.photos + '장';
+            pb.addEventListener('click', function () { openAlbum(L); });
+            li.appendChild(pb);
+          }
+          ul.appendChild(li);
         });
         show('opened');
       } catch (err) {
@@ -257,6 +307,7 @@
       try {
         var blob = await (await fetch('/letters/data/' + L.file + '?t=' + Date.now(), { cache: 'no-store' })).json();
         var html = await open(blob, state.key);
+        state.cur = L; state.frameFor = L.id; showTab('letter');
         $('viewerTitle').textContent = L.date + ' · ' + L.title;
         $('wait').hidden = false;
         $('frame').style.opacity = '0';
@@ -271,10 +322,97 @@
 
     $('close').addEventListener('click', function () {
       $('viewer').hidden = true; $('frame').srcdoc = ''; $('frame').style.opacity = '0';
-      document.body.style.overflow = '';
+      document.body.style.overflow = ''; clearAlbum(); state.cur = null;
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !$('viewer').hidden) $('close').click();
+      if (e.key !== 'Escape') return;
+      if (!$('zoom').hidden) $('zClose').click(); else if (!$('viewer').hidden) $('close').click();
+    });
+
+    /* ── 사진 앨범 — 사진도 레터와 같은 반 암호로 잠겨 있고, 누를 때만 불러와 푼다 ── */
+    var album = { L: null, urls: [], loaded: 0, token: 0, at: 0 };
+    function showTab(t) {
+      var L = state.cur, has = L && L.photos;
+      $('frame').hidden = t !== 'letter'; $('album').hidden = t !== 'album';
+      $('wait').hidden = true;
+      $('toAlbum').hidden = !has || t === 'album';
+      $('toAlbum').textContent = has ? '📷 사진 ' + L.photos + '장' : '';
+      $('toLetter').hidden = t !== 'album';
+    }
+    function clearAlbum() {
+      album.urls.forEach(function (u) { if (u) URL.revokeObjectURL(u.url); });
+      album = { L: null, urls: [], loaded: 0, token: album.token + 1, at: 0 };
+      $('grid').innerHTML = '';
+    }
+    function fileName(L, i) { return '인조이풀_' + L.date.replace(/\./g, '') + '_' + String(i + 1).padStart(2, '0') + '.jpg'; }
+    async function openAlbum(L) {
+      if (album.L !== L) {
+        clearAlbum(); album.L = L;
+        var my = album.token;
+        for (var i = 0; i < L.photos; i++) {
+          var cell = document.createElement('button'); cell.type = 'button'; cell.setAttribute('aria-label', (i + 1) + '번째 사진 크게 보기');
+          (function (n) { cell.addEventListener('click', function () { if (album.urls[n]) zoomTo(n); }); })(i);
+          $('grid').appendChild(cell);
+        }
+        (async function () {                       // 한 장씩 차례로 — 폰 메모리를 아끼려고
+          for (var n = 0; n < L.photos; n++) {
+            try {
+              var r = await fetch('/letters/data/p/' + L.id + '-' + String(n + 1).padStart(2, '0') + '.bin');
+              var buf = new Uint8Array(await r.arrayBuffer());
+              var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, state.key, buf.slice(12));
+              if (my !== album.token) return;
+              var blob = new Blob([plain], { type: 'image/jpeg' }), url = URL.createObjectURL(blob);
+              album.urls[n] = { url: url, blob: blob };
+              var img = document.createElement('img'); img.src = url; img.alt = ''; img.loading = 'lazy';
+              $('grid').children[n].appendChild(img);
+            } catch (e) { /* 한 장이 안 풀려도 나머지는 계속 */ }
+          }
+        })();
+      }
+      state.cur = L;
+      if ($('viewer').hidden) {
+        $('viewerTitle').textContent = L.date + ' · ' + L.title;
+        $('frame').srcdoc = ''; state.frameFor = null; $('viewer').hidden = false; document.body.style.overflow = 'hidden';
+      }
+      showTab('album');
+    }
+    $('toAlbum').addEventListener('click', function () { if (state.cur) openAlbum(state.cur); });
+    $('toLetter').addEventListener('click', function () {
+      var L = state.cur;
+      if (state.frameFor === L.id) { showTab('letter'); $('frame').style.opacity = '1'; }
+      else openLetter(L, document.createElement('button'));
+    });
+
+    function save(i) {
+      var it = album.urls[i]; if (!it) return;
+      var a = document.createElement('a'); a.href = it.url; a.download = fileName(album.L, i);
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+    function zoomTo(i) {
+      var n = album.L.photos; i = (i + n) % n;
+      if (!album.urls[i]) return;
+      album.at = i; $('zoomImg').src = album.urls[i].url; $('zoom').hidden = false;
+    }
+    $('zSave').addEventListener('click', async function () {
+      var it = album.urls[album.at]; if (!it) return;
+      var f = new File([it.blob], fileName(album.L, album.at), { type: 'image/jpeg' });
+      if (navigator.canShare && navigator.canShare({ files: [f] })) {   // 폰: 공유 창 → '이미지 저장'
+        try { await navigator.share({ files: [f] }); return; } catch (e) { if (e.name === 'AbortError') return; }
+      }
+      save(album.at);
+    });
+    $('zPrev').addEventListener('click', function () { zoomTo(album.at - 1); });
+    $('zNext').addEventListener('click', function () { zoomTo(album.at + 1); });
+    $('zClose').addEventListener('click', function () { $('zoom').hidden = true; $('zoomImg').src = ''; });
+
+    $('saveAll').addEventListener('click', async function () {
+      var L = album.L; if (!L) return;
+      var ready = album.urls.map(function (it, i) { return it ? new File([it.blob], fileName(L, i), { type: 'image/jpeg' }) : null; }).filter(Boolean);
+      if (ready.length < L.photos) { alert('사진을 아직 불러오는 중이에요. 잠시 뒤에 다시 눌러 주세요.'); return; }
+      if (navigator.canShare && navigator.canShare({ files: ready })) {  // 아이폰: 'N개의 이미지 저장'
+        try { await navigator.share({ files: ready }); return; } catch (e) { if (e.name === 'AbortError') return; }
+      }
+      for (var i = 0; i < ready.length; i++) { save(i); await new Promise(function (r) { setTimeout(r, 350); }); }
     });
   })();
   </script>

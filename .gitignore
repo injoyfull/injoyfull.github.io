@@ -15,3 +15,4 @@ tools/letters.local.json
 tools/.letters-sync-state.json
 tools/.letters-sync.lock
 tools/letters-sync.log
+tools/.letters-build-cache.json

@@ -13,6 +13,8 @@ macOS launchd(WatchPaths)가 폴더 변화를 보고 이 스크립트를 부른�
 제목: 편지의 큰 제목(h1) → tools/letters.local.json 의 titles 예외 → <title> 순.
 날짜: 편지 안 첫 날짜. 순서는 날짜 → 파일 이름.
 암호: tools/letters.local.json (저장소 밖). 암호가 없는 반은 올리지 않고 알린다.
+사진: 반 폴더 안 「사진/2609_1차/」처럼 레터 파일 이름의 「2609_1차」와 같은 이름 폴더에 넣으면
+      그 레터의 사진 앨범으로 함께 잠겨 올라간다(긴 쪽 1440px로 줄임).
 """
 import os, sys, re, json, html, hashlib, subprocess, time, datetime, importlib.util, unicodedata
 
@@ -88,6 +90,34 @@ def scan():
     return found
 
 
+PHOTO_EXT = ('.jpg', '.jpeg', '.png', '.heic', '.heif', '.webp')
+
+
+def token_of(name):
+    """「2609_1차」 같은 회차 표시 — 레터 파일 이름과 사진 폴더 이름을 잇는 열쇠."""
+    m = re.search(r'(\d{4})_(\d+)\s*차', unicodedata.normalize('NFC', name))
+    return f'{m.group(1)}_{int(m.group(2))}차' if m else None
+
+
+def photo_dir(letter_path):
+    tok = token_of(os.path.basename(letter_path))
+    base = os.path.join(os.path.dirname(letter_path), '사진')
+    if not tok or not os.path.isdir(base):
+        return None
+    for d in sorted(os.listdir(base)):
+        full = os.path.join(base, d)
+        if os.path.isdir(full) and token_of(d) == tok:
+            return full
+    return None
+
+
+def photo_files(folder):
+    if not folder:
+        return []
+    return sorted(os.path.join(folder, f) for f in os.listdir(folder)
+                  if f.lower().endswith(PHOTO_EXT) and not f.startswith(('.', '~')))
+
+
 def h1_title(text):
     m = re.search(r'<h1[^>]*>(.*?)</h1>', text, re.S)
     if not m:
@@ -118,6 +148,9 @@ def sha(path):
 
 def signature(paths):
     names = sorted(f'{unicodedata.normalize("NFC", os.path.basename(p))}:{sha(p)}' for p in paths)
+    for p in paths:                                  # 사진은 이름·크기·수정시각으로만 (빠르게)
+        for ph in photo_files(photo_dir(p)):
+            names.append(f'photo:{unicodedata.normalize("NFC", ph)}:{os.path.getsize(ph)}:{int(os.path.getmtime(ph))}')
     return hashlib.sha256('\n'.join(names).encode()).hexdigest()
 
 
@@ -169,7 +202,7 @@ def main():
                 log(f'{cname}: 암호가 없어 올리지 않음 — tools/letters.local.json 에 "{cid}" 암호를 넣어주세요')
                 notify('인조이풀 레터', f'{cname} 암호가 없어 올리지 못했어요')
                 continue
-            if not wait_settled(paths):
+            if not wait_settled(paths + [ph for p in paths for ph in photo_files(photo_dir(p))]):
                 log(f'{cname}: 파일이 아직 복사 중인 것 같아 이번엔 건너뜀')
                 continue
             items = []
@@ -177,12 +210,14 @@ def main():
                 text, tt, date = B.meta_from(p)
                 items.append((date, os.path.basename(p), p, title_of(p, text, tt, overrides)))
             items.sort()
-            log(f'{cname}: {len(items)}통 → ' + ' / '.join(f'{d} {t}' for d, _, _, t in items))
+            log(f'{cname}: {len(items)}통 → ' + ' / '.join(
+                f'{d} {t}' + (f' (사진 {len(photo_files(photo_dir(p)))}장)' if photo_dir(p) else '') for d, _, p, t in items))
             if dry:
                 continue
             cmd = [sys.executable, os.path.join(TOOLS, 'build-letters.py'), '--id', cid, '--name', cname,
                    '--season', SEASON, '--password', pw[cid],
-                   *[p for _, _, p, _ in items], '--titles', *[t for _, _, _, t in items]]
+                   *[p for _, _, p, _ in items], '--titles', *[t for _, _, _, t in items],
+                   '--photo-dirs', *[photo_dir(p) or '-' for _, _, p, _ in items]]
             r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
             if r.returncode != 0:
                 log(f'{cname}: 암호화 실패\n{r.stderr[-800:]}')
@@ -200,7 +235,7 @@ def main():
         if not changed:
             log('바뀐 레터 없음')
             return
-        git('add', 'letters/data')
+        git('add', '-A', 'letters/data')
         if git('diff', '--cached', '--quiet', check=False).returncode == 0:
             log('암호문은 다시 만들었지만 내용 차이가 없어 커밋하지 않음')
             return
