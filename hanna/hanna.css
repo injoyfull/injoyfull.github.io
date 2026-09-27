@@ -102,3 +102,6 @@
 @font-face { font-family: "Griun Sarang"; src: url(/fonts/griun-sarang.ttf) format("truetype"); font-display: swap; }
 .meet blockquote { font-family: "Griun Sarang", var(--a2z), sans-serif; font-weight: 400; font-size: clamp(1.2rem, 3vw, 1.65rem); line-height: 1.75; letter-spacing: 0; max-width: 30rem; }
 .meet blockquote cite { font-family: var(--a2z); }
+/* 한마디 두 줄로 — 폭을 넓히고 한 단계 작게, 이름까지 손글씨 */
+.meet blockquote { max-width: 44rem; font-size: clamp(1.1rem, 2.5vw, 1.45rem); }
+.meet blockquote cite { font-family: "Griun Sarang", var(--a2z), sans-serif; font-size: 1rem; letter-spacing: 0.08em; }
