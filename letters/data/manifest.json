@@ -60,26 +60,26 @@
    "letters": [
     {
      "id": "kids-tue-01",
-     "title": "그림자디자인",
-     "date": "",
+     "title": "가을을 디자인하다 첫 번째, 돌",
+     "date": "2026.09.01",
      "file": "kids-tue-01.json"
     },
     {
      "id": "kids-tue-02",
-     "title": "가을을 디자인하다 첫 번째, 돌",
-     "date": "2026.09.01",
+     "title": "가을을 디자인하다 두 번째, 한복",
+     "date": "2026.09.08",
      "file": "kids-tue-02.json"
     },
     {
      "id": "kids-tue-03",
-     "title": "가을을 디자인하다 두 번째, 한복",
-     "date": "2026.09.08",
+     "title": "가을을 디자인하다 세 번째, 토끼",
+     "date": "2026.09.15",
      "file": "kids-tue-03.json"
     },
     {
      "id": "kids-tue-04",
-     "title": "가을을 디자인하다 세 번째, 토끼",
-     "date": "2026.09.15",
+     "title": "가을을 디자인하다 네 번째, 그림자",
+     "date": "2026.09.20",
      "file": "kids-tue-04.json"
     }
    ]
