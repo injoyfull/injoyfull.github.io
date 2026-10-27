@@ -92,6 +92,16 @@
       .viewer__bar b { font-size: 0.82rem; }
       .viewer__bar button { padding: 0.45rem 0.8rem; font-size: 0.82rem; }
     }
+    .list .mhead { display: flex; flex-direction: row; align-items: center; gap: 0.8rem; margin: 2.3rem 0 0.8rem; padding-bottom: 0.55rem; border-bottom: 1px solid rgba(43,42,38,0.12); }
+    .list .mhead:first-child { margin-top: 0.3rem; }
+    .list .mhead__t { font-weight: 700; font-size: 0.98rem; color: var(--ink); white-space: nowrap; }
+    .list .mhead__all { margin-left: auto; background: var(--butter-soft); border: 0; border-radius: 999px; padding: 0.44rem 1.05rem; font-family: var(--a2z); font-weight: 300; font-size: 0.84rem; color: var(--ink); cursor: pointer; white-space: nowrap; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); }
+    .list .mhead__all b { font-weight: 700; }
+    .list .mhead__all:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(43,42,38,0.12); }
+    @media (max-width: 480px) {
+      .list .mhead { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+      .list .mhead__all { margin-left: auto; padding: 0.4rem 0.85rem; font-size: 0.8rem; }
+    }
     [hidden] { display: none !important; }
   </style>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -165,13 +175,14 @@
       <span class="viewer__acts">
         <button type="button" id="toLetter" hidden>레터</button>
         <button type="button" id="toAlbum" class="is-soft" hidden></button>
+        <button type="button" id="toMonth" class="is-soft" hidden></button>
         <button type="button" id="close">닫기 ✕</button>
       </span>
     </div>
     <p class="viewer__wait" id="wait">레터를 펼치는 중이에요…</p>
     <iframe id="frame" sandbox="allow-scripts" title="인조이풀 레터"></iframe>
     <div class="album" id="album" hidden>
-      <p class="album__hint">레터에 다 담지 못한 그날의 사진이에요. 누르면 크게 보고 한 장씩 저장할 수 있어요.</p>
+      <p class="album__hint" id="albumHint">레터에 다 담지 못한 그날의 사진이에요. 누르면 크게 보고 한 장씩 저장할 수 있어요.</p>
       <div class="album__grid" id="grid"></div>
       <button class="btn btn--sm btn--coral album__all" type="button" id="saveAll">사진 모두 저장</button>
     </div>
@@ -280,8 +291,49 @@
         if (check !== 'in:JOYFULL') throw new Error('bad');
         state.key = key;
         $('openedName').textContent = c.name;
-        var ul = $('list'); ul.innerHTML = '';
-        c.letters.forEach(function (L) {
+        renderList(c);
+        show('opened');
+      } catch (err) {
+        $('err').textContent = '암호가 맞지 않아요. 반에 안내된 암호를 확인해 주세요.';
+        $('err').hidden = false;
+      } finally { btn.innerHTML = label; btn.disabled = false; }
+    });
+
+    /* ── 목록 — 달마다 묶고, 달별 '사진 모아보기'를 머리말에 둔다 ── */
+    function monthOf(L) { return (L.date || '').slice(0, 7); }              // '2026.10'
+    function monthLong(mk) { return mk.slice(0, 4) + '년 ' + Number(mk.slice(5, 7)) + '월'; }
+    function monthShort(mk) { return Number(mk.slice(5, 7)) + '월'; }
+    function itemsOf(letters) {                                             // 사진 한 장 = { 레터 id, 번호, 날짜 }
+      var out = [];
+      letters.forEach(function (L) {
+        for (var n = 0; n < (L.photos || 0); n++) out.push({ id: L.id, n: n, date: L.date });
+      });
+      return out;
+    }
+    function lettersOfMonth(mk) {
+      return (state.cls ? state.cls.letters : []).filter(function (L) { return monthOf(L) === mk; });
+    }
+    function renderList(c) {
+      var ul = $('list'); ul.innerHTML = '';
+      var order = [], byMonth = {};
+      c.letters.forEach(function (L) {
+        var mk = monthOf(L);
+        if (!byMonth[mk]) { byMonth[mk] = []; order.push(mk); }
+        byMonth[mk].push(L);
+      });
+      order.forEach(function (mk) {
+        var group = byMonth[mk], shots = itemsOf(group);
+        var head = document.createElement('li'); head.className = 'mhead';
+        var t = document.createElement('span'); t.className = 'mhead__t'; t.textContent = monthLong(mk);
+        head.appendChild(t);
+        if (shots.length) {
+          var mb = document.createElement('button'); mb.type = 'button'; mb.className = 'mhead__all';
+          mb.innerHTML = '📷 ' + monthShort(mk) + ' 사진 모아보기 <b>' + shots.length + '장</b>';
+          mb.addEventListener('click', function () { openMonth(mk); });
+          head.appendChild(mb);
+        }
+        ul.appendChild(head);
+        group.forEach(function (L) {
           var li = document.createElement('li');
           var b = document.createElement('button'); b.type = 'button';
           b.innerHTML = '<time>' + L.date + '</time><b>' + L.title + '</b><i>→</i>';
@@ -295,12 +347,8 @@
           }
           ul.appendChild(li);
         });
-        show('opened');
-      } catch (err) {
-        $('err').textContent = '암호가 맞지 않아요. 반에 안내된 암호를 확인해 주세요.';
-        $('err').hidden = false;
-      } finally { btn.innerHTML = label; btn.disabled = false; }
-    });
+      });
+    }
 
     async function openLetter(L, btn) {
       var label = btn.innerHTML; btn.innerHTML = '<time>' + L.date + '</time><b>여는 중…</b>';
@@ -330,34 +378,46 @@
     });
 
     /* ── 사진 앨범 — 사진도 레터와 같은 반 암호로 잠겨 있고, 누를 때만 불러와 푼다 ── */
-    var album = { L: null, urls: [], loaded: 0, token: 0, at: 0 };
+    var album = { kind: null, key: null, label: '', items: [], urls: [], token: 0, at: 0 };
     function showTab(t) {
       var L = state.cur, has = L && L.photos;
       $('frame').hidden = t !== 'letter'; $('album').hidden = t !== 'album';
       $('wait').hidden = true;
       $('toAlbum').hidden = !has || t === 'album';
-      $('toAlbum').textContent = has ? '📷 사진 ' + L.photos + '장' : '';
-      $('toLetter').hidden = t !== 'album';
+      $('toAlbum').textContent = has ? '📷 그날 사진 ' + L.photos + '장' : '';
+      $('toLetter').hidden = !(t === 'album' && L);
+      var mk = L ? monthOf(L) : null;
+      var canMonth = t === 'album' && mk && album.kind !== 'month' && itemsOf(lettersOfMonth(mk)).length > (L.photos || 0);
+      $('toMonth').hidden = !canMonth;
+      if (canMonth) $('toMonth').textContent = '📷 ' + monthShort(mk) + ' 전체';
+      $('albumHint').textContent = album.kind === 'month'
+        ? '이 달에 올라온 사진을 모두 모았어요. 누르면 크게 보고 저장할 수 있어요.'
+        : '레터에 다 담지 못한 그날의 사진이에요. 누르면 크게 보고 한 장씩 저장할 수 있어요.';
     }
     function clearAlbum() {
       album.urls.forEach(function (u) { if (u) URL.revokeObjectURL(u.url); });
-      album = { L: null, urls: [], loaded: 0, token: album.token + 1, at: 0 };
+      album = { kind: null, key: null, label: '', items: [], urls: [], token: album.token + 1, at: 0 };
       $('grid').innerHTML = '';
     }
-    function fileName(L, i) { return '인조이풀_' + L.date.replace(/\./g, '') + '_' + String(i + 1).padStart(2, '0') + '.jpg'; }
-    async function openAlbum(L) {
-      if (album.L !== L) {
-        clearAlbum(); album.L = L;
+    function fileName(it) { return '인조이풀_' + it.date.replace(/\./g, '') + '_' + String(it.n + 1).padStart(2, '0') + '.jpg'; }
+
+    /* 사진 한 묶음을 연다 — 레터 한 통이든, 그 달 전체든 같은 길을 쓴다 */
+    function openAlbumSet(kind, key, label, items) {
+      if (album.key !== key) {
+        clearAlbum();
+        album.kind = kind; album.key = key; album.label = label; album.items = items;
         var my = album.token;
-        for (var i = 0; i < L.photos; i++) {
-          var cell = document.createElement('button'); cell.type = 'button'; cell.setAttribute('aria-label', (i + 1) + '번째 사진 크게 보기');
-          (function (n) { cell.addEventListener('click', function () { if (album.urls[n]) zoomTo(n); }); })(i);
+        items.forEach(function (it, i) {
+          var cell = document.createElement('button'); cell.type = 'button';
+          cell.setAttribute('aria-label', (i + 1) + '번째 사진 크게 보기');
+          cell.addEventListener('click', function () { if (album.urls[i]) zoomTo(i); });
           $('grid').appendChild(cell);
-        }
+        });
         (async function () {                       // 한 장씩 차례로 — 폰 메모리를 아끼려고
-          for (var n = 0; n < L.photos; n++) {
+          for (var n = 0; n < items.length; n++) {
             try {
-              var r = await fetch('/letters/data/p/' + L.id + '-' + String(n + 1).padStart(2, '0') + '.bin');
+              var it = items[n];
+              var r = await fetch('/letters/data/p/' + it.id + '-' + String(it.n + 1).padStart(2, '0') + '.bin');
               var buf = new Uint8Array(await r.arrayBuffer());
               var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, state.key, buf.slice(12));
               if (my !== album.token) return;
@@ -369,33 +429,40 @@
           }
         })();
       }
-      state.cur = L;
-      if ($('viewer').hidden) {
-        $('viewerTitle').textContent = L.date + ' · ' + L.title;
-        $('frame').srcdoc = ''; state.frameFor = null; $('viewer').hidden = false; document.body.style.overflow = 'hidden';
-      }
+      if ($('viewer').hidden) { $('viewer').hidden = false; document.body.style.overflow = 'hidden'; }
+      $('viewerTitle').textContent = label;
       showTab('album');
     }
+    function openAlbum(L) {                        // 레터 한 통의 그날 사진
+      state.cur = L;
+      if (state.frameFor !== L.id) { $('frame').srcdoc = ''; state.frameFor = null; }
+      openAlbumSet('letter', L.id, L.date + ' · ' + L.title, itemsOf([L]));
+    }
+    function openMonth(mk) {                       // 그 달에 올라온 사진 전부
+      state.cur = null; state.frameFor = null; $('frame').srcdoc = '';
+      openAlbumSet('month', mk, monthShort(mk) + ' 사진 모아보기', itemsOf(lettersOfMonth(mk)));
+    }
     $('toAlbum').addEventListener('click', function () { if (state.cur) openAlbum(state.cur); });
+    $('toMonth').addEventListener('click', function () { if (state.cur) openMonth(monthOf(state.cur)); });
     $('toLetter').addEventListener('click', function () {
-      var L = state.cur;
+      var L = state.cur; if (!L) return;
       if (state.frameFor === L.id) { showTab('letter'); $('frame').style.opacity = '1'; }
       else openLetter(L, document.createElement('button'));
     });
 
     function save(i) {
       var it = album.urls[i]; if (!it) return;
-      var a = document.createElement('a'); a.href = it.url; a.download = fileName(album.L, i);
+      var a = document.createElement('a'); a.href = it.url; a.download = fileName(album.items[i]);
       document.body.appendChild(a); a.click(); a.remove();
     }
     function zoomTo(i) {
-      var n = album.L.photos; i = (i + n) % n;
+      var n = album.items.length; if (!n) return; i = (i + n) % n;
       if (!album.urls[i]) return;
       album.at = i; $('zoomImg').src = album.urls[i].url; $('zoom').hidden = false;
     }
     $('zSave').addEventListener('click', async function () {
       var it = album.urls[album.at]; if (!it) return;
-      var f = new File([it.blob], fileName(album.L, album.at), { type: 'image/jpeg' });
+      var f = new File([it.blob], fileName(album.items[album.at]), { type: 'image/jpeg' });
       if (navigator.canShare && navigator.canShare({ files: [f] })) {   // 폰: 공유 창 → '이미지 저장'
         try { await navigator.share({ files: [f] }); return; } catch (e) { if (e.name === 'AbortError') return; }
       }
@@ -406,9 +473,9 @@
     $('zClose').addEventListener('click', function () { $('zoom').hidden = true; $('zoomImg').src = ''; });
 
     $('saveAll').addEventListener('click', async function () {
-      var L = album.L; if (!L) return;
-      var ready = album.urls.map(function (it, i) { return it ? new File([it.blob], fileName(L, i), { type: 'image/jpeg' }) : null; }).filter(Boolean);
-      if (ready.length < L.photos) { alert('사진을 아직 불러오는 중이에요. 잠시 뒤에 다시 눌러 주세요.'); return; }
+      var total = album.items.length; if (!total) return;
+      var ready = album.urls.map(function (it, i) { return it ? new File([it.blob], fileName(album.items[i]), { type: 'image/jpeg' }) : null; }).filter(Boolean);
+      if (ready.length < total) { alert('사진을 아직 불러오는 중이에요. 잠시 뒤에 다시 눌러 주세요.'); return; }
       if (navigator.canShare && navigator.canShare({ files: ready })) {  // 아이폰: 'N개의 이미지 저장'
         try { await navigator.share({ files: ready }); return; } catch (e) { if (e.name === 'AbortError') return; }
       }
