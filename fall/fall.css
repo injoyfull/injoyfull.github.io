@@ -324,6 +324,7 @@
 .oneday__d, .oneday__facts li { color: #FFF4E9; }
 .mon--nov .mon__head, .fhero__flag { background: #557F2F; }
 .mon--nov .btn--kakao { background: #557F2F; }
+.mon--nov .mon__open { color: #557F2F; }
 .fhero h1 b { color: #D4561E; }
 
 /* 모바일 점검 2 */
