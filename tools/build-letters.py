@@ -51,7 +51,7 @@ def meta_from(path: str) -> tuple:
     t = re.search(r'<title>(.*?)</title>', html, re.S)
     title = t.group(1).strip() if t else os.path.basename(path)
     title = re.sub(r'^.*?—\s*', '', title)                       # "인조이풀 레터 · … — 제목" → "제목"
-    d = (re.search(r'class="date">\s*(20\d\d)\D+(\d{1,2})\D+(\d{1,2})', html)
+    d = (re.search(r"class=['\"]date['\"]>\s*(20\d\d)\D+(\d{1,2})\D+(\d{1,2})", html)
          or re.search(r'(20\d\d)[.\-\s]*(\d{1,2})[.\-\s]*(\d{1,2})', html))
     date = f'{d.group(1)}.{int(d.group(2)):02d}.{int(d.group(3)):02d}' if d else ''
     return html, title, date
