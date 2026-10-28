@@ -156,7 +156,8 @@ def signature(paths):
     names = sorted(f'{unicodedata.normalize("NFC", os.path.basename(p))}:{sha(p)}' for p in paths)
     for p in paths:                                  # 사진은 이름·크기·수정시각으로만 (빠르게)
         for ph in photo_files(photo_dir(p)):
-            names.append(f'photo:{unicodedata.normalize("NFC", ph)}:{os.path.getsize(ph)}:{int(os.path.getmtime(ph))}')
+            rel = unicodedata.normalize('NFC', os.path.relpath(ph, SRC))   # 폴더를 옮겨도 서명이 안 바뀌게
+            names.append(f'photo:{rel}:{os.path.getsize(ph)}:{int(os.path.getmtime(ph))}')
     return hashlib.sha256('\n'.join(names).encode()).hexdigest()
 
 
