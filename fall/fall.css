@@ -334,3 +334,10 @@
   .mon__no { font-size: 0.78rem; }
   .mon__peek em { font-size: 0.84rem; }
 }
+
+/* 12월 예고 — 멤버십 자리를 걷어낸 뒤 시즌 끝에 한 줄 */
+.mons__next { max-width: 40rem; margin: 2rem auto 0; padding: 1rem 1.3rem; text-align: center; border: 1.5px dashed rgba(51,41,31,0.25); border-radius: 14px; font-size: 0.95rem; line-height: 1.6; color: rgba(51,41,31,0.75); }
+.mons__next b { color: var(--f-ink); }
+/* 문이 둘 — 키즈팝 · 창작클럽 */
+.fhero__doors { grid-template-columns: repeat(2, 1fr); max-width: 27rem; }
+@media (max-width: 620px) { .fhero__doors { grid-template-columns: 1fr; } }

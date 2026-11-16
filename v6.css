@@ -836,3 +836,7 @@ body .meet__note, body .foot__copy { color: var(--ink-soft); }
   transform-origin: 50% 90%; animation: markHi 3.6s ease-in-out infinite; }
 @keyframes markHi { 0%, 62%, 100% { transform: rotate(0); } 70% { transform: rotate(-12deg) translateY(-2px); } 78% { transform: rotate(8deg); } 86% { transform: rotate(-4deg); } }
 @media (prefers-reduced-motion: reduce) { .mark-hi { animation: none; } }
+
+/* 문이 둘일 때 — 키즈팝 · 창작클럽 */
+.ways__grid--two { grid-template-columns: repeat(2, 1fr); max-width: 52rem; margin-left: auto; margin-right: auto; }
+@media (max-width: 900px) { .ways__grid--two { grid-template-columns: 1fr; max-width: 30rem; } }
