@@ -56,7 +56,11 @@
      "date": "2026.11.05",
      "file": "kids-thu-07.json"
     }
-   ]
+   ],
+   "drive": {
+    "iv": "2FKGl3FRVRMEkkwB",
+    "ct": "KdQATnfsTgPNFu2hZ1bv9rloW3EKQYzfHvR6WEDWbMxofa1vO25/aaCwSHNENibWEiDAQ/cFV+K6LFsfEZ/DzDmD0vlatzNDYd245fr88VMfx6pQpENpafISHFe23Inm8yPZyw=="
+   }
   },
   {
    "id": "kids-tue",
@@ -137,7 +141,11 @@
      "file": "kids-tue-10.json",
      "photos": 11
     }
-   ]
+   ],
+   "drive": {
+    "iv": "cVEclouhpX5Kol0m",
+    "ct": "dPkN0SVKbPMOj6fl76OhwlEBTy+iCfnFrYpMhOPU1VSaYOI6P6nAw+z6E96XMcmdKg2tvjt2rmzka7hXaWcgN+cxh3Gt7VuzNcuDfqonRqUJ3v4gH/7M8zPQUnwwaDgeQguMkg=="
+   }
   }
  ]
 }

@@ -13,6 +13,7 @@ macOS launchd(WatchPaths)가 폴더 변화를 보고 이 스크립트를 부른�
 제목: 편지의 큰 제목(h1) → tools/letters.local.json 의 titles 예외 → <title> 순.
 날짜: 편지 안 첫 날짜. 순서는 날짜 → 파일 이름.
 암호: tools/letters.local.json (저장소 밖). 암호가 없는 반은 올리지 않고 알린다.
+드라이브: tools/letters.local.json 의 drive 에 반별 폴더 링크를 넣으면 암호로 잠겨 레터 목록 밑에 붙는다.
 사진: 반 폴더 안 「사진/2609_1차/」처럼 레터 파일 이름의 「2609_1차」와 같은 이름 폴더에 넣으면
       그 레터의 사진 앨범으로 함께 잠겨 올라간다(긴 쪽 1440px로 줄임).
 """
@@ -189,6 +190,7 @@ def main():
         local = load_json(LOCAL, {})
         pw = local.get('passwords', {})
         overrides = local.get('titles', {})
+        drives = local.get('drive', {})            # 반별 사진 폴더 링크 — 주소는 여기에만 평문으로 둔다
         state = load_json(STATE, {})
         found = scan()
         if not found:
@@ -225,6 +227,8 @@ def main():
                    '--season', SEASON, '--password', pw[cid],
                    *[p for _, _, p, _ in items], '--titles', *[t for _, _, _, t in items],
                    '--photo-dirs', *[photo_dir(p) or '-' for _, _, p, _ in items]]
+            if drives.get(cid):
+                cmd += ['--drive', drives[cid]]
             r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
             if r.returncode != 0:
                 log(f'{cname}: 암호화 실패\n{r.stderr[-800:]}')

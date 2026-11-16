@@ -16,7 +16,7 @@
   (레터가 하나 늘 때마다 모든 레터·사진이 새로 커밋되는 것을 막는다)
 - 사진은 긴 쪽 1440px JPEG로 줄인 뒤 한 장씩 잠가 /letters/data/p/<레터id>-NN.bin 으로 둔다.
 """
-import argparse, base64, hashlib, json, os, re, secrets, subprocess, tempfile
+import argparse, base64, hashlib, json, os, re, secrets, subprocess, sys, tempfile
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 ITER = 600_000          # PBKDF2 반복 — 오프라인 추측을 느리게 만든다
@@ -46,14 +46,28 @@ def text_of(s):
     s = re.sub(r'<br\s*/?>', ' ', s)
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', s)).strip()
 
+def date_in(html: str) -> str:
+    """편지에 적힌 날짜 — 스타일·주석에 남은 날짜(팔레트 교체 이력 등)에 속지 않는다."""
+    body = re.sub(r'<!--.*?-->|<(style|script)\b.*?</\1\s*>', ' ', html, flags=re.S | re.I)
+    slots = re.findall(r"""class=['"][^'"]*\bdate\b[^'"]*['"][^>]*>([^<]*)""", body, re.I)
+    slots += re.findall(r"""<time[^>]*\bdatetime=['"]([^'"]*)""", body, re.I)
+    for s in slots:                                   # 날짜 칸이 여러개면(「푸어링아트」 같은 라벨) 날짜가 든 첫 칸
+        m = re.search(r'(20\d\d)\D{0,3}(\d{1,2})\D{0,3}(\d{1,2})', s)
+        if m:
+            return f'{m.group(1)}.{int(m.group(2)):02d}.{int(m.group(3)):02d}'
+    # 날짜 칸이 아예 없으면 본문에서 — 구분자를 꼭 요구해 「2026 10월 섹션 2」 같은 말을 거른다
+    m = re.search(r'(20\d\d)\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})', body)
+    return f'{m.group(1)}.{int(m.group(2)):02d}.{int(m.group(3)):02d}' if m else ''
+
 def meta_from(path: str) -> tuple:
     html = open(path, encoding='utf-8').read()
     t = re.search(r'<title>(.*?)</title>', html, re.S)
     title = t.group(1).strip() if t else os.path.basename(path)
     title = re.sub(r'^.*?—\s*', '', title)                       # "인조이풀 레터 · … — 제목" → "제목"
-    d = (re.search(r"class=['\"]date['\"]>\s*(20\d\d)\D+(\d{1,2})\D+(\d{1,2})", html)
-         or re.search(r'(20\d\d)[.\-\s]*(\d{1,2})[.\-\s]*(\d{1,2})', html))
-    date = f'{d.group(1)}.{int(d.group(2)):02d}.{int(d.group(3)):02d}' if d else ''
+    date = date_in(html)
+    if not date:
+        print(f'  ⚠︎ 날짜를 찾지 못했습니다 — {os.path.basename(path)}'
+              '  (<span class="date">2026. 09. 03</span> 처럼 적어주세요)', file=sys.stderr)
     return html, title, date
 
 def photos_in(folder):
@@ -85,6 +99,7 @@ def main():
     p.add_argument('--password', required=True)
     p.add_argument('--titles', nargs='*', default=None)
     p.add_argument('--photo-dirs', nargs='*', default=None)
+    p.add_argument('--drive', default=None)      # 반 사진 폴더 링크 — 주소도 암호 안쪽에 넣는다
     p.add_argument('files', nargs='+')
     a = p.parse_args()
 
@@ -95,12 +110,12 @@ def main():
     cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
 
     # 같은 암호면 예전 salt·확인값을 그대로 → 안 바뀐 파일은 다시 만들 필요가 없다
-    key, salt, check = None, None, None
+    key, salt, check, drive = None, None, None, None
     if old:
         try:
             s = ub64(old['kdf']['salt']); k = derive(a.password, s)
             if AESGCM(k).decrypt(ub64(old['check']['iv']), ub64(old['check']['ct']), None) == b'in:JOYFULL':
-                key, salt, check = k, s, old['check']
+                key, salt, check, drive = k, s, old['check'], old.get('drive')
         except Exception:
             pass
     if key is None:                                   # 처음이거나 암호가 바뀜 → 전부 새로
@@ -154,6 +169,10 @@ def main():
         'check': check,                          # 암호 확인용 — 맞아야 복호화된다
         'letters': letters,
     })
+    if a.drive:
+        drive = seal(key, a.drive)
+    if drive:                                    # 링크도 잠가 둔다 — 암호 없이는 주소조차 보이지 않게
+        manifest['classes'][-1]['drive'] = drive
     manifest['classes'].sort(key=lambda c: c['id'])
     json.dump(manifest, open(mpath, 'w'), ensure_ascii=False, indent=1)
     json.dump(cache, open(CACHE, 'w'), ensure_ascii=False, indent=1)
