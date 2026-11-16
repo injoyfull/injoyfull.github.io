@@ -99,6 +99,7 @@ def main():
     p.add_argument('--password', required=True)
     p.add_argument('--titles', nargs='*', default=None)
     p.add_argument('--photo-dirs', nargs='*', default=None)
+    p.add_argument('--drive', default=None)      # 반 사진 폴더 링크 — 주소도 암호 안쪽에 넣는다
     p.add_argument('files', nargs='+')
     a = p.parse_args()
 
@@ -109,12 +110,12 @@ def main():
     cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
 
     # 같은 암호면 예전 salt·확인값을 그대로 → 안 바뀐 파일은 다시 만들 필요가 없다
-    key, salt, check = None, None, None
+    key, salt, check, drive = None, None, None, None
     if old:
         try:
             s = ub64(old['kdf']['salt']); k = derive(a.password, s)
             if AESGCM(k).decrypt(ub64(old['check']['iv']), ub64(old['check']['ct']), None) == b'in:JOYFULL':
-                key, salt, check = k, s, old['check']
+                key, salt, check, drive = k, s, old['check'], old.get('drive')
         except Exception:
             pass
     if key is None:                                   # 처음이거나 암호가 바뀜 → 전부 새로
@@ -168,6 +169,10 @@ def main():
         'check': check,                          # 암호 확인용 — 맞아야 복호화된다
         'letters': letters,
     })
+    if a.drive:
+        drive = seal(key, a.drive)
+    if drive:                                    # 링크도 잠가 둔다 — 암호 없이는 주소조차 보이지 않게
+        manifest['classes'][-1]['drive'] = drive
     manifest['classes'].sort(key=lambda c: c['id'])
     json.dump(manifest, open(mpath, 'w'), ensure_ascii=False, indent=1)
     json.dump(cache, open(CACHE, 'w'), ensure_ascii=False, indent=1)

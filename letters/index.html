@@ -102,6 +102,15 @@
       .list .mhead { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
       .list .mhead__all { margin-left: auto; padding: 0.4rem 0.85rem; font-size: 0.8rem; }
     }
+    .lt__drive { display: flex; align-items: center; gap: 1rem; margin-top: 1.6rem; padding: 1.1rem 1.3rem;
+      border-radius: 16px; background: var(--teal-soft); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .lt__drive:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(43,42,38,0.10); }
+    .lt__driveav { width: 56px; height: 56px; object-fit: contain; flex: none; }
+    .lt__drivetxt { display: block; }
+    .lt__drive span { display: block; font-weight: 300; font-size: 0.92rem; line-height: 1.75; color: var(--ink-soft); }
+    .lt__drive .lt__driveq { font-size: 0.84rem; }
+    .lt__drive b { display: block; margin: 0.15rem 0 0.35rem; font-size: 1.08rem; font-weight: 700; color: #2F6F64; }
+    @media (max-width: 480px) { .lt__driveav { width: 44px; height: 44px; } }
     [hidden] { display: none !important; }
   </style>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -157,6 +166,14 @@
     <div id="opened" hidden>
       <p class="eyebrow" id="openedName"></p>
       <ul class="list" id="list"></ul>
+      <a class="lt__drive" id="drive" href="#" rel="noopener" target="_blank" hidden>
+        <img class="lt__driveav" id="driveAv" src="/fall/mungi.png" alt="" aria-hidden="true">
+        <span class="lt__drivetxt">
+          <span class="lt__driveq">레터에 골라 담은 사진 말고도</span>
+          <b>그날 찍은 사진 전부 보기</b>
+          <span>구글 드라이브에 회차별로 정리해 두었어요 — 원본 그대로 받으세요 →</span>
+        </span>
+      </a>
       <a class="lt__invite" href="/menu/">
         <span class="lt__inviteq">레터 밖의 이야기도 궁금하다면</span>
         <b>행복맛집에 초대할게요</b>
@@ -242,6 +259,23 @@
     var b64 = function (s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); };
     var state = { manifest: null, cls: null, key: null };
 
+    function avOf(id) { return { 'kids-thu': '/fall/dori.png', 'kids-tue': '/fall/jumpy.png' }[id] || '/fall/mungi.png'; }
+
+    function clearDrive() { var a = $('drive'); a.hidden = true; a.removeAttribute('href'); }
+
+    // 반 사진 폴더 링크도 암호로 잠겨 있다 — 열린 뒤에야 주소가 생긴다
+    async function showDrive(c, key) {
+      clearDrive();
+      if (!c.drive) return;
+      try {
+        var url = await open(c.drive, key);
+        if (url.slice(0, 8) !== 'https://') return;
+        $('driveAv').src = avOf(c.id);
+        $('drive').href = url;
+        $('drive').hidden = false;
+      } catch (e) { /* 링크가 안 열려도 레터는 그대로 보여야 한다 */ }
+    }
+
     function show(step) {
       $('pick').hidden = step !== 'pick';
       $('lock').hidden = step !== 'lock';
@@ -268,7 +302,7 @@
       m.classes.slice().sort(function (a, b) { return (DAY[a.id] || 9) - (DAY[b.id] || 9); }).forEach(function (c) {
         var b = document.createElement('button');
         b.className = 'cls cls--' + c.id; b.type = 'button';
-        var av = { 'kids-thu': '/fall/dori.png', 'kids-tue': '/fall/jumpy.png' }[c.id] || '/fall/mungi.png';
+        var av = avOf(c.id);
         b.innerHTML = '<span class="cls__av"><img src="' + av + '" alt=""></span><span class="cls__txt"><b>' + c.name + '</b><span>암호를 알고 있는 우리 반만 열려요</span></span><i>🔒 열기</i>';
         b.addEventListener('click', function () {
           state.cls = c; $('lockName').textContent = c.name;
@@ -280,7 +314,7 @@
     });
 
     $('back').addEventListener('click', function () { show('pick'); });
-    $('lockAgain').addEventListener('click', function () { state.key = null; show('pick'); });
+    $('lockAgain').addEventListener('click', function () { state.key = null; clearDrive(); show('pick'); });
 
     $('lockForm').addEventListener('submit', async function (e) {
       e.preventDefault();
@@ -293,6 +327,7 @@
         state.key = key;
         $('openedName').textContent = c.name;
         renderList(c);
+        await showDrive(c, key);
         show('opened');
       } catch (err) {
         $('err').textContent = '암호가 맞지 않아요. 반에 안내된 암호를 확인해 주세요.';
